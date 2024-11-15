@@ -1,49 +1,56 @@
-// App.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
-import DeskModel from './DeskModel';
-import AccessoryModel from './AccessoryModel';
+import { OrbitControls } from '@react-three/drei';  // Importamos OrbitControls sin usar useTexture aquí
+import Model from './Model';
+import Configurator from './Configurator';
+import Accesory from './Accesory';
 
 function App() {
-  const basePrice = 10000;
-  const accessoryPrice = 7500;
+  const [color, setColor] = useState('#ffffff');
+  const [showAccesory, setShowAccesory] = useState(false);
+  const [scale, setScale] = useState(1);
+  const [position, setPosition] = useState([0, 0, 0]);
+  const [texturePath, setTexturePath] = useState('/models/redlabel.webp');
 
-  const [showAccessory, setShowAccessory] = React.useState(false);
-  const [totalPrice, setTotalPrice] = React.useState(basePrice);
+  const basePrice = 1000;
+  const accesoryPrice = 250;
+  const [price, setPrice] = useState(basePrice);
 
-  const handleAccessoryToggle = () => {
-    setShowAccessory(!showAccessory);
-    setTotalPrice(showAccessory ? basePrice : basePrice + accessoryPrice);
-  };
+  useEffect(() => {
+    const totalPrice = showAccesory ? basePrice + accesoryPrice : basePrice;
+    setPrice(totalPrice);
+  }, [showAccesory]);
 
   return (
-    <section className='w-screen flex flex-col items-center justify-center h-screen bg-slate-700'>
-      <div className='w-full h-full p-7 sm:p-0 sm:w-1/3 flex items-center justify-center flex-col gap-3 sm:h-1/2'>
-        <h1 className='text-2xl font-bold text-center text-white'>Prueba render</h1>
+    <div className="relative h-screen w-full bg-gray-900 text-white flex gap-5 p-6">
+      <Configurator 
+        color={color} 
+        setColor={setColor} 
+        setShowAccesory={setShowAccesory}
+        showAccesory={showAccesory}
+        scale={scale}
+        setScale={setScale}
+        position={position}
+        setPosition={setPosition}
+        setTexture={setTexturePath} 
+        price = {price}
+      />
 
-        <Canvas camera={{ position: [0, 12, 5], fov: 50 }} className='ring-zinc-900 rounded-xl ring-2 w-1/2 h-1/2 bg-white'>
+      <div className="flex justify-center items-center w-1/2">
+        <Canvas className="h-96 w-full rounded-lg bg-gray-800 ring-gray-700 ring-2">
           <ambientLight intensity={0.5} />
-          <directionalLight position={[10, 10, 5]} intensity={1} />
+          <directionalLight position={[0, 5, 5]} intensity={1} />
+          
+          <Model 
+          color={color} scale={scale} position={position} 
+          texturePath={texturePath}
+          />
+          <OrbitControls enableZoom={true} />
 
-          <OrbitControls enableZoom={true} enablePan={true} enableRotate={true} />
-
-          <DeskModel position={[0, -2, 0]} scale={0.04} />
-
-          {showAccessory && <AccessoryModel position={[0, 0.8, 0]} scale={3} />}
+          {showAccesory && <Accesory position={[0, 0, 0]} />}
         </Canvas>
-
-        <div className="flex flex-col items-center mt-4">
-          <button
-            onClick={handleAccessoryToggle}
-            className='p-4 text-sm text-white bg-slate-600 hover:bg-slate-800 font-bold hover:scale-105 transition-all ease-in-out rounded-lg'
-          >
-            {showAccessory ? 'Sacar extra' : 'Añadir Extra'}
-          </button>
-          <p className="text-white font-bold mt-2 text-2xl">Precio: ${totalPrice}</p>
-        </div>
       </div>
-    </section>
+    </div>
   );
 }
 
