@@ -5,6 +5,7 @@ import Model from './Model';
 import Configurator from './Configurator';
 import Accesory from './Accesory';
 
+import Hands from './Hands';
 function App() {
   const [color, setColor] = useState('#ffffff');
   const [showAccesory, setShowAccesory] = useState(false);
@@ -22,8 +23,8 @@ function App() {
   }, [showAccesory]);
 
   return (
-    <div className="relative sm:h-screen h-1/2 w-full bg-gray-900 text-white flex gap-5 p-6 flex-col sm:flex-row">
-      <Configurator 
+    <div className="relative flex flex-col w-full gap-5 p-6 text-white bg-gray-900 sm:h-screen h-1/2 sm:flex-row">
+      {/* <Configurator 
         color={color} 
         setColor={setColor} 
         setShowAccesory={setShowAccesory}
@@ -34,10 +35,10 @@ function App() {
         setPosition={setPosition}
         setTexture={setTexturePath} 
         price = {price}
-      />
+      /> */}
 
-      <div className="flex justify-center items-center w-full sm:w-1/2">
-        <Canvas className="h-full w-full rounded-lg bg-gray-800 ring-gray-700 ring-2">
+      {/* <div className="flex items-center justify-center w-full sm:w-1/2">
+        <Canvas className="w-full h-full bg-gray-800 rounded-lg ring-gray-700 ring-2">
           <ambientLight intensity={0.5} />
           <directionalLight position={[0, 5, 5]} intensity={1} />
           
@@ -49,7 +50,9 @@ function App() {
 
           {showAccesory && <Accesory position={[0, 0, 0]} />}
         </Canvas>
-      </div>
+      </div> */}
+
+      <Hands/>
     </div>
   );
 }
