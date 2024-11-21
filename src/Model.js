@@ -1,26 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useGLTF, useTexture } from '@react-three/drei';
 
-function Model({ color, scale, position, texturePath  }) {
-  const { nodes, materials } = useGLTF('/models/escritorio-lowpoly.glb');
-  
-  const texture = useTexture(texturePath); // Usamos useTexture para cargar la textura dinámica
+function Model({ color, scale, position, texturePath }) {
+  const { nodes, materials } = useGLTF('/models/applewatch-normal.glb');
 
-  // Actualizamos el material con la nueva textura
+  const texture = useTexture(texturePath === 'Default' ? '/models/redlabel.webp' : texturePath);
+
   useEffect(() => {
-    if (materials && materials['MDF Imbuia Guararapis*'] && texture) {
-      materials['MDF Imbuia Guararapis*'].map = texture; // Asignamos la textura al material
+    if (materials && materials['PANTALLA']) {
+      if (texturePath === 'Default') {
+        materials['PANTALLA'].map = null;
+      } else {
+        materials['PANTALLA'].map = texture;
+      }
+      materials['PANTALLA'].needsUpdate = true;
     }
-  }, [materials, texture]); // Dependemos de los materiales y la textur
+  }, [materials, texture, texturePath]);
 
   return (
     <group position={position} dispose={null}>
-      {Object.values(nodes).map((node, index) => (
+      {Object.entries(nodes).map(([key, node]) => (
         <mesh
-          key={index}
+          key={key}
           geometry={node.geometry}
-          material={materials ? materials['MDF Imbuia Guararapis*'] : undefined}
-          material-color={color}
+          material={node.material || materials['PANTALLA']}
+          material-color={key === 'PANTALLA' ? color : undefined}
           scale={[scale, scale, scale]}
         />
       ))}

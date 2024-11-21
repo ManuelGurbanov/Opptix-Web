@@ -3,16 +3,22 @@ import React, { useState } from 'react';
 function Configurator({ color, setColor, showAccesory, setShowAccesory, scale, setScale, position, setPosition, setTexture, price
  }) {
   const textures = [
+    { name: 'Modelo', path: 'Default' }, // Usar "Default" en lugar de null
     { name: 'Red Label', path: '/models/redlabel.webp' },
     { name: 'Black Label', path: '/models/blacklabel.webp' },
   ];
-
+  
   const [selectedTexture, setSelectedTexture] = useState(textures[0].path);
 
   const handleTextureChange = (e) => {
     const selectedPath = e.target.value;
     setSelectedTexture(selectedPath);
-    setTexture(selectedPath)
+
+    if (selectedPath) {
+      setTexture(selectedPath);
+    } else {
+      setTexture(null);
+    }
   };
 
   const resetValues = () => {
@@ -23,7 +29,7 @@ function Configurator({ color, setColor, showAccesory, setShowAccesory, scale, s
   };
 
   return (
-    <div className="p-4 bg-gray-900 shadow-lg rounded-lg space-y-4 z-10">
+    <div className="p-4 bg-gray-900 shadow-lg rounded-lg sm:space-y-4 z-10 sm:h-screen">
       <h3 className="text-lg font-bold text-white">Configurador de Color</h3>
       <input
         type="color"
@@ -47,7 +53,6 @@ function Configurator({ color, setColor, showAccesory, setShowAccesory, scale, s
         Reiniciar Valores
       </button>
 
-      {/* Control deslizante para cambiar la escala */}
       <div className="mt-4">
         <label className="text-white">Escala: </label>
         <input

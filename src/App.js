@@ -22,7 +22,7 @@ function App() {
   }, [showAccesory]);
 
   return (
-    <div className="relative h-screen w-full bg-gray-900 text-white flex gap-5 p-6">
+    <div className="relative sm:h-screen h-1/2 w-full bg-gray-900 text-white flex gap-5 p-6 flex-col sm:flex-row">
       <Configurator 
         color={color} 
         setColor={setColor} 
@@ -36,8 +36,8 @@ function App() {
         price = {price}
       />
 
-      <div className="flex justify-center items-center w-1/2">
-        <Canvas className="h-96 w-full rounded-lg bg-gray-800 ring-gray-700 ring-2">
+      <div className="flex justify-center items-center w-full sm:w-1/2">
+        <Canvas className="h-full w-full rounded-lg bg-gray-800 ring-gray-700 ring-2">
           <ambientLight intensity={0.5} />
           <directionalLight position={[0, 5, 5]} intensity={1} />
           
