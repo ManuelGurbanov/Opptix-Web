@@ -5,7 +5,10 @@ import Model from './Model';
 import Configurator from './Configurator';
 import Accesory from './Accesory';
 
+import HandsWithWatch from './HandsWithWatch';
 import Hands from './Hands';
+
+import ARModelViewer from './ARModelViewer';
 function App() {
   const [color, setColor] = useState('#ffffff');
   const [showAccesory, setShowAccesory] = useState(false);
@@ -52,7 +55,7 @@ function App() {
         </Canvas>
       </div> */}
 
-      <Hands/>
+      <ARModelViewer/>
     </div>
   );
 }
