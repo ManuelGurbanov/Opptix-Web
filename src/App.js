@@ -26,36 +26,15 @@ function App() {
   }, [showAccesory]);
 
   return (
-    <div className="relative flex flex-col w-full gap-5 p-6 text-white bg-gray-900 sm:h-screen h-1/2 sm:flex-row">
-      {/* <Configurator 
-        color={color} 
-        setColor={setColor} 
-        setShowAccesory={setShowAccesory}
+    <div className="relative flex flex-col w-screen gap-5 p-6 text-black bg-white sm:h-screen h-1/2 sm:flex-row items-center justify-center">
+      <ARModelViewer
+        modelSrc="/models/furniture.glb"
+        color={color}
+        texturePath={texturePath}
         showAccesory={showAccesory}
         scale={scale}
-        setScale={setScale}
         position={position}
-        setPosition={setPosition}
-        setTexture={setTexturePath} 
-        price = {price}
-      /> */}
-
-      {/* <div className="flex items-center justify-center w-full sm:w-1/2">
-        <Canvas className="w-full h-full bg-gray-800 rounded-lg ring-gray-700 ring-2">
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[0, 5, 5]} intensity={1} />
-          
-          <Model 
-          color={color} scale={scale} position={position} 
-          texturePath={texturePath}
-          />
-          <OrbitControls enableZoom={true} />
-
-          {showAccesory && <Accesory position={[0, 0, 0]} />}
-        </Canvas>
-      </div> */}
-
-      <ARModelViewer/>
+      />
     </div>
   );
 }
