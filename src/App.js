@@ -29,17 +29,11 @@ function App() {
   }, [showAccesory]);
 
   return (
-<<<<<<< HEAD
     <>
     <Navbar languaje={languaje} setLanguaje={setLanguaje} />
     <div className="relative flex flex-col w-screen gap-5 p-6 text-black bg-white sm:h-screen h-1/2 items-center justify-start">
       <ARModelViewer
         modelSrc="/models/rack.glb"
-=======
-    <div className="relative flex flex-col w-screen gap-5 p-6 text-black bg-white sm:h-screen h-1/2 sm:flex-row items-center justify-center">
-      <ARModelViewer
-        modelSrc="/models/furniture.glb"
->>>>>>> 768947c9b733d7fe0311e6bd27bec5ce8eca28d1
         color={color}
         texturePath={texturePath}
         showAccesory={showAccesory}

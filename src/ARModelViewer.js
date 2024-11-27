@@ -126,4 +126,3 @@ const ARModelViewer = ({ modelSrc }) => {
 };
 
 export default ARModelViewer;
-export default ARModelViewer;
