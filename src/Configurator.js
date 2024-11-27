@@ -1,36 +1,30 @@
 import React, { useState } from 'react';
 
-function Configurator({ color, setColor, showAccesory, setShowAccesory, scale, setScale, position, setPosition, setTexture, price
- }) {
+function Configurator({ color, setColor, showAccesory, setShowAccesory, scale, setScale, position, setPosition, setTexture, price }) {
   const textures = [
-    { name: 'Modelo', path: 'Default' }, // Usar "Default" en lugar de null
+    { name: 'Default', path: '/models/default.webp' },
     { name: 'Red Label', path: '/models/redlabel.webp' },
     { name: 'Black Label', path: '/models/blacklabel.webp' },
   ];
-  
+
   const [selectedTexture, setSelectedTexture] = useState(textures[0].path);
 
   const handleTextureChange = (e) => {
     const selectedPath = e.target.value;
     setSelectedTexture(selectedPath);
-
-    if (selectedPath) {
-      setTexture(selectedPath);
-    } else {
-      setTexture(null);
-    }
+    setTexture(selectedPath); // Cambia la textura
   };
 
   const resetValues = () => {
     setColor('#ffffff');
     setScale(1);
     setPosition([0, 0, 0]);
-    setTexture(textures[0].path)
+    setTexture(textures[0].path);
   };
 
   return (
     <div className="p-4 bg-gray-900 shadow-lg rounded-lg sm:space-y-4 z-10 sm:h-screen">
-      <h3 className="text-lg font-bold text-white">Configurador de Color</h3>
+      <h3 className="text-lg font-bold text-white">Configurador</h3>
       <input
         type="color"
         value={color}
@@ -106,8 +100,8 @@ function Configurator({ color, setColor, showAccesory, setShowAccesory, scale, s
           ))}
         </select>
       </div>
-      <h1 className='text-white font-bold text-4xl mt-5'>${price}</h1>
-      {showAccesory && <h1 className='text-gray-300 opacity-30 font-bold text-2xl mt-1 italic'>+$250 - Accesorio</h1>}
+      <h1 className="text-white font-bold text-4xl mt-5">${price}</h1>
+      {showAccesory && <h1 className="text-gray-300 opacity-30 font-bold text-2xl mt-1 italic">+$250 - Accesorio</h1>}
     </div>
   );
 }
