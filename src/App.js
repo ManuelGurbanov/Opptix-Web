@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';  // Importamos OrbitControls sin usar useTexture aquí
-import Model from './Model';
-import Configurator from './Configurator';
-import Accesory from './Accesory';
-
-import HandsWithWatch from './HandsWithWatch';
-import Hands from './Hands';
 
 import ARModelViewer from './ARModelViewer';
-
+import MainBanner from './MainBanner';
 import Navbar from './Navbar';
+import PopUp from './popup';
 function App() {
-  const [languaje, setLanguaje] = useState('es');
+  const [language, setlanguage] = useState('es');
   const [color, setColor] = useState('#ffffff');
   const [showAccesory, setShowAccesory] = useState(false);
   const [scale, setScale] = useState(1);
@@ -29,8 +22,10 @@ function App() {
   }, [showAccesory]);
 
   return (
-    <>
-    <Navbar languaje={languaje} setLanguaje={setLanguaje} />
+    <section className='max-w-screen overflow-hidden'>
+    <Navbar language={language} setLanguage={setlanguage} />
+    <MainBanner language={language}/>
+    <PopUp language={language}/>
     <div className="relative flex flex-col w-screen gap-5 p-6 text-black bg-white sm:h-screen h-1/2 items-center justify-start">
       <ARModelViewer
         modelSrc="/models/rack.glb"
@@ -41,7 +36,7 @@ function App() {
         position={position}
       />
     </div>
-    </>
+    </section>
   );
 }
 
