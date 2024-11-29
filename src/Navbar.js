@@ -34,7 +34,7 @@ function Navbar({ language, setLanguage }) {
                   : "/flags/eeuu.webp"
               }
               alt={language === "es" ? "Español" : "Ingles"}
-              className="w-12"
+              className="w-8"
             />
           </button>
         </div>

@@ -7,7 +7,8 @@ const translations = {
       bannerMain: "Transform products\ninto experiences.",
       bannerSecond: "Connect visually, \nand sell strategically.",
       popUpTittle: "We give you:",
-      popUpText: "Our product configurator, Our augmented reality and the 3D model of YOUR product, FREE"
+      popUpText: "Our product configurator, Our augmented reality and the 3D model of YOUR product, FREE",
+      secondaryBanner: "Titulo en Ingles"
     },
     es: {
       services: "Servicios",
@@ -17,7 +18,8 @@ const translations = {
       bannerMain: "Transforma productos\nen experiencias.",
       bannerSecond: "Conecta visualmente, \n y vende estrategicamente.",
       popUpTittle: "TE REGALAMOS:",
-      popUpText: "Nuestro configurador de producto, Nuestra realidad aumentada y el modelo 3D de TU producto, GRATIS"
+      popUpText: "Nuestro configurador de producto, Nuestra realidad aumentada y el modelo 3D de TU producto, GRATIS",
+      secondaryBanner: "Estadísticas de Beneficios de trabajar con nosotros con números llamativos"
     },
   };
   
