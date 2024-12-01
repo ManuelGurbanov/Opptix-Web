@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import "@google/model-viewer";
 
-const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
+const ARModelViewer = ({ modelSrc, controlsContainerId, textures }) => {
   const modelViewerRef = useRef(null);
   const [groupIndex, setGroupIndex] = useState(0);
 
   useEffect(() => {
     const modelViewer = modelViewerRef.current;
 
-    const handleLoad = () => {
+    const handleLoad = async () => {
       if (!modelViewer.model) {
         console.error("No se pudo cargar el modelo.");
         return;
@@ -20,9 +20,24 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
         return;
       }
 
-      materials.forEach((material) => {
+      const loadTexture = async (url) => {
+        const image = new Image();
+        image.src = url;
+        await image.decode();
+        return modelViewer.createTexture(image);
+      };
+
+      for (const material of materials) {
         material.name = material.name.trim();
-      });
+        console.log(`Material: ${material.name}`);
+
+        if (textures && textures[material.name]) {
+          const textureUrl = textures[material.name];
+          const texture = await loadTexture(textureUrl);
+
+          material.pbrMetallicRoughness.setBaseColorTexture(texture);
+        }
+      }
 
       const controlsContainer = document.getElementById(controlsContainerId);
       if (!controlsContainer) {
@@ -32,22 +47,24 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
 
       controlsContainer.innerHTML = "";
 
-      console.log("Materiales del modelo:");
-      materials.forEach((material) => {
-        console.log(`Material: ${material.name}`);
-      });
-
       const groupMaterials = (suffix) =>
-        materials.filter((material) => material.name.endsWith(suffix) || material.name.includes(suffix));
+        materials.filter(
+          (material) =>
+            material.name.endsWith(suffix) || material.name.includes(suffix)
+        );
 
       const group2 = [
         ...groupMaterials("2"),
-        ...materials.filter(material => material.name === "02-madera base grande"),
+        ...materials.filter(
+          (material) => material.name === "02-madera base grande"
+        ),
       ];
 
       const group3 = [
         ...groupMaterials("3"),
-        ...materials.filter(material => material.name === "03-madera base grande"),
+        ...materials.filter(
+          (material) => material.name === "03-madera base grande"
+        ),
       ];
 
       const updateAlphaValue = (material, alpha) => {
@@ -88,22 +105,21 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
         setGroupIndex(currentIndex);
       };
 
+      // Botón de Ampliar/Reducir
       const button = document.createElement("button");
       button.className = "text-white bg-blue-500 rounded px-4 py-2 m-2";
 
       const updateButtonText = (nextIndex) => {
-        button.textContent = nextIndex;
-
         if (nextIndex === 2) {
           button.textContent = "Reducir";
           button.className = "text-white bg-red-500 rounded px-4 py-2 m-2";
-        }else{
+        } else {
           button.textContent = "Ampliar";
           button.className = "text-white bg-blue-500 rounded px-4 py-2 m-2";
         }
       };
 
-      updateButtonText();
+      updateButtonText(groupIndex);
 
       button.addEventListener("click", () => {
         setGroupIndex((prevIndex) => {
@@ -115,6 +131,46 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
       });
 
       controlsContainer.appendChild(button);
+
+      // Botón de cambio de textura
+      const textureButton = document.createElement("button");
+      textureButton.className = "text-white bg-gray-500 rounded px-4 py-2 m-2";
+      textureButton.textContent = "Cambiar Textura";
+
+      let textureKeys = Object.keys(textures);
+      let currentTextureIndex = 0;
+
+      textureButton.addEventListener("click", async () => {
+        try {
+          // Ciclo entre las claves de texturas
+          currentTextureIndex = (currentTextureIndex + 1) % textureKeys.length; 
+          const selectedTextureKey = textureKeys[currentTextureIndex];
+      
+          if (!textures[selectedTextureKey]) {
+            console.error("Textura no encontrada para la clave:", selectedTextureKey);
+            return;
+          }
+      
+          const textureUrl = textures[selectedTextureKey];
+          console.log(`Cargando textura: ${textureUrl}`);
+      
+          // Cargar la nueva textura
+          const texture = await loadTexture(textureUrl);
+      
+          // Aplicar la textura a todos los materiales
+          materials.forEach((material) => {
+            material.pbrMetallicRoughness.setBaseColorTexture(texture);
+          });
+      
+          console.log(`Textura aplicada: ${selectedTextureKey}`);
+        } catch (error) {
+          console.error("Error al cambiar la textura:", error.message || error);
+        }
+      });
+      
+      
+
+      controlsContainer.appendChild(textureButton);
     };
 
     modelViewer.addEventListener("load", handleLoad);
@@ -122,7 +178,7 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
     return () => {
       modelViewer.removeEventListener("load", handleLoad);
     };
-  }, [controlsContainerId, groupIndex]);
+  }, [controlsContainerId, groupIndex, textures]);
 
   return (
     <div className="relative flex items-center justify-center w-full h-full">

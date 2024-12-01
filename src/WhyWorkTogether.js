@@ -63,7 +63,7 @@ function WhyWorkTogether({ language }) {
           {reasons
             .slice(currentIndex, currentIndex + reasonsPerPage)
             .map((reason) => (
-              <div key={reason.id} className='text-center bg-zinc-200 rounded-lg p-5 w-96 h-36 flex items-center justify-center text-black font-medium'>
+              <div key={reason.id} className='text-center bg-zinc-200 rounded-lg p-5 w-96 h-36 flex items-center justify-center text-black font-medium text-xl'>
                 {reason.reason}
               </div>
             ))}

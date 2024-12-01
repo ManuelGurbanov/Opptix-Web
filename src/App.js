@@ -10,6 +10,10 @@ import OurServices from './OurServices';
 
 import WhyWorkTogether from './WhyWorkTogether';
 import Packs from './Packs';
+import CaseStudies from './CaseStudies';
+
+import Faq from './Faq';
+
 function App() {
   const [language, setlanguage] = useState('es');
   const [color, setColor] = useState('#ffffff');
@@ -37,6 +41,8 @@ function App() {
 
     <WhyWorkTogether language={language}/>
     <Packs/>
+    <CaseStudies/>
+    <Faq/>
     </section>
   );
 }

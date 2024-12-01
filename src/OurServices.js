@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import ARModelViewer from './ARModelViewer';
+import Viewer from './Viewer';
 function OurServices({ language }) {
   const texturePath = '/models/redlabel.webp';
   const [actualService, setActualService] = useState(1);
+  const textures = {
+    "Prueba": "https://cdn.pixabay.com/photo/2017/02/07/09/02/wood-2045379_640.jpg",
+    "Prueba 2": "https://cdn.pixabay.com/photo/2017/02/07/09/02/wood-2045379_640.jpg",
+  };
   const services = [
     {
       id: 0,
@@ -37,12 +42,13 @@ function OurServices({ language }) {
 
   ];
 
+
   return (
     <div className='w-screen bg-white text-black p-3 flex items-center flex-col'>
       <h1 className='font-bold text-lg w-full text-left mt-3 mb-3 ml-5'>
         Nuestros Servicios
       </h1>
-      <div className='flex gap-3 items-center justify-center'>
+      <div className='grid grid-cols-2 sm:flex gap-3 items-center justify-center'>
         {services.map((service) => (
           <button
             key={service.id}
@@ -58,7 +64,9 @@ function OurServices({ language }) {
 
       <section className="flex full rounded-lg flex-col sm:flex-row p-8">
         <div className="bg-zinc-600 w-full sm:w-[422px] sm:h-[502px] aspect-square sm:aspect-auto ring-2 ring-black">
-          <ARModelViewer modelSrc="/models/rack-modulable.glb" controlsContainerId="material-controls-own" />
+          <ARModelViewer modelSrc="/models/rack-modulable.glb" controlsContainerId="material-controls-own" textures={textures}
+          />
+
         </div>
         
         <div className="bg-white w-full sm:w-[448px] sm:h-[502px] aspect-square sm:aspect-auto p-7 ring-2 ring-black flex flex-col justify-between">
