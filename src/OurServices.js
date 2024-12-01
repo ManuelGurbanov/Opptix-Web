@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-
+import ARModelViewer from './ARModelViewer';
 function OurServices({ language }) {
+  const texturePath = '/models/redlabel.webp';
   const [actualService, setActualService] = useState(1);
   const services = [
     {
@@ -37,16 +38,16 @@ function OurServices({ language }) {
   ];
 
   return (
-    <div className='w-screen bg-white text-black p-3 px-8'>
-      <h1 className='font-bold text-lg w-full text-left mt-3 mb-3'>
+    <div className='w-screen bg-white text-black p-3 flex items-center flex-col'>
+      <h1 className='font-bold text-lg w-full text-left mt-3 mb-3 ml-5'>
         Nuestros Servicios
       </h1>
       <div className='flex gap-3 items-center justify-center'>
         {services.map((service) => (
           <button
             key={service.id}
-            className={`border-zinc-600 border-2 rounded-2xl p-2 w-48 h-16 hover:scale-105 transition-transform ease-in-out ${
-              actualService === service.id ? 'bg-blue-100' : 'bg-white'
+            className={`rounded-2xl p-2 w-48 h-16 hover:opacity-100 transition-all ease-in-out ${
+              actualService === service.id ? 'opacity-100' : 'opacity-60'
             }`}
             onClick={() => setActualService(service.id)}
           >
@@ -55,19 +56,27 @@ function OurServices({ language }) {
         ))}
       </div>
 
-        {/* Seccion mitad video mitad texto, descripcion */}
-      <section className='flex full p-8 h-64 rounded-lg'>
-            <div className='bg-zinc-600 w-1/2 p-7'>
-            </div>
-            <div className='bg-white w-1/2 p-7'>
-                <h1 className='font-bold text-lg w-full text-left mt-3 mb-3'>
-                    {services[actualService].name}
-                </h1>
-                <p className='font-normal text-md w-full text-left mb-3'>
-                    {services[actualService].description}
-                </p>
-            </div>
+      <section className="flex full rounded-lg flex-col sm:flex-row p-8">
+        <div className="bg-zinc-600 w-full sm:w-[422px] sm:h-[502px] aspect-square sm:aspect-auto ring-2 ring-black">
+          <ARModelViewer modelSrc="/models/rack-modulable.glb" controlsContainerId="material-controls-own" />
+        </div>
+        
+        <div className="bg-white w-full sm:w-[448px] sm:h-[502px] aspect-square sm:aspect-auto p-7 ring-2 ring-black flex flex-col justify-between">
+          <div>
+            <h1 className="font-bold text-lg w-full text-left mt-3 mb-3">
+              {services[actualService].name}
+            </h1>
+            <p className="font-normal text-md w-full text-left mb-3">
+              {services[actualService].description}
+            </p>
+          </div>
+          
+          <div id="material-controls-own" className="mt-4 bg-gray-100 p-4 rounded"></div>
+        </div>
       </section>
+
+
+
     </div>
   );
 }

@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "@google/model-viewer";
 
-const ARModelViewer = ({ modelSrc }) => {
+const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
   const modelViewerRef = useRef(null);
+  const [groupIndex, setGroupIndex] = useState(0);
 
   useEffect(() => {
     const modelViewer = modelViewerRef.current;
@@ -12,6 +13,7 @@ const ARModelViewer = ({ modelSrc }) => {
         console.error("No se pudo cargar el modelo.");
         return;
       }
+
       const materials = modelViewer.model.materials;
       if (!materials.length) {
         console.error("No se encontraron materiales en el modelo.");
@@ -22,19 +24,31 @@ const ARModelViewer = ({ modelSrc }) => {
         material.name = material.name.trim();
       });
 
-      console.log("Materiales disponibles:", materials.map((mat) => mat.name));
+      const controlsContainer = document.getElementById(controlsContainerId);
+      if (!controlsContainer) {
+        console.error("No se encontró el contenedor para los controles.");
+        return;
+      }
 
-      const controlsContainer = document.querySelector("#material-controls");
       controlsContainer.innerHTML = "";
 
+      console.log("Materiales del modelo:");
+      materials.forEach((material) => {
+        console.log(`Material: ${material.name}`);
+      });
+
       const groupMaterials = (suffix) =>
-        materials.filter((material) => material.name.endsWith(suffix));
+        materials.filter((material) => material.name.endsWith(suffix) || material.name.includes(suffix));
 
-      const group2 = groupMaterials("2");
-      const group3 = groupMaterials("3");
+      const group2 = [
+        ...groupMaterials("2"),
+        ...materials.filter(material => material.name === "02-madera base grande"),
+      ];
 
-      console.log("Materiales en el grupo 2:", group2.map((mat) => mat.name));
-      console.log("Materiales en el grupo 3:", group3.map((mat) => mat.name));
+      const group3 = [
+        ...groupMaterials("3"),
+        ...materials.filter(material => material.name === "03-madera base grande"),
+      ];
 
       const updateAlphaValue = (material, alpha) => {
         const pbr = material.pbrMetallicRoughness;
@@ -50,53 +64,57 @@ const ARModelViewer = ({ modelSrc }) => {
         });
       };
 
+      const activateGroup = (group) => {
+        group.forEach((mat) => {
+          mat.setAlphaMode("OPAQUE");
+          updateAlphaValue(mat, 1);
+        });
+      };
+
       deactivateGroup(group2);
       deactivateGroup(group3);
 
-      const createGroupButton = (group, groupName) => {
-        const button = document.createElement("button");
-        button.textContent = `${groupName}`;
-        button.className = "text-white bg-blue-500 rounded px-4 py-2 m-2";
+      const changeGroupState = (currentIndex) => {
+        deactivateGroup(group2);
+        deactivateGroup(group3);
 
-        let isGroupVisible = false;
+        if (currentIndex === 1) {
+          activateGroup(group2);
+        } else if (currentIndex === 2) {
+          activateGroup(group2);
+          activateGroup(group3);
+        }
 
-        const updateButtonStyle = () => {
-          button.className = `rounded px-4 py-2 m-2 ${
-            isGroupVisible ? "bg-green-500" : "bg-red-500"
-          } text-white`;
-        };
-
-        updateButtonStyle();
-
-        button.addEventListener("click", () => {
-          const animationDuration = 1000;
-          const startTimestamp = performance.now();
-
-          const animateGroup = (currentTimestamp) => {
-            const elapsed = currentTimestamp - startTimestamp;
-            const delta = elapsed / animationDuration;
-            const alpha = isGroupVisible ? 1 - delta : delta;
-
-            group.forEach((material) => updateAlphaValue(material, alpha));
-
-            if (elapsed < animationDuration) {
-              requestAnimationFrame(animateGroup);
-            } else {
-              const finalAlpha = isGroupVisible ? 0 : 1;
-              group.forEach((material) => updateAlphaValue(material, finalAlpha));
-              isGroupVisible = !isGroupVisible;
-              updateButtonStyle();
-            }
-          };
-
-          requestAnimationFrame(animateGroup);
-        });
-
-        controlsContainer.appendChild(button);
+        setGroupIndex(currentIndex);
       };
 
-      createGroupButton(group2, "Estanteria del Medio");
-      createGroupButton(group3, "Estanteria de Arriba");
+      const button = document.createElement("button");
+      button.className = "text-white bg-blue-500 rounded px-4 py-2 m-2";
+
+      const updateButtonText = (nextIndex) => {
+        button.textContent = nextIndex;
+
+        if (nextIndex === 2) {
+          button.textContent = "Reducir";
+          button.className = "text-white bg-red-500 rounded px-4 py-2 m-2";
+        }else{
+          button.textContent = "Ampliar";
+          button.className = "text-white bg-blue-500 rounded px-4 py-2 m-2";
+        }
+      };
+
+      updateButtonText();
+
+      button.addEventListener("click", () => {
+        setGroupIndex((prevIndex) => {
+          const nextIndex = prevIndex === 3 ? 1 : prevIndex + 1;
+          changeGroupState(nextIndex);
+          updateButtonText(nextIndex);
+          return nextIndex;
+        });
+      });
+
+      controlsContainer.appendChild(button);
     };
 
     modelViewer.addEventListener("load", handleLoad);
@@ -104,10 +122,10 @@ const ARModelViewer = ({ modelSrc }) => {
     return () => {
       modelViewer.removeEventListener("load", handleLoad);
     };
-  }, []);
+  }, [controlsContainerId, groupIndex]);
 
   return (
-    <div className="relative flex flex-col items-center bg-zinc-700 rounded-xl ring-1 ring-black">
+    <div className="relative flex items-center justify-center w-full h-full">
       <model-viewer
         ref={modelViewerRef}
         src={modelSrc}
@@ -116,11 +134,13 @@ const ARModelViewer = ({ modelSrc }) => {
         camera-controls
         ar
         ar-modes="webxr scene-viewer quick-look"
-        style={{ width: "60vw", height: "60vh" }}
-        className="border-4 border-blue-500 rounded-lg shadow-lg"
+        className="w-full h-full object-contain"
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "block",
+        }}
       ></model-viewer>
-
-      <div id="material-controls" className="mt-4 bg-white p-4 rounded shadow-lg"></div>
     </div>
   );
 };

@@ -7,6 +7,9 @@ import PopUp from './popup';
 
 import SecondaryBanner from './SecondaryBanner';
 import OurServices from './OurServices';
+
+import WhyWorkTogether from './WhyWorkTogether';
+import Packs from './Packs';
 function App() {
   const [language, setlanguage] = useState('es');
   const [color, setColor] = useState('#ffffff');
@@ -25,22 +28,15 @@ function App() {
   }, [showAccesory]);
 
   return (
-    <section className='max-w-screen overflow-hidden'>
+    <section className='max-w-screen overflow-hidden flex flex-col items-center'>
     <Navbar language={language} setLanguage={setlanguage} />
     <MainBanner language={language}/>
     <PopUp language={language}/>
     <SecondaryBanner language={language}/>
     <OurServices language={language}/>
-    <div className="relative flex flex-col w-screen gap-5 p-6 text-black bg-white sm:h-screen h-1/2 items-center justify-start">
-      <ARModelViewer
-        modelSrc="/models/rack-modulable.glb"
-        color={color}
-        texturePath={texturePath}
-        showAccesory={showAccesory}
-        scale={scale}
-        position={position}
-      />
-    </div>
+
+    <WhyWorkTogether language={language}/>
+    <Packs/>
     </section>
   );
 }

@@ -8,7 +8,8 @@ const translations = {
       bannerSecond: "Connect visually, \nand sell strategically.",
       popUpTittle: "We give you:",
       popUpText: "Our product configurator, Our augmented reality and the 3D model of YOUR product, FREE",
-      secondaryBanner: "Titulo en Ingles"
+      secondaryBanner: "Titulo en Ingles",
+      workTogether: "Why work together with us?"
     },
     es: {
       services: "Servicios",
@@ -19,7 +20,8 @@ const translations = {
       bannerSecond: "Conecta visualmente, \n y vende estrategicamente.",
       popUpTittle: "TE REGALAMOS:",
       popUpText: "Nuestro configurador de producto, Nuestra realidad aumentada y el modelo 3D de TU producto, GRATIS",
-      secondaryBanner: "Estadísticas de Beneficios de trabajar con nosotros con números llamativos"
+      secondaryBanner: "Estadísticas de Beneficios de trabajar con nosotros con números llamativos",
+      workTogether: "¿Por qué trabajar juntos?"
     },
   };
   

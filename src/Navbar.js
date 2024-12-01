@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { translate } from "./Translations";
 
 function Navbar({ language, setLanguage }) {
-  const [showLanguageMenu, setshowLanguageMenu] = useState(1);
+  const [showLanguageMenu, setshowLanguageMenu] = useState(0);
 
   return (
     <>
@@ -40,7 +40,7 @@ function Navbar({ language, setLanguage }) {
         </div>
       </div>
 
-      {showLanguageMenu && (
+      {(showLanguageMenu == 1) && (
         <div className="absolute right-8 top-18 z-50 max-w-1/2  bg-black rounded-md flex flex-col justify-self-end items-center justify-center gap-4 p-4">
           <div
             onClick={() => {
