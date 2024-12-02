@@ -18,7 +18,8 @@ code {
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 6px; /* Para barras de desplazamiento verticales */
+  height: 2px; /* Para barras de desplazamiento horizontales */
 }
 
 ::-webkit-scrollbar-thumb {
