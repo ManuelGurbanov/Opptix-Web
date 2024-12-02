@@ -3,11 +3,11 @@ import React from 'react';
 function CaseStudies() {
     return (
         <>
-        <div className='w-full bg-white flex flex-col justify-center items-start text-black sm:p-12 p-7'>
-            <h1 className='font-semibold text-left text-xl'>
+        <div className='w-full bg-white flex flex-col justify-center items-start text-black sm:p-12 sm:px-24 p-7'>
+            <h1 className='font-semibold text-left text-3xl'>
                 Casos de Estudio
             </h1>
-            <h2 className='font-normal text-left'> 
+            <h2 className='font-normal text-left text-xl'> 
                 La máxima calidad para tu marca
             </h2>
         </div>

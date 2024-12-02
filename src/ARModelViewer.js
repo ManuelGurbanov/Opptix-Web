@@ -1,176 +1,91 @@
 import React, { useEffect, useRef, useState } from "react";
 import "@google/model-viewer";
 
-const ARModelViewer = ({ modelSrc, controlsContainerId, textures }) => {
+const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
   const modelViewerRef = useRef(null);
-  const [groupIndex, setGroupIndex] = useState(0);
+  const [materialGroups, setMaterialGroups] = useState({});
+  const [currentGroup, setCurrentGroup] = useState(2);
 
   useEffect(() => {
     const modelViewer = modelViewerRef.current;
+    const controlsContainer = document.getElementById(controlsContainerId);
+
+    if (!modelViewer || !controlsContainer) {
+      console.error("No se pudo encontrar el modelo o el contenedor de controles.");
+      return;
+    }
 
     const handleLoad = async () => {
-      if (!modelViewer.model) {
-        console.error("No se pudo cargar el modelo.");
-        return;
-      }
-
+      await modelViewer.model.updateComplete;
       const materials = modelViewer.model.materials;
       if (!materials.length) {
         console.error("No se encontraron materiales en el modelo.");
         return;
       }
 
-      const loadTexture = async (url) => {
-        const image = new Image();
-        image.src = url;
-        await image.decode();
-        return modelViewer.createTexture(image);
-      };
-
+      const groups = {};
       for (const material of materials) {
-        material.name = material.name.trim();
-        console.log(`Material: ${material.name}`);
-
-        if (textures && textures[material.name]) {
-          const textureUrl = textures[material.name];
-          const texture = await loadTexture(textureUrl);
-
-          material.pbrMetallicRoughness.setBaseColorTexture(texture);
+        await material.ensureLoaded();
+        const prefix = material.name.slice(0, 2);
+        if (!groups[prefix]) {
+          groups[prefix] = [];
         }
+        groups[prefix].push(material);
       }
 
-      const controlsContainer = document.getElementById(controlsContainerId);
-      if (!controlsContainer) {
-        console.error("No se encontró el contenedor para los controles.");
-        return;
-      }
+      setMaterialGroups(groups);
 
-      controlsContainer.innerHTML = "";
+      const names = modelViewer.availableVariants;
 
-      const groupMaterials = (suffix) =>
-        materials.filter(
-          (material) =>
-            material.name.endsWith(suffix) || material.name.includes(suffix)
-        );
-
-      const group2 = [
-        ...groupMaterials("2"),
-        ...materials.filter(
-          (material) => material.name === "02-madera base grande"
-        ),
-      ];
-
-      const group3 = [
-        ...groupMaterials("3"),
-        ...materials.filter(
-          (material) => material.name === "03-madera base grande"
-        ),
-      ];
-
-      const updateAlphaValue = (material, alpha) => {
-        const pbr = material.pbrMetallicRoughness;
-        const baseColor = pbr.baseColorFactor;
-        baseColor[3] = alpha;
-        pbr.setBaseColorFactor(baseColor);
-      };
-
-      const deactivateGroup = (group) => {
-        group.forEach((mat) => {
-          mat.setAlphaMode("BLEND");
-          updateAlphaValue(mat, 0);
-        });
-      };
-
-      const activateGroup = (group) => {
-        group.forEach((mat) => {
-          mat.setAlphaMode("OPAQUE");
-          updateAlphaValue(mat, 1);
-        });
-      };
-
-      deactivateGroup(group2);
-      deactivateGroup(group3);
-
-      const changeGroupState = (currentIndex) => {
-        deactivateGroup(group2);
-        deactivateGroup(group3);
-
-        if (currentIndex === 1) {
-          activateGroup(group2);
-        } else if (currentIndex === 2) {
-          activateGroup(group2);
-          activateGroup(group3);
-        }
-
-        setGroupIndex(currentIndex);
-      };
-
-      // Botón de Ampliar/Reducir
-      const button = document.createElement("button");
-      button.className = "text-white bg-blue-500 rounded px-4 py-2 m-2";
-
-      const updateButtonText = (nextIndex) => {
-        if (nextIndex === 2) {
-          button.textContent = "Reducir";
-          button.className = "text-white bg-red-500 rounded px-4 py-2 m-2";
-        } else {
-          button.textContent = "Ampliar";
-          button.className = "text-white bg-blue-500 rounded px-4 py-2 m-2";
-        }
-      };
-
-      updateButtonText(groupIndex);
-
-      button.addEventListener("click", () => {
-        setGroupIndex((prevIndex) => {
-          const nextIndex = prevIndex === 3 ? 1 : prevIndex + 1;
-          changeGroupState(nextIndex);
-          updateButtonText(nextIndex);
-          return nextIndex;
-        });
+      const variantSelect = document.createElement("select");
+      variantSelect.id = "variant";
+      names.forEach((name) => {
+        const option = document.createElement("option");
+        option.value = name;
+        option.textContent = name;
+        variantSelect.appendChild(option);
       });
 
-      controlsContainer.appendChild(button);
+      const defaultOption = document.createElement("option");
+      defaultOption.value = "default";
+      defaultOption.textContent = "Default";
+      variantSelect.appendChild(defaultOption);
 
-      // Botón de cambio de textura
-      const textureButton = document.createElement("button");
-      textureButton.className = "text-white bg-gray-500 rounded px-4 py-2 m-2";
-      textureButton.textContent = "Cambiar Textura";
-
-      let textureKeys = Object.keys(textures);
-      let currentTextureIndex = 0;
-
-      textureButton.addEventListener("click", async () => {
-        try {
-          // Ciclo entre las claves de texturas
-          currentTextureIndex = (currentTextureIndex + 1) % textureKeys.length; 
-          const selectedTextureKey = textureKeys[currentTextureIndex];
-      
-          if (!textures[selectedTextureKey]) {
-            console.error("Textura no encontrada para la clave:", selectedTextureKey);
-            return;
+      variantSelect.addEventListener("input", async (event) => {
+        const selectedVariant = event.target.value === "default" ? null : event.target.value;
+        modelViewer.variantName = selectedVariant;
+        for (const [groupKey, materials] of Object.entries(groups)) {
+          const groupIndex = parseInt(groupKey, 10);
+          const isActive = groupIndex <= currentGroup;
+          for (const material of materials) {
+            await material.ensureLoaded();
+            material.setAlphaMode("BLEND");
+            const pbr = material.pbrMetallicRoughness;
+            const baseColor = pbr.baseColorFactor;
+            baseColor[3] = isActive ? 1 : 0;
+            pbr.setBaseColorFactor(baseColor);
           }
-      
-          const textureUrl = textures[selectedTextureKey];
-          console.log(`Cargando textura: ${textureUrl}`);
-      
-          // Cargar la nueva textura
-          const texture = await loadTexture(textureUrl);
-      
-          // Aplicar la textura a todos los materiales
-          materials.forEach((material) => {
-            material.pbrMetallicRoughness.setBaseColorTexture(texture);
-          });
-      
-          console.log(`Textura aplicada: ${selectedTextureKey}`);
-        } catch (error) {
-          console.error("Error al cambiar la textura:", error.message || error);
         }
       });
-      
-      
 
-      controlsContainer.appendChild(textureButton);
+      controlsContainer.appendChild(variantSelect);
+
+      const reduceButton = document.createElement("button");
+      reduceButton.textContent = "Reducir";
+      reduceButton.className = "text-white bg-red-500 rounded px-4 py-2 m-2";
+      reduceButton.addEventListener("click", () => {
+        setCurrentGroup((prev) => Math.max(prev - 1, 0));
+      });
+
+      const expandButton = document.createElement("button");
+      expandButton.textContent = "Ampliar";
+      expandButton.className = "text-white bg-green-500 rounded px-4 py-2 m-2";
+      expandButton.addEventListener("click", () => {
+        setCurrentGroup((prev) => Math.min(prev + 1, 6));
+      });
+
+      controlsContainer.appendChild(reduceButton);
+      controlsContainer.appendChild(expandButton);
     };
 
     modelViewer.addEventListener("load", handleLoad);
@@ -178,7 +93,26 @@ const ARModelViewer = ({ modelSrc, controlsContainerId, textures }) => {
     return () => {
       modelViewer.removeEventListener("load", handleLoad);
     };
-  }, [controlsContainerId, groupIndex, textures]);
+  }, [controlsContainerId]);
+
+  useEffect(() => {
+    const updateGroups = async () => {
+      for (const [groupKey, materials] of Object.entries(materialGroups)) {
+        const groupIndex = parseInt(groupKey, 10);
+        const isActive = groupIndex <= currentGroup;
+        for (const material of materials) {
+          await material.ensureLoaded();
+          material.setAlphaMode("BLEND");
+          const pbr = material.pbrMetallicRoughness;
+          const baseColor = pbr.baseColorFactor;
+          baseColor[3] = isActive ? 1 : 0;
+          pbr.setBaseColorFactor(baseColor);
+        }
+      }
+    };
+
+    updateGroups();
+  }, [currentGroup, materialGroups]);
 
   return (
     <div className="relative flex items-center justify-center w-full h-full">

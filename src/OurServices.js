@@ -44,8 +44,8 @@ function OurServices({ language }) {
 
 
   return (
-    <div className='w-screen bg-white text-black p-3 flex items-center flex-col'>
-      <h1 className='font-bold text-lg w-full text-left mt-3 mb-3 ml-5'>
+    <div className='w-screen bg-white text-black p-3 flex items-center flex-col sm:px-24'>
+      <h1 className='font-bold w-full text-left mt-3 mb-3 ml-5 text-3xl'>
         Nuestros Servicios
       </h1>
       <div className='grid grid-cols-2 sm:flex gap-3 items-center justify-center'>
@@ -64,9 +64,10 @@ function OurServices({ language }) {
 
       <section className="flex full rounded-lg flex-col sm:flex-row p-8">
         <div className="bg-zinc-600 w-full sm:w-[422px] sm:h-[502px] aspect-square sm:aspect-auto ring-2 ring-black">
-          <ARModelViewer modelSrc="/models/rack-modulable.glb" controlsContainerId="material-controls-own" textures={textures}
-          />
+          {/* <ARModelViewer modelSrc="/models/rack-modulable.glb" controlsContainerId="material-controls-own"
+          /> */}
 
+          <ARModelViewer modelSrc='/models/rack-colores.glb' controlsContainerId="material-controls-own" />
         </div>
         
         <div className="bg-white w-full sm:w-[448px] sm:h-[502px] aspect-square sm:aspect-auto p-7 ring-2 ring-black flex flex-col justify-between">
