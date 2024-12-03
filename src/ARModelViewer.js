@@ -18,6 +18,7 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
     const handleLoad = async () => {
       await modelViewer.model.updateComplete;
       const materials = modelViewer.model.materials;
+
       if (!materials.length) {
         console.error("No se encontraron materiales en el modelo.");
         return;
@@ -25,6 +26,7 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
 
       const groups = {};
       for (const material of materials) {
+        console.log(material.name);
         await material.ensureLoaded();
         const prefix = material.name.slice(0, 2);
         if (!groups[prefix]) {
@@ -54,18 +56,7 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
       variantSelect.addEventListener("input", async (event) => {
         const selectedVariant = event.target.value === "default" ? null : event.target.value;
         modelViewer.variantName = selectedVariant;
-        for (const [groupKey, materials] of Object.entries(groups)) {
-          const groupIndex = parseInt(groupKey, 10);
-          const isActive = groupIndex <= currentGroup;
-          for (const material of materials) {
-            await material.ensureLoaded();
-            material.setAlphaMode("BLEND");
-            const pbr = material.pbrMetallicRoughness;
-            const baseColor = pbr.baseColorFactor;
-            baseColor[3] = isActive ? 1 : 0;
-            pbr.setBaseColorFactor(baseColor);
-          }
-        }
+        await updateGroups(materialGroups, currentGroup);
       });
 
       controlsContainer.appendChild(variantSelect);
@@ -73,15 +64,23 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
       const reduceButton = document.createElement("button");
       reduceButton.textContent = "Reducir";
       reduceButton.className = "text-white bg-red-500 rounded px-4 py-2 m-2";
-      reduceButton.addEventListener("click", () => {
-        setCurrentGroup((prev) => Math.max(prev - 1, 0));
+      reduceButton.addEventListener("click", async () => {
+        setCurrentGroup((prev) => {
+          const newGroup = Math.max(prev - 1, 0);
+          updateGroups(materialGroups, newGroup);
+          return newGroup;
+        });
       });
 
       const expandButton = document.createElement("button");
       expandButton.textContent = "Ampliar";
       expandButton.className = "text-white bg-green-500 rounded px-4 py-2 m-2";
-      expandButton.addEventListener("click", () => {
-        setCurrentGroup((prev) => Math.min(prev + 1, 6));
+      expandButton.addEventListener("click", async () => {
+        setCurrentGroup((prev) => {
+          const newGroup = Math.min(prev + 1, 6);
+          updateGroups(materialGroups, newGroup);
+          return newGroup;
+        });
       });
 
       controlsContainer.appendChild(reduceButton);
@@ -95,25 +94,72 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
     };
   }, [controlsContainerId]);
 
+
+  const updateGroups = async (groups, currentGroup) => {
+    const modelViewer = modelViewerRef.current;
+    if (!modelViewer) return;
+  
+    // Obtener todos los materiales actuales, incluidos los de la variante activa.
+    const allMaterials = modelViewer.model.materials;
+  
+    for (const material of allMaterials) {
+      await material.ensureLoaded();
+  
+      const prefix = material.name.slice(0, 2);
+      const groupIndex = parseInt(prefix, 10);
+      const isActive = groupIndex <= currentGroup;
+  
+      material.setAlphaMode("BLEND");
+      const pbr = material.pbrMetallicRoughness;
+      const baseColor = pbr.baseColorFactor;
+      const newOpacity = isActive ? 1 : 0;
+  
+      // Actualizar la opacidad del material.
+      baseColor[3] = newOpacity;
+      pbr.setBaseColorFactor(baseColor);
+  
+      // Registrar la acción realizada.
+      console.log(`Al material "${material.name}" le dejé opacidad ${newOpacity}`);
+    }
+  };
+  
+  
   useEffect(() => {
-    const updateGroups = async () => {
-      for (const [groupKey, materials] of Object.entries(materialGroups)) {
-        const groupIndex = parseInt(groupKey, 10);
-        const isActive = groupIndex <= currentGroup;
-        for (const material of materials) {
-          await material.ensureLoaded();
-          material.setAlphaMode("BLEND");
-          const pbr = material.pbrMetallicRoughness;
-          const baseColor = pbr.baseColorFactor;
-          baseColor[3] = isActive ? 1 : 0;
-          pbr.setBaseColorFactor(baseColor);
-        }
-      }
+    const modelViewer = modelViewerRef.current;
+    if (!modelViewer) return;
+  
+    const handleVariantChange = async () => {
+      console.log("Cambiando variante...");
+      await modelViewer.model.updateComplete;
+  
+      await updateGroups(materialGroups, currentGroup);
     };
-
-    updateGroups();
+  
+    modelViewer.addEventListener("variantchange", handleVariantChange);
+  
+    return () => {
+      modelViewer.removeEventListener("variantchange", handleVariantChange);
+    };
   }, [currentGroup, materialGroups]);
-
+  
+  
+  useEffect(() => {
+    const modelViewer = modelViewerRef.current;
+    if (!modelViewer) return;
+  
+    const handleVariantChange = async () => {
+      console.log(modelViewer.model.materials);
+      await modelViewer.model.updateComplete;
+      await updateGroups(materialGroups, currentGroup);
+    };
+  
+    modelViewer.addEventListener("variantchange", handleVariantChange);
+  
+    return () => {
+      modelViewer.removeEventListener("variantchange", handleVariantChange);
+    };
+  }, [currentGroup, materialGroups]);
+  
   return (
     <div className="relative flex items-center justify-center w-full h-full">
       <model-viewer

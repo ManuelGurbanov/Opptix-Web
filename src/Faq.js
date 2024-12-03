@@ -42,29 +42,33 @@ const Faq = () => {
 
   return (
     <div className="w-full text-black sm:p-24 p-5">
-        <h1 className='mb-10 text-xl font-semibold text-left text-black'>Preguntas Frecuentes</h1>
-        <section className='w-full h-full flex flex-col sm:flex-row items-start justify-center gap-5'>
-            <div className='w-full h-full'>
-            {faqs.map((faq, index) => (
-                <div
-                key={index}
-                className='p-4 my-2 border rounded-lg cursor-pointer'
-                onClick={() => toggleFaq(index)}
-                >
-                <div className="font-bold text-center">
-                    {faq.question}
-                </div>
-                {faq.isOpen && <div className="mt-2">{faq.answer}</div>}
-                </div>
-            ))}
-            </div>
-            <div className='w-full h-full rounded-lg bg-zinc-500 flex items-center justify-center aspect-square'>
-            </div>
-        </section>
+      <h1 className='mb-10 text-xl font-semibold text-left text-black'>Preguntas Frecuentes</h1>
+      <section className='w-full h-full flex flex-col sm:flex-row items-start justify-center gap-5'>
+        <div className='w-full h-full'>
+          {faqs.map((faq, index) => (
+            <div
+              key={index}
+              className='p-4 my-2 rounded-lg cursor-pointer flex flex-col items-start'
+              onClick={() => toggleFaq(index)}
+            >
 
-      
+              <div className="font-bold text-left flex">
+                <img
+                  className='h-full m-auto mr-2'
+                  src={faq.isOpen ? '/arrow_down.png' : '/arrow_right.png'}
+                  alt={faq.isOpen ? "Flecha hacia abajo" : "Flecha hacia derecha"}
+                />
+                {faq.question}
+              </div>
+              {faq.isOpen && <div className="mt-2 ml-10 text-left">{faq.answer}</div>}
+            </div>
+          ))}
+        </div>
+        <div className='w-full h-full rounded-lg bg-zinc-500 flex items-center justify-center aspect-square'>
+        </div>
+      </section>
     </div>
   );
 };
-  
+
 export default Faq;

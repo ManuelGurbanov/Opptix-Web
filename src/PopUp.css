@@ -1,0 +1,45 @@
+/* Contenedor para la animación de la cinta */
+.cinta-container {
+    position: relative;
+    overflow: hidden;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .cinta-text {
+    position: absolute;
+    white-space: nowrap;
+    animation: cinta 10s linear infinite;
+  }
+
+  .cinta-text {
+    font-size: 1rem;
+  }
+
+    @keyframes cinta {
+        0% {
+          transform: translateX(100vw);
+        }
+        100% {
+          transform: translateX(-100vw);
+        }
+      }
+  
+      
+  @media (max-width: 768px) {
+    .cinta-text {
+        position: absolute;
+        white-space: nowrap;
+        animation: cinta 7s linear infinite;
+      }
+    @keyframes cinta {
+        0% {
+          transform: translateX(200vw);
+        }
+        100% {
+          transform: translateX(-200vw);
+        }
+      }
+  }
+  

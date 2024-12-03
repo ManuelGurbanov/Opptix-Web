@@ -6,7 +6,7 @@ function Navbar({ language, setLanguage }) {
 
   return (
     <>
-      <div className="flex justify-between items-center p-4 bg-gray1 text-white h-[10vh] z-50 max-w-screen w-full ring-1 ring-black">
+      <div className="flex justify-between items-center p-4 bg-gray1 text-white h-[10vh] z-50 max-w-screen w-full ring-1 ring-black fixed top-0">
         <img src="darkOpptix.webp" className="h-full" alt="Logo" />
 
         <div className="flex flex-row gap-4 text-black w-full justify-end items-center">
@@ -41,7 +41,7 @@ function Navbar({ language, setLanguage }) {
       </div>
 
       {(showLanguageMenu == 1) && (
-        <div className="absolute right-8 top-18 z-50 max-w-1/2  bg-black rounded-md flex flex-col justify-self-end items-center justify-center gap-4 p-4">
+        <div className="fixed right-4 top-16 z-50 max-w-1/2  bg-black rounded-md flex flex-col justify-self-end items-center justify-center gap-4 p-4">
           <div
             onClick={() => {
               setLanguage("en");

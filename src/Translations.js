@@ -19,7 +19,7 @@ const translations = {
       bannerMain: "Transforma productos\nen experiencias.",
       bannerSecond: "Conecta visualmente, \n y vende estrategicamente.",
       popUpTittle: "TE REGALAMOS:",
-      popUpText: "Nuestro configurador de producto, Nuestra realidad aumentada y el modelo 3D de TU producto, GRATIS",
+      popUpText: "Nuestro configurador de producto, nustra realidad aumentada y el modelo 3D de tu producto, GRATIS",
       secondaryBanner: "Estadísticas de Beneficios de trabajar con nosotros con números llamativos",
       workTogether: "¿Por qué trabajar juntos?"
     },
