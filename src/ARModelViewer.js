@@ -4,7 +4,7 @@ import "@google/model-viewer";
 const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
   const modelViewerRef = useRef(null);
   const [materialGroups, setMaterialGroups] = useState({});
-  const [currentGroup, setCurrentGroup] = useState(2);
+  const [currentGroup, setCurrentGroup] = useState(6);
   const [menuState, setMenuState] = useState(0);
 
   useEffect(() => {
@@ -40,23 +40,45 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
 
       const names = modelViewer.availableVariants;
 
-      const variantSelect = document.createElement("select");
-      variantSelect.id = "variant";
-      variantSelect.style.display = "none";
-      variantSelect.className = "text-zinc-700 bg-zinc-200 rounded px-4 py-2 m-2 rounded-xl ring-1 ring-black hover:scale-105 transition-all duration-75 hover:ring-blue-500";
+      const maderaSelect = document.createElement("select");
+      maderaSelect.id = "madera";
+      maderaSelect.style.display = "none";
+      maderaSelect.className = "text-zinc-700 bg-zinc-200 rounded px-4 py-2 m-2 rounded-xl ring-1 ring-black hover:scale-105 transition-all duration-75 hover:ring-blue-500";
+      
+      const canoSelect = document.createElement("select");
+      canoSelect.id = "cano";
+      canoSelect.style.display = "none";
+      canoSelect.className = "text-zinc-700 bg-zinc-200 rounded px-4 py-2 m-2 rounded-xl ring-1 ring-black hover:scale-105 transition-all duration-75 hover:ring-blue-500";
+
       names.forEach((name) => {
-        const option = document.createElement("option");
-        option.value = name;
-        option.textContent = name;
-        variantSelect.appendChild(option);
+        if (name.startsWith("madera")) {
+          const option = document.createElement("option");
+          option.value = name;
+          option.textContent = name;
+          maderaSelect.appendChild(option);
+        }
       });
+      
+      names.forEach((name) => {
+        if (name.startsWith("caño")) {
+          const option = document.createElement("option");
+          option.value = name;
+          option.textContent = name;
+          canoSelect.appendChild(option);
+        }
+      });
+      
+      document.body.appendChild(maderaSelect);
+      document.body.appendChild(canoSelect);
 
-      const defaultOption = document.createElement("option");
-      defaultOption.value = "default";
-      defaultOption.textContent = "Default";
-      variantSelect.appendChild(defaultOption);
-
-      variantSelect.addEventListener("input", async (event) => {
+      maderaSelect.addEventListener("input", async (event) => {
+        const selectedVariant = event.target.value === "default" ? null : event.target.value;
+        modelViewer.variantName = selectedVariant;
+        await modelViewer.model.updateComplete;
+        const variantChangeEvent = new Event("variantchange");
+        modelViewer.dispatchEvent(variantChangeEvent);
+      });
+      canoSelect.addEventListener("input", async (event) => {
         const selectedVariant = event.target.value === "default" ? null : event.target.value;
         modelViewer.variantName = selectedVariant;
         await modelViewer.model.updateComplete;
@@ -71,8 +93,9 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
       backButton.addEventListener("click", () => {
         setMenuState(0);
         controlsContainer.className = "flex items-center justify-center bg-transparent p-4 rounded absolute bottom-0 gap-2 w-full"
-        variantSelect.style.display = "none";
+        canoSelect.style.display = "none";
         backButton.style.display = "none";
+        maderaSelect.style.display = "none";
         configureButton.style.display = "inline-block";
         reduceButton.style.display = "none";
         expandButton.style.display = "none";
@@ -84,9 +107,8 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
       configureButton.addEventListener("click", () => {
         setMenuState(1);
         backButton.style.display = "block";
-        controlsContainer.className = "grid grid-cols-2 bg-transparent p-4 rounded absolute bottom-0 gap-2"
+        controlsContainer.className = "flex bg-transparent p-4 rounded absolute bottom-0 gap-2"
         configureButton.style.display = "none";
-        variantSelect.style.display = "block";
         reduceButton.style.display = "inline-block";
         expandButton.style.display = "inline-block";
       });
@@ -117,7 +139,9 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
         });
       });
 
-      controlsContainer.appendChild(variantSelect);
+      const maderaSelectElement = document.getElementById("maderaSelectElement");
+      controlsContainer.appendChild(maderaSelect);
+      controlsContainer.appendChild(canoSelect);
       controlsContainer.appendChild(reduceButton);
       controlsContainer.appendChild(expandButton);
     };
@@ -128,6 +152,20 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
       modelViewer.removeEventListener("load", handleLoad);
     };
   }, [controlsContainerId]);
+
+  const showMaderaSelect = () => {
+    const maderaSelect = document.getElementById("madera");
+    const canoSelect = document.getElementById("cano");
+    canoSelect.style.display = "none";
+    maderaSelect.style.display = "block";
+  }
+
+  const showCanoSelect = () => {
+    const maderaSelect = document.getElementById("madera");
+    const canoSelect = document.getElementById("cano");
+    canoSelect.style.display = "block";
+    maderaSelect.style.display = "none";
+  }
 
   const updateGroups = async (groups, currentGroup) => {
     const modelViewer = modelViewerRef.current;
@@ -173,9 +211,45 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
     };
   }, [currentGroup, materialGroups]);
 
+
+  const modelViewer2 = document.querySelector("#hotspot-camera-view-demo");
+  const annotationClicked = (annotation) => {
+    let dataset = annotation.dataset;
+    modelViewer2.cameraTarget = dataset.target;
+    modelViewer2.cameraOrbit = dataset.orbit;
+    modelViewer2.fieldOfView = '45deg';
+  }
+
+  useEffect(() => {
+    const modelViewer2 = document.querySelector("#hotspot-camera-view-demo");
+    if (!modelViewer2) {
+      console.error("Elemento #hotspot-camera-view-demo no encontrado.");
+      return;
+    }
+  
+    const annotationClicked = (annotation) => {
+      let dataset = annotation.dataset;
+      modelViewer2.cameraTarget = dataset.target;
+      modelViewer2.cameraOrbit = dataset.orbit;
+      modelViewer2.fieldOfView = '45deg';
+    };
+  
+    modelViewer2.querySelectorAll('button').forEach((hotspot) => {
+      hotspot.addEventListener('click', () => annotationClicked(hotspot));
+    });
+  
+    return () => {
+      modelViewer2.querySelectorAll('button').forEach((hotspot) => {
+        hotspot.removeEventListener('click', () => annotationClicked(hotspot));
+      });
+    };
+  }, []);
+  
   return (
     <div className="relative flex items-center justify-center w-full h-full bg-white">
       <model-viewer
+        id="hotspot-camera-view-demo" 
+        loading="eager"
         ref={modelViewerRef}
         src={modelSrc}
         alt="Modelo 3D en AR"
@@ -189,7 +263,15 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
           height: "100%",
           display: "block",
         }}
-      ></model-viewer>
+      >
+      <button onClick = {() => showMaderaSelect() } className= "p-1 bg-zinc-200 ring-blue-500 ring-2 text-black rounded-lg" slot="hotspot-2" data-position="0.0608m 0.0566m 0.0605m" data-normal="0.2040984m 0.7985359m -0.56629m" data-orbit="42.72974deg 84.74043deg 0.07104211m" data-target="0.0757959m 0.04128428m 0.07109568m">
+        Madera
+      </button>
+      <button onClick = {() => showCanoSelect() } className= "p-1 bg-zinc-200 ring-blue-500 ring-2 text-black rounded-lg" slot="hotspot-3" data-position="0m 0.8m 0.6m" data-normal="0.2040984m 0.7985359m -0.56629m" data-orbit="42.72974deg 84.74043deg 0.07104211m" data-target="0m 0.8m 0.6m">
+        Caños
+      </button>  
+
+      </model-viewer>
     </div>
   );
 };

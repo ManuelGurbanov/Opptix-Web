@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function CaseStudies() {
     return (
@@ -12,38 +13,41 @@ function CaseStudies() {
             </h2>
         </div>
         <div className='flex sm:flex-row flex-col gap-4 mb-12'>
-            <div className='w-64 rounded-lg bg-zinc-200'>
+            <Link to="/valijas" className='w-64 rounded-lg bg-zinc-200 hover:scale-105 transition-all ease-in-out'>
                 <h1 className='font-semibold text-left text-xl p-4'>
-                    Caso de Estudio 1
+                    Briefcases
                 </h1>
                 <p className='font-normal text-left p-4'>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.
                 </p>
-            </div>
-            <div className='w-64 rounded-lg bg-zinc-200'>
+            </Link>
+
+            <Link to="/" className='w-64 rounded-lg bg-zinc-200 hover:scale-105 transition-all ease-in-out'>
                 <h1 className='font-semibold text-left text-xl p-4'>
-                    Caso de Estudio 1
+                    Caso de Estudio 2
                 </h1>
                 <p className='font-normal text-left p-4'>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.
                 </p>
-            </div>
-            <div className='w-64 rounded-lg bg-zinc-200'>
+            </Link>
+
+            <Link to="/" className='w-64 rounded-lg bg-zinc-200 hover:scale-105 transition-all ease-in-out'>
                 <h1 className='font-semibold text-left text-xl p-4'>
-                    Caso de Estudio 1
+                    Caso de Estudio 3
                 </h1>
                 <p className='font-normal text-left p-4'>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.
                 </p>
-            </div>
-            <div className='w-64 rounded-lg bg-zinc-200'>
+            </Link>
+
+            <Link to="/" className='w-64 rounded-lg bg-zinc-200 hover:scale-105 transition-all ease-in-out'>
                 <h1 className='font-semibold text-left text-xl p-4'>
-                    Caso de Estudio 1
+                    Caso de Estudio 4
                 </h1>
                 <p className='font-normal text-left p-4'>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.
                 </p>
-            </div>
+            </Link>
         </div>
         </>
     );
