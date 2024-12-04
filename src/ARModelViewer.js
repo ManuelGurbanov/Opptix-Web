@@ -106,6 +106,8 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
       configureButton.className = "text-zinc-700 bg-zinc-200 rounded px-4 py-2 m-2 rounded-xl ring-1 ring-black hover:scale-105 transition-all duration-75 hover:ring-blue-500";
       configureButton.addEventListener("click", () => {
         setMenuState(1);
+        canoSelect.style.display = "none";
+        maderaSelect.style.display = "none";
         backButton.style.display = "block";
         controlsContainer.className = "flex bg-transparent p-4 rounded absolute bottom-0 gap-2"
         configureButton.style.display = "none";
