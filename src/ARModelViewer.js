@@ -141,7 +141,7 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
         });
       });
 
-      const maderaSelectElement = document.getElementById("maderaSelectElement");
+
       controlsContainer.appendChild(maderaSelect);
       controlsContainer.appendChild(canoSelect);
       controlsContainer.appendChild(reduceButton);
@@ -180,7 +180,9 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
 
       const prefix = material.name.slice(0, 2);
       const groupIndex = parseInt(prefix, 10);
-      const isActive = groupIndex <= currentGroup;
+
+      console.log(`groupIndex es ${groupIndex} y currentGroup ${groupIndex}`);
+      let isActive = shouldBeActive(currentGroup, groupIndex);
 
       material.setAlphaMode("BLEND");
       const pbr = material.pbrMetallicRoughness;
@@ -192,6 +194,14 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
       //console.log(Al material "${material.name}" le dejé opacidad ${newOpacity});
     }
   };
+
+  function shouldBeActive(currentGroup, groupIndex) {
+    if (currentGroup <= 3 && currentGroup >= groupIndex) return true;
+    if (currentGroup == 4) return groupIndex >= 1 && currentGroup>=groupIndex;
+    if (currentGroup == 5) return groupIndex >= 1 && currentGroup>=groupIndex;
+    if (currentGroup == 6) return groupIndex >= 1 && currentGroup>=groupIndex;
+    return false;                                            
+  }
 
   useEffect(() => {
     const modelViewer = modelViewerRef.current;

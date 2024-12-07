@@ -13,7 +13,7 @@ function CaseStudies() {
             </h2>
         </div>
         <div className='flex sm:flex-row flex-col gap-4 mb-12'>
-            <Link to="/briefcase" className='w-64 rounded-lg bg-zinc-200 hover:scale-105 transition-all ease-in-out'>
+            <Link to="/studie-cases" className='w-64 rounded-lg bg-zinc-200 hover:scale-105 transition-all ease-in-out'>
                 <h1 className='font-semibold text-left text-xl p-4'>
                     Briefcases
                 </h1>
@@ -22,7 +22,7 @@ function CaseStudies() {
                 </p>
             </Link>
 
-            <Link to="/" className='w-64 rounded-lg bg-zinc-200 hover:scale-105 transition-all ease-in-out'>
+            <Link to="/studie-cases" className='w-64 rounded-lg bg-zinc-200 hover:scale-105 transition-all ease-in-out'>
                 <h1 className='font-semibold text-left text-xl p-4'>
                     Caso de Estudio 2
                 </h1>
@@ -31,7 +31,7 @@ function CaseStudies() {
                 </p>
             </Link>
 
-            <Link to="/" className='w-64 rounded-lg bg-zinc-200 hover:scale-105 transition-all ease-in-out'>
+            <Link to="/studie-cases" className='w-64 rounded-lg bg-zinc-200 hover:scale-105 transition-all ease-in-out'>
                 <h1 className='font-semibold text-left text-xl p-4'>
                     Caso de Estudio 3
                 </h1>
@@ -40,7 +40,7 @@ function CaseStudies() {
                 </p>
             </Link>
 
-            <Link to="/" className='w-64 rounded-lg bg-zinc-200 hover:scale-105 transition-all ease-in-out'>
+            <Link to="/studie-cases" className='w-64 rounded-lg bg-zinc-200 hover:scale-105 transition-all ease-in-out'>
                 <h1 className='font-semibold text-left text-xl p-4'>
                     Caso de Estudio 4
                 </h1>

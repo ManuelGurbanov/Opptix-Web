@@ -47,7 +47,7 @@ function App() {
           </section>
         } />
 
-        <Route path="/briefcase" element={<CaseStudiePage/>} />
+        <Route path="/studie-cases" element={<CaseStudiePage/>} />
       </Routes>
     </Router>
   );

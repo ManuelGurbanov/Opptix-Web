@@ -114,8 +114,6 @@ const Faq = () => {
             </div>
           ))}
         </div>
-        <div className='w-full h-full rounded-lg bg-zinc-500 flex items-center justify-center aspect-square'>
-        </div>
       </section>
     </div>
   );
