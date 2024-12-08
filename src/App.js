@@ -13,6 +13,8 @@ import Faq from './Faq';
 
 import CaseStudiePage from './CaseStudiePage';
 
+import Footer from './Footer';
+
 function App() {
   const [language, setlanguage] = useState('es');
   const [color, setColor] = useState('#ffffff');
@@ -44,6 +46,7 @@ function App() {
             <Packs />
             <CaseStudies />
             <Faq />
+            <Footer language={language} />
           </section>
         } />
 

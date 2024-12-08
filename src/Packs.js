@@ -57,17 +57,18 @@ function Packs() {
         <h2 className='text-center w-full text-xl opacity-70 mb-6 sm:mb-0'>Lorem Ipsum...</h2>
         <div className='w-3/4 sm:w-2/3 min-h-[70vh] sm:min-w-[1100px] bg-white flex flex-col sm:flex-row justify-center items-start text-black sm:p-8 gap-8 m-0 mb-16 sm:mb-0'>
         {packs.map((pack, index) => (
-                <div key={index} className='relative w-full sm:min-h-[60vh] min-h-[80vh] bg-zinc-200 rounded-xl flex flex-col items-center justify-end text-center p-8 hover:scale-105 transition-all ease-in-out'>
+                <div key={index} className='relative w-full bg-zinc-200 rounded-xl flex flex-col items-center justify-end text-center p-8 hover:scale-105 transition-all ease-in-out'>
                     <h1 className='text-2xl font-bold mb-2'>{pack.title}</h1>
                     <p className='text-lg text-zinc-600 mb-2'>{pack.description}</p>
                     <h2 className='text-4xl font-bold'>${pack.price}</h2>
-                    <p className={`text-md mb-4 transition-opacity duration-500 ${pack.monthly ? 'opacity-100' : 'opacity-0'}`}>
+                    <p className={`text-md sm:mb-4 mb-2 transition-opacity duration-500 ${pack.monthly ? 'opacity-100' : 'opacity-0'}`}>
                         mensuales
-                        </p>
+                    </p>
 
+                    <p className='underline sm:hidden block mb-2'>¿Qué contiene el paquete?</p>
 
-                    <h3 className='text-lg font-bold text-left w-full'>Resultados</h3>
-                    <ul className='mb-4 text-left text-md'>
+                    <h3 className='text-lg font-bold text-left w-full hidden sm:block'>Resultados</h3>
+                    <ul className='mb-4 text-left text-md hidden sm:block'>
                         {pack.results.map((result, i) => (
                             <li key={i}>{result}</li>
                         ))}

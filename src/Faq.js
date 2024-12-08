@@ -93,7 +93,7 @@ const Faq = () => {
   return (
     <div className="w-full text-black sm:p-24 p-5">
       <h1 className='mb-10 text-xl font-semibold text-left text-black'>Preguntas Frecuentes</h1>
-      <section className='w-full h-full flex flex-col sm:flex-row items-start justify-center gap-5'>
+      <section className='w-full min-h-full flex flex-col sm:flex-row items-start justify-center gap-5'>
         <div className='w-full h-full'>
           {faqs.map((faq, index) => (
             <div
