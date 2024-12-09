@@ -52,7 +52,7 @@ function Packs() {
     ];
 
     return (
-        <div className='min-h-screen w-full items-center flex-col flex'>
+        <div className='min-h-screen w-full items-center flex-col flex' id='packs'>
         <h1 className='text-center w-full text-4xl font-bold mt-12'>Packs</h1>
         <h2 className='text-center w-full text-xl opacity-70 mb-6 sm:mb-0'>Lorem Ipsum...</h2>
         <div className='w-3/4 sm:w-2/3 min-h-[70vh] sm:min-w-[1100px] bg-white flex flex-col sm:flex-row justify-center items-start text-black sm:p-8 gap-8 m-0 mb-16 sm:mb-0'>

@@ -5,7 +5,7 @@ const Faq = () => {
     {
       question: "¿Qué soluciones ofrece Opptix 3D para mejorar las ventas y el marketing de productos?",
       answer: "En Opptix 3D creamos contenido visual innovador como configuradores de productos interactivos, realidad aumentada (AR) y animaciones de producto. Estas herramientas transforman la experiencia del cliente, aumentando la conversión y mejorando el engagement en plataformas digitales.",
-      isOpen: false,
+      isOpen: true,
     },
     {
       question: "¿Cómo funciona la realidad aumentada (AR) en mi e-commerce?",
@@ -79,6 +79,8 @@ const Faq = () => {
     },
   ]);
 
+  const [visibleCount, setVisibleCount] = useState(5);
+
   const toggleFaq = index => {
     setFaqs(faqs.map((faq, i) => {
       if (i === index) {
@@ -90,18 +92,25 @@ const Faq = () => {
     }));
   };
 
+  const showMore = () => {
+    setVisibleCount(prevCount => Math.min(prevCount + 5, faqs.length));
+  };
+
+  const showLess = () => {
+    setVisibleCount(prevCount => Math.max(prevCount - 5, 5));
+  };
+
   return (
     <div className="w-full text-black sm:p-24 p-5">
       <h1 className='mb-10 text-xl font-semibold text-left text-black'>Preguntas Frecuentes</h1>
       <section className='w-full min-h-full flex flex-col sm:flex-row items-start justify-center gap-5'>
         <div className='w-full h-full'>
-          {faqs.map((faq, index) => (
+          {faqs.slice(0, visibleCount).map((faq, index) => (
             <div
               key={index}
               className='p-4 my-2 rounded-lg cursor-pointer flex flex-col items-start'
               onClick={() => toggleFaq(index)}
             >
-
               <div className="font-bold text-left flex">
                 <img
                   className='h-full m-auto mr-2'
@@ -115,6 +124,24 @@ const Faq = () => {
           ))}
         </div>
       </section>
+      <div className="flex justify-center gap-4 mt-5">
+        {visibleCount > 5 && (
+          <button
+            onClick={showLess}
+            className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+          >
+            Mostrar menos
+          </button>
+        )}
+        {visibleCount < faqs.length && (
+          <button
+            onClick={showMore}
+            className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+          >
+            Mostrar más
+          </button>
+        )}
+      </div>
     </div>
   );
 };

@@ -1,10 +1,15 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { translate } from "./Translations"; 
 import Selector from './Selector';
 import { Link } from 'react-router-dom';
 function CaseStudiePage({language}) {
     let [actualCase, setActualCase] = useState(0);
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+  }, []);
+
     const cases = [
         {
           id: 0,
@@ -55,7 +60,7 @@ function CaseStudiePage({language}) {
   return (
     <>
     <div className='w-full h-[90vh] bg-white flex flex-col sm:flex-row justify-center items-start text-black'>
-        <Selector actualCase={actualCase} setActualCase={setActualCase} cases={cases}/>
+    <Selector actualCase={actualCase} setActualCase={setActualCase} cases={cases}/>
         <section className='w-full h-full p-8 sm:p-12  flex items-center justify-center flex-col'>
             <h1 className='font-semibold sm:text-3xl text-lg w-full mt-12'>
                 {cases[actualCase].tittle}

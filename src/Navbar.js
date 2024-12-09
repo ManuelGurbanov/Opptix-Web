@@ -9,7 +9,7 @@ function Navbar({ language, setLanguage }) {
   return (
     <>
       <div className='flex items-center justify-center w-screen'>
-        <div className="flex justify-between items-center p-4 bg-gray1 text-white h-[10vh] z-50 max-w-screen w-[90vw] rounded-3xl m-0 ring-1 ring-black fixed top-4">
+        <div className="flex justify-between items-center p-4 bg-gray1 text-white h-[10vh] z-40 max-w-screen w-[90vw] rounded-3xl m-0 ring-1 ring-black fixed top-4">
           {/* Link para la pantalla principal */}
 
           {/* Logo en Desktop */}
@@ -45,30 +45,32 @@ function Navbar({ language, setLanguage }) {
 
           {/* Menú hamburguesa para móviles */}
           <button
-            className='w-12 aspect-square text-black sm:hidden block justify-self-end'
+            className='w-12 aspect-square text-black sm:hidden justify-self-end z-50 flex items-center justify-center'
             onClick={() => setShowMenuHamburguer(!showMenuHamburguer)}
           >
-            {showMenuHamburguer ? 'Cerrar' : 'Menu'}
+            <img src="burguerMenu.webp" alt="Menú" className='w-1/2'/>
           </button>
 
           {/* Menú en pantallas más grandes */}
           <div className="flex sm:flex-row sm:relative absolute flex-col gap-4 text-black w-full justify-end items-center">
-            <a className="hover:scale-105 transition ease-in cursor-pointer duration-75 hidden md:block">
+            <a className="hover:scale-105 transition ease-in cursor-pointer duration-75 hidden md:block" href='#services'>
               {translate("services", language)}
             </a>
-            <a className="hover:scale-105 transition ease-in cursor-pointer duration-75 hidden md:block">
+            <a className="hover:scale-105 transition ease-in cursor-pointer duration-75 hidden md:block" href='#case-studies'>
               {translate("caseStudies", language)}
             </a>
-            <a className="hover:scale-105 transition ease-in cursor-pointer duration-75 hidden md:block">
+            <a className="hover:scale-105 transition ease-in cursor-pointer duration-75 hidden md:block" href='#packs'>
               {translate("packs", language)}
             </a>
-            <a className="hover:scale-105 transition ease-in cursor-pointer duration-75 hidden md:block">
+            <a className="hover:scale-105 transition ease-in cursor-pointer duration-75 hidden md:block" href='#get-started'>
               {translate("getStarted", language)}
             </a>
 
             <button
               className="ml-4 mr-4 hidden sm:block"
-              onClick={() => setShowLanguageMenu(!showLanguageMenu)}
+              onClick={() => 
+                {if (language === "es") setLanguage("en");
+                else setLanguage("es");}}
             >
               <img
                 src={
@@ -87,38 +89,47 @@ function Navbar({ language, setLanguage }) {
       {/* Menú desplegable en celulares */}
       {showMenuHamburguer && (
         <div className="fixed top-0 left-0 w-full bg-gray1 z-40 flex flex-col items-center text-black gap-4 p-8">
-          <Link
-            to="/"
-            className="hover:scale-105 transition ease-in cursor-pointer duration-75 mt-20"
+          <button>
+            <img
+              src="exit.webp"
+              alt="Cerrar"
+              className="w-8 absolute left-2 top-2" 
+              onClick={() => setShowMenuHamburguer(false)}
+            />
+          </button>
+          <img src="darkOpptix.webp" alt="Logo" className='w-64'/>
+          <a
+            className="hover:scale-105 transition ease-in cursor-pointer duration-75"
             onClick={() => setShowMenuHamburguer(false)}
+            href='#services'
           >
             {translate("services", language)}
-          </Link>
-          <Link
-            to="/"
+          </a>
+          <a
             className="hover:scale-105 transition ease-in cursor-pointer duration-75"
             onClick={() => setShowMenuHamburguer(false)}
+            href='#case-studies'
           >
             {translate("caseStudies", language)}
-          </Link>
-          <Link
-            to="/"
+          </a>
+          <a
             className="hover:scale-105 transition ease-in cursor-pointer duration-75"
             onClick={() => setShowMenuHamburguer(false)}
+            href='#packs'
           >
             {translate("packs", language)}
-          </Link>
-          <Link
-            to="/"
+          </a>
+          <a
             className="hover:scale-105 transition ease-in cursor-pointer duration-75"
             onClick={() => setShowMenuHamburguer(false)}
+            href='#get-started'
           >
             {translate("getStarted", language)}
-          </Link>
+          </a>
         </div>
       )}
 
-      {/* Menú de selección de idioma en pantallas grandes */}
+      {/* Menú de selección de idioma en pantallas grandes
       {showLanguageMenu && (
         <div className="fixed right-4 top-16 z-50 max-w-1/2 bg-black rounded-md flex flex-col justify-self-end items-center justify-center gap-4 p-4">
           <div
@@ -143,7 +154,7 @@ function Navbar({ language, setLanguage }) {
             <span className="text-sm">Español</span>
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 }
