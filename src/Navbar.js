@@ -9,7 +9,7 @@ function Navbar({ language, setLanguage }) {
   return (
     <>
       <div className='flex items-center justify-center w-screen'>
-        <div className="flex justify-between items-center p-4 bg-gray1 text-white h-[10vh] z-40 max-w-screen w-[90vw] rounded-3xl m-0 ring-1 ring-black fixed top-4">
+        <div className="flex justify-between items-center p-4 bg-zinc-50 text-white h-[10vh] z-40 max-w-screen w-[90vw] rounded-3xl m-0 ring-1 ring-black fixed top-4">
           {/* Link para la pantalla principal */}
 
           {/* Logo en Desktop */}

@@ -1,51 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
 import ARModelViewer from './ARModelViewer';
+import CarModelViewer from './CarModelViewer';
 
-function OurServices() {
+function OurServices({services}) {
   let [actualService, setActualService] = useState(1);
-  const services = [
-    {
-      id: 0,
-      name: "Configuradores 3D Interactivos",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
-      component:
-      <>    <ARModelViewer modelSrc="/models/rack-final.glb" controlsContainerId="material-controls" />
-            <div id="material-controls" className="bg-transparent p-4 rounded absolute bottom-0 gap-2 hidden sm:block"></div>
-      </>
-    },
-    {
-      id: 1,
-      name: "VR/AR",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
-      modelSrc: '/models/rack-final.glb',
-      component: <div className='w-full h-full bg-zinc-200'></div>
-    },
-    {
-      id: 2,
-      name: "Animaciones 3D",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
-      component: <div className='w-full h-full bg-zinc-200'></div>
-    },
-    {
-      id: 3,
-      name: "Video lanzamiento de productos",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
-      component: <div className='w-full h-full bg-zinc-200'></div>
-    },
-    {
-      id: 4,
-      name: "Videos explicativos de productos",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
-      component: <div className='w-full h-full bg-zinc-200'></div>
-    },
-    {
-      id: 5,
-      name: "CGI/FOOH",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
-      component: <div className='w-full h-full bg-zinc-200'></div>
-    }
-  ];
+
 
   const raiseService = () => {
     setActualService((prevService) => 
@@ -88,6 +48,7 @@ function OurServices() {
                     <p className="font-normal text-sm w-full text-left mb-3">
                       {services[actualService].description}
                     </p>
+                    <a href='/services' className='text-black underline text-left'>Ver más</a>
                   </div>  
                 </div>
               </section>
@@ -118,6 +79,7 @@ function OurServices() {
               <p className="font-normal text-md w-full text-left mb-3">
                 {service.description}
               </p>
+              <a href='/services' className='text-black underline text-left'>Ver más</a>
             </div>
           </div>
         ))}

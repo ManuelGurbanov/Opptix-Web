@@ -4,7 +4,7 @@ import "@google/model-viewer";
 const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
   const modelViewerRef = useRef(null);
   const [materialGroups, setMaterialGroups] = useState({});
-  const [currentGroup, setCurrentGroup] = useState(6);
+  const [currentGroup, setCurrentGroup] = useState(0);
   const [menuState, setMenuState] = useState(0);
 
   useEffect(() => {
@@ -43,12 +43,12 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
       const maderaSelect = document.createElement("select");
       maderaSelect.id = "madera";
       maderaSelect.style.display = "none";
-      maderaSelect.className = "text-zinc-700 bg-zinc-200 rounded px-4 py-2 m-2 rounded-xl ring-1 ring-black hover:scale-105 transition-all duration-75 hover:ring-blue-500";
+      maderaSelect.className = "text-zinc-700 bg-zinc-200 px-4 py-2 m-2 rounded-xl ring-1 ring-black hover:scale-105 transition-all duration-75 hover:ring-blue-500";
       
       const canoSelect = document.createElement("select");
       canoSelect.id = "cano";
       canoSelect.style.display = "none";
-      canoSelect.className = "text-zinc-700 bg-zinc-200 rounded px-4 py-2 m-2 rounded-xl ring-1 ring-black hover:scale-105 transition-all duration-75 hover:ring-blue-500";
+      canoSelect.className = "text-zinc-700 bg-zinc-200 px-4 py-2 m-2 rounded-xl ring-1 ring-black hover:scale-105 transition-all duration-75 hover:ring-blue-500";
 
       names.forEach((name) => {
         if (name.startsWith("madera")) {
@@ -130,7 +130,7 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
       });
 
       const expandButton = document.createElement("button");
-      expandButton.textContent = "Ampliar";
+      expandButton.textContent = "Ampliar" + currentGroup;
       expandButton.className = "text-zinc-700 bg-zinc-200 rounded px-4 py-2 m-2 rounded-xl ring-1 ring-black hover:scale-105 transition-all duration-75 hover:ring-blue-500";
       expandButton.style.display = "none";
       expandButton.addEventListener("click", () => {
@@ -181,7 +181,7 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
       const prefix = material.name.slice(0, 2);
       const groupIndex = parseInt(prefix, 10);
 
-      console.log(`groupIndex es ${groupIndex} y currentGroup ${groupIndex}`);
+      //console.log(`groupIndex es ${groupIndex} y currentGroup ${groupIndex}`);
       let isActive = shouldBeActive(currentGroup, groupIndex);
 
       material.setAlphaMode("BLEND");
@@ -191,15 +191,15 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
 
       baseColor[3] = newOpacity;
       pbr.setBaseColorFactor(baseColor);
-      //console.log(Al material "${material.name}" le dejé opacidad ${newOpacity});
+
+      if (newOpacity > 0)
+      console.log(`Al material ${material.name} le dejé opacidad ${newOpacity}`);
+
     }
   };
 
   function shouldBeActive(currentGroup, groupIndex) {
-    if (currentGroup <= 3 && currentGroup >= groupIndex) return true;
-    if (currentGroup == 4) return groupIndex >= 1 && currentGroup>=groupIndex;
-    if (currentGroup == 5) return groupIndex >= 1 && currentGroup>=groupIndex;
-    if (currentGroup == 6) return groupIndex >= 1 && currentGroup>=groupIndex;
+    if (currentGroup >= groupIndex) return true;
     return false;                                            
   }
 

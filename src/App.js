@@ -12,9 +12,9 @@ import CaseStudies from './CaseStudies';
 import Faq from './Faq';
 
 import CaseStudiePage from './CaseStudiePage';
-
+import CarModelViewer from './CarModelViewer';
 import Footer from './Footer';
-
+import Services from './Services';
 function App() {
   const [language, setlanguage] = useState('es');
   const [color, setColor] = useState('#ffffff');
@@ -32,6 +32,48 @@ function App() {
     setPrice(totalPrice);
   }, [showAccesory]);
 
+  const services = [
+    {
+      id: 0,
+      name: "Configuradores 3D Interactivos",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
+      component:
+      <>    <ARModelViewer modelSrc="/models/rack-agregado.glb" controlsContainerId="material-controls" />
+            <div id="material-controls" className="bg-transparent p-4 rounded absolute bottom-0 gap-2 hidden sm:block"></div>
+      </>
+    },
+    {
+      id: 1,
+      name: "VR/AR",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
+      component: <CarModelViewer modelSrc="/models/car.glb" controlsContainerId="material-controls" />
+    },
+    {
+      id: 2,
+      name: "Animaciones 3D",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
+      component: <div className='w-full h-full bg-zinc-200'></div>
+    },
+    {
+      id: 3,
+      name: "Video lanzamiento de productos",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
+      component: <div className='w-full h-full bg-zinc-200'></div>
+    },
+    {
+      id: 4,
+      name: "Videos explicativos de productos",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
+      component: <div className='w-full h-full bg-zinc-200'></div>
+    },
+    {
+      id: 5,
+      name: "CGI/FOOH",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
+      component: <div className='w-full h-full bg-zinc-200'></div>
+    }
+  ];
+
   return (
     <Router>
       <Navbar language={language} setLanguage={setlanguage} />
@@ -41,7 +83,7 @@ function App() {
             <MainBanner language={language} />
             <PopUp language={language} />
             <SecondaryBanner language={language} />
-            <OurServices language={language} />
+            <OurServices language={language} services={services}/>
             <WhyWorkTogether language={language} />
             <Packs />
             <CaseStudies />
@@ -51,6 +93,7 @@ function App() {
         } />
 
         <Route path="/studie-cases" element={<CaseStudiePage/>} />
+        <Route path="/services" element={<Services services={services}/>} />
       </Routes>
     </Router>
   );
