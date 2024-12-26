@@ -46,7 +46,8 @@ function WhyWorkTogether({ language }) {
   };
 
   return (
-    <div className='w-screen bg-white text-black'>
+    <div className='w-screen bg-white text-black flex flex-col items-center justify-center'>
+      <img src='img/icon.webp' className='w-12'></img>
       <h1 className='font-bold text-xl w-full text-center mt-3 mb-3'>
         {translate("workTogether", language)}
       </h1>
@@ -63,7 +64,7 @@ function WhyWorkTogether({ language }) {
           {reasons
             .slice(currentIndex, currentIndex + reasonsPerPage)
             .map((reason) => (
-              <div key={reason.id} className='text-center bg-zinc-200 rounded-lg p-5 w-96 h-36 flex items-center justify-center text-black font-medium text-xl'>
+              <div key={reason.id} className='mt-2 mb-2 text-center lightblueGradient shadow-sm shadow-black rounded-lg p-5 w-96 h-36 flex items-center justify-center text-black font-medium text-xl'>
                 {reason.reason}
               </div>
             ))}

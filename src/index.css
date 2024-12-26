@@ -35,3 +35,20 @@ code {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #333;
 }
+
+.bg-glasses {
+  background-image: url('img/mainBannerBg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.lightblueGradient {
+  background: rgb(255,255,255);
+  background: linear-gradient(90deg, rgba(255,255,255,1) 18%, rgba(65,193,239,0.5048144257703081) 100%);
+}
+
+.lightblueGradientVariant {
+  background: rgb(65,193,239);
+  background: linear-gradient(90deg, rgba(65,193,239,0.23030462184873945) 0%, rgba(255,255,255,1) 100%);
+}

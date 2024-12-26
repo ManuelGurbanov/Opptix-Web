@@ -67,7 +67,7 @@ function OurServices({services}) {
 
       <section className='flex-col items-center w-3/4 hidden sm:flex'>
         {services.map((service) => (
-          <div key={service.id} className={`flex flex-col ${service.id % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'} rounded-lg ring-2 sm:ring-zinc-100 mb-8 p-0 sm:p-8 w-full h-[50vh]`}>
+          <div key={service.id} className={`flex flex-col ${service.id % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'} rounded-lg ring-2 sm:ring-zinc-100 mb-8 p-0 sm:p-8 w-full h-[50vh] `}>
             <div className="bg-zinc-600 w-full relative">
               {service.component}
             </div>

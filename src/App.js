@@ -83,8 +83,8 @@ function App() {
             <MainBanner language={language} />
             <PopUp language={language} />
             <SecondaryBanner language={language} />
-            <OurServices language={language} services={services}/>
             <WhyWorkTogether language={language} />
+            <OurServices language={language} services={services}/>
             <Packs />
             <CaseStudies />
             <Faq />

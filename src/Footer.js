@@ -3,7 +3,7 @@ import { translate } from "./Translations";
 function Footer({language}) {
   return (
     <div className='w-full h-[400px] bg-zinc-200 flex justify-center items-start text-black sm:p-12 p-3 gap-9 text-sm' id='get-started'>
-        <div className='flex-2'>
+        <div className='flex-2 sm:mt-0 mt-12'>
           <h1 className='font-bold'>Lorem Ipsum dolor it samet</h1>
           <h2>Phasellus faucibus scelerisque eleifend 
           donec pretium vulputate sapien.</h2>
@@ -21,7 +21,7 @@ function Footer({language}) {
           </div>
         </div>
 
-        <div className='flex flex-col gap-2 text-black'>
+        <div className='flex-col gap-2 text-black sm:flex hidden'>
           <h1 className='font-bold'>Servicios</h1>
           <a>Configuradores 3D interactivos</a>
           <a>Realidad Aumentada</a>
@@ -31,7 +31,7 @@ function Footer({language}) {
           <a>Desarrollo de software</a>
         </div>
 
-        <div className='flex flex-col gap-2 text-black'>
+        <div className='flex-col gap-2 text-black sm:flex hidden'>
           <h1 className='font-bold'>Casos de Estudio</h1>
           <a>Caso de Estudio 1</a>
           <a>Caso de Estudio 2</a>
@@ -43,7 +43,7 @@ function Footer({language}) {
           <a>Content Partner</a>
         </div>
 
-        <div className='flex flex-col gap-2 text-black'>
+        <div className='flex-col gap-2 text-black sm:flex hidden'>
           <h1 className='font-bold'>¿Por qué trabajar juntos?</h1>
           <h1 className='font-bold'>Beneficios de trabajar juntos</h1>
         </div>
