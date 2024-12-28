@@ -36,8 +36,10 @@ function OurServices({services}) {
                 </button>
 
               <section className="flex rounded-lg flex-col sm:flex-row p-0 sm:p-8 h-[315px]">
-                <div className="bg-zinc-600 w-[298px] h-[140px] relative">
-                  {services[actualService].component}
+                <div className="w-[298px] h-[140px] relative flex items-center justify-center">
+                  {/* {services[actualService].component} */}
+                  <img src={services[actualService].picture}
+                  className='h-full'></img>
                 </div>
                 
                 <div className="bg-white p-1 flex flex-colv w-[298px] h-[147px] justify-start">
@@ -67,16 +69,20 @@ function OurServices({services}) {
 
       <section className='flex-col items-center w-3/4 hidden sm:flex'>
         {services.map((service) => (
-          <div key={service.id} className={`flex flex-col ${service.id % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'} rounded-lg ring-2 sm:ring-zinc-100 mb-8 p-0 sm:p-8 w-full h-[50vh] `}>
-            <div className="bg-zinc-600 w-full relative">
-              {service.component}
+          <div key={service.id} className={`flex flex-col ${service.id % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'} rounded-lg mb-8 p-0 sm:p-8 w-full h-[50vh] `}>
+            <div className="w-full relative flex items-center justify-center">
+                                {/* {services[actualService].component} */}
+              <img src={services[actualService].picture}
+                  className='h-full'>
+
+              </img>
             </div>
 
-            <div className="bg-white w-full p-7 flex flex-col justify-start">
-              <h1 className="font-bold text-lg w-full text-left mt-3 mb-3">
+            <div className="bg-white w-full p-7 flex flex-col justify-center">
+              <h1 className="font-bold text-2xl w-full text-left mt-3 mb-3">
                 {service.name}
               </h1>
-              <p className="font-normal text-md w-full text-left mb-3">
+              <p className="font-normal text-2xl w-full text-left mb-3">
                 {service.description}
               </p>
               <a href='/services' className='text-black underline text-left'>Ver más</a>

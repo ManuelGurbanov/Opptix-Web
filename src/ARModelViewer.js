@@ -130,7 +130,7 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
       });
 
       const expandButton = document.createElement("button");
-      expandButton.textContent = "Ampliar" + currentGroup;
+      expandButton.textContent = "Ampliar";
       expandButton.className = "text-zinc-700 bg-zinc-200 rounded px-4 py-2 m-2 rounded-xl ring-1 ring-black hover:scale-105 transition-all duration-75 hover:ring-blue-500";
       expandButton.style.display = "none";
       expandButton.addEventListener("click", () => {

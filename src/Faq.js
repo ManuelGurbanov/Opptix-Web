@@ -119,7 +119,7 @@ const Faq = () => {
                 />
                 {faq.question}
               </div>
-              {faq.isOpen && <div className="mt-2 ml-10 text-left">{faq.answer}</div>}
+              {faq.isOpen && <div className="mt-2 ml-10 text-left sm:w-1/2">{faq.answer}</div>}
             </div>
           ))}
         </div>

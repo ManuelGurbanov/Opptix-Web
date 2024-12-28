@@ -45,7 +45,7 @@ code {
 
 .lightblueGradient {
   background: rgb(255,255,255);
-  background: linear-gradient(90deg, rgba(255,255,255,1) 18%, rgba(65,193,239,0.5048144257703081) 100%);
+  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(174,234,255,0.4852065826330533) 60%);
 }
 
 .lightblueGradientVariant {
