@@ -46,7 +46,7 @@ const CarModelViewer = ({ modelSrc }) => {
       <model-viewer
         id="model-viewer"
         loading="eager"
-        poster="/poster.webp"
+        poster="/poster.jpg"
         ref={modelViewerRef}
         src={modelSrc}
         alt="Modelo 3D en AR"
@@ -56,7 +56,7 @@ const CarModelViewer = ({ modelSrc }) => {
         ar-modes="webxr scene-viewer quick-look"
         style={{
           width: "100%",
-          height: "80%",
+          height: "100%",
         }}
       />
 

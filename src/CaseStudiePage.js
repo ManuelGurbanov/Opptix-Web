@@ -3,8 +3,12 @@ import { useState, useEffect } from 'react';
 import { translate } from "./Translations"; 
 import Selector from './Selector';
 import { Link } from 'react-router-dom';
+
+import { useSearchParams } from 'react-router-dom';
+
 function CaseStudiePage({language}) {
-    let [actualCase, setActualCase] = useState(0);
+    const [searchParams] = useSearchParams();
+    const actualCase = Number(searchParams.get("case")) || 0;
 
     useEffect(() => {
       window.scrollTo(0, 0);
@@ -57,10 +61,11 @@ function CaseStudiePage({language}) {
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
         },
       ];
+      
   return (
     <>
     <div className='w-full h-[90vh] bg-white flex flex-col sm:flex-row justify-center items-start text-black'>
-    <Selector actualCase={actualCase} setActualCase={setActualCase} cases={cases}/>
+    <Selector actualCase={actualCase} cases={cases}/>
         <section className='w-full h-full p-8 sm:p-12  flex items-center justify-center flex-col'>
             <h1 className='font-semibold sm:text-3xl text-lg w-full mt-12'>
                 {cases[actualCase].tittle}

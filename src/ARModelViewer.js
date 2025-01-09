@@ -4,13 +4,29 @@ import "@google/model-viewer";
 const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
   const modelViewerRef = useRef(null);
   const [materialGroups, setMaterialGroups] = useState({});
-  const [currentGroup, setCurrentGroup] = useState(0);
+  const [currentGroup, setCurrentGroup] = useState(6);
   const [menuState, setMenuState] = useState(0);
+  const [initialCameraTarget, setInitialCameraTarget] = useState("0m 0m 0m");
+  const [initialCameraOrbit, setInitialCameraOrbit] = useState("default");
 
+  const buttonDefaultClass = "grayGradient text-zinc-700 bg-zinc-200 px-4 py-2 rounded-3xl ring-1 ring-zinc-300 hover:scale-105 transition-all duration-75 hover:ring-blue-500";
+  const backButtonClass = "text-zinc-700 bg-red-200 px-4 py-2 rounded-3xl ring-1 ring-zinc-300 hover:scale-105 transition-all duration-75 hover:ring-blue-500 bg-zinc-200";
+  const resetPivotToDefault = () => {
+    const modelViewer = modelViewerRef.current;
+    if (!modelViewer) return;
+  
+    modelViewer.cameraTarget = "0m 0.5m 0m";
+    console.log(`Reset pivot to ${initialCameraTarget}`);
+    modelViewer.cameraOrbit = ("0deg 75deg 105%");
+    console.log(`Reset orbit to ${initialCameraOrbit}`);
+    modelViewer.updateFraming();
+  };
+
+  
   useEffect(() => {
     const modelViewer = modelViewerRef.current;
     const controlsContainer = document.getElementById(controlsContainerId);
-
+    controlsContainer.className = "flex bg-transparent p-4 rounded gap-2 w-full"
     if (!modelViewer || !controlsContainer) {
       console.error("No se pudo encontrar el modelo o el contenedor de controles.");
       return;
@@ -20,6 +36,11 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
       await modelViewer.model.updateComplete;
       const materials = modelViewer.model.materials;
 
+      setInitialCameraTarget(modelViewer.cameraTarget);
+      console.log(`Initial camera target: ${modelViewer.cameraTarget}`);
+      setInitialCameraOrbit(modelViewer.cameraOrbit);
+      console.log(`Initial camera orbit: ${modelViewer.cameraOrbit}`);
+
       if (!materials.length) {
         console.error("No se encontraron materiales en el modelo.");
         return;
@@ -27,7 +48,7 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
 
       const groups = {};
       for (const material of materials) {
-        console.log(material.name);
+        //console.log(material.name);
         await material.ensureLoaded();
         const prefix = material.name.slice(0, 2);
         if (!groups[prefix]) {
@@ -77,6 +98,7 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
         await modelViewer.model.updateComplete;
         const variantChangeEvent = new Event("variantchange");
         modelViewer.dispatchEvent(variantChangeEvent);
+        resetPivotToDefault();
       });
       canoSelect.addEventListener("input", async (event) => {
         const selectedVariant = event.target.value === "default" ? null : event.target.value;
@@ -84,43 +106,28 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
         await modelViewer.model.updateComplete;
         const variantChangeEvent = new Event("variantchange");
         modelViewer.dispatchEvent(variantChangeEvent);
+        resetPivotToDefault();
       });
       
       const backButton = document.createElement("button");
-      backButton.textContent = "Volver";
-      backButton.style.display = "none";
-      backButton.className = "text-zinc-700 bg-red-200 rounded px-4 py-2 m-2 rounded-xl ring-1 ring-black hover:scale-105 transition-all duration-75 hover:ring-blue-500";
+      backButton.textContent = "X";
+      backButton.style.display = "block";
+      backButton.className = backButtonClass;
       backButton.addEventListener("click", () => {
         setMenuState(0);
-        controlsContainer.className = "flex bg-transparent p-4 rounded absolute bottom-0 gap-2 w-full"
+        controlsContainer.className = "flex bg-transparent p-4 rounded gap-2 w-full"
         canoSelect.style.display = "none";
         backButton.style.display = "none";
         maderaSelect.style.display = "none";
-        configureButton.style.display = "inline-block";
-        reduceButton.style.display = "none";
-        expandButton.style.display = "none";
+        reduceButton.style.display = "block";
+        expandButton.style.display = "block";
       })
 
-      const configureButton = document.createElement("button");
-      configureButton.textContent = "Configurar";
-      configureButton.className = "text-zinc-700 bg-zinc-200 rounded px-4 py-2 m-2 rounded-xl ring-1 ring-black hover:scale-105 transition-all duration-75 hover:ring-blue-500";
-      configureButton.addEventListener("click", () => {
-        setMenuState(1);
-        canoSelect.style.display = "none";
-        maderaSelect.style.display = "none";
-        backButton.style.display = "block";
-        controlsContainer.className = "flex bg-transparent p-4 rounded absolute bottom-0 gap-2"
-        configureButton.style.display = "none";
-        reduceButton.style.display = "inline-block";
-        expandButton.style.display = "inline-block";
-      });
       controlsContainer.appendChild(backButton);
-      controlsContainer.appendChild(configureButton);
-
       const reduceButton = document.createElement("button");
       reduceButton.textContent = "Reducir";
-      reduceButton.className = "text-zinc-700 bg-zinc-200 rounded px-4 py-2 m-2 rounded-xl ring-1 ring-black hover:scale-105 transition-all duration-75 hover:ring-blue-500";
-      reduceButton.style.display = "none";
+      reduceButton.className = buttonDefaultClass
+      reduceButton.style.display = "block";
       reduceButton.addEventListener("click", () => {
         setCurrentGroup((prev) => {
           const newGroup = Math.max(prev - 1, 0);
@@ -131,8 +138,8 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
 
       const expandButton = document.createElement("button");
       expandButton.textContent = "Ampliar";
-      expandButton.className = "text-zinc-700 bg-zinc-200 rounded px-4 py-2 m-2 rounded-xl ring-1 ring-black hover:scale-105 transition-all duration-75 hover:ring-blue-500";
-      expandButton.style.display = "none";
+      expandButton.className = buttonDefaultClass
+      expandButton.style.display = "block";
       expandButton.addEventListener("click", () => {
         setCurrentGroup((prev) => {
           const newGroup = Math.min(prev + 1, 6);
@@ -153,6 +160,8 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
     return () => {
       modelViewer.removeEventListener("load", handleLoad);
     };
+
+    
   }, [controlsContainerId]);
 
   const showMaderaSelect = () => {
@@ -258,7 +267,7 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
   }, []);
   
   return (
-    <div className="relative flex items-center justify-center w-full h-full bg-white">
+    <div className="relative flex items-center justify-center w-full h-full bg-white rounded-4xl">
       <model-viewer
         id="hotspot-camera-view-demo" 
         loading="eager"
@@ -269,7 +278,7 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
         camera-controls
         ar
         ar-modes="webxr scene-viewer quick-look"
-        className="w-full h-full object-contain"
+        className="w-full h-full object-contain rounded-4xl"
         style={{
           width: "100%",
           height: "100%",

@@ -37,7 +37,7 @@ code {
 }
 
 .bg-glasses {
-  background-image: url('img/mainBannerBg.jpg');
+  background-image: url('img/mainBanner.webp');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -51,4 +51,20 @@ code {
 .lightblueGradientVariant {
   background: rgb(65,193,239);
   background: linear-gradient(90deg, rgba(65,193,239,0.23030462184873945) 0%, rgba(255,255,255,1) 100%);
+}
+
+canvas {
+  display: block;
+  margin: 0 auto;
+  border-radius: 50px;
+}
+
+.grayGradient {
+  background: rgb(119,119,119);
+  background: linear-gradient(90deg, rgba(119,119,119,0.524422268907563) 0%, rgba(255,255,255,0.4852065826330533) 100%);
+}
+
+.grayGradientVariant {
+  background: rgb(230,230,230);
+  background: linear-gradient(90deg, rgba(230,230,230,0.14627100840336138) 0%, rgba(255,255,255,0.4852065826330533) 82%, rgba(215,215,215,0.4852065826330533) 100%);
 }

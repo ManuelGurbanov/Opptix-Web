@@ -81,7 +81,7 @@ function Packs() {
                     <p className='underline lg:hidden block mb-2 text-xs'>¿Qué contiene el paquete?</p>
 
                     <h3 className='text-lg font-bold text-left w-full hidden lg:block text-black'>Resultados</h3>
-                    <ul className='mb-4 text-left text-md hidden lg:block text-black'>
+                    <ul className='mb-4 text-left text-sm hidden lg:block text-black'>
                         {pack.results.map((result, i) => (
                             <li key={i}>{result}</li>
                         ))}
