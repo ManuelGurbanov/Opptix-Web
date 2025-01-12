@@ -93,7 +93,7 @@ function Packs() {
         </div>
         <div className='w-full flex sm:flex-row flex-col items-center justify-center sm:gap-5 gap-2 mb-16'>
             <h1 className='text-black font-extrabold text-xl'>Creamos tu Propio Pack</h1>
-            <button className='bg-lightblue2 p-3 rounded-3xl text-md font-semibold hover:scale-105 transition-all duration-100'>Hablar con un Asesor</button>
+            <button className='bg-lightblue2 p-3 rounded-3xl text-sm font-bold hover:scale-105 transition-all duration-100'>Hablar con un Asesor</button>
         </div>
         </div>
     );

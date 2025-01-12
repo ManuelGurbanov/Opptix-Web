@@ -124,11 +124,11 @@ const Faq = () => {
           ))}
         </div>
       </section>
-      <div className="flex justify-center gap-4 mt-5">
+      <div className="flex justify-start gap-4 mt-1">
         {visibleCount > 5 && (
           <button
             onClick={showLess}
-            className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+            className="px-4 py-2 text-black underline rounded hover:scale-105 transition ease-in cursor-pointer duration-75"
           >
             Mostrar menos
           </button>
@@ -136,7 +136,7 @@ const Faq = () => {
         {visibleCount < faqs.length && (
           <button
             onClick={showMore}
-            className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+            className="px-4 py-2 text-black underline rounded hover:scale-105 transition ease-in cursor-pointer duration-75"
           >
             Mostrar más
           </button>

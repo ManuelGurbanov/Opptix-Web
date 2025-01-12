@@ -26,9 +26,6 @@ function Footer({language}) {
           <a>Configuradores 3D interactivos</a>
           <a>Realidad Aumentada</a>
           <a>Realidad Virtual</a>
-          <a>Desarrollo de aplicaciones</a>
-          <a>Desarrollo de videojuegos</a>
-          <a>Desarrollo de software</a>
         </div>
 
         <div className='flex-col gap-2 text-black sm:flex hidden'>

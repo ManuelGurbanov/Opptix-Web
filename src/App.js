@@ -15,6 +15,7 @@ import CaseStudiePage from './CaseStudiePage';
 import CarModelViewer from './CarModelViewer';
 import Footer from './Footer';
 import Services from './Services';
+
 function App() {
   const [language, setlanguage] = useState('es');
   const [color, setColor] = useState('#ffffff');
@@ -41,42 +42,51 @@ function App() {
       <>    
             <ARModelViewer modelSrc="/models/rack.glb" controlsContainerId="material-controls" />
       </>,
-      picture: "https://s3-alpha-sig.figma.com/img/e31c/dd97/8aad8650775de0dcc42ef6f286768a3c?Expires=1737331200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=UCCcOTsBdvED8WV~uzo4sZ2rv~8vC3baq-ELOgNpwc0JC8IPHbyI826y2~fyy5-Ow5eukzoEfVylXlWDOE82I4~DYkU0cfqOL6TqVX6N7QP3oqJlUws0NFxTLRsVS04naRsZoWkL1kG9tEPxrV3QbWWTd-OXQwef30L6pv6rSu4B8swQX3cQ5l~BTtJsCFCHpT3C7EKGbVaBV9rJmawkdmi~KmU9k6as9J~uG3wq~9BHql3-Ad9uze3GDE2TpnimQxweG6z8R49LNQ8ovqyuRQ0XMi~980YW9oSgAGOGuMR1EHYKlbneQy2PJhjz~uS4hvYfde6xm59qlxMDwI30HQ__"
+      picture: 
+      <div className='w-full h-full bg-zinc-200 flex justify-center items-center rounded-[80px] relative'>
+        <img src='phone.webp' className='h-full absolute bottom-0'></img>
+      </div>
     },
     {
       id: 1,
       name: "VR/AR",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
       component: <CarModelViewer modelSrc="/models/car.glb" controlsContainerId="material-controls" />,
-      picture: "https://s3-alpha-sig.figma.com/img/e31c/dd97/8aad8650775de0dcc42ef6f286768a3c?Expires=1737331200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=UCCcOTsBdvED8WV~uzo4sZ2rv~8vC3baq-ELOgNpwc0JC8IPHbyI826y2~fyy5-Ow5eukzoEfVylXlWDOE82I4~DYkU0cfqOL6TqVX6N7QP3oqJlUws0NFxTLRsVS04naRsZoWkL1kG9tEPxrV3QbWWTd-OXQwef30L6pv6rSu4B8swQX3cQ5l~BTtJsCFCHpT3C7EKGbVaBV9rJmawkdmi~KmU9k6as9J~uG3wq~9BHql3-Ad9uze3GDE2TpnimQxweG6z8R49LNQ8ovqyuRQ0XMi~980YW9oSgAGOGuMR1EHYKlbneQy2PJhjz~uS4hvYfde6xm59qlxMDwI30HQ__"
+      picture:
+      <div className='w-full h-full bg-black flex justify-center items-center rounded-[80px] relative'>
+      <img src='headphones.webp' className='h-full absolute bottom-0'></img>
+      </div>
     },
     {
       id: 2,
       name: "Animaciones 3D",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
       component: <CarModelViewer modelSrc="/models/rack.glb" controlsContainerId="material-controls" />,
-      picture: "https://s3-alpha-sig.figma.com/img/e31c/dd97/8aad8650775de0dcc42ef6f286768a3c?Expires=1737331200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=UCCcOTsBdvED8WV~uzo4sZ2rv~8vC3baq-ELOgNpwc0JC8IPHbyI826y2~fyy5-Ow5eukzoEfVylXlWDOE82I4~DYkU0cfqOL6TqVX6N7QP3oqJlUws0NFxTLRsVS04naRsZoWkL1kG9tEPxrV3QbWWTd-OXQwef30L6pv6rSu4B8swQX3cQ5l~BTtJsCFCHpT3C7EKGbVaBV9rJmawkdmi~KmU9k6as9J~uG3wq~9BHql3-Ad9uze3GDE2TpnimQxweG6z8R49LNQ8ovqyuRQ0XMi~980YW9oSgAGOGuMR1EHYKlbneQy2PJhjz~uS4hvYfde6xm59qlxMDwI30HQ__"
+      picture:
+      <div className='w-full h-full bg-black flex justify-center items-center rounded-[80px] relative'>
+      <img src='headphones.webp' className='h-full absolute bottom-0'></img>
+      </div>
     },
     {
       id: 3,
       name: "Video lanzamiento de productos",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
       component: <div className='w-full h-full bg-zinc-200'></div>,
-      picture: "https://s3-alpha-sig.figma.com/img/e31c/dd97/8aad8650775de0dcc42ef6f286768a3c?Expires=1737331200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=UCCcOTsBdvED8WV~uzo4sZ2rv~8vC3baq-ELOgNpwc0JC8IPHbyI826y2~fyy5-Ow5eukzoEfVylXlWDOE82I4~DYkU0cfqOL6TqVX6N7QP3oqJlUws0NFxTLRsVS04naRsZoWkL1kG9tEPxrV3QbWWTd-OXQwef30L6pv6rSu4B8swQX3cQ5l~BTtJsCFCHpT3C7EKGbVaBV9rJmawkdmi~KmU9k6as9J~uG3wq~9BHql3-Ad9uze3GDE2TpnimQxweG6z8R49LNQ8ovqyuRQ0XMi~980YW9oSgAGOGuMR1EHYKlbneQy2PJhjz~uS4hvYfde6xm59qlxMDwI30HQ__"
+      picture: ""
     },
     {
       id: 4,
       name: "Videos explicativos de productos",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
       component: <div className='w-full h-full bg-zinc-200'></div>,
-      picture: "https://s3-alpha-sig.figma.com/img/e31c/dd97/8aad8650775de0dcc42ef6f286768a3c?Expires=1737331200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=UCCcOTsBdvED8WV~uzo4sZ2rv~8vC3baq-ELOgNpwc0JC8IPHbyI826y2~fyy5-Ow5eukzoEfVylXlWDOE82I4~DYkU0cfqOL6TqVX6N7QP3oqJlUws0NFxTLRsVS04naRsZoWkL1kG9tEPxrV3QbWWTd-OXQwef30L6pv6rSu4B8swQX3cQ5l~BTtJsCFCHpT3C7EKGbVaBV9rJmawkdmi~KmU9k6as9J~uG3wq~9BHql3-Ad9uze3GDE2TpnimQxweG6z8R49LNQ8ovqyuRQ0XMi~980YW9oSgAGOGuMR1EHYKlbneQy2PJhjz~uS4hvYfde6xm59qlxMDwI30HQ__"
+      picture: ""
     },
     {
       id: 5,
       name: "CGI/FOOH",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
       component: <div className='w-full h-full bg-zinc-200'></div>,
-      picture: "https://s3-alpha-sig.figma.com/img/e31c/dd97/8aad8650775de0dcc42ef6f286768a3c?Expires=1736121600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=A~AZMO-~g88yjg-0il4l1Yy7qLReNTRRMRLBsACQcxxmniO0Q8Os3tm1p~pp-c39PygBWsKHRUHhop3iXpCU4xXwRtY56~4hI8-riH5GkTga9FXuf27QYzlze30TB818o4kxIiMiSPokyPQoKtpnErbHcScx24yC4fDTvu7nW082JqqJi-RydR8HEP~sKz3q8LGE2fldCKaPcU0qXrPEyaepBesR26j65gk0gfp1g9IB7RR26kxkRn8Y4uOTcSxKJ1v~wac36b5q9TGtXXh8MyNR2kxhwqKHqcWge1ta10QJYRpgm-4kJZrOTNmi6-ZJyuICqffY17T4EdArv25Bqg__"
+      picture: ""
     }
   ];
 
@@ -97,7 +107,7 @@ function App() {
           </section>
         } />
 
-        <Route path="/studie-cases" element={<CaseStudiePage/>} />
+        <Route path="/case-study" element={<CaseStudiePage/>} />
         <Route path="/services" element={<Services services={services}/>} />
       </Routes>
     </Router>

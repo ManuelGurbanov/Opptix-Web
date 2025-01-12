@@ -88,16 +88,16 @@ function Navbar({ language, setLanguage }) {
 
       {/* Menú desplegable en celulares */}
       {showMenuHamburguer && (
-        <div className="fixed top-0 left-0 w-full bg-gray1 z-40 flex flex-col items-center text-black gap-4 p-8">
+        <div className="fixed top-0 left-0 w-full bg-black z-40 flex flex-col items-center text-white gap-4 p-8">
           <button>
             <img
               src="exit.webp"
               alt="Cerrar"
-              className="w-8 absolute left-2 top-2" 
+              className="w-8 absolute right-2 top-2" 
               onClick={() => setShowMenuHamburguer(false)}
             />
           </button>
-          <img src="darkOpptix.webp" alt="Logo" className='w-64'/>
+          <img src="img/icon.webp" alt="Logo" className='w-12'/>
           <a
             className="hover:scale-105 transition ease-in cursor-pointer duration-75"
             onClick={() => setShowMenuHamburguer(false)}

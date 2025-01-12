@@ -25,6 +25,7 @@ function OurServices({services}) {
         Nuestros Servicios
       </h1>
 
+      {/* SLIDER EN CELULARES */}
       <div className='w-screen flex justify-center items-center'>
           <section className='flex justify-center items-center p-3 sm:hidden'>
               <button onClick={() => lowerService()} className="absolute left-0 p-2 rounded-lg hover:opacity-100 opacity-40 transition-all ease-in-out"> 
@@ -69,13 +70,10 @@ function OurServices({services}) {
 
       <section className='flex-col items-center w-3/4 hidden sm:flex'>
         {services.map((service) => (
+          console.log(service),
           <div key={service.id} className={`flex flex-col ${service.id % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'} rounded-lg mb-8 p-0 sm:p-8 w-full h-[50vh] `}>
             <div className="w-full relative flex items-center justify-center">
-                                {/* {services[actualService].component} */}
-              <img src={services[actualService].picture}
-                  className='h-full'>
-
-              </img>
+              {service.picture}
             </div>
 
             <div className="bg-white w-full p-7 flex flex-col justify-center">
