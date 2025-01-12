@@ -87,7 +87,6 @@ function App() {
         <Route path="/" element={
           <section className='max-w-screen overflow-hidden flex flex-col items-center'>
             <MainBanner language={language} />
-            <PopUp language={language} />
             {/* <SecondaryBanner language={language} /> */}
             <WhyWorkTogether language={language} />
             <OurServices language={language} services={services}/>

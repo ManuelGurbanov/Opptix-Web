@@ -26,7 +26,7 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
   useEffect(() => {
     const modelViewer = modelViewerRef.current;
     const controlsContainer = document.getElementById(controlsContainerId);
-    controlsContainer.className = "flex bg-transparent p-4 rounded gap-2 w-full"
+    controlsContainer.className = "flex items-center justify-center bg-transparent p-4 rounded gap-2 w-full"
     if (!modelViewer || !controlsContainer) {
       console.error("No se pudo encontrar el modelo o el contenedor de controles.");
       return;
@@ -115,7 +115,7 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
       backButton.className = backButtonClass;
       backButton.addEventListener("click", () => {
         setMenuState(0);
-        controlsContainer.className = "flex bg-transparent p-4 rounded gap-2 w-full"
+        controlsContainer.className = "flex items-center justify-center bg-transparent p-4 rounded gap-2 w-screen"
         canoSelect.style.display = "none";
         backButton.style.display = "none";
         maderaSelect.style.display = "none";
@@ -153,11 +153,15 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
       controlsContainer.appendChild(canoSelect);
       controlsContainer.appendChild(reduceButton);
       controlsContainer.appendChild(expandButton);
+
+      reduceButton.click();
+      expandButton.click();
     };
 
     modelViewer.addEventListener("load", handleLoad);
 
     return () => {
+      controlsContainer.innerHTML = "";
       modelViewer.removeEventListener("load", handleLoad);
     };
 
