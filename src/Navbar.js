@@ -8,11 +8,9 @@ function Navbar({ language, setLanguage }) {
 
   return (
     <>
-      <div className='flex items-center justify-center w-screen'>
+      <div className='flex items-center justify-center w-screen fixed top-0 z-40'>
         <div className="flex justify-between items-center p-4 bg-zinc-50 text-white h-20 z-40 w-screen rounded-3xl m-0">
-          {/* Link para la pantalla principal */}
 
-          {/* Logo en Desktop */}
           <Link to="/" className='w-28 hover:scale-105 transition ease-in cursor-pointer duration-75 hidden sm:block'>
             <img src="darkOpptix.webp" alt="Logo" />
           </Link>
@@ -93,7 +91,7 @@ function Navbar({ language, setLanguage }) {
             <img
               src="exit.webp"
               alt="Cerrar"
-              className="w-8 absolute right-2 top-2" 
+              className="w-8 absolute right-6 top-6" 
               onClick={() => setShowMenuHamburguer(false)}
             />
           </button>

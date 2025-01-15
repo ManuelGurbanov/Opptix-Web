@@ -38,9 +38,7 @@ function OurServices({services}) {
 
               <section className="flex rounded-lg flex-col sm:flex-row p-0 sm:p-8 h-[315px]">
                 <div className="w-[298px] h-[140px] relative flex items-center justify-center">
-                  {/* {services[actualService].component} */}
-                  <img src={services[actualService].picture}
-                  className='h-full'></img>
+                    {services[actualService].picture}
                 </div>
                 
                 <div className="bg-white p-1 flex flex-colv w-[298px] h-[147px] justify-start">
@@ -68,7 +66,7 @@ function OurServices({services}) {
       </div>
 
 
-      <section className='flex-col items-center w-3/4 hidden sm:flex'>
+      <section className='flex-col items-center w-5/6 hidden sm:flex'>
         {services.map((service) => (
           console.log(service),
           <div key={service.id} className={`flex flex-col ${service.id % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'} rounded-lg mb-8 p-0 sm:p-8 w-full h-[50vh] `}>

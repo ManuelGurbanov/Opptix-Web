@@ -10,7 +10,7 @@ function Selector({ cases }) {
   };
 
   return (
-    <div className="flex justify-center items-center p-4 bg-white bg-opacity-100 text-black gap-4 h-[8vh] z-50 min-w-[40vw] sm:w-[50vw] w-screen m-0 ring-1 ring-zinc-300 rounded-lg mt-4 absolute sm:top-20 bottom-6">
+    <div className="flex grayGradientVariant justify-center items-center p-4 bg-white bg-opacity-100 text-black gap-4 h-[8vh] z-50 min-w-[40vw] sm:w-[50vw] w-screen m-0 ring-1 ring-zinc-300 rounded-lg mt-4 sm:absolute fixed sm:top-20 bottom-6">
       {cases.map((caseItem) => (
         <button
           onClick={() => handleCaseChange(caseItem.name)}

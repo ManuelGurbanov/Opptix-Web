@@ -36,58 +36,106 @@ function App() {
   const services = [
     {
       id: 0,
-      name: "Configuradores 3D Interactivos",
+      name: "Configuradores 3D",
       description: "Boost customer satisfaction and slash your support costs by 30%! Our 3D configurators give buyers control to customize effortlessly.",
       component:
       <>    
             <ARModelViewer modelSrc="/models/rack.glb" controlsContainerId="material-controls" />
       </>,
       picture: 
-      <div className='w-full h-full bg-zinc-200 flex justify-center items-center rounded-[80px] relative'>
+      <div className='w-full h-full bg-zinc-200 flex justify-center items-center sm:rounded-[80px] rounded-lg relative'>
         <img src='phone.webp' className='h-full absolute bottom-0'></img>
       </div>
     },
     {
       id: 1,
-      name: "VR/AR",
+      name: "Animaciones 3D",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
       component: <CarModelViewer modelSrc="/models/car.glb" controlsContainerId="material-controls" />,
       picture:
-      <div className='w-full h-full bg-black flex justify-center items-center rounded-[80px] relative'>
+      <div className='w-full h-full bg-black flex justify-center items-center sm:rounded-[80px] rounded-lg relative'>
       <img src='headphones.webp' className='h-full absolute bottom-0'></img>
       </div>
     },
     {
       id: 2,
-      name: "Animaciones 3D",
+      name: "VR/AR",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
       component: <CarModelViewer modelSrc="/models/rack.glb" controlsContainerId="material-controls" />,
       picture:
-      <div className='w-full h-full bg-black flex justify-center items-center rounded-[80px] relative'>
+      <div className='w-full h-full bg-black flex justify-center items-center sm:rounded-[80px] rounded-lg relative'>
       <img src='headphones.webp' className='h-full absolute bottom-0'></img>
       </div>
     },
     {
       id: 3,
-      name: "Video lanzamiento de productos",
+      name: "Producto Interactivo 3D",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
       component: <div className='w-full h-full bg-zinc-200'></div>,
       picture: ""
     },
     {
       id: 4,
-      name: "Videos explicativos de productos",
+      name: "Render Estático",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
       component: <div className='w-full h-full bg-zinc-200'></div>,
       picture: ""
     },
+  ];
+
+  const cases = [
     {
-      id: 5,
-      name: "CGI/FOOH",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
-      component: <div className='w-full h-full bg-zinc-200'></div>,
-      picture: ""
-    }
+      id: 0,
+      name: "Headphones",
+      tittle: "Headphones",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
+      secondTittle: "Different colors and sizes.",
+      secondDescription:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
+      firstImg: "headphones/headphonesFirst.webp",
+      mainImg: "headphones/headphonesMain.webp",
+      endImg: "headphones/headphonesEnd.webp",
+    },
+    {
+      id: 0,
+      name: "Blossom",
+      tittle: "Blossom",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
+      secondTittle: "Different colors and sizes.",
+      secondDescription:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
+      firstImg: "blossom/blossomFirst.webp",
+      mainImg: "blossom/blossomMain.webp",
+      endImg: "blossom/blossomEnd.webp",
+    },
+    {
+      id: 2,
+      name: "Cinturon Endless",
+      tittle: "Cinturon Endless",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
+      secondTittle: "Different colors and sizes.",
+      secondDescription:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
+        firstImg: "endless/endlessFirst.webp",
+        mainImg: "endless/endlessMain.webp",
+        endImg: "endless/endlessEnd.webp",
+    },
+    {
+      id: 3,
+      name: "PC",
+      tittle: "PC",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
+      secondTittle: "Different colors and sizes.",
+      secondDescription:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
+        firstImg: "pc/pcFirst.webp",
+        mainImg: "pc/pcMain.webp",
+        endImg: "pc/pcEnd.webp",
+    },
   ];
 
   return (
@@ -95,19 +143,19 @@ function App() {
       <Navbar language={language} setLanguage={setlanguage} />
       <Routes>
         <Route path="/" element={
-          <section className='max-w-screen overflow-hidden flex flex-col items-center'>
+          <section className='max-w-screen overflow-hidden flex flex-col items-center mt-20'>
             <MainBanner language={language} />
             {/* <SecondaryBanner language={language} /> */}
             <WhyWorkTogether language={language} />
             <OurServices language={language} services={services}/>
             <Packs />
-            <CaseStudies />
+            <CaseStudies cases={cases} />
             <Faq />
-            <Footer language={language} />
+            <Footer language={language} services={services} cases={cases} />
           </section>
         } />
 
-        <Route path="/case-study" element={<CaseStudiePage/>} />
+        <Route path="/case-study" element={<CaseStudiePage caseStudies={cases}/>} />
         <Route path="/services" element={<Services services={services}/>} />
       </Routes>
     </Router>

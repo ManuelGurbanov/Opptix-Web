@@ -61,11 +61,17 @@ canvas {
 }
 
 .grayGradient {
-  background: rgb(119,119,119);
-  background: linear-gradient(90deg, rgba(119,119,119,0.524422268907563) 0%, rgba(255,255,255,0.4852065826330533) 100%);
+  background: rgb(119, 119, 119);
+  background: linear-gradient(90deg, rgba(119, 119, 119, 1) 0%, rgba(255, 255, 255, 1) 100%);
 }
 
 .grayGradientVariant {
-  background: rgb(230,230,230);
-  background: linear-gradient(90deg, rgba(230,230,230,0.14627100840336138) 0%, rgba(255,255,255,0.4852065826330533) 82%, rgba(215,215,215,0.4852065826330533) 100%);
+  background: rgb(230, 230, 230);
+  background: linear-gradient(90deg, rgba(230, 230, 230, 1) 0%, rgba(255, 255, 255, 1) 82%, rgba(215, 215, 215, 1) 100%);
 }
+
+.smallGradient {
+  background: rgb(219,219,219);
+  background: radial-gradient(circle, rgba(219,219,219,1) 0%, rgba(175,175,175,1) 100%);
+}
+
