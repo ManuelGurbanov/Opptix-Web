@@ -15,6 +15,7 @@ import CaseStudiePage from './CaseStudiePage';
 import CarModelViewer from './CarModelViewer';
 import Footer from './Footer';
 import Services from './Services';
+import ParrillaModelViewer from './ParrillaModelViewer';
 
 function App() {
   const [language, setlanguage] = useState('es');
@@ -61,7 +62,7 @@ function App() {
       id: 2,
       name: "VR/AR",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
-      component: <CarModelViewer modelSrc="/models/rack.glb" controlsContainerId="material-controls" />,
+      component: <ParrillaModelViewer modelSrc="/models/parrilla.glb" controlsContainerId="material-controls" />,
       picture:
       <div className='w-full h-full bg-black flex justify-center items-center sm:rounded-[80px] rounded-lg relative'>
       <img src='headphones.webp' className='h-full absolute bottom-0'></img>
@@ -102,7 +103,7 @@ function App() {
       name: "Blossom",
       tittle: "Blossom",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
+        "En este proyecto trabajamos junto a Blossom, una marca emergente de fragancias premium, con el objetivo de crear un paquete de contenido integral que reflejara la esencia única de cada una de sus fragancias. Nuestro enfoque fue estratégico y personalizado, diseñando piezas visuales impactantes para posicionar la marca en el mercado y conectar emocionalmente con su público objetivo. Para este lanzamiento, desarrollamos: Animaciones 3D: Videos teaser y presentaciones dinámicas que resaltaron las notas y características de cada fragancia. Renders fotorrealistas: Imágenes en alta resolución que destacaron el diseño de los frascos y el concepto detrás de la marca, ideales para redes sociales y catálogos. Contenido e-commerce: Banners, PNGs y elementos visuales optimizados para su integración en plataformas online, mejorando la experiencia de usuario y aumentando la conversión. El proyecto estuvo guiado por la necesidad de transmitir los valores de Blossom: elegancia, frescura y autenticidad, asegurando un impacto visual consistente y memorable en todos los puntos de contacto. Este enfoque permitió a la marca no solo posicionarse estratégicamente, sino también establecer una conexión genuina con sus clientes.   .",
       secondTittle: "Different colors and sizes.",
       secondDescription:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
