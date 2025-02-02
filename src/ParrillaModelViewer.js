@@ -55,7 +55,7 @@ const ParrillaModelViewer = ({ modelSrc }) => {
   const buttonInactiveClass = "grayGradientVariant";
 
   return (
-    <div className="relative flex sm:flex-row flex-col items-center justify-center w-full sm:h-full min-h-200vh bg-white">
+    <div className="relative flex sm:flex-row flex-col items-center justify-center w-full sm:h-full min-h-200vh bg-white mt-6">
       <model-viewer
         id="model-viewer"
         loading="eager"

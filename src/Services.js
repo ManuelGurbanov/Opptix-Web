@@ -25,13 +25,13 @@ function Services({ language, services }) {
   return (
     <div className="flex flex-col items-center justify-center w-screen h-screen mt-20">
       {/* Menú para pantallas grandes */}
-      <div className="hidden sm:flex justify-center items-center p-4 grayGradientVariant text-black gap-4 h-[8vh] z-30 min-w-[40vw] max-w-[75vw] m-0 ring-1 ring-zinc-300 rounded-lg mt-4">
+      <div className="hidden sm:flex sm:fixed sm:top-[10vh] justify-center items-center p-4 grayGradientVariant text-black gap-4 h-[30px] z-30 min-w-[40vw] w-[90vw] m-0 ring-1 ring-zinc-300 rounded-lg mt-4">
         {services.map((service, index) => (
           <button
             onClick={() => setActualService(service.id)}
             key={index}
             className={`hover:scale-105 text-xs text-center w-full transition ease-in cursor-pointer duration-75 ${
-              actualService === service.id ? "opacity-100" : "opacity-60"
+              actualService === service.id ? "font-bold" : ""
             }`}
           >
             {service.name}
@@ -39,6 +39,7 @@ function Services({ language, services }) {
         ))}
       </div>
 
+        {/* Pantallas chicas, ignorar */}
       <div className="flex sm:hidden justify-end items-center p-4 text-black gap-4 h-[8vh] z-30 min-w-[40vw] w-[96vw] m-0 mt-4">
         {visibleServices.map((service, index) => (
           <button
@@ -72,7 +73,7 @@ function Services({ language, services }) {
       </div>
 
       <div className="w-full flex flex-col gap-2 h-full sm:px-24 p-4 mt-5 items-start justify-center">
-        <div className="w-full h-3/4">{services[actualService].component}</div>
+        <div className="w-full h-3/4 sm:mt-9">{services[actualService].component}</div>
 
         <div>
           <div
