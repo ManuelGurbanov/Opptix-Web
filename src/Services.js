@@ -40,7 +40,7 @@ function Services({ language, services }) {
       </div>
 
         {/* Pantallas chicas, ignorar */}
-      <div className="flex sm:hidden justify-end items-center p-4 text-black gap-4 h-[8vh] z-30 min-w-[40vw] w-[96vw] m-0 mt-4">
+      <div className="absolute top-[10vh] flex sm:hidden justify-end items-center p-4 text-black gap-4 h-[8vh] z-30 min-w-[40vw] w-[96vw] m-0">
         {visibleServices.map((service, index) => (
           <button
             onClick={() => setActualService(service.id)}
@@ -73,13 +73,9 @@ function Services({ language, services }) {
       </div>
 
       <div className="w-full flex flex-col gap-2 h-full sm:px-24 p-4 mt-5 items-start justify-center">
-        <div className="w-full h-3/4 sm:mt-9">{services[actualService].component}</div>
-
+        <div className="w-full h-full sm:mt-36">
+          {services[actualService].component}</div>
         <div>
-          <div
-            id="material-controls"
-            className="bg-transparent p-4 rounded bottom-0 gap-2 hidden sm:block"
-          ></div>
           <h1 className="text-2xl font-bold mb-5">{services[actualService].name}</h1>
           <p className="text-md mb-24">{services[actualService].description}</p>
         </div>

@@ -40,9 +40,18 @@ function App() {
       name: "Configuradores 3D",
       description: "Boost customer satisfaction and slash your support costs by 30%! Our 3D configurators give buyers control to customize effortlessly.",
       component:
-      <>    
-            <ARModelViewer modelSrc="/models/rack.glb" controlsContainerId="material-controls" />
-      </>,
+      <section className='w-full min-h-[200vh] flex flex-col justify-start items-start rounded-lg relative gap-0'>
+
+            <ParrillaModelViewer modelSrc="/models/parrilla.glb" controlsContainerId="material-controls" />
+
+            <ARModelViewer modelSrc="/models/rack.glb" controlsContainerId="material-controls-rack" />
+
+            <div
+            id="material-controls-rack"
+            className="bg-transparent p-4 rounded bottom-0 gap-2 hidden sm:flex"
+            ></div>
+      </section>,
+      
       picture: 
       <div className='w-full h-full bg-zinc-200 flex justify-center items-center sm:rounded-[80px] rounded-lg relative'>
         <img src='phone.webp' className='h-full absolute bottom-0'></img>
@@ -62,7 +71,7 @@ function App() {
       id: 2,
       name: "VR/AR",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
-      component: <ParrillaModelViewer modelSrc="/models/parrilla.glb" controlsContainerId="material-controls" />,
+      component: <></>,
       picture:
       <div className='w-full h-full bg-black flex justify-center items-center sm:rounded-[80px] rounded-lg relative'>
       <img src='headphones.webp' className='h-full absolute bottom-0'></img>

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "@google/model-viewer";
+import { Shadow } from "@react-three/drei";
 
 const ParrillaModelViewer = ({ modelSrc }) => {
   const modelViewerRef = useRef(null);
@@ -55,10 +56,12 @@ const ParrillaModelViewer = ({ modelSrc }) => {
   const buttonInactiveClass = "grayGradientVariant";
 
   return (
-    <div className="relative flex sm:flex-row flex-col items-center justify-center w-full sm:h-full min-h-200vh bg-white mt-6">
+    <div className="relative flex sm:flex-row flex-col items-center justify-center w-full bg-white mt-8 gap-4">
       <model-viewer
         id="model-viewer"
         loading="eager"
+        poster="loading.gif"
+        poster-size="300px"
         ref={modelViewerRef}
         src={modelSrc}
         alt="Modelo 3D en AR"
@@ -66,10 +69,16 @@ const ParrillaModelViewer = ({ modelSrc }) => {
         camera-controls
         ar
         ar-modes="webxr scene-viewer quick-look"
-        style={{ width: "100%", height: "100%", minHeight: "250px" }}
+        style={{ 
+          width: "100%", 
+          height: "70vh", 
+          minHeight: "250px",
+          borderRadius: "10px",
+          border: "1px solid #CFCFCF",
+        }}
       />
 
-      <div className="flex flex-col items-center justify-center bg-white p-4 border rounded-xl shadow-md sm:w-1/2 w-screen">
+      <div className="flex flex-col items-center justify-center bg-white p-4 border rounded-xl shadow-md sm:w-1/2 w-screen h-[70vh]">
         {Object.entries({
           RUEDAS: ["ON-RUEDA", "OFF-RUEDAS"],
           ESTANTE: ["ESTANTE-METAL", "ESTANTE-MADERA"],

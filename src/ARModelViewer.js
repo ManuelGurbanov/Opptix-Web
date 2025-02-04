@@ -77,7 +77,11 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
           option.value = name;
           option.textContent = name;
           maderaSelect.appendChild(option);
+          if (name === "madera marron") {
+            option.selected = true;
+          }
         }
+
       });
       
       names.forEach((name) => {
@@ -173,6 +177,7 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
     const canoSelect = document.getElementById("cano");
     canoSelect.style.display = "none";
     maderaSelect.style.display = "block";
+
   }
 
   const showCanoSelect = () => {
@@ -271,7 +276,7 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
   }, []);
   
   return (
-    <div className="relative flex items-center justify-center w-full h-full bg-white rounded-4xl">
+    <div className="relative flex items-center justify-center w-full bg-white rounded-4xl">
       <model-viewer
         id="hotspot-camera-view-demo" 
         loading="eager"
@@ -286,7 +291,11 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
         style={{
           width: "100%",
           height: "100%",
+          minHeight: "450px",
           display: "block",
+          border: "1px solid #CFCFCF",
+          borderRadius: "12px",
+          marginTop: "20px",
         }}
       >
       <button onClick = {() => showMaderaSelect() } className= "p-1 bg-zinc-200 ring-blue-500 ring-2 text-black rounded-lg" slot="hotspot-2" data-position="0.0608m 0.0566m 0.0605m" data-normal="0.2040984m 0.7985359m -0.56629m" data-orbit="42.72974deg 84.74043deg 0.07104211m" data-target="0.0757959m 0.04128428m 0.07109568m">
@@ -297,6 +306,8 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
       </button>  
 
       </model-viewer>
+
+      
     </div>
   );
 };
