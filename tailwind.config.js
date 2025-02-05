@@ -10,6 +10,7 @@ module.exports = {
         lightblue2: "#17A8D3",
         lightblue3: "#809CA6",
         lightblue4: "#91B4BFE5",
+        lightblue5: "#007598",
       },
     },
   },

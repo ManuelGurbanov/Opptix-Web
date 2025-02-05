@@ -24,14 +24,16 @@ function WhyWorkTogether({ language }) {
         {reasons.map((reason) => (
           <div
             key={reason.id}
-            className="text-center relative mr-4 ml-4 lightblueGradient shadow-sm group shadow-lightblue text-lightblue3 hover:text-lightblue2 italic rounded-lg p-5 sm:h-[168px] sm:w-[20vw] h-[153px] w-[258px] flex-shrink-0 flex items-center justify-center font-bold text-lg sm:text-xl transition-all duration-150"
+            className="text-center relative mr-4 ml-4 bg-lightblue workTogetherBackground shadow-sm group shadow-lightblue text-lightblue3 hover:text-lightblue2 italic rounded-lg p-5 sm:h-[168px] sm:w-[20vw] h-[153px] w-[258px] flex-shrink-0 flex items-center justify-center font-bold text-lg sm:text-xl transition-all duration-150"
           >
-            <div className="flex flex-col items-center justify-center h-full w-full text-white text-right">
+            <div className="flex flex-col items-center justify-center h-full w-full text-white sm:text-lightblue5 text-right">
               <h1 className="text-6xl w-full">{reason.percentage}</h1>
               <h1 className="text-xs">{reason.reason}</h1>
             </div>
           </div>
         ))}
+
+
         </div>
 
       </div>
