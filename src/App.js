@@ -53,7 +53,7 @@ function App() {
       </section>,
       
       picture: 
-      <div className='w-full h-full bg-zinc-200 flex justify-center items-center sm:rounded-[80px] rounded-lg relative'>
+      <div className='w-full h-full bg-zinc-200 hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative'>
         <img src='phone.webp' className='h-full absolute bottom-0'></img>
       </div>
     },
@@ -63,7 +63,7 @@ function App() {
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
       component: <CarModelViewer modelSrc="/models/car.glb" controlsContainerId="material-controls" />,
       picture:
-      <div className='w-full h-full bg-black flex justify-center items-center sm:rounded-[80px] rounded-lg relative'>
+      <div className='w-full h-full bg-black hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative'>
       <img src='headphones.webp' className='h-full absolute bottom-0'></img>
       </div>
     },
@@ -73,7 +73,7 @@ function App() {
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
       component: <></>,
       picture:
-      <div className='w-full h-full bg-black flex justify-center items-center sm:rounded-[80px] rounded-lg relative'>
+      <div className='w-full h-full bg-black hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative'>
       <img src='headphones.webp' className='h-full absolute bottom-0'></img>
       </div>
     },

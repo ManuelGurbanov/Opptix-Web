@@ -86,14 +86,14 @@ function Packs() {
                             <li key={i}>{result}</li>
                         ))}
                     </ul>
-                    <button className={`sm:absolute bottom-8 p-3 text-white rounded-2xl min-w-2/3 text-sm justify-self-end mb-6 hover:scale-105 transition-all ease-in-out duration-75 ${pack.isMostPopular ? "bg-lightblue ring-1" : "bg-black"}`}> Reserva una Demostración</button>
+                    <button className={`sm:absolute bottom-8 p-3 text-white rounded-full min-w-2/3 text-sm justify-self-end mb-6  transition-all ease-in-out duration-75 ${pack.isMostPopular ? "bg-lightblue hover:bg-lightblue2 ring-1" : "bg-black hover:bg-zinc-700"}`}> Reserva una Demostración</button>
                     <p className='text-xs text-center w-1/2 text-black sm:absolute bottom-4'>O envíenos un mensaje con sus preguntas</p>
                 </div>
             ))}
         </div>
         <div className='w-full flex sm:flex-row flex-col items-center justify-center sm:gap-5 gap-2 mb-16'>
             <h1 className='text-black font-extrabold text-xl'>Creamos tu Propio Pack</h1>
-            <button className='bg-lightblue2 p-3 rounded-2xl text-sm font-bold hover:scale-105 transition-all duration-100'>Hablar con un Asesor</button>
+            <button className='bg-lightblue2 hover:bg-lightblue p-3 rounded-full text-sm font-bold hover:scale-105 transition-all duration-100'>Hablar con un Asesor</button>
         </div>
         </div>
     );

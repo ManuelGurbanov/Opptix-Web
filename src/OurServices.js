@@ -70,7 +70,7 @@ function OurServices({services}) {
         {services.map((service) => (
           console.log(service),
           <div key={service.id} className={`flex flex-col ${service.id % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'} rounded-lg mb-8 p-0 sm:p-8 w-full h-[50vh] `}>
-            <div className="w-full relative flex items-center justify-center">
+            <div className="w-full relative flex items-center justify-center hover:scale-105 transition-all ease-in-out cursor-pointer">
               {service.picture}
             </div>
 
