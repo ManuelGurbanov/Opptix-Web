@@ -210,9 +210,6 @@ const ARModelViewer = ({ modelSrc, controlsContainerId }) => {
       baseColor[3] = newOpacity;
       pbr.setBaseColorFactor(baseColor);
 
-      if (newOpacity > 0)
-      console.log(`Al material ${material.name} le dejé opacidad ${newOpacity}`);
-
     }
   };
 

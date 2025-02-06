@@ -3,6 +3,7 @@ import "@google/model-viewer";
 import { Shadow } from "@react-three/drei";
 
 const ParrillaModelViewer = ({ modelSrc }) => {
+
   const modelViewerRef = useRef(null);
   const [activeVariants, setActiveVariants] = useState({
     RUEDAS: "OFF-RUEDAS",    

@@ -40,16 +40,19 @@ function App() {
       name: "Configuradores 3D",
       description: "Boost customer satisfaction and slash your support costs by 30%! Our 3D configurators give buyers control to customize effortlessly.",
       component:
-      <section className='w-full min-h-[200vh] flex flex-col justify-start items-start rounded-lg relative gap-0'>
+      <section className='w-full min-h-[300vh] flex flex-col justify-start items-start rounded-lg relative gap-0'>
 
             <ParrillaModelViewer modelSrc="/models/parrilla.glb" controlsContainerId="material-controls" />
 
             <ARModelViewer modelSrc="/models/rack.glb" controlsContainerId="material-controls-rack" />
 
+
             <div
             id="material-controls-rack"
             className="bg-transparent p-4 rounded bottom-0 gap-2 hidden sm:flex"
             ></div>
+
+            <CarModelViewer modelSrc="/models/car.glb" controlsContainerId="material-controls-car" />
       </section>,
       
       picture: 
