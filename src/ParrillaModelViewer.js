@@ -12,6 +12,7 @@ const ParrillaModelViewer = ({ modelSrc }) => {
     ESTANTE_DER: "OFF-ESTANTE-DER",
     PUERTAS: "OFF-PUERTAS", 
     TAPA: "OFF-TAPA",
+    BASE: "BASE-NEGRA"
   });
 
   const variantNames = {
@@ -27,6 +28,10 @@ const ParrillaModelViewer = ({ modelSrc }) => {
     "OFF-PUERTAS": "Sin Puertas",
     "ON-TAPA": "Con Tapa",
     "OFF-TAPA": "Sin Tapa",
+    "ON-TAPA-NEGRA": "Negra",
+    "ON-TAPA-PLATEADA": "Plateada",
+    "BASE-NEGRA": "Negra",
+    "BASE-PLATEADA": "Plateada",
   };
 
   const groupNames = {
@@ -36,6 +41,7 @@ const ParrillaModelViewer = ({ modelSrc }) => {
     ESTANTE_DER: "Estante Derecho",
     PUERTAS: "Puertas",
     TAPA: "Tapa",
+    BASE: "Base"
   }
 
   const toggleVariant = async (category, variant) => {
@@ -86,7 +92,8 @@ const ParrillaModelViewer = ({ modelSrc }) => {
           ESTANTE_IZQ: ["ON-ESTANTE-IZQ", "OFF-ESTANTE-IZQ"],
           ESTANTE_DER: ["ON-ESTANTE-DER", "OFF-ESTANTE-DER"],
           PUERTAS: ["ON-PUERTAS", "OFF-PUERTAS"],
-          TAPA: ["ON-TAPA", "OFF-TAPA"],
+          TAPA: ["ON-TAPA-NEGRA","ON-TAPA-PLATEADA", "OFF-TAPA"],
+          BASE: ["BASE-NEGRA", "BASE-PLATEADA"],
         }).map(([group, variants]) => (
           <div key={group} className="flex flex-col items-center my-2 w-full">
             <hr className="w-full bg-black mb-2"></hr>

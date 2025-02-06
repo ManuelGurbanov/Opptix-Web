@@ -23,6 +23,8 @@ const CarModelViewer = ({ modelSrc }) => {
           groupedVariants.LINEAS.push(variant);
         } else if (variant.includes("EXT")) {
           groupedVariants.EXT.push(variant);
+        }else{
+          console.log("Variante no encontrada:", variant);
         }
       });
 
@@ -66,7 +68,7 @@ const CarModelViewer = ({ modelSrc }) => {
         style={{ width: "100%", height: "70vh", minHeight: "250px" }}
       />
 
-      <div className="flex flex-col items-center justify-center bg-white p-4 border rounded-xl shadow-md sm:w-1/2 w-screen h-[70vh]" id="material-controls-car">
+      <div className="flex flex-col items-center justify-center bg-white p-4 border rounded-xl shadow-md sm:w-1/2 w-screen h-[70vh]">
         {Object.entries(variantOptions).map(([group, variants]) => (
           <div key={group} className="flex flex-col items-center my-2 w-full">
             <hr className="w-full bg-black mb-2"></hr>

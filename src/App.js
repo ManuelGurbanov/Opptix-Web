@@ -52,7 +52,7 @@ function App() {
             className="bg-transparent p-4 rounded bottom-0 gap-2 hidden sm:flex"
             ></div>
 
-            <CarModelViewer modelSrc="/models/car.glb" controlsContainerId="material-controls-car" />
+            <CarModelViewer modelSrc="/models/car.glb"/>
       </section>,
       
       picture: 
