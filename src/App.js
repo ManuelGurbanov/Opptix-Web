@@ -16,7 +16,7 @@ import CarModelViewer from './CarModelViewer';
 import Footer from './Footer';
 import Services from './Services';
 import ParrillaModelViewer from './ParrillaModelViewer';
-
+import BikeLink from './BikeLink';
 function App() {
   const [language, setlanguage] = useState('es');
   const [color, setColor] = useState('#ffffff');
@@ -74,7 +74,35 @@ function App() {
       id: 2,
       name: "VR/AR",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
-      component: <></>,
+      component: 
+      <>
+        <div className="relative flex items-center justify-center w-full bg-white rounded-4xl">
+              <model-viewer
+                id="hotspot-camera-view-demo" 
+                loading="eager"
+                xr-mode="immersive-vr"
+                src="/models/bicicleta.glb"
+                alt="Modelo 3D en AR"
+                auto-rotate
+                camera-controls
+                ar
+                ar-modes="webxr scene-viewer quick-look"
+                className="w-full h-full object-contain rounded-4xl"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  minHeight: "450px",
+                  display: "block",
+                  border: "1px solid #CFCFCF",
+                  borderRadius: "12px",
+                  marginTop: "20px",
+                }}
+              >
+              </model-viewer>
+
+              
+        </div>
+      </>,
       picture:
       <div className='w-full h-full bg-black hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative'>
       <img src='headphones.webp' className='h-full absolute bottom-0'></img>
@@ -170,6 +198,7 @@ function App() {
 
         <Route path="/case-study" element={<CaseStudiePage caseStudies={cases}/>} />
         <Route path="/services" element={<Services services={services}/>} />
+        <Route path="/bike" element={<BikeLink />} />
       </Routes>
     </Router>
   );
