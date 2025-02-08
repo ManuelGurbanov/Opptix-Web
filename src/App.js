@@ -76,7 +76,7 @@ function App() {
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
       component: 
       <>
-        <div className="relative flex items-center justify-center w-full bg-white rounded-4xl">
+        <div className="relative flex flex-row items-center justify-center w-full bg-white rounded-4xl">
               <model-viewer
                 id="hotspot-camera-view-demo" 
                 loading="eager"
@@ -89,9 +89,8 @@ function App() {
                 ar-modes="webxr scene-viewer quick-look"
                 className="w-full h-full object-contain rounded-4xl"
                 style={{
-                  width: "100%",
-                  height: "100%",
-                  minHeight: "450px",
+                  width: "400px",
+                  height: "400px",
                   display: "block",
                   border: "1px solid #CFCFCF",
                   borderRadius: "12px",
@@ -100,7 +99,10 @@ function App() {
               >
               </model-viewer>
 
-              
+              <img
+              className='w-[400px]' src='/qrcodes/bike.png'>
+
+              </img>
         </div>
       </>,
       picture:

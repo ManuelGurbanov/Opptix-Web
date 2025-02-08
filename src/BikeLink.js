@@ -1,21 +1,14 @@
 import React, { useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
 
 const BikeLink = () => {
-  const [searchParams] = useSearchParams();
-  const isVR = searchParams.get("vr") === "true";
-  const isAR = searchParams.get("ar") === "true";
-
   useEffect(() => {
     const modelViewer = document.querySelector("model-viewer");
-    if (modelViewer) {
-      if (isVR) {
-        modelViewer.activateAR();
-      } else if (isAR) {
+    setTimeout(() => {
+      if (modelViewer.canActivateAR) {
         modelViewer.activateAR();
       }
-    }
-  }, [isVR, isAR]);
+    }, 500);
+  }, []);
 
   return (
     <div className="relative flex items-center justify-center w-full h-screen bg-white">
