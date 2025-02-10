@@ -3,11 +3,12 @@ import { translate } from "./Translations";
 
 function WhyWorkTogether({ language }) {
   const reasons = [
-    { id: 0, reason: "Reducción de devoluciones", percentage: "+66%" },
-    { id: 1, reason: "Reducción de costos de atención al cliente", percentage: "+30%" },
-    { id: 2, reason: "Potencia tus ventas", percentage: "+40%" },
-    { id: 4, reason: "Incremento del ticket promedio con configuradores 3D", percentage: "+20%" },
+    { id: 0, reason: "reason1", percentage: "+66%" },
+    { id: 1, reason: "reason2", percentage: "+30%" },
+    { id: 2, reason: "reason3", percentage: "+40%" },
+    { id: 3, reason: "reason4", percentage: "+20%" },
   ];
+
 
   return (
     <div className="w-screen text-black flex flex-col items-center justify-center relative">
@@ -24,11 +25,11 @@ function WhyWorkTogether({ language }) {
         {reasons.map((reason) => (
           <div
             key={reason.id}
-            className="text-center relative mr-4 ml-4 bg-lightblue workTogetherBackground shadow-sm group shadow-lightblue text-lightblue3 hover:text-lightblue2 italic rounded-lg p-5 sm:h-[168px] sm:w-[20vw] h-[153px] w-[258px] flex-shrink-0 flex items-center justify-center font-bold text-lg sm:text-xl transition-all duration-150"
+            className="text-center relative mr-4 ml-4 bg-lightblue workTogetherBackground shadow-sm group shadow-lightblue text-lightblue3 hover:text-lightblue2 italic rounded-lg p-5 sm:h-[168px] h-[153px] w-[258px] flex-shrink-0 flex items-center justify-center font-bold text-lg sm:text-xl transition-all duration-150"
           >
             <div className="flex flex-col items-center justify-center h-full w-full text-white sm:text-lightblue5 text-right">
               <h1 className="text-6xl w-full">{reason.percentage}</h1>
-              <h1 className="text-xs">{reason.reason}</h1>
+              <h1 className="text-xs">{translate(reason.reason, language)}</h1>
             </div>
           </div>
         ))}

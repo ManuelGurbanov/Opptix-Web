@@ -8,9 +8,9 @@ const ParrillaModelViewer = ({ modelSrc }) => {
   const [activeVariants, setActiveVariants] = useState({
     RUEDAS: "OFF-RUEDAS",    
     ESTANTE: "ESTANTE-METAL",
-    ESTANTE_IZQ: "OFF-ESTANTE-IZQ",
+    ESTANTE_IZQ: "ON-ESTANTE-IZQ",
     ESTANTE_DER: "OFF-ESTANTE-DER",
-    PUERTAS: "OFF-PUERTAS", 
+    PUERTAS: "ON-PUERTAS", 
     TAPA: "OFF-TAPA",
     BASE: "BASE-NEGRA"
   });
@@ -58,7 +58,7 @@ const ParrillaModelViewer = ({ modelSrc }) => {
   };
 
   // Clases generales de botones
-  const buttonBaseClass = "px-2 py-1 text-xs border transition-all duration-150 rounded";
+  const buttonBaseClass = "p-1 text-[8px] border transition-all duration-150 rounded";
   const buttonActiveClass = "bg-blue-500 text-white";
   const buttonInactiveClass = "grayGradientVariant";
 
@@ -72,7 +72,6 @@ const ParrillaModelViewer = ({ modelSrc }) => {
         ref={modelViewerRef}
         src={modelSrc}
         alt="Modelo 3D en AR"
-        auto-rotate
         camera-controls
         ar
         ar-modes="webxr scene-viewer quick-look"
@@ -85,7 +84,7 @@ const ParrillaModelViewer = ({ modelSrc }) => {
         }}
       />
 
-      <div className="flex flex-col items-center justify-center bg-white p-4 border rounded-xl shadow-md sm:w-1/2 w-screen h-[70vh]">
+      <div className="flex flex-col items-center justify-start bg-white p-4 border rounded-xl shadow-md sm:w-1/2 w-screen max-h-[70vh]">
         {Object.entries({
           RUEDAS: ["ON-RUEDA", "OFF-RUEDAS"],
           ESTANTE: ["ESTANTE-METAL", "ESTANTE-MADERA"],
@@ -96,9 +95,9 @@ const ParrillaModelViewer = ({ modelSrc }) => {
           BASE: ["BASE-NEGRA", "BASE-PLATEADA"],
         }).map(([group, variants]) => (
           <div key={group} className="flex flex-col items-center my-2 w-full">
-            <hr className="w-full bg-black mb-2"></hr>
-            <h3 className="text-sm font-bold text-left w-full mb-1">{groupNames[group]}</h3>
-            <div className="flex gap-2 items-center justify-start w-full">
+            <hr className="w-full bg-black mb-1"></hr>
+            <div className="flex gap-2 items-center justify-start w-full mt-4">
+              <h3 className="text-sm font-bold text-left">{groupNames[group]}</h3>
               {variants.map((variant) => (
                 <button
                   key={variant}

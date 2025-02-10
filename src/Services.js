@@ -23,9 +23,9 @@ function Services({ language, services }) {
   const visibleServices = services.slice(startIndex, startIndex + servicesPerPage);
 
   return (
-    <div className="flex flex-col items-center justify-center w-screen h-screen mt-20">
+    <div className="flex flex-col items-center justify-start w-screen h-screen mt-20">
       {/* Menú para pantallas grandes */}
-      <div className="hidden sm:flex sm:fixed sm:top-[10vh] justify-center items-center p-4 grayGradientVariant text-black gap-4 h-[30px] z-30 min-w-[40vw] w-[90vw] m-0 ring-1 ring-zinc-300 rounded-lg mt-4">
+      <div className="hidden sm:flex justify-center items-center p-4 grayGradientVariant text-black gap-4 h-[30px] z-30 min-w-[40vw] w-[90vw] m-0 ring-1 ring-zinc-300 rounded-lg">
         {services.map((service, index) => (
           <button
             onClick={() => setActualService(service.id)}
@@ -73,11 +73,8 @@ function Services({ language, services }) {
       </div>
 
       <div className="w-full flex flex-col gap-2 h-full sm:px-24 p-4 mt-5 items-start justify-center">
-        <div className="w-full h-full sm:mt-36">
-          {services[actualService].component}</div>
-        <div>
-          <h1 className="text-2xl font-bold mb-5">{services[actualService].name}</h1>
-          <p className="text-md mb-24">{services[actualService].description}</p>
+        <div className="w-full h-full">
+          {services[actualService].component}
         </div>
       </div>
     </div>

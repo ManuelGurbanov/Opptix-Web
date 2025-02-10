@@ -1,33 +1,63 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
-const BikeLink = () => {
+const ModelLink = () => {
+  const modelRef = useRef(null);
+  const [isModelLoaded, setIsModelLoaded] = useState(false);
+  const [searchParams] = useSearchParams();
+  const modelUrl = searchParams.get("model") || "/models/default.glb"; // Usa un modelo por defecto si no se pasa en la URL
+
   useEffect(() => {
-    const modelViewer = document.querySelector("model-viewer");
-    setTimeout(() => {
-      if (modelViewer.canActivateAR) {
-        modelViewer.activateAR();
+    const modelViewer = modelRef.current;
+
+    const handleModelLoad = () => {
+      console.log("Modelo cargado. Intentando activar AR...");
+      setIsModelLoaded(true);
+
+      setTimeout(() => {
+        if (modelViewer?.canActivateAR) {
+          modelViewer.activateAR();
+        } else {
+          console.warn("AR no está disponible automáticamente.");
+        }
+      }, 1);
+    };
+
+    if (modelViewer) {
+      modelViewer.addEventListener("load", handleModelLoad);
+    }
+
+    return () => {
+      if (modelViewer) {
+        modelViewer.removeEventListener("load", handleModelLoad);
       }
-    }, 500);
+    };
   }, []);
 
   return (
-    <div className="relative flex items-center justify-center w-full h-screen bg-white">
+    <div className="relative flex items-center justify-center w-full h-screen bg-gray-100">
       <model-viewer
-        id="bike-model"
-        src="/models/bicicleta.glb"
+        ref={modelRef}
+        id="hotspot-camera-view-demo"
         loading="eager"
-        poster="loading.gif"
-        alt="Modelo 3D en AR/VR"
+        src={modelUrl}
+        alt="Modelo 3D en AR"
         auto-rotate
         camera-controls
         ar
         ar-modes="webxr scene-viewer quick-look"
-        xr-mode="immersive-vr"
-        className="w-full h-full object-contain rounded-lg"
-        style={{ width: "100%", height: "100%" }}
+        className="w-full h-full object-contain rounded-xl"
+        style={{
+          width: "400px",
+          height: "400px",
+          display: "block",
+          border: "1px solid #CFCFCF",
+          borderRadius: "12px",
+          marginTop: "20px",
+        }}
       />
     </div>
   );
 };
 
-export default BikeLink;
+export default ModelLink;

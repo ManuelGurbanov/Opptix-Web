@@ -26,10 +26,10 @@ function MainBanner({ language }) {
         </h2>
         <div className='w-1/2 flex flex-row gap-2 sm:p-3 mt-4'>
           <button className='py-2 px-7 bg-lightblue bg-opacity-50 ring-1 ring-lightblue hover:bg-opacity-30 rounded-3xl hover:scale-105 transition-all duration-75 ease-in-out'>
-            Servicios
+          {translate("services", language)}
           </button>
           <button className='py-2 px-7 bg-lightblue bg-opacity-50 ring-1 ring-lightblue hover:bg-opacity-30 rounded-3xl hover:scale-105 transition-all duration-75 ease-in-out'>
-            Packs
+          {translate("packs", language)}
           </button>
         </div>
       </div>

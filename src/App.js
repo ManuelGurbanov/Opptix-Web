@@ -17,6 +17,8 @@ import Footer from './Footer';
 import Services from './Services';
 import ParrillaModelViewer from './ParrillaModelViewer';
 import BikeLink from './BikeLink';
+import { max, viewport } from 'three/webgpu';
+import ModelLink from './BikeLink';
 function App() {
   const [language, setlanguage] = useState('es');
   const [color, setColor] = useState('#ffffff');
@@ -34,16 +36,16 @@ function App() {
     setPrice(totalPrice);
   }, [showAccesory]);
 
+
   const services = [
     {
       id: 0,
       name: "Configuradores 3D",
       description: "Boost customer satisfaction and slash your support costs by 30%! Our 3D configurators give buyers control to customize effortlessly.",
       component:
-      <section className='w-full min-h-[300vh] flex flex-col justify-start items-start rounded-lg relative gap-0'>
-
+      <section className='w-full min-h-[300vh] flex flex-col justify-start items-start rounded-lg relative gap-0 mt-8'>
             <ParrillaModelViewer modelSrc="/models/parrilla.glb" controlsContainerId="material-controls" />
-
+            <CarModelViewer modelSrc="/models/car.glb"/>
             <ARModelViewer modelSrc="/models/rack.glb" controlsContainerId="material-controls-rack" />
 
 
@@ -51,8 +53,6 @@ function App() {
             id="material-controls-rack"
             className="bg-transparent p-4 rounded bottom-0 gap-2 hidden sm:flex"
             ></div>
-
-            <CarModelViewer modelSrc="/models/car.glb"/>
       </section>,
       
       picture: 
@@ -64,7 +64,19 @@ function App() {
       id: 1,
       name: "Animaciones 3D",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
-      component: <CarModelViewer modelSrc="/models/car.glb" controlsContainerId="material-controls" />,
+      component: 
+      
+      <div className='w-full flex flex-col items-center justify-start'>
+        <video autoPlay muted loop playsInline className='w-full sm:w-3/4 rounded-3xl mt-4 mb-4'>
+          <source src="carVideo.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+
+      ,
+
+
+
       picture:
       <div className='w-full h-full bg-black hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative'>
       <img src='headphones.webp' className='h-full absolute bottom-0'></img>
@@ -76,11 +88,10 @@ function App() {
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
       component: 
       <>
-        <div className="relative flex flex-row items-center justify-center w-full bg-white rounded-4xl">
+        <div className="relative flex flex-col sm:flex-row items-center justify-center w-full bg-white rounded-4xl">
               <model-viewer
                 id="hotspot-camera-view-demo" 
                 loading="eager"
-                xr-mode="immersive-vr"
                 src="/models/bicicleta.glb"
                 alt="Modelo 3D en AR"
                 auto-rotate
@@ -91,6 +102,7 @@ function App() {
                 style={{
                   width: "400px",
                   height: "400px",
+                  maxWidth: "70vw",
                   display: "block",
                   border: "1px solid #CFCFCF",
                   borderRadius: "12px",
@@ -188,19 +200,18 @@ function App() {
         <Route path="/" element={
           <section className='max-w-screen overflow-hidden flex flex-col items-center mt-20'>
             <MainBanner language={language} />
-            {/* <SecondaryBanner language={language} /> */}
             <WhyWorkTogether language={language} />
             <OurServices language={language} services={services}/>
             <Packs />
-            <CaseStudies cases={cases} />
-            <Faq />
+            <CaseStudies cases={cases} language={language} />
+            <Faq language={language}/>
             <Footer language={language} services={services} cases={cases} />
           </section>
         } />
 
         <Route path="/case-study" element={<CaseStudiePage caseStudies={cases}/>} />
         <Route path="/services" element={<Services services={services}/>} />
-        <Route path="/bike" element={<BikeLink />} />
+        <Route path="/model" element={<ModelLink />} />
       </Routes>
     </Router>
   );

@@ -1,9 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
-import ARModelViewer from './ARModelViewer';
-import CarModelViewer from './CarModelViewer';
+import { translate } from './Translations';
 
-function OurServices({services}) {
+function OurServices({services,language}) {
   let [actualService, setActualService] = useState(1);
 
 
@@ -22,7 +21,7 @@ function OurServices({services}) {
   return (
     <div className='w-screen bg-white text-black p-3 flex flex-col items-center justify-center sm:px-12'>
       <h1 className='font-bold w-full text-left mt-12 sm:mb-12 mb-3 ml-5 text-xl sm:text-3xl' id='services'>
-        Nuestros Servicios
+        {translate('ourServices', language)}
       </h1>
 
       {/* SLIDER EN CELULARES */}
