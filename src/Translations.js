@@ -64,7 +64,7 @@ const translations = {
     popUpText: "Nuestro configurador de producto, nuestra realidad aumentada y el modelo 3D de tu producto, GRATIS",
     secondaryBanner: "Estadísticas de Beneficios de trabajar con nosotros con números llamativos",
     workTogether: "¿Por qué trabajar juntos?",
-    reason: "Reducción de devoluciones",
+    reason1: "Reducción de devoluciones",
     reason2: "Reducción de costos de atención al cliente",
     reason3: "Potencia tus ventas",
     reason4: "Incremento del ticket promedio con configuradores 3D",

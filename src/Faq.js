@@ -97,7 +97,7 @@ const Faq = ({language}) => {
                 />
                 {translate('faq' + faq.key, language)}
               </div>
-              {faq.isOpen && <div className="mt-2 ml-10 text-left sm:w-1/2">{translate(`answer${faq.key}`, language)}</div>} {/* Se traduce la respuesta */}
+              {faq.isOpen && <div className="mt-2 ml-10 text-left sm:w-1/2">{translate(`answer${faq.key}`, language)}</div>}
             </div>
           ))}
         </div>

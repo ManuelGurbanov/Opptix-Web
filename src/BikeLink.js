@@ -5,7 +5,7 @@ const ModelLink = () => {
   const modelRef = useRef(null);
   const [isModelLoaded, setIsModelLoaded] = useState(false);
   const [searchParams] = useSearchParams();
-  const modelUrl = searchParams.get("model") || "/models/default.glb"; // Usa un modelo por defecto si no se pasa en la URL
+  const modelUrl = searchParams.get("model");
 
   useEffect(() => {
     const modelViewer = modelRef.current;
@@ -34,6 +34,10 @@ const ModelLink = () => {
     };
   }, []);
 
+  if (!modelUrl) {
+    return <div className="text-center text-red-500">No se encontró el modelo.</div>;
+  }
+
   return (
     <div className="relative flex items-center justify-center w-full h-screen bg-gray-100">
       <model-viewer
@@ -51,9 +55,6 @@ const ModelLink = () => {
           width: "400px",
           height: "400px",
           display: "block",
-          border: "1px solid #CFCFCF",
-          borderRadius: "12px",
-          marginTop: "20px",
         }}
       />
     </div>

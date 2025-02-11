@@ -1,58 +1,7 @@
 import React from 'react';
 import { translate } from "./Translations";
 
-function Packs() {
-
-    const packs = [
-        {
-            title: 'Launch Pack',
-            description: 'Maximiza el rol de tus lanzamientos con contenido estratégico que vende..',
-            price: 100000,
-            isMostPopular : false,
-            results: [
-                'Modelo 3D del producto',
-                'Animación 3D basada en desplazamiento',
-                'Configurador interactivo 3D',
-                'Integración AR/VR',
-                '10 miniaturas de productos fotográficos',
-                'Vídeo de presentación',
-                'Optimización de carga rápida'
-            ]
-        },
-        {
-            title: 'Web Level Up',
-            description: 'Transforma tu sitio web en una maquina de ventas, utilizando el potencial del 3D y RA.',
-            price: 100000,
-            isMostPopular : true,
-            results: [
-                'Análisis inicial de UX y contenido',
-                'Modelo 3D del producto',
-                'Animación 3D basada en desplazamiento',
-                'Configurador interactivo 3D',
-                'Integración AR/VR',
-                '10 miniaturas de productos fotográficos',
-                'Vídeo de presentación',
-                'Optimización de carga rápida'
-            ]
-        },
-        {
-            title: 'Content Partner',
-            description: 'Transforma tu sitio web en una maquina de ventas, utilizando el potencial del 3D y RA.',
-            price: 100000,
-            isMostPopular : false,
-            monthly: true,
-            results: [
-                'Análisis inicial de UX y contenido',
-                'Modelo 3D del producto',
-                'Animación 3D basada en desplazamiento',
-                'Configurador interactivo 3D',
-                'Integración AR/VR',
-                '10 miniaturas de productos fotográficos',
-                'Vídeo de presentación',
-                'Optimización de carga rápida'
-            ]
-        }
-    ];
+function Packs({packs}) {
 
     return (
         <div className='min-h-screen w-full items-center flex-col flex' id='packs'>

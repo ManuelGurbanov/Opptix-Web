@@ -1,11 +1,14 @@
 import React from "react";
-
+import Calendly from "./Calendly";
+import { InstagramIcon } from "./InstagramIcon";
+import { LinkedinIcon } from "./LinkedinIcon";
+import { translate } from "./Translations";
 function Footer({
   language,
   services = [],
   caseStudies = [],
-  packages = [],
-  benefits = [],
+  reasons = [],
+  packs = [],
 }) {
   return (
     <div
@@ -13,10 +16,9 @@ function Footer({
       id="get-started"
     >
       {/* Intro Section */}
-      <div className="flex-2 sm:mt-0 mt-12">
-        <h1 className="font-bold">Opptix</h1>
-        <h2>3D</h2>
-
+      <div className="flex-2 sm:mt-0 mt-3">
+        <h1 className="font-bold">Newsletter</h1>
+        
         <div className="w-full flex gap-1 mt-2">
           <input
             type="text"
@@ -29,43 +31,54 @@ function Footer({
         </div>
 
         <div className="w-full flex gap-1 mt-4">
-          <button className="px-3 py-2 rounded-full aspect-square bg-zinc-800 text-white">
-            In
+          <button className="rounded-full bg-black text-white p-2 hover:bg-zinc-800 hover:scale-105 transition-all duration-75">
+            <LinkedinIcon/>
           </button>
-          <button className="px-3 py-2 rounded-full aspect-square bg-zinc-800 text-white">
-            Ig
+          <button className="rounded-full bg-black text-white p-2 hover:bg-zinc-800 hover:scale-105 transition-all duration-75">
+            <InstagramIcon/>
           </button>
         </div>
       </div>
 
       {/* Services Section */}
-      <div className="flex-col gap-2 text-black sm:flex hidden">
+      <div className="flex-col gap-1 text-black sm:flex hidden">
         <h1 className="font-bold">Servicios</h1>
         {services.map((service) => (
           <div key={service.id} className="hover:underline cursor-pointer">
-            <a className="font-semibold text-xs">{service.name}</a>
+            <a className="text-xs hover:underline">{service.name}</a>
           </div>
         ))}
       </div>
 
       {/* Case Studies Section */}
-      <div className="flex-col gap-2 text-black sm:flex hidden">
+      <div className="flex-col gap-1 text-black sm:flex hidden">
         <h1 className="font-bold">Casos de Estudio</h1>
         {caseStudies.map((caseStudy, index) => (
-          <a key={index} className="hover:underline">{caseStudy}</a>
+          <a 
+            key={index} 
+            className="text-xs hover:underline" 
+            href={`https://opptix.com.ar/case-study?case=${encodeURIComponent(caseStudy)}`}
+          >
+            {caseStudy}
+          </a>
         ))}
         <h1 className="font-bold mt-5">Packs</h1>
-        {packages.map((pack, index) => (
-          <a key={index} className="hover:underline">{pack}</a>
+        {packs.map((pack, index) => (
+          <a key={index} className="text-xs">{pack}</a>
         ))}
       </div>
 
       {/* Benefits Section */}
       <div className="flex-col gap-2 text-black sm:flex hidden">
-        {benefits.map((benefit, index) => (
-          <h1 key={index} className="font-bold">{benefit}</h1>
-        ))}
+        <h1 className="font-bold">¿Por qué trabajar juntos?</h1>
+        <p className="text-xs">{translate("reason1", language)}</p>
+        <p className="text-xs">{translate("reason2", language)}</p>
+        <p className="text-xs">{translate("reason3", language)}</p>
+        <p className="text-xs">{translate("reason4", language)}</p>
+        <Calendly/>
       </div>
+
+
     </div>
   );
 }

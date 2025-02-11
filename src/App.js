@@ -87,7 +87,7 @@ function App() {
       name: "VR/AR",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nisl.",
       component: 
-      <>
+      <section className='w-full flex-col items-center justify-start px-24'>
         <div className="relative flex flex-col sm:flex-row items-center justify-center w-full bg-white rounded-4xl">
               <model-viewer
                 id="hotspot-camera-view-demo" 
@@ -116,7 +116,94 @@ function App() {
 
               </img>
         </div>
-      </>,
+
+        <div className="relative flex flex-col sm:flex-row-reverse items-center justify-center w-full bg-white rounded-4xl">
+              <model-viewer
+                id="hotspot-camera-view-demo" 
+                loading="eager"
+                src="/models/sillon.glb"
+                alt="Modelo 3D en AR"
+                auto-rotate
+                camera-controls
+                ar
+                ar-modes="webxr scene-viewer quick-look"
+                className="w-full h-full object-contain rounded-4xl"
+                style={{
+                  width: "400px",
+                  height: "400px",
+                  maxWidth: "70vw",
+                  display: "block",
+                  border: "1px solid #CFCFCF",
+                  borderRadius: "12px",
+                  marginTop: "20px",
+                }}
+              >
+              </model-viewer>
+
+              <img
+              className='w-[400px]' src='/qrcodes/sillon.png'>
+
+              </img>
+        </div>
+
+        <div className="relative flex flex-col sm:flex-row items-center justify-center w-full bg-white rounded-4xl">
+              <model-viewer
+                id="hotspot-camera-view-demo" 
+                loading="eager"
+                src="/models/sofa.glb"
+                alt="Modelo 3D en AR"
+                auto-rotate
+                camera-controls
+                ar
+                ar-modes="webxr scene-viewer quick-look"
+                className="w-full h-full object-contain rounded-4xl"
+                style={{
+                  width: "400px",
+                  height: "400px",
+                  maxWidth: "70vw",
+                  display: "block",
+                  border: "1px solid #CFCFCF",
+                  borderRadius: "12px",
+                  marginTop: "20px",
+                }}
+              >
+              </model-viewer>
+
+              <img
+              className='w-[400px]' src='/qrcodes/sofa.png'>
+
+              </img>
+        </div>
+
+        <div className="relative flex flex-col sm:flex-row-reverse items-center justify-center w-full bg-white rounded-4xl">
+              <model-viewer
+                id="hotspot-camera-view-demo" 
+                loading="eager"
+                src="/models/TEST-180CM.glb"
+                alt="Modelo 3D en AR"
+                auto-rotate
+                camera-controls
+                ar
+                ar-modes="webxr scene-viewer quick-look"
+                className="w-full h-full object-contain rounded-4xl"
+                style={{
+                  width: "400px",
+                  height: "400px",
+                  maxWidth: "70vw",
+                  display: "block",
+                  border: "1px solid #CFCFCF",
+                  borderRadius: "12px",
+                  marginTop: "20px",
+                }}
+              >
+              </model-viewer>
+
+              <img
+              className='w-[400px]' src='/qrcodes/TEST-180CM.png'>
+
+              </img>
+        </div>
+      </section>,
       picture:
       <div className='w-full h-full bg-black hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative'>
       <img src='headphones.webp' className='h-full absolute bottom-0'></img>
@@ -193,6 +280,60 @@ function App() {
     },
   ];
 
+  const packs = [
+    {
+        title: 'Launch Pack',
+        description: 'Maximiza el rol de tus lanzamientos con contenido estratégico que vende..',
+        price: 100000,
+        isMostPopular : false,
+        results: [
+            'Modelo 3D del producto',
+            'Animación 3D basada en desplazamiento',
+            'Configurador interactivo 3D',
+            'Integración AR/VR',
+            '10 miniaturas de productos fotográficos',
+            'Vídeo de presentación',
+            'Optimización de carga rápida'
+        ]
+    },
+    {
+        title: 'Web Level Up',
+        description: 'Transforma tu sitio web en una maquina de ventas, utilizando el potencial del 3D y RA.',
+        price: 100000,
+        isMostPopular : true,
+        results: [
+            'Análisis inicial de UX y contenido',
+            'Modelo 3D del producto',
+            'Animación 3D basada en desplazamiento',
+            'Configurador interactivo 3D',
+            'Integración AR/VR',
+            '10 miniaturas de productos fotográficos',
+            'Vídeo de presentación',
+            'Optimización de carga rápida'
+        ]
+    },
+    {
+        title: 'Content Partner',
+        description: 'Transforma tu sitio web en una maquina de ventas, utilizando el potencial del 3D y RA.',
+        price: 100000,
+        isMostPopular : false,
+        monthly: true,
+        results: [
+            'Análisis inicial de UX y contenido',
+            'Modelo 3D del producto',
+            'Animación 3D basada en desplazamiento',
+            'Configurador interactivo 3D',
+            'Integración AR/VR',
+            '10 miniaturas de productos fotográficos',
+            'Vídeo de presentación',
+            'Optimización de carga rápida'
+        ]
+    }
+];
+
+  const caseStudiesNames = cases.map(caseItem => caseItem.name);
+  const packNames = packs.map(packsItem => packsItem.title);
+
   return (
     <Router>
       <Navbar language={language} setLanguage={setlanguage} />
@@ -202,10 +343,10 @@ function App() {
             <MainBanner language={language} />
             <WhyWorkTogether language={language} />
             <OurServices language={language} services={services}/>
-            <Packs />
+            <Packs packs={packs}/>
             <CaseStudies cases={cases} language={language} />
             <Faq language={language}/>
-            <Footer language={language} services={services} cases={cases} />
+            <Footer language={language} services={services} caseStudies={caseStudiesNames} packs={packNames}/>
           </section>
         } />
 
