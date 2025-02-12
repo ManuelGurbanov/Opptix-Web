@@ -16,7 +16,7 @@ function Packs({packs}) {
         data-aos-delay={`${300 + index * 100}`}
         className={`shadow-sm shadow-black lg:h-[700px] sm:min-h-[750px] lg:w-[390px] w-full 
         lightblueGradientVariant rounded-xl flex flex-col items-center text-center p-8 
-        hover:scale-105 transition-all ease-in-out relative
+        relative
         ${pack.isMostPopular ? "text-lightblue2 ring-1 ring-lightblue" : "text-black"}`}
     >
         {/* Etiqueta de "Más Popular" */}
@@ -43,7 +43,7 @@ function Packs({packs}) {
         </ul>
 
         {/* Botón de acción */}
-        <button className={`mt-auto sm:p-3 p-2 mb-2 text-white rounded-full w-full text-sm transition-all 
+        <button className={`mt-auto sm:p-3 p-2 mb-2 text-white rounded-full w-full text-sm transition-all hover:scale-105
             ease-in-out duration-75 ${pack.isMostPopular ? "bg-lightblue hover:bg-lightblue2 ring-1" : "bg-black hover:bg-zinc-700"}`}
         >
             Reserva una Demostración

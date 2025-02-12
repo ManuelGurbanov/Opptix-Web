@@ -19,7 +19,7 @@ function WhyWorkTogether({ language }) {
         </h1>
       </div>
       <div 
-        className="flex flex-row gap-4 overflow-x-scroll sm:overflow-auto w-full min-w-max items-center justify-center sm:justify-start sm:h-64 h-48 pl-4 pr-4"
+        className="flex flex-row gap-4 overflow-x-scroll sm:overflow-hidden w-full min-w-max items-center justify-center sm:justify-start h-auto pl-4 pr-4"
       >
         <div className="flex flex-row w-screen items-center justify-start sm:justify-center h-auto pl-4 pr-4">
         {reasons.map((reason) => (

@@ -5,6 +5,13 @@ function MainBanner({ language }) {
   return (
     <div data-aos="fade-up"
     className='relative md:w-[94%] sm:h-[75vh] w-[95vw] h-[50vh] flex flex-col justify-center items-start text-white p-3 px-12 rounded-3xl mb-12 overflow-hidden'>
+      
+      {/* Imagen de fondo mientras carga el video */}
+      <div id="video-placeholder" 
+        className="absolute top-0 left-0 w-full h-full bg-red bg-cover bg-center z-0 transition-opacity duration-500"
+        style={{ backgroundImage: "url('thumb.webp')" }}>
+      </div>
+
       {/* Video Background */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
@@ -13,6 +20,7 @@ function MainBanner({ language }) {
         loop
         muted
         playsInline
+        onLoadedData={() => document.getElementById("video-placeholder").style.opacity = "0"}
       ></video>
 
       <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50 z-10"></div>

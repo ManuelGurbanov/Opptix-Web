@@ -264,6 +264,7 @@ function App() {
         mainImg: "pc/pcMain.webp",
         endImg: "pc/pcEnd.webp",
     },
+  
   ];
 
   const packs = [

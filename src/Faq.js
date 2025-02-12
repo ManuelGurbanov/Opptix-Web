@@ -88,7 +88,7 @@ const Faq = ({language}) => {
               key={index}
               className='p-4 my-2 rounded-lg cursor-pointer flex flex-col items-start'
               onClick={() => toggleFaq(index)}
-              data-aos="fade-right" data-aos-delay="200"
+              data-aos="fade-right" data-aos-delay="50"
             >
               <div className="font-bold text-left flex">
                 <img
