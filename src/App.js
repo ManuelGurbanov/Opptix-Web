@@ -19,23 +19,18 @@ import ParrillaModelViewer from './ParrillaModelViewer';
 import BikeLink from './BikeLink';
 import { max, viewport } from 'three/webgpu';
 import ModelLink from './BikeLink';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import AllConfigurators from './AllConfigurators';
+import UploaderViewer from './UploaderViewer';
+
 function App() {
   const [language, setlanguage] = useState('es');
-  const [color, setColor] = useState('#ffffff');
   const [showAccesory, setShowAccesory] = useState(false);
-  const [scale, setScale] = useState(1);
-  const [position, setPosition] = useState([0, 0, 0]);
-  const [texturePath, setTexturePath] = useState('/models/redlabel.webp');
-
-  const basePrice = 1000;
-  const accesoryPrice = 250;
-  const [price, setPrice] = useState(basePrice);
 
   useEffect(() => {
-    const totalPrice = showAccesory ? basePrice + accesoryPrice : basePrice;
-    setPrice(totalPrice);
-  }, [showAccesory]);
-
+    AOS.init();
+  }, []);
 
   const services = [
     {
@@ -43,17 +38,8 @@ function App() {
       name: "Configuradores 3D",
       description: "Boost customer satisfaction and slash your support costs by 30%! Our 3D configurators give buyers control to customize effortlessly.",
       component:
-      <section className='w-full min-h-[300vh] flex flex-col justify-start items-start rounded-lg relative gap-0 mt-8'>
-            <ParrillaModelViewer modelSrc="/models/parrilla.glb" controlsContainerId="material-controls" />
-            <CarModelViewer modelSrc="/models/car.glb"/>
-            <ARModelViewer modelSrc="/models/rack.glb" controlsContainerId="material-controls-rack" />
-
-
-            <div
-            id="material-controls-rack"
-            className="bg-transparent p-4 rounded bottom-0 gap-2 hidden sm:flex"
-            ></div>
-      </section>,
+      <AllConfigurators/>
+      ,
       
       picture: 
       <div className='w-full h-full bg-zinc-200 hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative'>
@@ -282,54 +268,56 @@ function App() {
 
   const packs = [
     {
-        title: 'Launch Pack',
-        description: 'Maximiza el rol de tus lanzamientos con contenido estratégico que vende..',
-        price: 100000,
-        isMostPopular : false,
+        title: 'Más confianza, más conversión',
+        description: 'Convierte más con un catálogo 3D interactivo y realidad aumentada.',
+        price: "Desde $XXX",
+        subPrice: "+ Fee mensual bajo",
+        isMostPopular: false,
         results: [
-            'Modelo 3D del producto',
-            'Animación 3D basada en desplazamiento',
-            'Configurador interactivo 3D',
-            'Integración AR/VR',
-            '10 miniaturas de productos fotográficos',
-            'Vídeo de presentación',
-            'Optimización de carga rápida'
+            'Catálogo 3D interactivo (iFrame)',
+            'Visualización en Realidad Aumentada (AR)',
+            'Optimización del rendimiento web',
+            '40% menos devoluciones gracias a una mejor percepción del producto',
+            '+30% en conversión eliminando dudas del cliente',
+            'Diferénciate con una experiencia de compra inmersiva'
         ]
     },
     {
-        title: 'Web Level Up',
-        description: 'Transforma tu sitio web en una maquina de ventas, utilizando el potencial del 3D y RA.',
-        price: 100000,
-        isMostPopular : true,
+        title: 'Más ventas, menos costos',
+        description: 'Convierte tu tienda en un showroom digital con personalización en tiempo real.',
+        price: "Desde $XXX",
+        subPrice: "+ Fee mensual intermedio",
+        isMostPopular: true,
         results: [
-            'Análisis inicial de UX y contenido',
-            'Modelo 3D del producto',
-            'Animación 3D basada en desplazamiento',
-            'Configurador interactivo 3D',
-            'Integración AR/VR',
-            '10 miniaturas de productos fotográficos',
-            'Vídeo de presentación',
-            'Optimización de carga rápida'
+            'TODO lo del Pack 1',
+            'Configurador 3D interactivo (colores, materiales, opciones)',
+            'Venta cruzada y upsells dinámicos',
+            'Asesoría UX/UI para máxima efectividad',
+            'Pack de renders para redes y e-commerce',
+            '+40% en ventas gracias a la personalización interactiva',
+            'Mayor ticket promedio con upsells y venta cruzada',
+            'Menos costos de atención al cliente al automatizar la personalización'
         ]
     },
     {
-        title: 'Content Partner',
-        description: 'Transforma tu sitio web en una maquina de ventas, utilizando el potencial del 3D y RA.',
-        price: 100000,
-        isMostPopular : false,
+        title: 'Experiencia Premium',
+        description: 'Dale a tu web una experiencia de marca inolvidable con animaciones 3D interactivas.',
+        price: "Desde $XXX",
+        subPrice: "+ Fee mensual alto",
+        isMostPopular: false,
         monthly: true,
         results: [
-            'Análisis inicial de UX y contenido',
-            'Modelo 3D del producto',
-            'Animación 3D basada en desplazamiento',
-            'Configurador interactivo 3D',
-            'Integración AR/VR',
-            '10 miniaturas de productos fotográficos',
-            'Vídeo de presentación',
-            'Optimización de carga rápida'
+            'TODO lo del Pack 1 y 2',
+            'Animaciones interactivas (scroll, cursor, click)',
+            'Servicio UX/UI integral para una integración visual perfecta',
+            'Contenido premium: Animaciones + renders + portadas de producto',
+            'Experiencia Apple-level: más engagement y retención en tu web',
+            'Mayor diferenciación y credibilidad en el mercado',
+            'Aumento en conversión con animaciones que guían la compra'
         ]
     }
 ];
+
 
   const caseStudiesNames = cases.map(caseItem => caseItem.name);
   const packNames = packs.map(packsItem => packsItem.title);
@@ -353,6 +341,7 @@ function App() {
         <Route path="/case-study" element={<CaseStudiePage caseStudies={cases}/>} />
         <Route path="/services" element={<Services services={services}/>} />
         <Route path="/model" element={<ModelLink />} />
+        <Route path="/upload" element={<UploaderViewer />} />
       </Routes>
     </Router>
   );

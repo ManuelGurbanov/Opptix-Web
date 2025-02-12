@@ -20,7 +20,7 @@ function OurServices({services,language}) {
 
   return (
     <div className='w-screen bg-white text-black p-3 flex flex-col items-center justify-center sm:px-12'>
-      <h1 className='font-bold w-full text-left mt-12 sm:mb-12 mb-3 ml-5 text-xl sm:text-3xl' id='services'>
+      <h1 className='font-bold w-full text-left mt-12 sm:mb-12 mb-3 ml-5 text-xl sm:text-3xl' id='services' data-aos="fade-right" data-aos-delay="100">
         {translate('ourServices', language)}
       </h1>
 
@@ -65,10 +65,10 @@ function OurServices({services,language}) {
       </div>
 
 
-      <section className='flex-col items-center w-5/6 hidden sm:flex'>
+      <section className='flex-col items-center w-5/6 hidden sm:flex' data-aos="fade-up">
         {services.map((service) => (
           console.log(service),
-          <div key={service.id} className={`flex flex-col ${service.id % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'} rounded-lg mb-8 p-0 sm:p-8 w-full h-[50vh] `}>
+          <div data-aos="fade-up" key={service.id} className={`flex flex-col ${service.id % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'} rounded-lg mb-8 p-0 sm:p-8 w-full h-[50vh] `}>
             <div className="w-full relative flex items-center justify-center hover:scale-105 transition-all ease-in-out cursor-pointer">
               {service.picture}
             </div>

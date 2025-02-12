@@ -12,6 +12,10 @@ module.exports = {
         lightblue4: "#91B4BFE5",
         lightblue5: "#007598",
       },
+      screens: {
+        'h1200': { raw: '(min-height: 1100px)' },
+        'h1080': { raw: '(max-height: 1080px)' },
+      },
     },
   },
   plugins: [],

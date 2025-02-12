@@ -79,6 +79,7 @@ canvas {
   .workTogetherBackground {
     background: radial-gradient(circle at left top, #E0F2FF 10%, #4DB8FF 90%);
     background-clip: padding-box;
+    border-radius: 20px;
   }
 }
 

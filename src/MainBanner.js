@@ -3,7 +3,8 @@ import { translate } from "./Translations";
 
 function MainBanner({ language }) {
   return (
-    <div className='relative md:w-[94%] sm:h-[75vh] w-[95vw] h-[50vh] flex flex-col justify-center items-start text-white p-3 px-12 rounded-3xl mb-12 overflow-hidden'>
+    <div data-aos="fade-up"
+    className='relative md:w-[94%] sm:h-[75vh] w-[95vw] h-[50vh] flex flex-col justify-center items-start text-white p-3 px-12 rounded-3xl mb-12 overflow-hidden'>
       {/* Video Background */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
