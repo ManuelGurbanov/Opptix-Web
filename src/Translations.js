@@ -50,7 +50,68 @@ const translations = {
     caseStudies: "Case Studies",
     caseStudiesSubt: "The best quality for your brand.",
     showMore: "Show More",
-    showLess: "Show Less"
+    showLess: "Show Less",
+
+    configText: "Increase your average ticket by 25% and reduce operating costs by 70% with interactive 3D configurators that automate your sales.",
+    arText: "Reduce returns by 50%: let your customers try the product before buying.",
+    viewerText: "Fewer doubts, more sales: showcase your catalog in 3D and turn browsers into buyers.",
+    marketingText: "Double engagement and bring your brand to life with high-impact 3D animations.",
+    staticRenderText: "Perfect photos without a photoshoot: 3D renders that showcase your product at its best.",
+    interactivAnimText: "Attract, retain, and sell: interactive animations that double retention and engagement.",
+
+    configTittle: "3D Configurators",
+    marketingTittle: "3D Animations for Marketing",
+    arTittle: "Augmented Reality",
+    staticRenderTittle: "Static Renders for eCommerce and Social Media",
+    viewerTittle: "3D Product Viewer",
+    interactivAnimTittle: "Interactive Animations for Websites",
+
+    pack1Title: "More Trust, More Conversions",
+    pack1Description: "Convert more with an interactive 3D catalog and augmented reality.",
+    pack1Price: "From $XXX",
+    pack1SubPrice: "+ Low monthly fee",
+    pack1Results: [
+        "Interactive 3D catalog (iFrame)",
+        "Augmented Reality (AR) visualization",
+        "Web performance optimization",
+        "40% fewer returns thanks to a better product perception",
+        "+30% conversion increase by eliminating customer doubts",
+        "Stand out with an immersive shopping experience"
+    ],
+
+    pack2Title: "More Sales, Lower Costs",
+    pack2Description: "Turn your store into a digital showroom with real-time customization.",
+    pack2Price: "From $XXX",
+    pack2SubPrice: "+ Intermediate monthly fee",
+    pack2Results: [
+        "EVERYTHING from Pack 1",
+        "Interactive 3D configurator (colors, materials, options)",
+        "Cross-selling and dynamic upsells",
+        "UX/UI consulting for maximum effectiveness",
+        "Render pack for social media and e-commerce",
+        "+40% more sales thanks to interactive customization",
+        "Higher average ticket with upsells and cross-selling",
+        "Lower customer support costs by automating personalization"
+    ],
+
+    pack3Title: "Premium Experience",
+    pack3Description: "Give your website an unforgettable brand experience with interactive 3D animations.",
+    pack3Price: "From $XXX",
+    pack3SubPrice: "+ High monthly fee",
+    pack3Results: [
+        "EVERYTHING from Pack 1 and 2",
+        "Interactive animations (scroll, cursor, click)",
+        "Full UX/UI service for seamless visual integration",
+        "Premium content: Animations + renders + product covers",
+        "Apple-level experience: more engagement and retention on your website",
+        "Greater differentiation and credibility in the market",
+        "Higher conversion rates with animations that guide the purchase"
+    ],
+
+    bookDemo: "Book a Demo",
+    sendMessage: "Or send us a message with your questions",
+    ownPack: "We create your Own Pack",
+    talk: "Talk to an advisor"
   },
   es: {
     services: "Servicios",
@@ -103,11 +164,71 @@ const translations = {
     caseStudies: "Casos de Estudio",
     caseStudiesSubt: "La mejor calidad para tu marca.",
     showMore: "Ver Más",
-    showLess: "Ver Menos"
+    showLess: "Ver Menos",
+
+    configText: "Aumenta tu ticket promedio un 25% y reduce costos operativos un 70% con configuradores 3D interactivos, que automatizan tus ventas.",
+    arText: "Reduce devoluciones en un 50%: deja que tus clientes prueben el producto antes de comprar.",
+    viewerText: "Menos dudas, más ventas: muestra tu catálogo en 3D y convierte curiosos en compradores.",
+    marketingText: "Duplica el engagement y haz que tu marca cobre vida con animaciones 3D de alto impacto.",
+    staticRenderText: "Fotos perfectas sin sesión de fotos: renders 3D que muestran tu producto en su mejor versión.",
+    interactivAnimText: "Atrae, retiene y vende: animaciones interactivas que duplican la retención y el engagement.",
+
+    configTittle: "Configuradores 3D",
+    marketingTittle: "Animaciones 3D para marketing",
+    arTittle: "Realidad Aumentada",
+    staticRenderTittle: "Renders estáticos para eCommerce y redes",
+    viewerTittle: "Visualizador de productos en 3D",
+    interactivAnimTittle: "Animaciones interactivas para sitios web",
+
+    pack1Title: "Más confianza, más conversión",
+    pack1Description: "Convierte más con un catálogo 3D interactivo y realidad aumentada.",
+    pack1Price: "Desde $XXX",
+    pack1SubPrice: "+ Fee mensual bajo",
+    pack1Results: [
+        "Catálogo 3D interactivo (iFrame)",
+        "Visualización en Realidad Aumentada (AR)",
+        "Optimización del rendimiento web",
+        "40% menos devoluciones gracias a una mejor percepción del producto",
+        "+30% en conversión eliminando dudas del cliente",
+        "Diferénciate con una experiencia de compra inmersiva"
+    ],
+
+    pack2Title: "Más ventas, menos costos",
+    pack2Description: "Convierte tu tienda en un showroom digital con personalización en tiempo real.",
+    pack2Price: "Desde $XXX",
+    pack2SubPrice: "+ Fee mensual intermedio",
+    pack2Results: [
+        "TODO lo del Pack 1",
+        "Configurador 3D interactivo (colores, materiales, opciones)",
+        "Venta cruzada y upsells dinámicos",
+        "Asesoría UX/UI para máxima efectividad",
+        "Pack de renders para redes y e-commerce",
+        "+40% en ventas gracias a la personalización interactiva",
+        "Mayor ticket promedio con upsells y venta cruzada",
+        "Menos costos de atención al cliente al automatizar la personalización"
+    ],
+
+    pack3Title: "Experiencia Premium",
+    pack3Description: "Dale a tu web una experiencia de marca inolvidable con animaciones 3D interactivas.",
+    pack3Price: "Desde $XXX",
+    pack3SubPrice: "+ Fee mensual alto",
+    pack3Results: [
+        "TODO lo del Pack 1 y 2",
+        "Animaciones interactivas (scroll, cursor, click)",
+        "Servicio UX/UI integral para una integración visual perfecta",
+        "Contenido premium: Animaciones + renders + portadas de producto",
+        "Experiencia Apple-level: más engagement y retención en tu web",
+        "Mayor diferenciación y credibilidad en el mercado",
+        "Aumento en conversión con animaciones que guían la compra"
+    ],
+
+    bookDemo: "Reserva una Demostración",
+    sendMessage: "O envíenos un mensaje con sus preguntas",
+    ownPack: "Creamos tu Propio Pack",
+    talk: "Hablar con un asesor"
   }
   
 };
-
   
   export const translate = (key, language) => {
     if (translations[language] && translations[language][key]) {

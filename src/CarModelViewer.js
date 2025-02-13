@@ -92,10 +92,15 @@ const CarModelViewer = ({ modelSrc }) => {
         ar-modes="webxr scene-viewer quick-look"
         style={{
           width: "60vw",
+          minWidth: "450px",
           height: "60vh",
           minHeight: "250px",
           borderRadius: "10px",
           border: "1px solid #CFCFCF",
+          
+          "@media (max-width: 700px)": {
+            width: "100vw",
+          },
         }}
       />
 

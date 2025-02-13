@@ -76,7 +76,7 @@ const ParrillaModelViewer = ({ modelSrc }) => {
         ar
         ar-modes="webxr scene-viewer quick-look"
         style={{ 
-          width: "100%", 
+          width: "70%", 
           height: "70vh", 
           minHeight: "250px",
           borderRadius: "10px",

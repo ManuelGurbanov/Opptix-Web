@@ -1,7 +1,7 @@
 import React from 'react';
 import { translate } from "./Translations";
 
-function Packs({packs}) {
+function Packs({packs , language}) {
 
     return (
         <div className='min-h-screen w-full items-center flex-col flex' id='packs'>
@@ -46,18 +46,22 @@ function Packs({packs}) {
         <button className={`mt-auto sm:p-3 p-2 mb-2 text-white rounded-full w-full text-sm transition-all hover:scale-105
             ease-in-out duration-75 ${pack.isMostPopular ? "bg-lightblue hover:bg-lightblue2 ring-1" : "bg-black hover:bg-zinc-700"}`}
         >
-            Reserva una Demostración
+            {translate("bookDemo", language)}
         </button>
         <p className='text-xs text-center w-full text-black sm:absolute sm:bottom-3'>
-            O envíenos un mensaje con sus preguntas
+            {translate("sendMessage", language)}
         </p>
     </div>
 ))}
 
         </div>
         <div className='w-full flex sm:flex-row flex-col items-center justify-center sm:gap-5 gap-2 mb-16' data-aos="fade-up "data-aos-delay="200">
-            <h1 className='text-black font-extrabold text-xl'>Creamos tu Propio Pack</h1>
-            <button className='bg-lightblue2 hover:bg-lightblue p-3 rounded-full text-sm font-bold hover:scale-105 transition-all duration-100'>Hablar con un Asesor</button>
+            <h1 className='text-black font-extrabold text-xl'>
+                {translate("ownPack", language)}
+            </h1>
+            <button className='bg-lightblue2 hover:bg-lightblue p-3 rounded-full text-sm font-bold hover:scale-105 transition-all duration-100'>
+                {translate("talk", language)}
+            </button>
         </div>
         </div>
     );
