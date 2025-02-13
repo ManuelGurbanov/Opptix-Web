@@ -1,19 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import "@google/model-viewer";
-import { Shadow } from "@react-three/drei";
 
 const ParrillaModelViewer = ({ modelSrc }) => {
-
   const modelViewerRef = useRef(null);
   const [activeVariants, setActiveVariants] = useState({
-    RUEDAS: "OFF-RUEDAS",    
+    RUEDAS: "OFF-RUEDAS",
     ESTANTE: "ESTANTE-METAL",
     ESTANTE_IZQ: "OFF-ESTANTE-IZQ",
     ESTANTE_DER: "OFF-ESTANTE-DER",
-    PUERTAS: "OFF-PUERTAS", 
+    PUERTAS: "OFF-PUERTAS",
     TAPA: "OFF-TAPA",
     BASE: "BASE-NEGRA"
   });
+  const [selectingGroup, setSelectingGroup] = useState("RUEDAS");
 
   const variantNames = {
     "ON-RUEDA": "Con Ruedas",
@@ -28,8 +27,6 @@ const ParrillaModelViewer = ({ modelSrc }) => {
     "OFF-PUERTAS": "Sin Puertas",
     "ON-TAPA": "Con Tapa",
     "OFF-TAPA": "Sin Tapa",
-    "ON-TAPA-NEGRA": "Negra",
-    "ON-TAPA-PLATEADA": "Plateada",
     "BASE-NEGRA": "Negra",
     "BASE-PLATEADA": "Plateada",
   };
@@ -42,7 +39,17 @@ const ParrillaModelViewer = ({ modelSrc }) => {
     PUERTAS: "Puertas",
     TAPA: "Tapa",
     BASE: "Base"
-  }
+  };
+
+  const variantsByGroup = {
+    RUEDAS: ["ON-RUEDA", "OFF-RUEDAS"],
+    ESTANTE: ["ESTANTE-METAL", "ESTANTE-MADERA"],
+    ESTANTE_IZQ: ["ON-ESTANTE-IZQ", "OFF-ESTANTE-IZQ"],
+    ESTANTE_DER: ["ON-ESTANTE-DER", "OFF-ESTANTE-DER"],
+    PUERTAS: ["ON-PUERTAS", "OFF-PUERTAS"],
+    TAPA: ["ON-TAPA", "OFF-TAPA"],
+    BASE: ["BASE-NEGRA", "BASE-PLATEADA"],
+  };
 
   const toggleVariant = async (category, variant) => {
     const modelViewer = modelViewerRef.current;
@@ -57,61 +64,46 @@ const ParrillaModelViewer = ({ modelSrc }) => {
     }));
   };
 
-  // Clases generales de botones
-  const buttonBaseClass = "p-1 text-[8px] border transition-all duration-150 rounded";
-  const buttonActiveClass = "bg-blue-500 text-white";
-  const buttonInactiveClass = "grayGradientVariant";
-
   return (
-    <div className="relative flex sm:flex-row flex-col items-center justify-center w-full bg-white mt-8 gap-4">
+    <div className="relative flex flex-col items-center justify-center w-full bg-white mt-8 gap-4">
       <model-viewer
         id="model-viewer"
         loading="eager"
-        poster="loading.gif"
-        poster-size="300px"
         ref={modelViewerRef}
         src={modelSrc}
-        alt="Modelo 3D en AR"
+        alt="Modelo 3D"
         camera-controls
         ar
         ar-modes="webxr scene-viewer quick-look"
-        style={{ 
-          width: "70%", 
-          height: "70vh", 
-          minHeight: "250px",
-          borderRadius: "10px",
-          border: "1px solid #CFCFCF",
-        }}
+        style={{ width: "70%", height: "70vh", borderRadius: "10px", border: "1px solid #CFCFCF" }}
       />
 
-      <div className="flex flex-col items-center justify-start bg-white p-4 border rounded-xl shadow-md sm:w-1/2 w-screen max-h-[70vh]">
-        {Object.entries({
-          RUEDAS: ["ON-RUEDA", "OFF-RUEDAS"],
-          ESTANTE: ["ESTANTE-METAL", "ESTANTE-MADERA"],
-          ESTANTE_IZQ: ["ON-ESTANTE-IZQ", "OFF-ESTANTE-IZQ"],
-          ESTANTE_DER: ["ON-ESTANTE-DER", "OFF-ESTANTE-DER"],
-          PUERTAS: ["ON-PUERTAS", "OFF-PUERTAS"],
-          TAPA: ["ON-TAPA-NEGRA","ON-TAPA-PLATEADA", "OFF-TAPA"],
-          BASE: ["BASE-NEGRA", "BASE-PLATEADA"],
-        }).map(([group, variants]) => (
-          <div key={group} className="flex flex-col items-center my-2 w-full">
-            <hr className="w-full bg-black mb-1"></hr>
-            <div className="flex gap-2 items-center justify-start w-full mt-4">
-              <h3 className="text-sm font-bold text-left">{groupNames[group]}</h3>
-              {variants.map((variant) => (
-                <button
-                  key={variant}
-                  onClick={() => toggleVariant(group, variant)}
-                  className={`${buttonBaseClass} ${
-                    activeVariants[group] === variant ? buttonActiveClass : buttonInactiveClass
-                  }`}
-                >
-                  {variantNames[variant] || variant}
-                </button>
-              ))}
-            </div>
-          </div>
-        ))}
+      <div className="flex flex-col items-center justify-start bg-white p-2 sm:w-1/2 w-screen max-h-[70vh]">
+        <section className="flex flex-row items-center justify-center w-full gap-2">
+          {Object.keys(variantsByGroup).map((group) => (
+            <button
+              key={group}
+              className={`${selectingGroup === group ? "font-bold underline" : "font-normal"} p-2 text-black`}
+              onClick={() => setSelectingGroup(group)}
+            >
+              {groupNames[group]}
+            </button>
+          ))}
+        </section>
+
+        <div className="flex flex-row flex-wrap items-center justify-center gap-2 p-2 w-full">
+          {variantsByGroup[selectingGroup].map((variant) => (
+            <button
+              key={variant}
+              className={`p-2 border-2 rounded-full transition-all w-24 text-center border-lightblue ${
+                activeVariants[selectingGroup] === variant ? "text-white bg-lightblue2 font-bold" : "text-zinc-700 bg-lightblue6"
+              }`}
+              onClick={() => toggleVariant(selectingGroup, variant)}
+            >
+              {variantNames[variant] || variant}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );

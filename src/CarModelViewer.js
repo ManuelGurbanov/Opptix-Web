@@ -2,26 +2,60 @@ import React, { useEffect, useRef, useState } from "react";
 import "@google/model-viewer";
 
 const VARIANT_COLORS = {
-  "EXT-BLANCO": "#FFFFFF",
-  "EXT-AZUL": "#0000FF",
-  "EXT-NEGRO": "#000000",
-  "EXT-ROJO": "#FF0000",
-  "LINEAS-CELESTE": "#00BFFF",
-  "LINEAS-ROJAS": "#DC143C",
-  "LINEAS-AMARILLAS": "#FFD700",
-  "LINEAS-BLANCAS": "#FFFFFF",
-  "CUERO-NEGRO": "#000000",
-  "CUERO-ROJO": "#8B0000",
-  "CUERO-CAMEL": "#C19A6B",
-  "CUERO-BLANCO": "#FFFFFF",
-  "CUERO-AMARILLO": "#FFD700",
+  "EXT-BLANCO": "Blanco",
+  "EXT-AZUL": "Azul",
+  "EXT-NEGRO": "Negro",
+  "EXT-ROJO": "Rojo",
+  "LINEAS-CELESTE": "Celeste",
+  "LINEAS-ROJAS": "Rojo",
+  "LINEAS-AMARILLAS": "Amarillo",
+  "LINEAS-BLANCAS": "Blanco",
+  "CUERO-NEGRO": "Negro",
+  "CUERO-ROJO": "Rojo",
+  "CUERO-CAMEL": "Camel",
+  "CUERO-BLANCO": "Blanco",
+  "CUERO-AMARILLO": "Amarillo",
 };
 
-const CarModelViewer = ({ modelSrc }) => {
+const VARIANT_PRICES = {
+  "EXT-BLANCO": 500,
+  "EXT-AZUL": 600,
+  "EXT-NEGRO": 700,
+  "EXT-ROJO": 800,
+  "LINEAS-CELESTE": 200,
+  "LINEAS-ROJAS": 250,
+  "LINEAS-AMARILLAS": 300,
+  "LINEAS-BLANCAS": 350,
+  "CUERO-NEGRO": 1000,
+  "CUERO-ROJO": 1200,
+  "CUERO-CAMEL": 1500,
+  "CUERO-BLANCO": 1300,
+  "CUERO-AMARILLO": 1400,
+};
+
+const BASE_PRICE = 20000;
+
+const CarModelViewer = ({ modelSrc , setTotalPriceCar }) => {
   const modelViewerRef = useRef(null);
   const [variantOptions, setVariantOptions] = useState({});
   const [activeVariants, setActiveVariants] = useState({});
   const [selectingGroup, setSelectingGroup] = useState("EXT");
+  const [totalPrice, setTotalPrice] = useState(BASE_PRICE);
+
+  const [priceChange, setPriceChange] = useState(null);
+
+  const updateTotalPrice = (variants, prevVariant) => {
+    const additionalCost = Object.values(variants).reduce((sum, variant) => sum + (VARIANT_PRICES[variant] || 0), 0);
+    const newTotal = BASE_PRICE + additionalCost;
+    
+    if (prevVariant) {
+      const priceDiff = (VARIANT_PRICES[variants[selectingGroup]] || 0) - (VARIANT_PRICES[prevVariant] || 0);
+      setPriceChange(priceDiff);
+      setTimeout(() => setPriceChange(null), 1000);
+    }
+
+    setTotalPriceCar(newTotal);
+  };
 
   useEffect(() => {
     const modelViewer = modelViewerRef.current;
@@ -71,14 +105,30 @@ const CarModelViewer = ({ modelSrc }) => {
     modelViewer.variantName = variant;
     await modelViewer.model.updateComplete;
 
-    setActiveVariants((prev) => ({
-      ...prev,
-      [category]: variant,
-    }));
+    setActiveVariants((prev) => {
+      const newVariants = { ...prev, [category]: variant };
+      updateTotalPrice(newVariants, prev[category]);
+      return newVariants;
+    });
+
+    updateTotalPrice({ ...activeVariants, [category]: variant });
   };
+
+  const reloadModel = async () => {
+    await toggleVariant("EXT", "EXT-NEGRO");
+    await toggleVariant("LINEAS", "LINEAS-BLANCAS");
+    await toggleVariant("CUERO", "CUERO-ROJO");
+  };
+  
 
   return (
     <div className="relative flex flex-col items-center justify-center w-full bg-white mt-4 gap-2">
+
+      {priceChange !== null && (
+        <div className="absolute top-0 bottom-0 right-32 h-12 px-3 mt-2 text-lg font-base text-zinc-400 border border-zinc-400 animate-up z-50 bg-zinc-200 rounded-full flex items-center justify-center">
+          {priceChange >= 0 ? `+ $${priceChange}` : `- $${Math.abs(priceChange)}`}
+        </div>
+      )}
       <model-viewer
         id="model-viewer"
         loading="eager"
@@ -91,13 +141,12 @@ const CarModelViewer = ({ modelSrc }) => {
         ar
         ar-modes="webxr scene-viewer quick-look"
         style={{
-          width: "60vw",
+          width: "80vw",
           minWidth: "450px",
           height: "60vh",
           minHeight: "250px",
           borderRadius: "10px",
           border: "1px solid #CFCFCF",
-          
           "@media (max-width: 700px)": {
             width: "100vw",
           },
@@ -119,17 +168,22 @@ const CarModelViewer = ({ modelSrc }) => {
           ))}
         </section>
 
-        <div className="flex flex-row items-center justify-center gap-4 p-2 w-full">
+        <div className="flex flex-row flex-wrap items-center justify-center gap-2 p-2 w-full">
+          <button className="px-2 py-1 text-black bg-lightblue6 border-2 border-lightblue rounded-full flex items-center justify-center
+                            hover:bg-lightblue2 hover:text-white transition-all"
+                            onClick={() => reloadModel()}>
+              <img src="reload.svg"></img>
+          </button>
           {variantOptions[selectingGroup]?.map((variant) => (
             <button
               key={variant}
-              className="w-10 h-10 rounded-full border-2 transition-all"
-              style={{
-                backgroundColor: VARIANT_COLORS[variant] || "gray",
-                borderColor: activeVariants[selectingGroup] === variant ? "black" : "gray",
-              }}
+              className={`p-2 border-2 rounded-full  transition-all w-24 text-center border-lightblue ${
+                activeVariants[selectingGroup] === variant ? "text-white bg-lightblue2 font-bold" : " text-zinc-700 bg-lightblue6"
+              }`}
               onClick={() => toggleVariant(selectingGroup, variant)}
-            />
+            >
+              {VARIANT_COLORS[variant] || variant}
+            </button>
           ))}
         </div>
       </div>

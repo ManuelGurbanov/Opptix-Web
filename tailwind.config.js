@@ -11,6 +11,7 @@ module.exports = {
         lightblue3: "#809CA6",
         lightblue4: "#91B4BFE5",
         lightblue5: "#007598",
+        lightblue6: "#9FDFF6",
       },
       screens: {
         'h1200': { raw: '(min-height: 1100px)' },
