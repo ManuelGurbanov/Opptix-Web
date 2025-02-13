@@ -8,9 +8,9 @@ const ParrillaModelViewer = ({ modelSrc }) => {
   const [activeVariants, setActiveVariants] = useState({
     RUEDAS: "OFF-RUEDAS",    
     ESTANTE: "ESTANTE-METAL",
-    ESTANTE_IZQ: "ON-ESTANTE-IZQ",
+    ESTANTE_IZQ: "OFF-ESTANTE-IZQ",
     ESTANTE_DER: "OFF-ESTANTE-DER",
-    PUERTAS: "ON-PUERTAS", 
+    PUERTAS: "OFF-PUERTAS", 
     TAPA: "OFF-TAPA",
     BASE: "BASE-NEGRA"
   });
