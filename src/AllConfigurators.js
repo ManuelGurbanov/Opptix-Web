@@ -9,6 +9,7 @@ export default function AllConfigurators() {
     const [selectedConfigurator, setSelectedConfigurator] = useState("car");
 
     const [totalPriceCar, setTotalPriceCar] = useState(20000);
+    const [totalPriceParrilla, setTotalPriceParrilla] = useState(1500);
 
     return (
         <>
@@ -39,18 +40,21 @@ export default function AllConfigurators() {
                         selectedConfigurator === "rack" ? "font-bold underline" : ""
                         }`}
                     >
-                        Rack
+                        Sillón
                     </button>
                 </nav>
 
                 <div className="flex flex-col items-center justify-center text-right">
                     <h1 className="text-base font-bold w-full">Precio Final:</h1>
-                    <h2 className="text-xl w-full"> ${totalPriceCar} USD </h2>
+                    <h2 className="text-xl w-full">
+                        {selectedConfigurator === "car" ? `${totalPriceCar} USD` : `${totalPriceParrilla} USD`}
+                    </h2>
                 </div>
+
 
             </div>
 
-            {selectedConfigurator == "parrilla" && <ParrillaModelViewer modelSrc="/models/parrilla.glb" controlsContainerId="material-controls" />}
+            {selectedConfigurator == "parrilla" && <ParrillaModelViewer modelSrc="/models/parrilla.glb" controlsContainerId="material-controls" setTotalPriceParrilla={setTotalPriceParrilla} />}
 
             {selectedConfigurator == "car" && <CarModelViewer modelSrc="/models/car.glb" setTotalPriceCar={setTotalPriceCar}/>}
 

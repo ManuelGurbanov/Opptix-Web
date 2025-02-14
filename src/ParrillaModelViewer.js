@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "@google/model-viewer";
 
-const ParrillaModelViewer = ({ modelSrc }) => {
+const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla }) => {
   const modelViewerRef = useRef(null);
   const [activeVariants, setActiveVariants] = useState({
     RUEDAS: "OFF-RUEDAS",
@@ -14,19 +14,42 @@ const ParrillaModelViewer = ({ modelSrc }) => {
   });
   const [selectingGroup, setSelectingGroup] = useState("RUEDAS");
 
+  const VARIANT_PRICES = {
+    "ON-RUEDA": 100,
+    "OFF-RUEDAS": 0,
+    "ESTANTE-METAL": 200,
+    "ESTANTE-MADERA": 300,
+    "ON-ESTANTE-IZQ": 100,
+    "OFF-ESTANTE-IZQ": 0,
+    "ON-ESTANTE-IZQ-CLARO": 200,
+    "ON-ESTANTE-DER": 100,
+    "OFF-ESTANTE-DER": 0,
+    "ON-ESTANTE-DER-CLARO": 200,
+    "ON-PUERTAS": 100,
+    "OFF-PUERTAS": 0,
+    "ON-TAPA-NEGRA": 100,
+    "ON-TAPA-PLATEADA": 200,
+    "OFF-TAPA": 0,
+    "BASE-NEGRA": 100,
+    "BASE-PLATEADA": 200,
+  };
+
   const variantNames = {
     "ON-RUEDA": "Con Ruedas",
     "OFF-RUEDAS": "Sin Ruedas",
     "ESTANTE-METAL": "Estante Metálico",
     "ESTANTE-MADERA": "Estante de Madera",
-    "ON-ESTANTE-IZQ": "Con Estante Izquierdo",
-    "OFF-ESTANTE-IZQ": "Sin Estante Izquierdo",
-    "ON-ESTANTE-DER": "Con Estante Derecho",
-    "OFF-ESTANTE-DER": "Sin Estante Derecho",
-    "ON-PUERTAS": "Con Puertas",
-    "OFF-PUERTAS": "Sin Puertas",
-    "ON-TAPA": "Con Tapa",
-    "OFF-TAPA": "Sin Tapa",
+    "ON-ESTANTE-IZQ": "Oscuro",
+    "OFF-ESTANTE-IZQ": "Desactivado",
+    "ON-ESTANTE-IZQ-CLARO": "Claro",
+    "ON-ESTANTE-DER": "Oscuro",
+    "OFF-ESTANTE-DER": "Desactivado",
+    "ON-ESTANTE-DER-CLARO": "Claro",
+    "ON-PUERTAS": "Madera",
+    "OFF-PUERTAS": "Desactivadas",
+    "ON-TAPA-NEGRA": "Negra",
+    "ON-TAPA-PLATEADA": "Plateada",
+    "OFF-TAPA": "Desactivada",
     "BASE-NEGRA": "Negra",
     "BASE-PLATEADA": "Plateada",
   };
@@ -44,10 +67,10 @@ const ParrillaModelViewer = ({ modelSrc }) => {
   const variantsByGroup = {
     RUEDAS: ["ON-RUEDA", "OFF-RUEDAS"],
     ESTANTE: ["ESTANTE-METAL", "ESTANTE-MADERA"],
-    ESTANTE_IZQ: ["ON-ESTANTE-IZQ", "OFF-ESTANTE-IZQ"],
-    ESTANTE_DER: ["ON-ESTANTE-DER", "OFF-ESTANTE-DER"],
+    ESTANTE_IZQ: ["ON-ESTANTE-IZQ", "ON-ESTANTE-IZQ-CLARO", "OFF-ESTANTE-IZQ"],
+    ESTANTE_DER: ["ON-ESTANTE-DER", "ON-ESTANTE-DER-CLARO", "OFF-ESTANTE-DER"],
     PUERTAS: ["ON-PUERTAS", "OFF-PUERTAS"],
-    TAPA: ["ON-TAPA", "OFF-TAPA"],
+    TAPA: ["ON-TAPA-PLATEADA","ON-TAPA-NEGRA", "OFF-TAPA"],
     BASE: ["BASE-NEGRA", "BASE-PLATEADA"],
   };
 
@@ -58,28 +81,73 @@ const ParrillaModelViewer = ({ modelSrc }) => {
     modelViewer.variantName = variant;
     await modelViewer.model.updateComplete;
 
-    setActiveVariants((prev) => ({
-      ...prev,
-      [category]: variant,
-    }));
+    setActiveVariants((prev) => {
+      const newVariants = { ...prev, [category]: variant };
+      updateTotalPrice(newVariants, prev[category]);
+      return newVariants;
+    });
+
+    updateTotalPrice({ ...activeVariants, [category]: variant });
   };
 
+  const [priceChange, setPriceChange] = useState(null);
+  const BASE_PRICE = 1500;
+
+  const updateTotalPrice = (variants, prevVariant) => {
+    const additionalCost = Object.values(variants).reduce((sum, variant) => sum + (VARIANT_PRICES[variant] || 0), 0);
+    const newTotal = BASE_PRICE + additionalCost;
+    
+    if (prevVariant) {
+      const priceDiff = (VARIANT_PRICES[variants[selectingGroup]] || 0) - (VARIANT_PRICES[prevVariant] || 0);
+      setPriceChange(priceDiff);
+      setTimeout(() => setPriceChange(null), 1000);
+    }
+
+    setTotalPriceParrilla(newTotal);
+  };
+
+  const reloadModel = async () => {
+    await toggleVariant("RUEDAS", "OFF-RUEDAS");
+    await toggleVariant("ESTANTE", "ESTANTE-METAL");
+    await toggleVariant("ESTANTE_IZQ", "OFF-ESTANTE-IZQ");
+    await toggleVariant("ESTANTE_DER", "OFF-ESTANTE-DER");
+    await toggleVariant("PUERTAS", "OFF-PUERTAS");
+    await toggleVariant("TAPA", "OFF-TAPA");
+    await toggleVariant("BASE", "BASE-NEGRA");
+  }
+
   return (
-    <div className="relative flex flex-col items-center justify-center w-full bg-white mt-8 gap-4">
+    <div className="relative flex flex-col items-center justify-center w-full bg-white mt-1 gap-4">
+      {priceChange !== null && (
+        <div className="absolute top-0 bottom-0 right-32 h-12 px-3 mt-2 text-lg font-base text-zinc-400 border border-zinc-400 animate-up z-50 bg-zinc-200 rounded-full flex items-center justify-center">
+          {priceChange >= 0 ? `+ $${priceChange}` : `- $${Math.abs(priceChange)}`}
+        </div>
+      )}
       <model-viewer
         id="model-viewer"
         loading="eager"
+        poster = "/loading.gif"
         ref={modelViewerRef}
         src={modelSrc}
         alt="Modelo 3D"
         camera-controls
         ar
         ar-modes="webxr scene-viewer quick-look"
-        style={{ width: "70%", height: "70vh", borderRadius: "10px", border: "1px solid #CFCFCF" }}
+        style={{
+          width: "80vw",
+          minWidth: "450px",
+          height: "60vh",
+          minHeight: "250px",
+          borderRadius: "10px",
+          border: "1px solid #CFCFCF",
+          "@media (max-width: 700px)": {
+            width: "100vw",
+          },
+        }}
       />
 
-      <div className="flex flex-col items-center justify-start bg-white p-2 sm:w-1/2 w-screen max-h-[70vh]">
-        <section className="flex flex-row items-center justify-center w-full gap-2">
+      <div className="flex flex-col items-center justify-start bg-white p-2 sm:w-3/4 w-screen max-h-[70vh]">
+        <section className="flex flex-row items-center justify-center w-full gap-2 overflow-x-auto whitespace-nowrap">
           {Object.keys(variantsByGroup).map((group) => (
             <button
               key={group}
@@ -91,11 +159,16 @@ const ParrillaModelViewer = ({ modelSrc }) => {
           ))}
         </section>
 
-        <div className="flex flex-row flex-wrap items-center justify-center gap-2 p-2 w-full">
+        <div className="flex flex-row items-center justify-center gap-2 p-2 w-full overflow-x-auto whitespace-nowrap">
+        <button className="px-2 py-1 text-black bg-lightblue6 border-2 border-lightblue rounded-full flex items-center justify-center
+                            hover:bg-lightblue2 hover:text-white transition-all"
+                            onClick={() => reloadModel()}>
+              <img src="reload.svg"></img>
+          </button>
           {variantsByGroup[selectingGroup].map((variant) => (
             <button
               key={variant}
-              className={`p-2 border-2 rounded-full transition-all w-24 text-center border-lightblue ${
+              className={`p-2 border-2 rounded-full transition-all min-w-24 text-center border-lightblue ${
                 activeVariants[selectingGroup] === variant ? "text-white bg-lightblue2 font-bold" : "text-zinc-700 bg-lightblue6"
               }`}
               onClick={() => toggleVariant(selectingGroup, variant)}
