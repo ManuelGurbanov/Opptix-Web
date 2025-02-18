@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "@google/model-viewer";
 
-const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla }) => {
+const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
   const modelViewerRef = useRef(null);
   const [activeVariants, setActiveVariants] = useState({
     RUEDAS: "OFF-RUEDAS",
@@ -54,6 +54,27 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla }) => {
     "BASE-PLATEADA": "Plateada",
   };
 
+  const variantNamesEn = {
+    "ON-RUEDA": "Enabled",
+    "OFF-RUEDAS": "Disabled",
+    "ESTANTE-METAL": "Metal Shelf",
+    "ESTANTE-MADERA": "Wooden Shelf",
+    "ON-ESTANTE-IZQ": "Dark",
+    "OFF-ESTANTE-IZQ": "Disabled",
+    "ON-ESTANTE-IZQ-CLARO": "Light",
+    "ON-ESTANTE-DER": "Dark",
+    "OFF-ESTANTE-DER": "Disabled",
+    "ON-ESTANTE-DER-CLARO": "Light",
+    "ON-PUERTAS": "Wood",
+    "OFF-PUERTAS": "Disabled",
+    "ON-TAPA-NEGRA": "Black",
+    "ON-TAPA-PLATEADA": "Silver",
+    "OFF-TAPA": "Disabled",
+    "BASE-NEGRA": "Black",
+    "BASE-PLATEADA": "Silver"
+  };
+  
+
   const groupNames = {
     RUEDAS: "Ruedas",
     ESTANTE: "Estante",
@@ -61,6 +82,16 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla }) => {
     ESTANTE_DER: "Estante Derecho",
     PUERTAS: "Puertas",
     TAPA: "Tapa",
+    BASE: "Base"
+  };
+
+  const groupNamesEn = {
+    RUEDAS: "Wheels",
+    ESTANTE: "Shelf",
+    ESTANTE_IZQ: "Left Shelf",
+    ESTANTE_DER: "Right Shelf",
+    PUERTAS: "Doors",
+    TAPA: "Cover",
     BASE: "Base"
   };
 
@@ -147,23 +178,27 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla }) => {
       />
 
       <div className="flex flex-col items-center justify-start bg-white p-2 sm:w-3/4 w-screen max-h-[70vh]">
-        <section className="flex flex-row items-center justify-center w-full gap-2 overflow-x-auto whitespace-nowrap">
-          {Object.keys(variantsByGroup).map((group) => (
-            <button
-              key={group}
-              className={`${selectingGroup === group ? "font-bold underline" : "font-normal"} p-2 text-black`}
-              onClick={() => setSelectingGroup(group)}
-            >
-              {groupNames[group]}
-            </button>
-          ))}
-        </section>
+      <section className="flex flex-row items-center justify-center w-full gap-0 overflow-x-auto whitespace-nowrap">
+        {Object.keys(variantsByGroup).map((group) => (
+          <button
+            key={group}
+            className="p-2 text-black font-normal"
+            onClick={() => setSelectingGroup(group)}
+          >
+            {selectingGroup === group && <span className="font-normal">• </span>}
+            <span className={selectingGroup === group ? "font-bold underline" : "font-normal"}>
+              {language === "en" ? groupNamesEn[group] : groupNames[group]}
+            </span>
+          </button>
+        ))}
+      </section>
+
 
         <div className="flex flex-row items-center justify-center gap-2 p-2 w-full overflow-x-auto whitespace-nowrap">
         <button className="px-2 py-1 text-black bg-lightblue6 border-2 border-lightblue rounded-full flex items-center justify-center
                             hover:bg-lightblue2 hover:text-white transition-all"
                             onClick={() => reloadModel()}>
-              <img src="reload.svg"></img>
+              <img src="/reload.svg"></img>
           </button>
           {variantsByGroup[selectingGroup].map((variant) => (
             <button
@@ -173,7 +208,7 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla }) => {
               }`}
               onClick={() => toggleVariant(selectingGroup, variant)}
             >
-              {variantNames[variant] || variant}
+              {language === "en" ? variantNamesEn[variant] : variantNames[variant]}
             </button>
           ))}
         </div>

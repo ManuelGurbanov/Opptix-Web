@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { translate } from "./Translations";
 
-function Services({ language, services }) {
-  const [actualService, setActualService] = useState(0);
+import { Link , useParams } from "react-router-dom";
+
+
+function Services({ language, services, setLanguage }) {
+  const { serviceId } = useParams();  // Obtenemos el id del servicio de la URL
+  const [actualService, setActualService] = useState(parseInt(serviceId));
+
   const [currentPage, setCurrentPage] = useState(0); // Estado para controlar la página actual
+
   const servicesPerPage = 3; // Número de servicios por página en pantallas pequeñas
+
   const totalPages = Math.ceil(services.length / servicesPerPage);
 
   const goToNextPage = () => {
@@ -22,21 +29,48 @@ function Services({ language, services }) {
   const startIndex = currentPage * servicesPerPage;
   const visibleServices = services.slice(startIndex, startIndex + servicesPerPage);
 
+  useEffect (() => {
+    console.log("Cambiando a servicio", actualService);
+  }, [actualService]);
+
   return (
     <div className="flex flex-col items-center justify-start w-screen h-screen">
       {/* Menú para pantallas grandes */}
-      <div className="hidden sm:flex justify-center items-center p-4 grayGradientVariant text-black gap-4 h-[30px] z-30 min-w-[40vw] w-[90vw] m-0 ring-1 ring-zinc-300 rounded-lg">
+      <div className="hidden sm:flex justify-center items-center p-8 text-black gap-4 h-16 z-30 w-screen m-0 ring-1 ring-zinc-300 rounded-lg">
+
+        <Link to="/" className='w-full hover:scale-105 transition ease-in cursor-pointer duration-75 hidden sm:block'>
+            <img src="/darkOpptix.webp" alt="Logo" className="w-3/4" />
+        </Link>
+
         {services.map((service, index) => (
           <button
             onClick={() => setActualService(service.id)}
             key={index}
-            className={`hover:scale-105 text-xs text-center w-full transition ease-in cursor-pointer duration-75 ${
+            className={`hover:scale-105 text-xs text-center w-full transition ease-in cursor-pointer duration-75 text-nowrap ${
               actualService === service.id ? "font-bold" : ""
             }`}
           >
             {service.name}
           </button>
         ))}
+
+          <button
+            className="ml-4 mr-4 w-64"
+            onClick={() => {
+              if (language === "es") setLanguage("en");
+              else setLanguage("es");
+            }}
+          >
+            <img
+              src={
+                language === "es"
+                  ? "/flags/argentina.webp"
+                  : "/flags/eeuu.webp"
+              }
+              alt={language === "es" ? "Español" : "Ingles"}
+              className="w-full"
+            />
+        </button>
       </div>
 
         {/* Pantallas chicas, ignorar */}

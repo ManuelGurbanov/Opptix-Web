@@ -60,11 +60,11 @@ const translations = {
     interactivAnimText: "Attract, retain, and sell: interactive animations that double retention and engagement.",
 
     configTittle: "3D Configurators",
-    marketingTittle: "3D Animations for Marketing",
+    marketingTittle: "3D Animations",
     arTittle: "Augmented Reality",
-    staticRenderTittle: "Static Renders for eCommerce and Social Media",
+    staticRenderTittle: "Static Renders",
     viewerTittle: "3D Product Viewer",
-    interactivAnimTittle: "Interactive Animations for Websites",
+    interactivAnimTittle: "Interactive Animations",
 
     pack1Title: "More Trust, More Conversions",
     pack1Description: "Convert more with an interactive 3D catalog and augmented reality.",
@@ -111,7 +111,11 @@ const translations = {
     bookDemo: "Book a Demo",
     sendMessage: "Or send us a message with your questions",
     ownPack: "We create your Own Pack",
-    talk: "Talk to an advisor"
+    talk: "Talk to an advisor",
+    chair : "Chair",
+    grill : "Grill",
+    car : "Car",
+    finalPrice : "Final Price:"
   },
   es: {
     services: "Servicios",
@@ -174,11 +178,11 @@ const translations = {
     interactivAnimText: "Atrae, retiene y vende: animaciones interactivas que duplican la retención y el engagement.",
 
     configTittle: "Configuradores 3D",
-    marketingTittle: "Animaciones 3D para marketing",
+    marketingTittle: "Animaciones",
     arTittle: "Realidad Aumentada",
-    staticRenderTittle: "Renders estáticos para eCommerce y redes",
-    viewerTittle: "Visualizador de productos en 3D",
-    interactivAnimTittle: "Animaciones interactivas para sitios web",
+    staticRenderTittle: "Renders estáticos",
+    viewerTittle: "Visualizador productos 3D",
+    interactivAnimTittle: "Animaciones interactivas",
 
     pack1Title: "Más confianza, más conversión",
     pack1Description: "Convierte más con un catálogo 3D interactivo y realidad aumentada.",
@@ -225,9 +229,14 @@ const translations = {
     bookDemo: "Reserva una Demostración",
     sendMessage: "O envíenos un mensaje con sus preguntas",
     ownPack: "Creamos tu Propio Pack",
-    talk: "Hablar con un asesor"
+    talk: "Hablar con un asesor",
+    chair : "Sillón",
+    grill : "Parrilla",
+    car : "Auto",
+    finalPrice: "Precio Final:"
   }
   
+
 };
   
   export const translate = (key, language) => {

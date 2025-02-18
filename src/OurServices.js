@@ -80,7 +80,7 @@ function OurServices({services,language}) {
               <p className="font-normal text-2xl w-full text-left mb-3">
                 {service.description}
               </p>
-              <a href='/services' className='text-black underline text-left'>Ver más</a>
+              <a href={`/services/${service.id}`} className='text-black underline text-left'>Ver más</a>
             </div>
           </div>
         ))}

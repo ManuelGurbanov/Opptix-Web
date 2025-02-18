@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation  } from 'react-router-dom';
 import ARModelViewer from './ARModelViewer';
 import MainBanner from './MainBanner';
 import Navbar from './Navbar';
@@ -24,8 +24,22 @@ import 'aos/dist/aos.css';
 import AllConfigurators from './AllConfigurators';
 import UploaderViewer from './UploaderViewer';
 import { translate } from './Translations';
+
+function Layout({ children, language, setLanguage }) {
+  const location = useLocation();
+  const showNavbar = !location.pathname.startsWith("/services");
+
+  return (
+    <>
+      {showNavbar && <Navbar language={language} setLanguage={setLanguage} />}
+      {children}
+    </>
+  );
+}
+
 function App() {
-  const [language, setlanguage] = useState('en');
+  const [language, setLanguage] = useState('en');
+
   const [showAccesory, setShowAccesory] = useState(false);
 
   useEffect(() => {
@@ -38,7 +52,7 @@ function App() {
       name: translate("configTittle", language),
       description: translate("configText", language),
       component:
-      <AllConfigurators/>
+      <AllConfigurators language={language}/>
       ,
       
       picture: 
@@ -81,10 +95,11 @@ function App() {
       description: translate("arText", language),
       component: 
       <section className='w-full flex-col items-center justify-start px-24'>
-        <div className="relative flex flex-col sm:flex-row items-center justify-center w-full bg-white rounded-4xl">
+        <div className="flex flex-col sm:flex-row items-center justify-center w-full bg-white rounded-4xl">
               <model-viewer
                 id="hotspot-camera-view-demo" 
                 loading="eager"
+                        poster="/loading.gif"
                 src="/models/bicicleta.glb"
                 alt="Modelo 3D en AR"
                 auto-rotate
@@ -95,7 +110,6 @@ function App() {
                 style={{
                   width: "400px",
                   height: "400px",
-                  maxWidth: "70vw",
                   display: "block",
                   border: "1px solid #CFCFCF",
                   borderRadius: "12px",
@@ -110,10 +124,13 @@ function App() {
               </img>
         </div>
 
-        <div className="relative flex flex-col sm:flex-row-reverse items-center justify-center w-full bg-white rounded-4xl">
+        <hr className='bg-lightblue bg-opacity-20 w-full h-[1px] mt-12 mb-12'></hr>
+
+        <div className="flex flex-col sm:flex-row-reverse items-center justify-center w-full bg-white rounded-4xl">
               <model-viewer
                 id="hotspot-camera-view-demo" 
                 loading="eager"
+                poster="/loading.gif"
                 src="/models/sillon.glb"
                 alt="Modelo 3D en AR"
                 auto-rotate
@@ -139,10 +156,13 @@ function App() {
               </img>
         </div>
 
-        <div className="relative flex flex-col sm:flex-row items-center justify-center w-full bg-white rounded-4xl">
+        <hr className='bg-lightblue bg-opacity-20 w-full h-[1px] mt-12 mb-12'></hr>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center w-full bg-white rounded-4xl">
               <model-viewer
                 id="hotspot-camera-view-demo" 
                 loading="eager"
+                poster="/loading.gif"
                 src="/models/sofa.glb"
                 alt="Modelo 3D en AR"
                 auto-rotate
@@ -168,10 +188,13 @@ function App() {
               </img>
         </div>
 
-        <div className="relative flex flex-col sm:flex-row-reverse items-center justify-center w-full bg-white rounded-4xl">
+        <hr className='bg-lightblue bg-opacity-20 w-full h-[1px] mt-12 mb-12'></hr>
+
+        <div className="flex flex-col sm:flex-row-reverse items-center justify-center w-full bg-white rounded-4xl">
               <model-viewer
                 id="hotspot-camera-view-demo" 
                 loading="eager"
+                poster="/loading.gif"
                 src="/models/TEST-180CM.glb"
                 alt="Modelo 3D en AR"
                 auto-rotate
@@ -315,27 +338,28 @@ function App() {
 
   return (
     <Router>
-      <Navbar language={language} setLanguage={setlanguage} />
-      <Routes>
-        <Route path="/" element={
-          <section className='max-w-screen overflow-hidden flex flex-col items-center mt-20'>
-            <MainBanner language={language} />
-            <WhyWorkTogether language={language} />
-            <OurServices language={language} services={services}/>
-            <Packs packs={packs} language={language}/>
-            <CaseStudies cases={cases} language={language} />
-            <Faq language={language}/>
-            <Footer language={language} services={services} caseStudies={caseStudiesNames} packs={packNames}/>
-          </section>
-        } />
-
-        <Route path="/case-study" element={<CaseStudiePage caseStudies={cases}/>} />
-        <Route path="/services" element={<Services services={services}/>} />
-        <Route path="/model" element={<ModelLink />} />
-        <Route path="/upload" element={<UploaderViewer />} />
-      </Routes>
+      <Layout language={language} setLanguage={setLanguage}>
+        <Routes>
+          <Route path="/" element={
+            <section className='max-w-screen overflow-hidden flex flex-col items-center mt-20'>
+              <MainBanner language={language} />
+              <WhyWorkTogether language={language} />
+              <OurServices language={language} services={services} />
+              <Packs packs={packs} language={language} />
+              <CaseStudies cases={cases} language={language} />
+              <Faq language={language} />
+              <Footer language={language} services={services} caseStudies={caseStudiesNames} packs={packNames} />
+            </section>
+          } />
+          <Route path="/case-study" element={<CaseStudiePage caseStudies={cases} />} />
+          <Route path="/services/:serviceId" element={<Services services={services} language={language} setLanguage={setLanguage}/>} />
+          <Route path="/model" element={<ModelLink />} />
+          <Route path="/upload" element={<UploaderViewer />} />
+        </Routes>
+      </Layout>
     </Router>
   );
 }
 
 export default App;
+

@@ -3,10 +3,13 @@ import { useState } from "react";
 import ARModelViewer from "./ARModelViewer";
 import CarModelViewer from "./CarModelViewer";
 import ParrillaModelViewer from "./ParrillaModelViewer";
+import SillonViewer from "./SillonViewer";
 
-export default function AllConfigurators() {
+import { translate } from "./Translations";
 
-    const [selectedConfigurator, setSelectedConfigurator] = useState("car");
+export default function AllConfigurators({language}) {
+
+    const [selectedConfigurator, setSelectedConfigurator] = useState("rack");
 
     const [totalPriceCar, setTotalPriceCar] = useState(20000);
     const [totalPriceParrilla, setTotalPriceParrilla] = useState(1500);
@@ -24,7 +27,7 @@ export default function AllConfigurators() {
                         selectedConfigurator === "car" ? "font-bold underline" : ""
                         }`}
                     >
-                        Auto
+                        {translate("car", language)}
                     </button>
                     <button
                         onClick={() => setSelectedConfigurator("parrilla")}
@@ -32,15 +35,15 @@ export default function AllConfigurators() {
                             selectedConfigurator === "parrilla" ? "font-bold underline" : ""
                         }`}
                     >
-                        Parrilla
+                        {translate("grill", language)}
                     </button>
                     <button
-                        onClick={() => setSelectedConfigurator("rack")}
+                        onClick={() => setSelectedConfigurator("chair")}
                         className={`hover:scale-105 text-xs text-center w-full transition ease-in cursor-pointer duration-75 ${
-                        selectedConfigurator === "rack" ? "font-bold underline" : ""
+                        selectedConfigurator === "chair" ? "font-bold underline" : ""
                         }`}
                     >
-                        Sillón
+                        {translate("chair", language)}
                     </button>
                 </nav>
 
@@ -54,18 +57,14 @@ export default function AllConfigurators() {
 
             </div>
 
-            {selectedConfigurator == "parrilla" && <ParrillaModelViewer modelSrc="/models/parrilla.glb" controlsContainerId="material-controls" setTotalPriceParrilla={setTotalPriceParrilla} />}
+            {selectedConfigurator == "parrilla" && <ParrillaModelViewer modelSrc="/models/parrilla.glb" controlsContainerId="material-controls" setTotalPriceParrilla={setTotalPriceParrilla} language={language}/>}
 
-            {selectedConfigurator == "car" && <CarModelViewer modelSrc="/models/car.glb" setTotalPriceCar={setTotalPriceCar}/>}
+            {selectedConfigurator == "car" && <CarModelViewer modelSrc="/models/car.glb" setTotalPriceCar={setTotalPriceCar} language={language}/>}
 
             {selectedConfigurator=="rack" && 
             
             <>
-            <ARModelViewer modelSrc="/models/rack.glb" controlsContainerId="material-controls-rack" />
-            <div
-                id="material-controls-rack"
-                className="bg-transparent p-4 rounded bottom-0 gap-2 hidden sm:flex"
-                ></div>
+            <SillonViewer modelSrc="/models/sillon.glb" />
             </>
             }
       </section>

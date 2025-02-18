@@ -17,6 +17,22 @@ const VARIANT_COLORS = {
   "CUERO-AMARILLO": "Amarillo",
 };
 
+const VARIANT_COLORS_EN = {
+  "EXT-BLANCO": "White",
+  "EXT-AZUL": "Blue",
+  "EXT-NEGRO": "Black",
+  "EXT-ROJO": "Red",
+  "LINEAS-CELESTE": "Lightblue",
+  "LINEAS-ROJAS": "Red",
+  "LINEAS-AMARILLAS": "Yellow",
+  "LINEAS-BLANCAS": "White",
+  "CUERO-NEGRO": "Black",
+  "CUERO-ROJO": "Red",
+  "CUERO-CAMEL": "Camel",
+  "CUERO-BLANCO": "White",
+  "CUERO-AMARILLO": "Yellow",
+};
+
 const VARIANT_PRICES = {
   "EXT-BLANCO": 500,
   "EXT-AZUL": 600,
@@ -33,9 +49,21 @@ const VARIANT_PRICES = {
   "CUERO-AMARILLO": 1400,
 };
 
+const groupNames = {
+  "EXT": "Exterior",
+  "LINEAS" : "Lineas",
+  "CUERO" : "Cuero"
+}
+
+const groupNamesEn = {
+  "EXT": "Exterior",
+  "LINEAS" : "Lines",
+  "CUERO" : "Leather"
+}
+
 const BASE_PRICE = 20000;
 
-const CarModelViewer = ({ modelSrc , setTotalPriceCar }) => {
+const CarModelViewer = ({ modelSrc , setTotalPriceCar, language }) => {
   const modelViewerRef = useRef(null);
   const [variantOptions, setVariantOptions] = useState({});
   const [activeVariants, setActiveVariants] = useState({});
@@ -122,7 +150,7 @@ const CarModelViewer = ({ modelSrc , setTotalPriceCar }) => {
   
 
   return (
-    <div className="relative flex flex-col items-center justify-center w-full bg-white mt-4 gap-2">
+    <div className="relative flex flex-col items-center justify-center w-full bg-white mt-2 gap-2">
 
       {priceChange !== null && (
         <div className="absolute top-0 bottom-0 right-32 h-12 px-3 mt-2 text-lg font-base text-zinc-400 border border-zinc-400 animate-up z-50 bg-zinc-200 rounded-full flex items-center justify-center">
@@ -154,25 +182,27 @@ const CarModelViewer = ({ modelSrc , setTotalPriceCar }) => {
       />
 
       <div className="flex flex-col items-center justify-start bg-white p-2 sm:w-1/2 w-screen max-h-[70vh]">
-        <section className="flex flex-row items-center justify-center w-full gap-2">
-          {["EXT", "LINEAS", "CUERO"].map((group) => (
-            <button
-              key={group}
-              className={`${
-                selectingGroup === group ? "font-bold underline" : "font-normal"
-              } p-2 text-black`}
-              onClick={() => setSelectingGroup(group)}
-            >
-              {group}
-            </button>
-          ))}
-        </section>
+      <section className="flex flex-row items-center justify-center w-full gap-2">
+        {["EXT", "LINEAS", "CUERO"].map((group) => (
+          <button
+            key={group}
+            className="p-2 text-black font-normal"
+            onClick={() => setSelectingGroup(group)}
+          >
+            {selectingGroup === group && <span className="font-normal">• </span>}
+            <span className={selectingGroup === group ? "font-bold underline" : "font-normal"}>
+              {language === "en" ? groupNamesEn[group] : groupNames[group]}
+            </span>
+          </button>
+        ))}
+      </section>
+
 
         <div className="flex flex-row flex-wrap items-center justify-center gap-2 p-2 w-full">
           <button className="px-2 py-1 text-black bg-lightblue6 border-2 border-lightblue rounded-full flex items-center justify-center
                             hover:bg-lightblue2 hover:text-white transition-all"
                             onClick={() => reloadModel()}>
-              <img src="reload.svg"></img>
+              <img src="/reload.svg"></img>
           </button>
           {variantOptions[selectingGroup]?.map((variant) => (
             <button
@@ -182,7 +212,7 @@ const CarModelViewer = ({ modelSrc , setTotalPriceCar }) => {
               }`}
               onClick={() => toggleVariant(selectingGroup, variant)}
             >
-              {VARIANT_COLORS[variant] || variant}
+              {language === "en" ? VARIANT_COLORS_EN[variant] : VARIANT_COLORS[variant] || variant}
             </button>
           ))}
         </div>
