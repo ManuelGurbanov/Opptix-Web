@@ -21,7 +21,10 @@ function WhyWorkTogether({ language }) {
       <div 
         className="flex flex-row gap-4 overflow-x-scroll sm:overflow-hidden w-full min-w-max items-center justify-center sm:justify-start h-auto pl-4 pr-4"
       >
-        <div className="flex flex-row w-screen items-center justify-start sm:justify-center h-auto pl-4 pr-4">
+        <div 
+            className='flex flex-row gap-2 mb-12 sm:overflow-auto overflow-x-scroll w-screen items-center justify-start sm:justify-center sm:h-80 h-52 px-4'
+            style={{ minWidth: '100vw', paddingLeft: '16px', paddingRight: '16px' }}
+        >
         {reasons.map((reason) => (
           <div
             data-aos="fade-up"

@@ -16,7 +16,7 @@ export default function AllConfigurators({language}) {
 
     return (
         <>
-        <section className='w-full min-h-screen flex flex-col justify-start items-center rounded-lg gap-0 mt-12'>
+        <section className='w-full min-h-screen flex flex-col justify-start items-center rounded-lg gap-0 sm:mt-12'>
 
             <div className="hidden sm:flex justify-between items-start w-full px-24">
                 

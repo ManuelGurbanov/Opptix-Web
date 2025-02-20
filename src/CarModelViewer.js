@@ -170,7 +170,6 @@ const CarModelViewer = ({ modelSrc , setTotalPriceCar, language }) => {
         ar-modes="webxr scene-viewer quick-look"
         style={{
           width: "80vw",
-          minWidth: "450px",
           height: "60vh",
           minHeight: "250px",
           borderRadius: "10px",
