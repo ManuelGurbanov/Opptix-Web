@@ -154,30 +154,58 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
           {priceChange >= 0 ? `+ $${priceChange}` : `- $${Math.abs(priceChange)}`}
         </div>
       )}
-      <model-viewer
-        id="model-viewer"
-        loading="eager"
-        poster = "/loading.gif"
-        ref={modelViewerRef}
-        src={modelSrc}
-        alt="Modelo 3D"
-        camera-controls
-        ar
-        ar-modes="webxr scene-viewer quick-look"
-        style={{
-          width: "80vw",
-          minWidth: "450px",
-          height: "60vh",
-          minHeight: "250px",
-          borderRadius: "10px",
-          border: "1px solid #CFCFCF",
-          "@media (max-width: 700px)": {
-            width: "100vw",
-          },
-        }}
-      />
+    <model-viewer
+      id="model-viewer"
+      loading="eager"
+      poster="/loading.gif"
+      ref={modelViewerRef}
+      src={modelSrc}
+      alt="Modelo 3D"
+      camera-controls
+      ar
+      ar-modes="webxr scene-viewer quick-look"
+      style={{
+        width: "80vw",
+        minWidth: "450px",
+        height: "60vh",
+        minHeight: "250px",
+        borderRadius: "10px",
+        border: "1px solid #CFCFCF",
+        "@media (max-width: 700px)": {
+          width: "100vw",
+        },
+      }}
+      onLoad={() => {
+        const modelViewer = document.querySelector("#model-viewer");
+        modelViewer.availableAnimations = modelViewer.availableAnimations || modelViewer.getAnimations();
+      }}
+    >
+    </model-viewer>
 
       <div className="flex flex-col items-center justify-start bg-white p-2 sm:w-3/4 w-screen max-h-[70vh]">
+      <button
+        slot="hotspot-animate"
+        data-position="0m 1m 0m"
+        data-normal="0m 1m 0m"
+        onClick={() => {
+          const modelViewer = document.querySelector("#model-viewer");
+          console.log(modelViewer.paused);
+          if (modelViewer.paused) {
+            modelViewer.play();
+          } else {
+            modelViewer.pause();
+          }
+        }}
+        style={{
+          background: "rgba(255, 255, 255, 0.8)",
+          border: "none",
+          padding: "8px 12px",
+          borderRadius: "5px",
+          cursor: "pointer",
+        }}
+      >
+        Abrir
+      </button>
       <section className="flex flex-row items-center justify-center w-full gap-0 overflow-x-auto whitespace-nowrap">
         {Object.keys(variantsByGroup).map((group) => (
           <button

@@ -229,15 +229,21 @@ function App() {
       id: 3,
       name: translate("staticRenderTittle", language),
       description: translate("staticRenderText", language),
-      component: <div className='w-full h-full bg-zinc-200'></div>,
-      picture: ""
+      component: <></>,
+      picture: 
+        <div className='w-full h-full bg-zinc-200 hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative'>
+          <img src='render.webp' className='absolute top-0 left-0 w-full h-full object-cover z-0 sm:rounded-[80px]'></img>
+        </div>
     },
     {
       id: 4,
       name: translate("viewerTittle", language),
       description: translate("viewerText", language),
       component: <div className='w-full h-full bg-zinc-200'></div>,
-      picture: ""
+      picture: 
+        <div className='w-full h-full bg-zinc-200 hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative'>
+          <img src='viewer.webp' className='absolute top-0 left-0 w-full h-full object-cover z-0 sm:rounded-[80px]'></img>
+        </div>
     },
     {
       id: 5,

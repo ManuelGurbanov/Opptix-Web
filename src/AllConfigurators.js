@@ -9,7 +9,7 @@ import { translate } from "./Translations";
 
 export default function AllConfigurators({language}) {
 
-    const [selectedConfigurator, setSelectedConfigurator] = useState("rack");
+    const [selectedConfigurator, setSelectedConfigurator] = useState("car");
 
     const [totalPriceCar, setTotalPriceCar] = useState(20000);
     const [totalPriceParrilla, setTotalPriceParrilla] = useState(1500);
@@ -61,7 +61,7 @@ export default function AllConfigurators({language}) {
 
             {selectedConfigurator == "car" && <CarModelViewer modelSrc="/models/car.glb" setTotalPriceCar={setTotalPriceCar} language={language}/>}
 
-            {selectedConfigurator=="rack" && 
+            {selectedConfigurator=="chair" && 
             
             <>
             <SillonViewer modelSrc="/models/sillon.glb" />
