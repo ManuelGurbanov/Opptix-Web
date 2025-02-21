@@ -20,31 +20,33 @@ export default function AllConfigurators({language}) {
 
             <div className="hidden sm:flex justify-between items-start w-full px-24">
                 
-                <nav className="hidden sm:flex justify-center items-center p-4 grayGradientVariant text-black gap-4 h-[30px] z-30 min-w-[40vw] w-[50vw] m-0 ring-1 ring-zinc-300 rounded-lg">
+                <nav className="hidden sm:flex justify-center items-center p-4 gap-7 text-black h-[30px] z-30 w-[30vw] m-0 rounded-lg relative">
                     <button
                         onClick={() => setSelectedConfigurator("car")}
-                        className={`hover:scale-105 text-xs text-center w-full transition ease-in cursor-pointer duration-75 ${
-                        selectedConfigurator === "car" ? "font-bold underline" : ""
+                        className={`hover:scale-105 w-14 text-lg text-center transition ease-in cursor-pointer duration-75 ${
+                        selectedConfigurator === "car" ? "font-black" : ""
                         }`}
                     >
                         {translate("car", language)}
                     </button>
                     <button
                         onClick={() => setSelectedConfigurator("parrilla")}
-                        className={`hover:scale-105 text-xs text-center w-full transition ease-in cursor-pointer duration-75 ${
-                            selectedConfigurator === "parrilla" ? "font-bold underline" : ""
+                        className={`hover:scale-105 w-14 text-lg text-center transition ease-in cursor-pointer duration-75 ${
+                            selectedConfigurator === "parrilla" ? "font-bold" : ""
                         }`}
                     >
                         {translate("grill", language)}
                     </button>
                     <button
                         onClick={() => setSelectedConfigurator("chair")}
-                        className={`hover:scale-105 text-xs text-center w-full transition ease-in cursor-pointer duration-75 ${
-                        selectedConfigurator === "chair" ? "font-bold underline" : ""
+                        className={`hover:scale-105 w-14 text-lg text-center transition ease-in cursor-pointer duration-75 ${
+                        selectedConfigurator === "chair" ? "font-bold" : ""
                         }`}
                     >
                         {translate("chair", language)}
                     </button>
+
+                    <hr className="w-2/5 h-[2px] bg-black absolute bottom-0"></hr>
                 </nav>
 
                 <div className="flex flex-col items-center justify-center text-right">

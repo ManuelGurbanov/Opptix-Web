@@ -45,9 +45,9 @@ function Services({ language, services, setLanguage }) {
       {/* Menú para pantallas grandes */}
       <div className="hidden sm:flex justify-center items-center p-8 text-black gap-4 h-16 z-30 w-screen m-0 ring-1 ring-zinc-300 rounded-lg">
 
-        <Link to="/" className='w-full hover:scale-105 transition ease-in cursor-pointer duration-75 hidden sm:block'>
-            <img src="/darkOpptix.webp" alt="Logo" className="w-3/4" />
-        </Link>
+          <Link to="/" className='w-1/2 hover:scale-105 transition ease-in cursor-pointer duration-75 hidden sm:block'>
+            <img src="/darkOpptix.webp" alt="Logo" />
+          </Link>
 
         {services.map((service, index) => (
           <button

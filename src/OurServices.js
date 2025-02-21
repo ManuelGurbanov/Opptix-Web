@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { translate } from './Translations';
 
 function OurServices({services,language}) {
-  let [actualService, setActualService] = useState(1);
+  let [actualService, setActualService] = useState(0);
 
 
   const raiseService = () => {

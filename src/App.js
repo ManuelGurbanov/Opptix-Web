@@ -56,9 +56,9 @@ function App() {
       ,
       
       picture: 
-      <div className='w-full h-full bg-zinc-200 hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative'>
+      <a className='w-full h-full bg-zinc-200 hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative' href='/services/0'>
         <img src='phone.webp' className='h-full absolute bottom-0'></img>
-      </div>
+      </a>
     },
     {
       id: 1,
@@ -78,7 +78,7 @@ function App() {
 
 
       picture:
-      <div className='w-full h-full bg-black hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative'>
+      <a className='w-full h-full bg-black hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative' href='/services/1'>
         <video
           className="absolute top-0 left-0 w-full h-full object-cover z-0 sm:rounded-[80px]"
           src="/img/3d.mp4"
@@ -87,7 +87,7 @@ function App() {
           muted
           playsInline
         ></video>
-      </div>
+      </a>
     },
     {
       id: 2,
@@ -221,9 +221,9 @@ function App() {
         </div>
       </section>,
       picture:
-      <div className='w-full h-full bg-zinc-200 hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative'>
+      <a className='w-full h-full bg-zinc-200 hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative' href='/services/2'>
         <img src='phone.webp' className='h-full absolute bottom-0'></img>
-      </div>
+      </a>
     },
     {
       id: 3,
@@ -231,9 +231,9 @@ function App() {
       description: translate("staticRenderText", language),
       component: <></>,
       picture: 
-        <div className='w-full h-full bg-zinc-200 hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative'>
+        <a className='w-full h-full bg-zinc-200 hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative' href='/services/3'>
           <img src='render.webp' className='absolute top-0 left-0 w-full h-full object-cover z-0 sm:rounded-[80px]'></img>
-        </div>
+        </a>
     },
     {
       id: 4,
@@ -241,9 +241,9 @@ function App() {
       description: translate("viewerText", language),
       component: <div className='w-full h-full bg-zinc-200'></div>,
       picture: 
-        <div className='w-full h-full bg-zinc-200 hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative'>
+        <a className='w-full h-full bg-zinc-200 hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative' href='/services/4'>
           <img src='viewer.webp' className='absolute top-0 left-0 w-full h-full object-cover z-0 sm:rounded-[80px]'></img>
-        </div>
+        </a>
     },
     {
       id: 5,
@@ -312,6 +312,7 @@ function App() {
 
   const packs = [
     {
+        id: 0,
         title: translate("pack1Title", language),
         description: translate("pack1Description", language),
         price: translate("pack1Price", language),
@@ -321,6 +322,7 @@ function App() {
     },
     
     {
+        id: 1,
         title: translate("pack2Title", language),
         description: translate("pack2Description", language),
         price: translate("pack2Price", language),
@@ -329,6 +331,7 @@ function App() {
         results: translate("pack2Results", language).map(result => result)
     },
     {
+      id: 2,
       title: translate("pack3Title", language),
       description: translate("pack3Description", language),
       price: translate("pack3Price", language),

@@ -85,6 +85,22 @@ const CarModelViewer = ({ modelSrc , setTotalPriceCar, language }) => {
     setTotalPriceCar(newTotal);
   };
 
+  const CAMERA_COORDINATES = {
+    EXT: { orbit: "90deg 75deg 1500px" },
+    LINEAS: { orbit: "20deg 10deg 1300px" },
+    CUERO: { orbit: "80deg 20deg 1000px" },
+  };
+  
+  const changeSelectingGroup = (group) => {
+    const modelViewer = modelViewerRef.current;
+    setSelectingGroup(group);
+    if (CAMERA_COORDINATES[group]) {
+      modelViewer.cameraOrbit = CAMERA_COORDINATES[group].orbit;
+      modelViewer.lookAt = "auto";
+      modelViewer.jumpCameraToGoal();
+    }
+  };
+
   useEffect(() => {
     const modelViewer = modelViewerRef.current;
     if (!modelViewer) return;
@@ -132,15 +148,22 @@ const CarModelViewer = ({ modelSrc , setTotalPriceCar, language }) => {
 
     modelViewer.variantName = variant;
     await modelViewer.model.updateComplete;
-
+  
+    if (CAMERA_COORDINATES[category]) {
+      modelViewer.cameraOrbit = CAMERA_COORDINATES[category].orbit;
+      modelViewer.lookAt = "auto";
+      modelViewer.jumpCameraToGoal();
+    }
+  
     setActiveVariants((prev) => {
       const newVariants = { ...prev, [category]: variant };
       updateTotalPrice(newVariants, prev[category]);
       return newVariants;
     });
-
+  
     updateTotalPrice({ ...activeVariants, [category]: variant });
   };
+  
 
   const reloadModel = async () => {
     await toggleVariant("EXT", "EXT-NEGRO");
@@ -186,7 +209,7 @@ const CarModelViewer = ({ modelSrc , setTotalPriceCar, language }) => {
           <button
             key={group}
             className="p-2 text-black font-normal"
-            onClick={() => setSelectingGroup(group)}
+            onClick={() => changeSelectingGroup(group)}
           >
             {selectingGroup === group && <span className="font-normal">• </span>}
             <span className={selectingGroup === group ? "font-bold underline" : "font-normal"}>

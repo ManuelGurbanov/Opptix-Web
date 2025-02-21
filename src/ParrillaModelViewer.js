@@ -147,6 +147,22 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
     await toggleVariant("BASE", "BASE-NEGRA");
   }
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleAnimation = () => {
+    const modelViewer = document.querySelector("#model-viewer");
+
+    if (modelViewer) {
+      modelViewer.play();
+
+      setTimeout(() => {
+        modelViewer.pause();
+        setIsOpen((prev) => !prev);
+      }, 2500);
+    }
+  };
+
+
   return (
     <div className="relative flex flex-col items-center justify-center w-full bg-white mt-1 gap-4">
       {priceChange !== null && (
@@ -180,32 +196,21 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
         modelViewer.availableAnimations = modelViewer.availableAnimations || modelViewer.getAnimations();
       }}
     >
+      {activeVariants.TAPA != "OFF-TAPA" && (
+        <button
+          onClick={handleAnimation}
+          className="p-2 border-2 rounded-full transition-all w-24 text-center 
+                    border-lightblue text-white bg-lightblue2 font-bold 
+                    absolute z-10 bottom-3 left-1/2 -translate-x-1/2"
+        >
+          {isOpen ? "Cerrar" : "Abrir"}
+        </button>
+
+        )}
+
     </model-viewer>
 
       <div className="flex flex-col items-center justify-start bg-white p-2 sm:w-3/4 w-screen max-h-[70vh]">
-      <button
-        slot="hotspot-animate"
-        data-position="0m 1m 0m"
-        data-normal="0m 1m 0m"
-        onClick={() => {
-          const modelViewer = document.querySelector("#model-viewer");
-          console.log(modelViewer.paused);
-          if (modelViewer.paused) {
-            modelViewer.play();
-          } else {
-            modelViewer.pause();
-          }
-        }}
-        style={{
-          background: "rgba(255, 255, 255, 0.8)",
-          border: "none",
-          padding: "8px 12px",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-      >
-        Abrir
-      </button>
       <section className="flex flex-row items-center justify-center w-full gap-0 overflow-x-auto whitespace-nowrap">
         {Object.keys(variantsByGroup).map((group) => (
           <button
