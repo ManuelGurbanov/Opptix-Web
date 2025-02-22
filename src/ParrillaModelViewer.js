@@ -149,16 +149,18 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
+  
   const handleAnimation = () => {
+    const button = document.querySelector("#open-button");
     const modelViewer = document.querySelector("#model-viewer");
-
     if (modelViewer) {
       modelViewer.play();
-
+      button.disabled = true;
       setTimeout(() => {
         modelViewer.pause();
+        button.disabled = false;
         setIsOpen((prev) => !prev);
-      }, 2500);
+      }, 2000);
     }
   };
 
@@ -202,6 +204,7 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
           className="p-2 border-2 rounded-full transition-all w-24 text-center 
                     border-lightblue text-white bg-lightblue2 font-bold 
                     absolute z-10 bottom-3 left-1/2 -translate-x-1/2"
+          id="open-button"
         >
           {isOpen ? "Cerrar" : "Abrir"}
         </button>

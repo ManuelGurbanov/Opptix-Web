@@ -25,6 +25,8 @@ import AllConfigurators from './AllConfigurators';
 import UploaderViewer from './UploaderViewer';
 import { translate } from './Translations';
 
+import OurServicesBento from './OurServicesBento';
+
 function Layout({ children, language, setLanguage }) {
   const location = useLocation();
   const showNavbar = !location.pathname.startsWith("/services");
@@ -353,7 +355,8 @@ function App() {
             <section className='max-w-screen overflow-hidden flex flex-col items-center mt-20'>
               <MainBanner language={language} />
               <WhyWorkTogether language={language} />
-              <OurServices language={language} services={services} />
+              <OurServicesBento/>
+              {/* <OurServices language={language} services={services} /> */}
               <Packs packs={packs} language={language} />
               <CaseStudies cases={cases} language={language} />
               <Faq language={language} />
