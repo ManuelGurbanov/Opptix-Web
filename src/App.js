@@ -18,6 +18,7 @@ import UploaderViewer from './UploaderViewer';
 import { translate } from './Translations';
 
 import OurServicesBento from './OurServicesBento';
+import UploaderThree from './UploaderThree';
 
 function Layout({ children, language, setLanguage }) {
   const location = useLocation();
@@ -359,6 +360,7 @@ function App() {
           <Route path="/services/:serviceId" element={<Services services={services} language={language} setLanguage={setLanguage}/>} />
           <Route path="/model" element={<ModelLink />} />
           <Route path="/upload" element={<UploaderViewer />} />
+          <Route path="/uploadthree" element={<UploaderThree />} />
         </Routes>
       </Layout>
     </Router>
