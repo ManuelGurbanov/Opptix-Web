@@ -1,53 +1,68 @@
 import { Canvas } from "@react-three/fiber";
 import { useGLTF, OrbitControls } from "@react-three/drei";
 import { useEffect, useState } from "react";
+import { TextureLoader } from "three";
 
-const SillonModel = ({ toggleBedVisibility, onLoadComplete }) => {
-  const { scene } = useGLTF("/models/sillon.glb", true); // Cargar el modelo
+const textureLoader = new TextureLoader();
+const textureNames = ["sofa-01", "sofa-02", "sofa-03", "sofa-04", "sofa-05", "sofa-06"];
+const textures = textureNames.reduce((acc, name) => {
+  acc[name] = textureLoader.load(`/textures/${name}.jpg`);
+  return acc;
+}, {});
+
+const SillonModel = ({ selectedTexture, onLoadComplete }) => {
+  const { scene } = useGLTF("/models/sillon.glb", true);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [originalMaterials, setOriginalMaterials] = useState(new Map());
 
   useEffect(() => {
     if (scene) {
-      setIsLoaded(true); // El modelo ha sido cargado
-      onLoadComplete(); // Llamamos a la función pasada como prop
+      setIsLoaded(true);
+      onLoadComplete();
+
+      // Guardar materiales originales la primera vez
+      if (originalMaterials.size === 0) {
+        const materialsMap = new Map();
+        scene.traverse((object) => {
+          if (object.isMesh) {
+            materialsMap.set(object, object.material);
+          }
+        });
+        setOriginalMaterials(materialsMap);
+      }
     }
   }, [scene, onLoadComplete]);
 
   useEffect(() => {
-    if (scene) {
-      // Si se actualiza el estado de la visibilidad, recorremos la escena
+    if (scene && originalMaterials.size > 0) {
       scene.traverse((object) => {
         if (object.isMesh) {
-          if (object.name.toLowerCase().includes("cama")) {
-            object.visible = toggleBedVisibility;
+          if (selectedTexture) {
+            object.material.map = textures[selectedTexture];
+            object.material.needsUpdate = true;
+          } else {
+            object.material = originalMaterials.get(object); // Restaurar material original
           }
         }
       });
     }
-  }, [toggleBedVisibility, scene]);
+  }, [selectedTexture, scene, originalMaterials]);
 
-  if (!isLoaded) {
-    return null; // Mientras carga, no renderizamos nada
-  }
-
+  if (!isLoaded) return null;
   return <primitive object={scene} />;
 };
 
 const SillonViewer = () => {
-  const [showBed, setShowBed] = useState(true); // Estado que alterna la visibilidad
-  const [loading, setLoading] = useState(true); // Estado de carga del modelo
+  const [loading, setLoading] = useState(true);
+  const [selectedTexture, setSelectedTexture] = useState(null);
 
-  const toggleBed = () => {
-    setShowBed((prevShowBed) => !prevShowBed); // Alterna entre mostrar y ocultar
-  };
-
-  const handleModelLoad = () => {
-    setLoading(false); // El modelo ha sido cargado
-  };
+  const handleModelLoad = () => setLoading(false);
+  const handleTextureChange = (texture) => setSelectedTexture(texture);
 
   return (
     <div className="w-screen flex flex-col items-center justify-center relative mt-2 gap-4">
-      <Canvas className="cursor-grab"
+      <Canvas
+        className="cursor-grab"
         camera={{ position: [0, 2, 5], fov: 50 }}
         style={{
           width: "80vw",
@@ -56,49 +71,34 @@ const SillonViewer = () => {
           minHeight: "250px",
           borderRadius: "10px",
           border: "1px solid #CFCFCF",
-          "@media (max-width: 700px)": {
-            width: "100vw",
-          },
+          "@media (max-width: 700px)": { width: "100vw" },
         }}
       >
-      <ambientLight intensity={0.9} />  {/* Luz ambiental suave */}
-      <directionalLight position={[5, 5, 5]} intensity={8} />  {/* Luz direccional desde arriba */}
-
-        
-        {/* Añadimos OrbitControls para permitir rotación y zoom */}
+        <ambientLight intensity={0.9} />
+        <directionalLight position={[5, 5, 5]} intensity={8} />
         <OrbitControls />
-        
-        <SillonModel toggleBedVisibility={showBed} onLoadComplete={handleModelLoad} />
+        <SillonModel selectedTexture={selectedTexture} onLoadComplete={handleModelLoad} />
       </Canvas>
 
-      {/* Mostramos el loading gif mientras el modelo carga */}
       {loading && (
-        <div
-          style={{
-            position: "absolute",
-            top: "0",
-            left: "0",
-            right: "0",
-            bottom: "0",
-            backgroundColor: "rgba(255, 255, 255, 0.7)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 10,
-          }}
-        >
+        <div className="absolute top-0 left-0 right-0 bottom-0 bg-white bg-opacity-70 flex justify-center items-center z-10">
           <img src="/loading.gif" alt="Loading..." className="w-1/2" />
         </div>
       )}
 
-      <button
-        onClick={toggleBed}
-        className="px-4 py-3 text-black bg-lightblue6 border-2 border-lightblue rounded-full flex items-center justify-center
-                            hover:bg-lightblue2 hover:text-white transition-all"
-      >
-        {showBed ? "Ocultar cama" : "Mostrar cama"} {/* Cambia el texto del botón */}
-      </button>
-
+      <div className="flex gap-2 mt-4">
+        {textureNames.map((texture) => (
+          <button
+            key={texture}
+            onClick={() => handleTextureChange(texture)}
+            className={`w-16 h-16 border-2 rounded-lg ${
+              selectedTexture === texture ? "border-blue-500" : "border-gray-300"
+            } hover:border-blue-400 transition-all`}
+          >
+            <img src={`/textures/${texture}.jpg`} alt={texture} className="w-full h-full object-cover rounded-md" />
+          </button>
+        ))}
+      </div>
     </div>
   );
 };

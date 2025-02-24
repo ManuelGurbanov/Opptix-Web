@@ -9,7 +9,7 @@ import { translate } from "./Translations";
 
 export default function AllConfigurators({language}) {
 
-    const [selectedConfigurator, setSelectedConfigurator] = useState("car");
+    const [selectedConfigurator, setSelectedConfigurator] = useState("chair");
 
     const [totalPriceCar, setTotalPriceCar] = useState(20000);
     const [totalPriceParrilla, setTotalPriceParrilla] = useState(1500);
