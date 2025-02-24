@@ -9,23 +9,34 @@ const textures = textureNames.reduce((acc, name) => {
   acc[name] = textureLoader.load(`/textures/${name}.jpg`);
   return acc;
 }, {});
+const testTexture = textureLoader.load("/textures/prueba.png");
 
-const SillonModel = ({ selectedTexture, onLoadComplete }) => {
+const SillonModel = ({ toggleBedVisibility, onLoadComplete, selectedTexture }) => {
   const { scene } = useGLTF("/models/sillon.glb", true);
   const [isLoaded, setIsLoaded] = useState(false);
   const [originalMaterials, setOriginalMaterials] = useState(new Map());
+
+  useEffect(() => {
+    scene.traverse((object) => {
+      if (object.isMesh) {
+        console.log(`Mesh: ${object.name}, UVs:`, object.geometry.attributes.uv);
+      }else{
+        console.log(`Object: ${object.name}`);
+      }
+    });
+  }, [scene]);
+  
 
   useEffect(() => {
     if (scene) {
       setIsLoaded(true);
       onLoadComplete();
 
-      // Guardar materiales originales la primera vez
       if (originalMaterials.size === 0) {
         const materialsMap = new Map();
         scene.traverse((object) => {
           if (object.isMesh) {
-            materialsMap.set(object, object.material);
+            materialsMap.set(object, object.material.clone()); // Clonar materiales originales
           }
         });
         setOriginalMaterials(materialsMap);
@@ -38,26 +49,44 @@ const SillonModel = ({ selectedTexture, onLoadComplete }) => {
       scene.traverse((object) => {
         if (object.isMesh) {
           if (selectedTexture) {
-            object.material.map = textures[selectedTexture];
-            object.material.needsUpdate = true;
+            object.material.map = selectedTexture === "test" ? testTexture : textures[selectedTexture];
+            object.material.map.needsUpdate = true;
           } else {
-            object.material = originalMaterials.get(object); // Restaurar material original
+            object.material = originalMaterials.get(object).clone();
           }
         }
       });
     }
   }, [selectedTexture, scene, originalMaterials]);
 
+useEffect(() => {
+  if (scene) {
+    scene.traverse((object) => {
+      if (object.isMesh) {
+        const name = object.name.toLowerCase();
+        
+        if (name.includes("cama")) {
+          object.visible = toggleBedVisibility; // Se muestra si toggleBedVisibility es true
+        } else if (name.includes("back001") || name.includes("sides001")) {
+          object.visible = !toggleBedVisibility; // Se oculta si toggleBedVisibility es true
+        }
+      }
+    });
+  }
+}, [toggleBedVisibility, scene]);
+
+
   if (!isLoaded) return null;
   return <primitive object={scene} />;
 };
 
 const SillonViewer = () => {
+  const [showBed, setShowBed] = useState(true);
   const [loading, setLoading] = useState(true);
   const [selectedTexture, setSelectedTexture] = useState(null);
 
+  const toggleBed = () => setShowBed((prev) => !prev);
   const handleModelLoad = () => setLoading(false);
-  const handleTextureChange = (texture) => setSelectedTexture(texture);
 
   return (
     <div className="w-screen flex flex-col items-center justify-center relative mt-2 gap-4">
@@ -77,7 +106,11 @@ const SillonViewer = () => {
         <ambientLight intensity={0.9} />
         <directionalLight position={[5, 5, 5]} intensity={8} />
         <OrbitControls />
-        <SillonModel selectedTexture={selectedTexture} onLoadComplete={handleModelLoad} />
+        <SillonModel
+          toggleBedVisibility={showBed}
+          onLoadComplete={handleModelLoad}
+          selectedTexture={selectedTexture}
+        />
       </Canvas>
 
       {loading && (
@@ -87,10 +120,17 @@ const SillonViewer = () => {
       )}
 
       <div className="flex gap-2 mt-4">
+        <button
+            onClick={toggleBed}
+            className="px-4 py-3 text-black bg-lightblue6 border-2 border-lightblue rounded-full 
+                      hover:bg-lightblue2 hover:text-white transition-all"
+          >
+            {showBed ? "Ocultar cama" : "Mostrar cama"}
+          </button>
         {textureNames.map((texture) => (
           <button
             key={texture}
-            onClick={() => handleTextureChange(texture)}
+            onClick={() => setSelectedTexture(texture)}
             className={`w-16 h-16 border-2 rounded-lg ${
               selectedTexture === texture ? "border-blue-500" : "border-gray-300"
             } hover:border-blue-400 transition-all`}
