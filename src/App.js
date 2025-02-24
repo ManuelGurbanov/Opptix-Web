@@ -1,23 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation  } from 'react-router-dom';
-import ARModelViewer from './ARModelViewer';
 import MainBanner from './MainBanner';
 import Navbar from './Navbar';
-import PopUp from './popup';
-import SecondaryBanner from './SecondaryBanner';
-import OurServices from './OurServices';
 import WhyWorkTogether from './WhyWorkTogether';
 import Packs from './Packs';
 import CaseStudies from './CaseStudies';
 import Faq from './Faq';
 
 import CaseStudiePage from './CaseStudiePage';
-import CarModelViewer from './CarModelViewer';
 import Footer from './Footer';
 import Services from './Services';
-import ParrillaModelViewer from './ParrillaModelViewer';
-import BikeLink from './BikeLink';
-import { max, viewport } from 'three/webgpu';
 import ModelLink from './BikeLink';
 import AOS from 'aos';
 import 'aos/dist/aos.css';

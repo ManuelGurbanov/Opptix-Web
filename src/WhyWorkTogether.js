@@ -9,6 +9,7 @@ function WhyWorkTogether({ language }) {
     { id: 3, reason: "reason4", percentage: "+20%" },
   ];
 
+  const [selectedBlock, setSelectedBlock] = useState(0);
 
   return (
     <div className="w-screen text-black flex flex-col items-center justify-center relative">
@@ -22,23 +23,64 @@ function WhyWorkTogether({ language }) {
         className="flex flex-row gap-4 overflow-x-scroll sm:overflow-hidden w-full min-w-max items-center justify-center sm:justify-start h-auto pl-4 pr-4"
       >
         <div 
-            className='flex flex-row gap-2 mb-12 sm:overflow-auto overflow-x-scroll w-screen items-center justify-start sm:justify-center sm:h-80 h-52 px-4'
+            className='flex flex-row gap-2 mb-12 sm:overflow-auto sm:overflow-y-hidden overflow-x-scroll w-screen items-center justify-start text-white sm:justify-center h-[231px] px-4'
             style={{ minWidth: '100vw', paddingLeft: '16px', paddingRight: '16px' }}
         >
-        {reasons.map((reason) => (
-          <div
-            data-aos="fade-up"
-            key={reason.id}
-            className="text-center relative mr-4 ml-4 bg-lightblue workTogetherBackground rounded-3xl shadow-sm group shadow-lightblue text-lightblue3 hover:text-lightblue2 italic p-5 sm:w-[387px] sm:max-w-[20vw] sm:h-[252px] sm:max-h-[20vw] h-[153px] w-[258px] flex-shrink-0 flex items-center justify-center font-bold text-lg sm:text-xl transition-all duration-150"
-          >
-            <div className="flex flex-col items-center justify-center sm:justify-start sm:mt-20 h-full w-full text-white sm:text-lightblue5 text-right ">
-              <h1 className="text-6xl w-full text-[5rem]">{reason.percentage}</h1>
-              <h1 className="text-xs sm:text-xl">{translate(reason.reason, language)}</h1>
+            <div
+              className={`${selectedBlock === 0 ? "w-[368px]" : "w-[235px]"} h-[231px] transition-all ease-in-out duration-75 bg-black rounded-3xl text-center relative`}
+              onMouseEnter={() => setSelectedBlock(0)}
+            >
+              <h1 className="w-full text-[78px] absolute bottom-[80px] font-semibold">+66%</h1>
+              <h2
+                className={`text-xl absolute top-[130px] w-full font-extrabold ${
+                  selectedBlock === 0 ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                {translate("reason1", language)}
+              </h2>
             </div>
-          </div>
-        ))}
 
+            <div
+              className={`${selectedBlock === 1 ? "w-[368px]" : "w-[235px]"} h-[231px] transition-all ease-in-out duration-75 bg-lightblue2 rounded-3xl text-center relative`}
+              onMouseEnter={() => setSelectedBlock(1)}
+            >
+              <h1 className="w-full text-[78px] absolute bottom-[80px] font-semibold">+30%</h1>
+              <h2
+                className={`text-lg absolute top-[130px] w-full font-extrabold ${
+                  selectedBlock === 1 ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                {translate("reason2", language)}
+              </h2>
+            </div>
 
+            <div
+              className={`${selectedBlock === 2 ? "w-[368px]" : "w-[235px]"} h-[231px] transition-all ease-in-out duration-75 bg-lightblue6 rounded-3xl text-center relative`}
+              onMouseEnter={() => setSelectedBlock(2)}
+            >
+              <h1 className="w-full text-[78px] absolute bottom-[80px] font-semibold">+40%</h1>
+              <h2
+                className={`text-lg absolute top-[130px] w-full font-extrabold ${
+                  selectedBlock === 2 ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                {translate("reason3", language)}
+              </h2>
+            </div>
+
+            <div
+              className={`${selectedBlock === 3 ? "w-[368px]" : "w-[235px]"} h-[231px] transition-all ease-in-out duration-75 bg-lightblue6 rounded-3xl text-center relative`}
+              onMouseEnter={() => setSelectedBlock(3)}
+            >
+              <h1 className="w-full text-[78px] absolute bottom-[80px] font-semibold">+20%</h1>
+              <h2
+                className={`text-lg absolute top-[130px] w-full font-extrabold ${
+                  selectedBlock === 3 ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                {translate("reason4", language)}
+              </h2>
+            </div>
         </div>
 
       </div>
