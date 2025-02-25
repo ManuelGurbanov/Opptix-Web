@@ -18,7 +18,7 @@ export default function OurServicesBento() {
       </header>
 
       <div className="bento-carousel">
-          <div className="container first">
+          <div className="container">
             <div class="box box1 text-left rounded-3xl relative">
                     <h1 className='w-full absolute bottom-8 left-4 text-2xl'>Configuradores 3D</h1>
                     <p className='w-full text-xs font-light absolute bottom-4 left-4'>Phasellus faucibus scelerisque eleifend donec.</p>

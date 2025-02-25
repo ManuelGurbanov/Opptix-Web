@@ -165,8 +165,9 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
   };
 
 
+
   return (
-    <div className="relative flex flex-col items-center justify-center w-full bg-white mt-1 gap-4">
+    <div className="relative flex flex-col items-center justify-center w-full bg-white mt-4 gap-4">
       {priceChange !== null && (
         <div className="absolute top-0 bottom-0 right-32 h-12 px-3 mt-2 text-lg font-base text-zinc-400 border border-zinc-400 animate-up z-50 bg-zinc-200 rounded-full flex items-center justify-center">
           {priceChange >= 0 ? `+ $${priceChange}` : `- $${Math.abs(priceChange)}`}
@@ -187,8 +188,6 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
         minWidth: "450px",
         height: "60vh",
         minHeight: "250px",
-        borderRadius: "10px",
-        border: "1px solid #CFCFCF",
         "@media (max-width: 700px)": {
           width: "100vw",
         },

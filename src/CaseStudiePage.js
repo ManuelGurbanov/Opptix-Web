@@ -158,56 +158,55 @@ function CaseStudiePage({ language }) {
   const actualCase = cases.find((c) => c.name === caseName) || cases[0];
 
   return (
-    <>
-      <div className='w-full h-[90vh] bg-white flex flex-col sm:flex-row justify-center items-start text-black'>
-        <Selector actualCase={actualCase.id} cases={cases} />
-        <section className='w-full h-full p-8 sm:p-12 flex items-center justify-center flex-col'>
-          <h1 className='font-semibold sm:text-3xl text-lg w-full mt-12'>
-            {actualCase.tittle}
-          </h1>
-          <p className='font-semibold text-xs sm:text-lg w-full opacity-70 sm:mt-5 mt-2'>
-            {actualCase.description}
-          </p>
-        </section>
+    <section className='w-screen h-full flex flex-col items-center justify-center'>
+      <header className='w-full min-h-screen bg-white flex flex-col justify-center items-center text-black p-6 mt-12'>
 
-        <section className='w-full h-full p-0'>
+          <Selector actualCase={actualCase.id} cases={cases} />
+        
           <img
             src={actualCase.firstImg}
-            className='w-full h-full object-cover'
+            className='w-full max-h-[700px] object-cover rounded-3xl mt-4'
           ></img>
-        </section>
 
-      </div>
-      <div className='w-screen h-screen bg-zinc-400 flex justify-center items-center text-black'>
-      <img
-            src={actualCase.mainImg}
-            className='w-full h-full object-cover'
-          ></img>
-      </div>
-      <div className='w-full h-[90vh] bg-white flex flex-col sm:flex-row justify-end items-start text-black text-right'>
-        <section className='w-full h-full p-0 bg-zinc-500'>
-        <img
-            src={actualCase.endImg}
-            className='w-full h-full object-cover'
-          ></img>
-        </section>
-        <section className='w-full h-full p-8 sm:p-12 flex items-end justify-center flex-col'>
-          <h1 className='font-semibold sm:text-3xl text-lg w-full mt-12'>
-            {actualCase.secondTittle}
-          </h1>
-          <p className='font-semibold sm:text-xl text-xs w-full opacity-70 sm:mt-5 mt-2'>
-            {actualCase.secondDescription}
-          </p>
+          <footer className='w-full h-full p-8 py-0 gap-4 flex items-start justify-center'>
 
-          <Link
-            to="/"
-            className='mt-4 bg-zinc-200 p-2 rounded-lg hover:bg-zinc-400 hover:scale-105 transition-all duration-75 flex items-center justify-center'
-          >
-            Volver
-          </Link>
-        </section>
-      </div>
-    </>
+            <section className='w-[40%] h-full p-8 flex items-end justify-center flex-col'>
+              <p className='font-semibold text-xs w-full opacity-70'>
+                {actualCase.description}
+              </p>
+
+              <Link
+                to="/"
+                className='mt-4 bg-zinc-200 p-2 rounded-lg hover:bg-zinc-400 hover:scale-105 transition-all duration-75 flex items-center justify-center'
+              >
+                Volver
+              </Link>
+            </section>
+
+            <img
+            src={actualCase.firstImg}
+            className='w-[30%] object-cover rounded-3xl mt-4'
+          ></img>
+
+          <img
+            src={actualCase.firstImg}
+            className='w-[30%] object-cover rounded-3xl mt-4'
+          ></img>
+
+          </footer>
+      </header>
+
+      <footer className='flex items-center justify-center w-4/5 h-16 text-black gap-4 mb-7'>
+        <a className='px-4 py-2 bg-zinc-200 rounded-xl w-1/6 h-full text-center hover:underline hover:bg-zinc-400 transition-all duration-75 cursor-pointer flex items-center justify-center'>
+          Ver Paquetes
+        </a>
+        <a className='px-4 py-2 bg-zinc-200 rounded-xl w-5/6 h-full text-center flex items-center justify-center gap-5 '>
+          <p>¿Quéres contratar nuestros servicios? Estamos para asesorarte.</p>
+          <button className='px-4 py-2 bg-black rounded-3xl text-white text-sm hover:scale-105 transition-all duration-75'>Hablar con un Asesor</button>
+        </a>
+      </footer>
+
+    </section>
   );
 }
 

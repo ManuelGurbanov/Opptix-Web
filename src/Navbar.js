@@ -9,7 +9,7 @@ function Navbar({ language, setLanguage }) {
   return (
     <>
       <div className='flex items-center justify-center w-screen fixed top-0 z-40'>
-        <div className="flex justify-between items-center p-4 bg-zinc-50 text-white h-16 z-40 w-screen sm:rounded-3xl m-0">
+        <div className="flex justify-between items-center p-4 bg-zinc-50 text-white h-16 z-40 w-screen">
 
           <Link to="/" className='w-28 hover:scale-105 transition ease-in cursor-pointer duration-75 hidden sm:block'>
             <img src="darkOpptix.webp" alt="Logo" />

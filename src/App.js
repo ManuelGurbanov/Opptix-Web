@@ -19,6 +19,7 @@ import { translate } from './Translations';
 
 import OurServicesBento from './OurServicesBento';
 import UploaderThree from './UploaderThree';
+import ContractButton from './ContractButton';
 
 function Layout({ children, language, setLanguage }) {
   const location = useLocation();
@@ -61,16 +62,19 @@ function App() {
       description: translate("marketingText", language),
       component: 
       
-      <div className='w-full flex flex-col items-center justify-start'>
-        <video autoPlay muted loop playsInline className='w-full sm:w-3/4 rounded-3xl mt-4 mb-4'>
-          <source src="carVideo.mp4" type="video/mp4" />
-        </video>
-      </div>
-
-
+      <div className='w-full flex flex-col items-center justify-start p-12 relative'>
+        <div className='absolute top-4 right-6 flex justify-center'>
+          <ContractButton/>
+        </div>
+          <h1 className='w-full text-left text-[70px]'>Animaciones 3D</h1>
+          <p className='font-light w-full text-left'>
+          Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien. Vivamus at augue eget arcu dictum varius duis at consectetur. 
+          </p>
+          <video className='w-full mt-4 rounded-3xl' autoPlay loop muted>
+            <source src="/carVideo.mp4" type="video/mp4"></source>
+          </video>
+      </div>  
       ,
-
-
 
       picture:
       <a className='w-full h-full bg-black hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative' href='/services/1'>
