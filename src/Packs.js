@@ -6,8 +6,8 @@ function Packs({ packs, language }) {
     const [activePack, setActivePack] = React.useState(0);
     return (
         <div className='min-h-screen w-screen items-center flex-col flex p-7' id='packs'>
-            <h1 className='w-full text-4xl font-bold mt-12 text-left'>Packs</h1>
-            <h2 className='w-full text-xl opacity-70 mb-6 sm:mb-0 text-left'>Lorem Ipsum...</h2>
+            <h1 className='w-full text-4xl font-bold mt-12 text-left px-24'>Packs</h1>
+            <h2 className='w-full text-xl opacity-70 mb-6 sm:mb-0 text-left px-24'>{translate("packsSub", language)}</h2>
 
             <div className=' bg-white flex flex-col lg:flex-row justify-center items-start sm:p-8 gap-12 m-0 mb-16 sm:mb-0'>
                 {packs.map((pack, index) => (
@@ -54,8 +54,8 @@ function Packs({ packs, language }) {
                                 </div>
 
                                 <footer className='w-full flex flex-row items-center justify-center text-white gap-4'>
-                                    <button className={` sm:p-3 p-2 text-black rounded-full w-full text-sm transition-all hover:scale-105
-                                        ease-in-out duration-75 bg-white hover:bg-zinc-600"}`}
+                                    <button className={` sm:p-3 p-2 text-white rounded-full w-full text-sm transition-all hover:scale-105
+                                        ease-in-out duration-75 bg-black hover:bg-zinc-600"}`}
                                     >
                                         {translate("bookDemo", language)}
                                     </button>
@@ -72,8 +72,8 @@ function Packs({ packs, language }) {
                                 </button>
                                 <h1 className='text-3xl text-left font-bold w-full p-2 py-0 text-black mb-2'>{pack.title}</h1>
                                 <p className='text-xs text-left w-full p-2 py-0 text-black mb-2'>{pack.description}</p>
-                                <button className={`sm:p-3 p-2 mb-2 text-white rounded-full w-full text-sm transition-all hover:scale-105
-                                    ease-in-out duration-75 ${pack.isMostPopular ? "bg-lightblue hover:bg-lightblue2 ring-1" : "bg-black hover:bg-zinc-700"}`}
+                                <button className="sm:p-3 p-2 mb-2 text-white rounded-full w-full text-sm transition-all hover:scale-105
+                                    ease-in-out duration-75 bg-black hover:bg-zinc-700"
                                 >
                                     {translate("bookDemo", language)}
                                 </button>

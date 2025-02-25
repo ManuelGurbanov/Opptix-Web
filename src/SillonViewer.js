@@ -3,6 +3,8 @@ import { useGLTF, OrbitControls } from "@react-three/drei";
 import { useEffect, useState } from "react";
 import { TextureLoader } from "three";
 
+import * as THREE from "three";
+
 const textureLoader = new TextureLoader();
 const textureNames = ["sofa-01", "sofa-02", "sofa-03", "sofa-04", "sofa-05", "sofa-06"];
 const textures = textureNames.reduce((acc, name) => {
@@ -36,7 +38,7 @@ const SillonModel = ({ toggleBedVisibility, onLoadComplete, selectedTexture }) =
         const materialsMap = new Map();
         scene.traverse((object) => {
           if (object.isMesh) {
-            materialsMap.set(object, object.material.clone()); // Clonar materiales originales
+            materialsMap.set(object, object.material.clone());
           }
         });
         setOriginalMaterials(materialsMap);
@@ -49,8 +51,14 @@ const SillonModel = ({ toggleBedVisibility, onLoadComplete, selectedTexture }) =
       scene.traverse((object) => {
         if (object.isMesh) {
           if (selectedTexture) {
-            object.material.map = selectedTexture === "test" ? testTexture : textures[selectedTexture];
-            object.material.map.needsUpdate = true;
+            const material = object.material;
+            material.map = selectedTexture === "test" ? testTexture : textures[selectedTexture];
+            material.map.wrapS = material.map.wrapT = THREE.RepeatWrapping;
+            material.needsUpdate = true;
+
+            const newTexture = selectedTexture === "test" ? testTexture : textures[selectedTexture];
+            newTexture.wrapS = newTexture.wrapT = THREE.RepeatWrapping;
+            newTexture.repeat.set(4, 4);
           } else {
             object.material = originalMaterials.get(object).clone();
           }
@@ -58,6 +66,7 @@ const SillonModel = ({ toggleBedVisibility, onLoadComplete, selectedTexture }) =
       });
     }
   }, [selectedTexture, scene, originalMaterials]);
+  
 
 useEffect(() => {
   if (scene) {

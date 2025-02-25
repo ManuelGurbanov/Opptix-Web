@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { translate } from "./Translations";
 
 function WhyWorkTogether({ language }) {
@@ -10,6 +10,32 @@ function WhyWorkTogether({ language }) {
   ];
 
   const [selectedBlock, setSelectedBlock] = useState(0);
+
+  const wheelEventCount = useRef(0);
+
+  useEffect(() => {
+    const handleWheel = (e) => {
+      wheelEventCount.current += 1;
+
+      if (wheelEventCount.current >= 1) {
+        if (e.deltaY > 0 && selectedBlock < reasons.length - 1) {
+          setSelectedBlock((prev) => prev + 1);
+        } else if (e.deltaY < 0 && selectedBlock > 0) {
+          setSelectedBlock((prev) => prev - 1);
+        }
+
+        wheelEventCount.current = 0;
+      }
+    };
+
+    window.addEventListener("wheel", handleWheel);
+
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+    };
+  }, [selectedBlock, reasons.length]);
+
+
 
   return (
     <div className="w-screen text-black flex flex-col items-center justify-center relative">
@@ -23,66 +49,33 @@ function WhyWorkTogether({ language }) {
         className="flex flex-row gap-4 overflow-x-scroll sm:overflow-hidden w-full min-w-max items-center justify-center sm:justify-start h-auto pl-4 pr-4"
       >
         <div 
-            className='flex flex-row gap-2 mb-12 sm:overflow-auto sm:overflow-y-hidden overflow-x-scroll w-screen items-center justify-start text-white sm:justify-center h-[231px] px-4'
-            style={{ minWidth: '100vw', paddingLeft: '16px', paddingRight: '16px' }}
+          className='flex flex-row gap-2 mb-12 sm:overflow-auto sm:overflow-y-hidden overflow-x-scroll w-screen items-center justify-start text-white sm:justify-center h-[231px] px-4'
+          style={{ minWidth: '100vw', paddingLeft: '16px', paddingRight: '16px' }}
         >
+          {reasons.map((item, index) => (
             <div
-              className={`${selectedBlock === 0 ? "w-[368px]" : "w-[235px]"} h-[231px] transition-all ease-in-out duration-75 bg-black rounded-3xl text-center relative`}
-              onMouseEnter={() => setSelectedBlock(0)}
+              key={item.id}
+              className={`${selectedBlock === index ? "w-[368px]" : "w-[235px]"} h-[231px] transition-all ease-in-out duration-75 ${
+                index === 0
+                  ? "bg-black"
+                  : index === 1
+                  ? "bg-lightblue2"
+                  : "bg-lightblue6"
+              } rounded-3xl text-center relative flex-shrink-0`}
             >
-              <h1 className="w-full text-[78px] absolute bottom-[80px] font-semibold">+66%</h1>
-              <h2
-                className={`text-xl absolute top-[130px] w-full font-extrabold ${
-                  selectedBlock === 0 ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                {translate("reason1", language)}
-              </h2>
-            </div>
-
-            <div
-              className={`${selectedBlock === 1 ? "w-[368px]" : "w-[235px]"} h-[231px] transition-all ease-in-out duration-75 bg-lightblue2 rounded-3xl text-center relative`}
-              onMouseEnter={() => setSelectedBlock(1)}
-            >
-              <h1 className="w-full text-[78px] absolute bottom-[80px] font-semibold">+30%</h1>
+              <h1 className="w-full text-[78px] absolute bottom-[80px] font-semibold">
+                {item.percentage}
+              </h1>
               <h2
                 className={`text-lg absolute top-[130px] w-full font-extrabold ${
-                  selectedBlock === 1 ? "opacity-100" : "opacity-0"
+                  selectedBlock === index ? "opacity-100" : "opacity-0"
                 }`}
               >
-                {translate("reason2", language)}
+                {translate(item.reason, language)}
               </h2>
             </div>
-
-            <div
-              className={`${selectedBlock === 2 ? "w-[368px]" : "w-[235px]"} h-[231px] transition-all ease-in-out duration-75 bg-lightblue6 rounded-3xl text-center relative`}
-              onMouseEnter={() => setSelectedBlock(2)}
-            >
-              <h1 className="w-full text-[78px] absolute bottom-[80px] font-semibold">+40%</h1>
-              <h2
-                className={`text-lg absolute top-[130px] w-full font-extrabold ${
-                  selectedBlock === 2 ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                {translate("reason3", language)}
-              </h2>
-            </div>
-
-            <div
-              className={`${selectedBlock === 3 ? "w-[368px]" : "w-[235px]"} h-[231px] transition-all ease-in-out duration-75 bg-lightblue6 rounded-3xl text-center relative`}
-              onMouseEnter={() => setSelectedBlock(3)}
-            >
-              <h1 className="w-full text-[78px] absolute bottom-[80px] font-semibold">+20%</h1>
-              <h2
-                className={`text-lg absolute top-[130px] w-full font-extrabold ${
-                  selectedBlock === 3 ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                {translate("reason4", language)}
-              </h2>
-            </div>
+          ))}
         </div>
-
       </div>
     </div>
   );

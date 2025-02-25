@@ -2,15 +2,17 @@ import React, { useEffect, useRef } from 'react';
 import './servicesBento.css';
 import RightArrow from './RightArrow';
 
-export default function OurServicesBento() {
+import { translate } from "./Translations";
+
+export default function OurServicesBento({language}) {
 
   return (
     <div className='w-full h-full flex flex-col items-center justify-center p-7'>
 
       <header className='w-full px-24 py-6 flex items-center justify-between'>
         <div className='flex flex-col items-start justify-center'>
-          <h1 className='text-3xl font-bold text-left w-full'>Servicios</h1>
-          <h2 className='text-xl font-light text-left w-full'>Podemos ayudarte en lo que necesites.</h2>
+          <h1 className='text-3xl font-bold text-left w-full'>{translate("services", language)}</h1>
+          <h2 className='text-xl font-light text-left w-full'>{translate("servicesSub", language)}</h2>
         </div>
         <a href="/services/0" className='bg-black rounded-3xl px-4 py-2 w-56 text-white flex items-center justify-center hover:scale-105 transition duration-75'>
           <p>Explorar mas</p> <div className='w-9 h-6 flex items-center justify-center -rotate-45'><RightArrow color="#ffffff" /></div>       

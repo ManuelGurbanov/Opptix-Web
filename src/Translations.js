@@ -1,8 +1,10 @@
 const translations = {
   en: {
     services: "Services",
+    servicesSub: "We can help you with whatever you need.",
     caseStudies: "Case Studies",
     packs: "Packs",
+    packsSub: "Choose the one that best suits your needs.",
     ourServices: "Our Services",
     getStarted: "Get Started",
     bannerMain: "Revolutionize online shopping",
@@ -119,8 +121,10 @@ const translations = {
   },
   es: {
     services: "Servicios",
+    servicesSub: "Podemos ayudarte en lo que necesites.",
     caseStudies: "Casos de Estudio",
     packs: "Packs",
+    packsSub: "Descubre el que mejor se adapte a tu negocio.",
     ourServices: "Nuestros Servicios",
     getStarted: "Quiero Comenzar",
     bannerMain: "Transforma productos\nen experiencias.",
