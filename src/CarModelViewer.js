@@ -150,11 +150,6 @@ const CarModelViewer = ({ modelSrc , setTotalPriceCar, language }) => {
     modelViewer.variantName = variant;
     await modelViewer.model.updateComplete;
   
-    if (CAMERA_COORDINATES[category]) {
-      modelViewer.cameraOrbit = CAMERA_COORDINATES[category].orbit;
-      modelViewer.lookAt = "auto";
-      modelViewer.jumpCameraToGoal();
-    }
   
     setActiveVariants((prev) => {
       const newVariants = { ...prev, [category]: variant };
@@ -188,7 +183,6 @@ const CarModelViewer = ({ modelSrc , setTotalPriceCar, language }) => {
         ref={modelViewerRef}
         src={modelSrc}
         alt="Modelo 3D en AR"
-        auto-rotate
         camera-controls
         ar
         ar-modes="webxr scene-viewer quick-look"

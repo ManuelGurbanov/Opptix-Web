@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "@google/model-viewer";
+import { translate } from "./Translations";
 
 const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
   const modelViewerRef = useRef(null);
@@ -65,7 +66,8 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
     "ON-ESTANTE-DER": "Dark",
     "OFF-ESTANTE-DER": "Disabled",
     "ON-ESTANTE-DER-CLARO": "Light",
-    "ON-PUERTAS": "Wood",
+    "ON-PUERTAS": "Dark Wood",
+    "ON-PUERTAS-CLARA": "Light Wood",
     "OFF-PUERTAS": "Disabled",
     "ON-TAPA-NEGRA": "Black",
     "ON-TAPA-PLATEADA": "Silver",
@@ -96,12 +98,12 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
   };
 
   const variantsByGroup = {
+    TAPA: ["ON-TAPA-PLATEADA","ON-TAPA-NEGRA", "OFF-TAPA"],
+    PUERTAS: ["ON-PUERTAS","ON-PUERTAS-CLARA", "OFF-PUERTAS"],
     RUEDAS: ["ON-RUEDA", "OFF-RUEDAS"],
     ESTANTE: ["ESTANTE-METAL", "ESTANTE-MADERA"],
     ESTANTE_IZQ: ["ON-ESTANTE-IZQ", "ON-ESTANTE-IZQ-CLARO", "OFF-ESTANTE-IZQ"],
     ESTANTE_DER: ["ON-ESTANTE-DER", "ON-ESTANTE-DER-CLARO", "OFF-ESTANTE-DER"],
-    PUERTAS: ["ON-PUERTAS", "OFF-PUERTAS"],
-    TAPA: ["ON-TAPA-PLATEADA","ON-TAPA-NEGRA", "OFF-TAPA"],
     BASE: ["BASE-NEGRA", "BASE-PLATEADA"],
   };
 
@@ -205,7 +207,7 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
                     absolute z-10 bottom-3 left-1/2 -translate-x-1/2"
           id="open-button"
         >
-          {isOpen ? "Cerrar" : "Abrir"}
+          {isOpen ? translate("close", language) : translate("open", language)}
         </button>
 
         )}

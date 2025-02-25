@@ -1,5 +1,7 @@
 const translations = {
   en: {
+    open: "Open",
+    close: "Close",
     services: "Services",
     servicesSub: "We can help you with whatever you need.",
     caseStudies: "Case Studies",
@@ -120,6 +122,8 @@ const translations = {
     finalPrice : "Final Price:"
   },
   es: {
+    open: "Abrir",
+    close: "Cerrar",
     services: "Servicios",
     servicesSub: "Podemos ayudarte en lo que necesites.",
     caseStudies: "Casos de Estudio",

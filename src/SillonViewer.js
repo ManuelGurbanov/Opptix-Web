@@ -6,7 +6,7 @@ import { TextureLoader } from "three";
 import * as THREE from "three";
 
 const textureLoader = new TextureLoader();
-const textureNames = ["sofa-01", "sofa-02", "sofa-03", "sofa-04", "sofa-05", "sofa-06"];
+const textureNames = ["sofa-00","sofa-01", "sofa-02", "sofa-03", "sofa-04", "sofa-05", "sofa-06"];
 const textures = textureNames.reduce((acc, name) => {
   acc[name] = textureLoader.load(`/textures/${name}.jpg`);
   return acc;
@@ -27,7 +27,7 @@ const SillonModel = ({ toggleBedVisibility, onLoadComplete, selectedTexture }) =
       }
     });
   }, [scene]);
-  
+
 
   useEffect(() => {
     if (scene) {
@@ -89,6 +89,7 @@ useEffect(() => {
   return <primitive object={scene} />;
 };
 
+
 const SillonViewer = () => {
   const [showBed, setShowBed] = useState(true);
   const [loading, setLoading] = useState(true);
@@ -96,6 +97,12 @@ const SillonViewer = () => {
 
   const toggleBed = () => setShowBed((prev) => !prev);
   const handleModelLoad = () => setLoading(false);
+
+  useEffect(() => {
+    if (textureNames.length > 0) {
+      setSelectedTexture(textureNames[0]);
+    }
+  }, [setSelectedTexture]);
 
   return (
     <div className="w-screen flex flex-col items-center justify-center relative mt-2 gap-4">
@@ -110,8 +117,8 @@ const SillonViewer = () => {
           "@media (max-width: 700px)": { width: "100vw" },
         }}
       >
-        <ambientLight intensity={0.9} />
-        <directionalLight position={[5, 5, 5]} intensity={8} />
+        {/* <ambientLight intensity={0.9} /> */}
+        <directionalLight position={[5, 5, 5]} intensity={2} />
         <OrbitControls />
         <SillonModel
           toggleBedVisibility={showBed}
@@ -138,11 +145,11 @@ const SillonViewer = () => {
           <button
             key={texture}
             onClick={() => setSelectedTexture(texture)}
-            className={`w-16 h-16 border-2 rounded-lg ${
-              selectedTexture === texture ? "border-blue-500" : "border-gray-300"
+            className={`w-16 h-16 border-2 rounded-full ${
+              selectedTexture === texture ? "border-blue-500 border-2" : "border-gray-300"
             } hover:border-blue-400 transition-all`}
           >
-            <img src={`/textures/${texture}.jpg`} alt={texture} className="w-full h-full object-cover rounded-md" />
+            <img src={`/textures/${texture}.jpg`} alt={texture} className="w-full h-full object-cover rounded-full" />
           </button>
         ))}
       </div>
