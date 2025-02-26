@@ -21,6 +21,8 @@ import OurServicesBento from './OurServicesBento';
 import UploaderThree from './UploaderThree';
 import ContractButton from './ContractButton';
 
+import ArService from './ArService';
+
 function Layout({ children, language, setLanguage }) {
   const location = useLocation();
   const showNavbar = !location.pathname.startsWith("/services");
@@ -66,13 +68,13 @@ function App() {
 
         <header className='w-full flex items-center justify-between gap-4 min-h-[30vh]'>
           <div className='flex flex-col w-full'>
-            <h1 className='w-full text-left text-[60px]'>Animaciones 3D</h1>
+            <h1 className='w-full text-left text-[60px]'>{translate("animTittle", language)}</h1>
             <p className='font-light w-full text-left'>
-            Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien. Vivamus at augue eget arcu dictum varius duis at consectetur. 
+            {translate("animacionesDescription", language)}
             </p>
           </div>
           <div className='w-full h-14 flex items-start justify-end'>
-          <ContractButton/>
+          <ContractButton language={language}/>
           </div>
         </header>
 
@@ -100,132 +102,7 @@ function App() {
       name: translate("arTittle", language),
       description: translate("arText", language),
       component: 
-      <section className='w-full flex-col items-center justify-start px-24'>
-        <div className="flex flex-col sm:flex-row items-center justify-center w-full bg-white rounded-4xl">
-              <model-viewer
-                id="hotspot-camera-view-demo" 
-                loading="eager"
-                        poster="/loading.gif"
-                src="/models/bicicleta.glb"
-                alt="Modelo 3D en AR"
-                auto-rotate
-                camera-controls
-                ar
-                ar-modes="webxr scene-viewer quick-look"
-                className="w-full h-full object-contain rounded-4xl"
-                style={{
-                  width: "400px",
-                  height: "400px",
-                  display: "block",
-                  border: "1px solid #CFCFCF",
-                  borderRadius: "12px",
-                  marginTop: "20px",
-                }}
-              >
-              </model-viewer>
-
-              <img
-              className='w-[400px]' src='/qrcodes/bike.png'>
-
-              </img>
-        </div>
-
-        <hr className='bg-lightblue bg-opacity-20 w-full h-[1px] mt-12 mb-12'></hr>
-
-        <div className="flex flex-col sm:flex-row-reverse items-center justify-center w-full bg-white rounded-4xl">
-              <model-viewer
-                id="hotspot-camera-view-demo" 
-                loading="eager"
-                poster="/loading.gif"
-                src="/models/sillon.glb"
-                alt="Modelo 3D en AR"
-                auto-rotate
-                camera-controls
-                ar
-                ar-modes="webxr scene-viewer quick-look"
-                className="w-full h-full object-contain rounded-4xl"
-                style={{
-                  width: "400px",
-                  height: "400px",
-                  maxWidth: "70vw",
-                  display: "block",
-                  border: "1px solid #CFCFCF",
-                  borderRadius: "12px",
-                  marginTop: "20px",
-                }}
-              >
-              </model-viewer>
-
-              <img
-              className='w-[400px]' src='/qrcodes/sillon.png'>
-
-              </img>
-        </div>
-
-        <hr className='bg-lightblue bg-opacity-20 w-full h-[1px] mt-12 mb-12'></hr>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center w-full bg-white rounded-4xl">
-              <model-viewer
-                id="hotspot-camera-view-demo" 
-                loading="eager"
-                poster="/loading.gif"
-                src="/models/sofa.glb"
-                alt="Modelo 3D en AR"
-                auto-rotate
-                camera-controls
-                ar
-                ar-modes="webxr scene-viewer quick-look"
-                className="w-full h-full object-contain rounded-4xl"
-                style={{
-                  width: "400px",
-                  height: "400px",
-                  maxWidth: "70vw",
-                  display: "block",
-                  border: "1px solid #CFCFCF",
-                  borderRadius: "12px",
-                  marginTop: "20px",
-                }}
-              >
-              </model-viewer>
-
-              <img
-              className='w-[400px]' src='/qrcodes/sofa.png'>
-
-              </img>
-        </div>
-
-        <hr className='bg-lightblue bg-opacity-20 w-full h-[1px] mt-12 mb-12'></hr>
-
-        <div className="flex flex-col sm:flex-row-reverse items-center justify-center w-full bg-white rounded-4xl">
-              <model-viewer
-                id="hotspot-camera-view-demo" 
-                loading="eager"
-                poster="/loading.gif"
-                src="/models/TEST-180CM.glb"
-                alt="Modelo 3D en AR"
-                auto-rotate
-                camera-controls
-                ar
-                ar-modes="webxr scene-viewer quick-look"
-                className="w-full h-full object-contain rounded-4xl"
-                style={{
-                  width: "400px",
-                  height: "400px",
-                  maxWidth: "70vw",
-                  display: "block",
-                  border: "1px solid #CFCFCF",
-                  borderRadius: "12px",
-                  marginTop: "20px",
-                }}
-              >
-              </model-viewer>
-
-              <img
-              className='w-[400px]' src='/qrcodes/TEST-180CM.png'>
-
-              </img>
-        </div>
-      </section>,
+          <ArService/>,
       picture:
       <a className='w-full h-full bg-zinc-200 hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative' href='/services/2'>
         <img src='phone.webp' className='h-full absolute bottom-0'></img>
@@ -250,14 +127,7 @@ function App() {
         <a className='w-full h-full bg-zinc-200 hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative' href='/services/4'>
           <img src='viewer.webp' className='absolute top-0 left-0 w-full h-full object-cover z-0 sm:rounded-[80px]'></img>
         </a>
-    },
-    {
-      id: 5,
-      name: translate("interactivAnimTittle", language),
-      description: translate("interactivAnimText", language),
-      component: <div className='w-full h-full bg-zinc-200'></div>,
-      picture: ""
-    },
+    }
   ];
 
   const cases = [

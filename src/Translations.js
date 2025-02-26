@@ -119,7 +119,14 @@ const translations = {
     chair : "Chair",
     grill : "Grill",
     car : "Car",
-    finalPrice : "Final Price:"
+    finalPrice : "Final Price:",
+    configuratorsDescription: "Increase your average ticket by 25% and reduce operating costs by 70% with interactive 3D configurators that automate your sales.",
+    animacionesDescription: "Double engagement and bring your brand to life with high-impact 3D animations.",
+    rendersDescription: "Perfect photos without a photoshoot: 3D renders that showcase your product at its best.",
+    arDescription: "Reduce returns by 50%: let your customers try the product before buying.",
+    catalogDescription: "Fewer doubts, more sales: showcase your catalog in 3D and turn browsers into buyers.",
+    contract: "Hire Service",
+    animTittle: "3D Animations",
   },
   es: {
     open: "Abrir",
@@ -241,7 +248,14 @@ const translations = {
     chair : "Sillón",
     grill : "Parrilla",
     car : "Auto",
-    finalPrice: "Precio Final:"
+    finalPrice: "Precio Final:",
+    configuratorsDescription: "Aumenta tu ticket promedio un 25% y reduce costos operativos un 70% con configuradores 3D interactivos, que automatizan tus ventas.",
+    animacionesDescription: "Duplica el engagement y haz que tu marca cobre vida con animaciones 3D de alto impacto.",
+    rendersDescription: "Fotos perfectas sin sesión de fotos: renders 3D que muestran tu producto en su mejor versión.",
+    arDescription: "Reduce devoluciones en un 50%: deja que tus clientes prueben el producto antes de comprar.",
+    catalogDescription: "Menos dudas, más ventas: muestra tu catálogo en 3D y convierte curiosos en compradores.",
+    contract: "Contratar Servicio",
+    animTittle : "Animaciones 3D"
   }
   
 

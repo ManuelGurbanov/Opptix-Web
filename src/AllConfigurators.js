@@ -19,7 +19,7 @@ export default function AllConfigurators({language}) {
         <section className='w-full min-h-[150vh] flex flex-col justify-start items-center rounded-lg gap-0 sm:mt-12 relative px-12'>
             <header className="w-full flex items-center justify-between gap-4">
                 <header className="self-start flex flex-col items-start justify-start p-4 gap-3 w-1/2">
-                    <ContractButton/>
+                    <ContractButton language={language}/>
                     <div className="flex flex-col items-center justify-center text-right">
                         <h1 className="text-base font-bold w-full">{translate("finalPrice", language)}</h1>
                         <h2 className="text-xl w-full">
@@ -28,10 +28,10 @@ export default function AllConfigurators({language}) {
                     </div>
                 </header>
                 <div className="flex flex-col items-center justify-start gap-4 w-1/2">
-                    <h1 className="text-[60px] text-right w-full">Configuradores 3D</h1>
+                    <h1 className="text-[60px] text-right w-full">{translate("configTittle", language)}</h1>
                     <p className='font-light w-full text-right'>
-                        Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien. Vivamus at augue eget arcu dictum varius duis at consectetur. 
-                        </p>
+                        {translate("configuratorsDescription", language)}
+                    </p>
                 </div>
             </header>
 

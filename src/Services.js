@@ -43,10 +43,10 @@ function Services({ language, services, setLanguage }) {
   return (
     <div className="flex flex-col items-center justify-start w-screen h-screen">
       {/* Menú para pantallas grandes */}
-      <div className="hidden sm:flex justify-center items-center p-8 text-black gap-4 h-16 z-30 w-screen m-0 ring-1 ring-zinc-300 rounded-lg">
+      <div className="hidden sm:flex justify-center items-center p-8 text-white gap-4 h-16 z-30 w-screen m-0 ring-1 ring-zinc-300 bg-black">
 
           <Link to="/" className='w-1/2 hover:scale-105 transition ease-in cursor-pointer duration-75 hidden sm:block'>
-            <img src="/darkOpptix.webp" alt="Logo" />
+            <img src="/opptix.webp" alt="Logo" />
           </Link>
 
         {services.map((service, index) => (
