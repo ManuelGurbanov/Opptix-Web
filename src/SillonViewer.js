@@ -6,28 +6,23 @@ import { TextureLoader } from "three";
 import * as THREE from "three";
 
 const textureLoader = new TextureLoader();
-const textureNames = ["sofa-00","sofa-01", "sofa-02", "sofa-03", "sofa-04", "sofa-05", "sofa-06"];
+const textureNames = ["sofa-00", "sofa-01", "sofa-02", "sofa-03", "sofa-04", "sofa-05", "sofa-06"];
 const textures = textureNames.reduce((acc, name) => {
   acc[name] = textureLoader.load(`/textures/${name}.jpg`);
   return acc;
 }, {});
 const testTexture = textureLoader.load("/textures/prueba.png");
 
-const SillonModel = ({ toggleBedVisibility, onLoadComplete, selectedTexture }) => {
+const SillonModel = ({ toggleBedVisibility, onLoadComplete, groupTextures, onSceneReady, selectingGroup }) => {
   const { scene } = useGLTF("/models/sillon.glb", true);
   const [isLoaded, setIsLoaded] = useState(false);
   const [originalMaterials, setOriginalMaterials] = useState(new Map());
 
   useEffect(() => {
-    scene.traverse((object) => {
-      if (object.isMesh) {
-        console.log(`Mesh: ${object.name}, UVs:`, object.geometry.attributes.uv);
-      }else{
-        console.log(`Object: ${object.name}`);
-      }
-    });
-  }, [scene]);
-
+    if (scene) {
+      onSceneReady(scene);
+    }
+  }, [scene, onSceneReady]);
 
   useEffect(() => {
     if (scene) {
@@ -46,17 +41,29 @@ const SillonModel = ({ toggleBedVisibility, onLoadComplete, selectedTexture }) =
     }
   }, [scene, onLoadComplete]);
 
+  const group0 = ["seat", "cama-frente", "cama-manija"];
+  const group1 = ["sides-001", "cama-apoyabrazos"];
+  const group2 = ["back-001", "cama-respaldo"];
+  
+  const groupMap = {
+    group0: group0,
+    group1: group1,
+    group2: group2,
+  };
+
+  // Lógica para cambiar la textura solo cuando se selecciona un botón de textura
   useEffect(() => {
     if (scene && originalMaterials.size > 0) {
       scene.traverse((object) => {
-        if (object.isMesh) {
-          if (selectedTexture) {
+        if (object.isMesh && groupMap[selectingGroup]?.includes(object.name.toLowerCase())) {
+          const currentTexture = groupTextures[selectingGroup];
+          if (currentTexture) {
             const material = object.material;
-            material.map = selectedTexture === "test" ? testTexture : textures[selectedTexture];
+            material.map = currentTexture === "test" ? testTexture : textures[currentTexture];
             material.map.wrapS = material.map.wrapT = THREE.RepeatWrapping;
             material.needsUpdate = true;
 
-            const newTexture = selectedTexture === "test" ? testTexture : textures[selectedTexture];
+            const newTexture = currentTexture === "test" ? testTexture : textures[currentTexture];
             newTexture.wrapS = newTexture.wrapT = THREE.RepeatWrapping;
             newTexture.repeat.set(4, 4);
           } else {
@@ -65,47 +72,51 @@ const SillonModel = ({ toggleBedVisibility, onLoadComplete, selectedTexture }) =
         }
       });
     }
-  }, [selectedTexture, scene, originalMaterials]);
-  
+  }, [groupTextures, scene, originalMaterials, selectingGroup]);
 
-useEffect(() => {
-  if (scene) {
-    scene.traverse((object) => {
-      if (object.isMesh) {
-        const name = object.name.toLowerCase();
-        
-        if (name.includes("cama")) {
-          object.visible = toggleBedVisibility; // Se muestra si toggleBedVisibility es true
-        } else if (name.includes("back001") || name.includes("sides001")) {
-          object.visible = !toggleBedVisibility; // Se oculta si toggleBedVisibility es true
+  useEffect(() => {
+    if (scene) {
+      scene.traverse((object) => {
+        if (object.isMesh) {
+          const name = object.name.toLowerCase();
+          if (name.includes("cama")) {
+            object.visible = toggleBedVisibility;
+          } else if (name.includes("back-001") || name.includes("sides-001")) {
+            object.visible = !toggleBedVisibility;
+          }
         }
-      }
-    });
-  }
-}, [toggleBedVisibility, scene]);
-
+      });
+    }
+  }, [toggleBedVisibility, scene]);
 
   if (!isLoaded) return null;
   return <primitive object={scene} />;
 };
 
-
 const SillonViewer = () => {
+  const [scene, setScene] = useState(null);
   const [showBed, setShowBed] = useState(true);
   const [loading, setLoading] = useState(true);
-  const [selectedTexture, setSelectedTexture] = useState(null);
+  const [groupTextures, setGroupTextures] = useState({
+    group0: null,
+    group1: null,
+    group2: null,
+  });
+
+  const [selectingGroup, setSelectingGroup] = useState("group1");
 
   const toggleBed = () => setShowBed((prev) => !prev);
   const handleModelLoad = () => setLoading(false);
 
-  useEffect(() => {
-    if (textureNames.length > 0) {
-      setSelectedTexture(textureNames[0]);
-    }
-  }, [setSelectedTexture]);
+  const handleTextureChange = (group, texture) => {
+    setGroupTextures((prevTextures) => ({
+      ...prevTextures,
+      [group]: texture,
+    }));
+  };
 
   return (
-    <div className="w-screen flex flex-col items-center justify-center relative mt-2 gap-4">
+    <div className="w-screen flex flex-col items-center justify-center relative mt-2">
       <Canvas
         className="cursor-grab"
         camera={{ position: [0, 2, 5], fov: 50 }}
@@ -117,13 +128,14 @@ const SillonViewer = () => {
           "@media (max-width: 700px)": { width: "100vw" },
         }}
       >
-        {/* <ambientLight intensity={0.9} /> */}
-        <directionalLight position={[5, 5, 5]} intensity={2} />
+        <directionalLight position={[5, 5, 5]} intensity={8} />
         <OrbitControls />
         <SillonModel
           toggleBedVisibility={showBed}
           onLoadComplete={handleModelLoad}
-          selectedTexture={selectedTexture}
+          groupTextures={groupTextures}
+          onSceneReady={setScene}
+          selectingGroup={selectingGroup}
         />
       </Canvas>
 
@@ -135,18 +147,48 @@ const SillonViewer = () => {
 
       <div className="flex gap-2 mt-4">
         <button
-            onClick={toggleBed}
-            className="px-4 py-3 text-black bg-lightblue6 border-2 border-lightblue rounded-full 
-                      hover:bg-lightblue2 hover:text-white transition-all"
-          >
-            {showBed ? "Ocultar cama" : "Mostrar cama"}
-          </button>
+          onClick={() => setSelectingGroup("group0")}
+          className={`px-4 py-2 ${
+            selectingGroup === "group0" ? "font-bold" : "font-normal"
+          } hover:scale-105 transition-all`}
+        >
+          Seats
+        </button>
+        <button
+          onClick={() => setSelectingGroup("group1")}
+          className={`px-4 py-2 ${
+            selectingGroup === "group1" ? "font-bold" : "font-normal"
+          } hover:scale-105 transition-all`}
+        >
+          Sides
+        </button>
+
+        <button
+          onClick={() => setSelectingGroup("group2")}
+          className={`px-4 py-2 ${
+            selectingGroup === "group2" ? "font-bold" : "font-normal"
+          } hover:scale-105 transition-all`}
+        >
+          Back
+        </button>
+      </div>
+      <hr className="h-[2px] w-64 bg-black"></hr>
+
+      <div className="flex gap-2 mt-4">
+        <button
+          onClick={toggleBed}
+          className="px-4 py-3 text-black bg-lightblue6 border-2 border-lightblue rounded-full 
+                    hover:bg-lightblue2 hover:text-white transition-all"
+        >
+          {showBed ? "Ocultar cama" : "Mostrar cama"}
+        </button>
+        
         {textureNames.map((texture) => (
           <button
             key={texture}
-            onClick={() => setSelectedTexture(texture)}
+            onClick={() => handleTextureChange(selectingGroup, texture)}
             className={`w-16 h-16 border-2 rounded-full ${
-              selectedTexture === texture ? "border-blue-500 border-2" : "border-gray-300"
+              groupTextures[selectingGroup] === texture ? "border-blue-500 border-3" : "border-gray-300"
             } hover:border-blue-400 transition-all`}
           >
             <img src={`/textures/${texture}.jpg`} alt={texture} className="w-full h-full object-cover rounded-full" />
