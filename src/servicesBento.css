@@ -1,45 +1,20 @@
-
 .container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  width: 80vw;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: repeat(5, 1fr);
   gap: 15px;
+  justify-content: center;
+  align-items: center;
   grid-template-areas: 
     "box1 box1 box2 box2"
     "box1 box1 box2 box2"
     "box3 box3 box2 box2"
     "box3 box3 box4 box4"
     "box3 box3 box4 box4";
-  height: 75vh;
-  position: absolute;
-  top: 0;
+  height: 80vh;
+  width: 60vw;
 }
 
-.bento-carousel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
-  width: 100vw;
-  height: 75vh;
-}
-
-
-
-@keyframes slideLeft {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100vw);
-  }
-}
-
-
-
-/* Estilos generales para las cajas */
 .box {
   display: flex;
   justify-content: center;
@@ -57,15 +32,19 @@
 .box1 {
   grid-area: box1;
   background:
-    linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-    url('../public/headphones/headphonesFirst.webp') no-repeat center center;
+  linear-gradient(
+    rgba(0, 0, 0, 0.7), 
+    rgba(0, 0, 0, 0.7)
+  ),
+  url('../public/headphones/headphonesFirst.webp') no-repeat center center;
   background-size: cover;
 }
+
 
 .box2 {
   grid-area: box2;
   background:
-    url('../public/endless/endlessFirst.webp') no-repeat center center;
+  url('../public/endless/endlessFirst.webp') no-repeat center center;
   background-size: cover;
 }
 
@@ -73,11 +52,6 @@
   grid-area: box3;
 }
 
-.box4 {
-  grid-area: box4;
-}
-
-/* Video de fondo */
 .video-bg {
   position: absolute;
   top: 0;
@@ -86,4 +60,8 @@
   height: 100%;
   object-fit: cover;
   z-index: 0;
+}
+
+.box4 {
+  grid-area: box4;
 }

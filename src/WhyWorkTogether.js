@@ -10,21 +10,37 @@ function WhyWorkTogether({ language }) {
   ];
 
   const [selectedBlock, setSelectedBlock] = useState(0);
-
-  const wheelEventCount = useRef(0);
+  const componentRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        console.log("Intersection Ratio:", entry.intersectionRatio);
+        setIsVisible(entry.isIntersecting && entry.intersectionRatio >= 0.99);
+      },
+      { threshold: [0.99, 1.0] }
+    );
+
+    if (componentRef.current) {
+      observer.observe(componentRef.current);
+    }
+
+    return () => {
+      if (componentRef.current) {
+        observer.unobserve(componentRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
     const handleWheel = (e) => {
-      wheelEventCount.current += 1;
-
-      if (wheelEventCount.current >= 1) {
-        if (e.deltaY > 0 && selectedBlock < reasons.length - 1) {
-          setSelectedBlock((prev) => prev + 1);
-        } else if (e.deltaY < 0 && selectedBlock > 0) {
-          setSelectedBlock((prev) => prev - 1);
-        }
-
-        wheelEventCount.current = 0;
+      if (e.deltaY > 0 && selectedBlock < reasons.length - 1) {
+        setSelectedBlock((prev) => prev + 1);
+      } else if (e.deltaY < 0 && selectedBlock > 0) {
+        setSelectedBlock((prev) => prev - 1);
       }
     };
 
@@ -33,29 +49,29 @@ function WhyWorkTogether({ language }) {
     return () => {
       window.removeEventListener("wheel", handleWheel);
     };
-  }, [selectedBlock, reasons.length]);
-
-
+  }, [selectedBlock, isVisible]);
 
   return (
-    <div className="w-screen text-black flex flex-col items-center justify-center relative">
-      <div className="flex sm:flex-col items-center w-full px-6 sm:mb-6 mb-4" data-aos="fade-up">
-        <img src="img/icon.webp" className="sm:w-12 w-8" alt="Icon" />
-        <h1 className="font-bold text-xl w-full text-center sm:mt-3">
+    <div
+      className="relative flex flex-col items-center justify-center w-screen text-black"
+    >
+      <div className="flex items-center w-full px-6 mb-4 sm:flex-col sm:mb-6" data-aos="fade-up" ref={componentRef}>
+        <img src="img/icon.webp" className="w-8 sm:w-12" alt="Icon" />
+        <h1 className="w-full text-xl font-bold text-center sm:mt-3">
           {translate("workTogether", language)}
         </h1>
       </div>
       <div 
-        className="flex flex-row gap-4 overflow-x-scroll sm:overflow-hidden w-full min-w-max items-center justify-center sm:justify-start h-auto pl-4 pr-4"
+        className="flex flex-row items-center justify-center w-full h-auto gap-4 pl-4 pr-4 overflow-x-scroll sm:overflow-hidden min-w-max sm:justify-start"
       >
         <div 
-          className='flex flex-row gap-2 mb-12 sm:overflow-auto sm:overflow-y-hidden overflow-x-scroll w-screen items-center justify-start text-white sm:justify-center h-[231px] px-4'
+          className="flex flex-row gap-2 mb-12 sm:overflow-auto sm:overflow-y-hidden overflow-x-scroll w-screen items-center justify-start text-white sm:justify-center h-[231px] px-4"
           style={{ minWidth: '100vw', paddingLeft: '16px', paddingRight: '16px' }}
         >
           {reasons.map((item, index) => (
             <div
               key={item.id}
-              className={`${selectedBlock === index ? "w-[368px]" : "w-[235px]"} h-[231px] transition-all ease-in-out duration-75 ${
+              className={`${selectedBlock === index ? "w-[368px]" : "w-[235px]"} h-[231px] transition-all ease-in-out duration-300 ${
                 index === 0
                   ? "bg-black"
                   : index === 1

@@ -6,13 +6,11 @@ function MainBanner({ language }) {
     <div data-aos="fade-up"
     className='relative md:w-[94%] sm:h-[75vh] w-[95vw] h-[50vh] flex flex-col justify-center items-start text-white p-3 px-12 rounded-3xl mb-12 overflow-hidden'>
       
-      {/* Imagen de fondo mientras carga el video */}
       <div id="video-placeholder" 
         className="absolute top-0 left-0 w-full h-full bg-red bg-cover bg-center z-0 transition-opacity duration-500"
         style={{ backgroundImage: "url('thumb.webp')" }}>
       </div>
 
-      {/* Video Background */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
         src="/bannerVideo.mp4"
@@ -34,12 +32,12 @@ function MainBanner({ language }) {
           {translate("bannerSecond", language)}
         </h2>
         <div className='w-1/2 flex flex-row gap-2 sm:p-3 mt-4'>
-          <button className='py-2 px-7 bg-lightblue bg-opacity-50 ring-1 ring-lightblue hover:bg-opacity-30 rounded-3xl hover:scale-105 transition-all duration-75 ease-in-out'>
+          <a href="#services" className='py-2 px-7 bg-lightblue bg-opacity-50 ring-1 ring-lightblue hover:bg-opacity-30 rounded-3xl hover:scale-105 transition-all duration-75 ease-in-out'>
           {translate("services", language)}
-          </button>
-          <button className='py-2 px-7 bg-lightblue bg-opacity-50 ring-1 ring-lightblue hover:bg-opacity-30 rounded-3xl hover:scale-105 transition-all duration-75 ease-in-out'>
+          </a>
+          <a href="#packs" className='py-2 px-7 bg-lightblue bg-opacity-50 ring-1 ring-lightblue hover:bg-opacity-30 rounded-3xl hover:scale-105 transition-all duration-75 ease-in-out'>
           {translate("packs", language)}
-          </button>
+          </a>
         </div>
       </div>
     </div>

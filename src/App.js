@@ -55,7 +55,7 @@ function App() {
       
       picture: 
       <a className='w-full h-full bg-zinc-200 hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative' href='/services/0'>
-        <img src='phone.webp' className='h-full absolute bottom-0'></img>
+        <img src='phone.webp' className='absolute bottom-0 h-full'></img>
       </a>
     },
     {
@@ -64,16 +64,16 @@ function App() {
       description: translate("marketingText", language),
       component: 
       
-      <div className='w-full flex flex-col items-center justify-start p-12 py-4 relative'>
+      <div className='relative flex flex-col items-center justify-start w-full p-12 py-4'>
 
         <header className='w-full flex items-center justify-between gap-4 min-h-[30vh]'>
           <div className='flex flex-col w-full'>
             <h1 className='w-full text-left text-[60px]'>{translate("animTittle", language)}</h1>
-            <p className='font-light w-full text-left'>
+            <p className='w-full font-light text-left'>
             {translate("animacionesDescription", language)}
             </p>
           </div>
-          <div className='w-full h-14 flex items-start justify-end'>
+          <div className='flex items-start justify-end w-full h-14'>
           <ContractButton language={language}/>
           </div>
         </header>
@@ -105,7 +105,7 @@ function App() {
           <ArService/>,
       picture:
       <a className='w-full h-full bg-zinc-200 hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative' href='/services/2'>
-        <img src='phone.webp' className='h-full absolute bottom-0'></img>
+        <img src='phone.webp' className='absolute bottom-0 h-full'></img>
       </a>
     },
     {
@@ -203,7 +203,7 @@ function App() {
         description: translate("pack2Description", language),
         price: translate("pack2Price", language),
         subPrice: translate("pack2SubPrice", language),
-        isMostPopular: true,
+        isMostPopular: false,
         results: translate("pack2Results", language).map(result => result)
     },
     {
@@ -226,7 +226,7 @@ function App() {
       <Layout language={language} setLanguage={setLanguage}>
         <Routes>
           <Route path="/" element={
-            <section className='max-w-screen overflow-hidden flex flex-col items-center mt-20'>
+            <section className='flex flex-col items-center mt-20 overflow-hidden max-w-screen'>
               <MainBanner language={language} />
               <WhyWorkTogether language={language} />
               <OurServicesBento language={language}/>
