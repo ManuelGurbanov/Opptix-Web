@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ARModelViewer from "./ARModelViewer";
 import CarModelViewer from "./CarModelViewer";
 import ParrillaModelViewer from "./ParrillaModelViewer";
@@ -14,16 +14,41 @@ export default function AllConfigurators({language}) {
     const [totalPriceCar, setTotalPriceCar] = useState(20000);
     const [totalPriceParrilla, setTotalPriceParrilla] = useState(1500);
 
+    const [displayedPrice, setDisplayedPrice] = useState(totalPriceCar);
+
+    useEffect(() => {
+        const targetPrice = selectedConfigurator === "car" ? totalPriceCar : totalPriceParrilla;
+        const difference = Math.abs(displayedPrice - targetPrice);
+
+        if (difference > 1500) {
+            setDisplayedPrice(targetPrice);
+        } else if (displayedPrice !== targetPrice) {
+            const step = displayedPrice < targetPrice ? 5 : -5;
+            const interval = setInterval(() => {
+                setDisplayedPrice((prev) => {
+                    if ((step > 0 && prev >= targetPrice) || (step < 0 && prev <= targetPrice)) {
+                        clearInterval(interval);
+                        return targetPrice;
+                    }
+                    return prev + step;
+                });
+            }, 10); // Ajusta la velocidad aquí
+
+            return () => clearInterval(interval);
+        }
+    }, [totalPriceCar, totalPriceParrilla, selectedConfigurator]);
+
+
     return (
         <>
         <section className='w-full min-h-[150vh] flex flex-col justify-start items-center rounded-lg gap-0 sm:mt-12 relative px-12'>
             <header className="flex items-center justify-between w-full gap-4">
                 <header className="flex flex-col items-start self-start justify-start w-1/2 gap-3 p-4">
                     <ContractButton language={language}/>
-                    <div className="flex flex-col items-center justify-center text-right">
+                    <div className="flex flex-col items-center justify-center w-64 text-left">
                         <h1 className="w-full text-base font-bold">{translate("finalPrice", language)}</h1>
                         <h2 className="w-full text-3xl">
-                            {selectedConfigurator === "car" ? `${totalPriceCar} USD` : `${totalPriceParrilla} USD`}
+                         {displayedPrice.toLocaleString()} <span className="font-semibold">USD</span>
                         </h2>
                     </div>
                 </header>

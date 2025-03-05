@@ -21,7 +21,7 @@ function Packs({ packs, language }) {
                         key={index}
                         data-aos-delay={`${300 + index * 100}`}
                         className={`shadow-sm shadow-black rounded-[52px] h-[765px] min-h-full flex flex-col items-center text-center p-8
-                        relative transition-all duration-300 ease-in-out 
+                        relative transition-all duration-100 ease-in-out 
                         ${pack.isMostPopular ? "text-lightblue2 ring-1 ring-lightblue" : "text-black"} 
                         ${activePack === pack.id ? "w-[491px]" : "w-[294px]"}
                         ${pack.id === 0 && "text-white bg-black"}
@@ -31,7 +31,7 @@ function Packs({ packs, language }) {
                 {activePack === pack.id ? (
                     <>
                         <div className={`flex flex-row items-center justify-between w-full transition-opacity ease-in-out ${isFading ? "opacity-0 duration-75" : "opacity-100"}`}>
-                            <h1 className='text-[36px] font-bold w-full text-left'>{pack.title}</h1>
+                            <h1 className='text-[36px] font-bold w-full text-left' data-aos="fade-right">{pack.title}</h1>
                             <a className='flex items-center justify-center h-10 transition duration-75 bg-white rounded-full aspect-square hover:scale-105' href='/services/0'>
                                 <RightArrow color="#000000" />
                             </a>
@@ -72,9 +72,9 @@ function Packs({ packs, language }) {
                         </div>
 
                         <footer className='absolute flex flex-row items-center justify-center w-full gap-4 px-4 text-white bottom-6'>
-                        <button className={"w-full p-2 mb-2 text-sm transition-all duration-75 ease-in-out  rounded-full sm:p-3 hover:scale-105 " + (pack.id === 0 ? "bg-white hover:bg-zinc-400 text-black" : "bg-black hover:bg-zinc-700 text-white")} >
+                        <a href="#contact" className={"w-full p-2 mb-2 text-sm transition-all duration-75 ease-in-out  rounded-full sm:p-3 hover:scale-105 " + (pack.id === 0 ? "bg-white hover:bg-zinc-400 text-black" : "bg-black hover:bg-zinc-700 text-white")} >
                                 {translate("bookDemo", language)}
-                            </button>
+                            </a>
                             <button className='flex items-center justify-center h-10 transition duration-75 bg-white rounded-full aspect-square hover:scale-105' onClick={() => handlePackChange((pack.id + 1) % 3)}>
                                 <RightArrow color="#000000" />
                             </button>
@@ -88,17 +88,18 @@ function Packs({ packs, language }) {
                                 </button>
                                 <h1 className='w-full p-2 py-0 mb-2 text-3xl font-bold text-left'>{pack.title}</h1>
                                 <p className='w-full p-2 py-0 mb-2 text-xs text-left'>{pack.description}</p>
-                                <button className={"w-full p-2 mb-2 text-sm transition-all duration-75 ease-in-out  rounded-full sm:p-3 hover:scale-105 " + (pack.id === 0 ? "bg-white hover:bg-zinc-400 text-black" : "bg-black hover:bg-zinc-700 text-white")}
+                                <a className={"w-full p-2 mb-2 text-sm transition-all duration-75 ease-in-out  rounded-full sm:p-3 hover:scale-105 " + (pack.id === 0 ? "bg-white hover:bg-zinc-400 text-black" : "bg-black hover:bg-zinc-700 text-white")}
+                                href='#contact'
                                 >
                                     {translate("bookDemo", language)}
-                                </button>
+                                </a>
                             </div>
                         )}
                     </div>
                 ))}
             </div>
 
-            <div className='flex flex-col items-center justify-center w-full gap-2 mb-16 sm:flex-row sm:gap-5' data-aos="fade-up "data-aos-delay="200">
+            <div className='flex flex-col items-center justify-start w-1/2 gap-2 mb-16 sm:flex-row sm:gap-5' data-aos="fade-right">
                 <h1 className='text-xl font-extrabold text-black'>
                     {translate("ownPack", language)}
                 </h1>

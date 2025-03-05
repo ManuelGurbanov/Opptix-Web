@@ -22,7 +22,9 @@ import UploaderThree from './UploaderThree';
 import ContractButton from './ContractButton';
 
 import ArService from './ArService';
+import ContactForm from './ContactForm';
 
+import ECommerceViewer from './ECommerceViewer';
 function Layout({ children, language, setLanguage }) {
   const location = useLocation();
   const showNavbar = !location.pathname.startsWith("/services");
@@ -122,7 +124,8 @@ function App() {
       id: 4,
       name: translate("viewerTittle", language),
       description: translate("viewerText", language),
-      component: <div className='w-full h-full bg-zinc-200'></div>,
+      component: 
+        <ECommerceViewer />,
       picture: 
         <a className='w-full h-full bg-zinc-200 hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative' href='/services/4'>
           <img src='viewer.webp' className='absolute top-0 left-0 w-full h-full object-cover z-0 sm:rounded-[80px]'></img>
@@ -228,11 +231,19 @@ function App() {
           <Route path="/" element={
             <section className='flex flex-col items-center mt-20 overflow-hidden max-w-screen'>
               <MainBanner language={language} />
+
               <WhyWorkTogether language={language} />
+
               <OurServicesBento language={language}/>
+
               <Packs packs={packs} language={language} />
+
               <CaseStudies cases={cases} language={language} />
+              
               <Faq language={language} />
+              
+              <ContactForm language={language}/>
+
               <Footer language={language} services={services} caseStudies={caseStudiesNames} packs={packNames} />
             </section>
           } />

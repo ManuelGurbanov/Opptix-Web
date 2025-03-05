@@ -154,7 +154,7 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  
+
   const handleAnimation = () => {
     const button = document.querySelector("#open-button");
     const modelViewer = document.querySelector("#model-viewer");
@@ -206,15 +206,18 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
 
   return (
     <div className="relative flex flex-col items-center justify-center w-full gap-4 mt-4 bg-white">
-      <div className="absolute top-0 z-50 flex flex-col gap-2 left-32">
+
+      <div className="absolute top-0 z-50 gap-2 left-32">
       {priceChanges.map((change) => (
+        change.value !== 0 ? (
         <div 
           key={change.id} 
-          className="absolute top-0 flex items-center justify-center h-16 px-3 text-lg text-black border rounded-full left-32 font-base border-lightblue bg-lightblue animate-fade"
+          className="absolute top-0 flex items-center justify-center w-24 h-8 px-3 text-lg font-bold text-black border rounded-full left-32 font-base border-lightblue bg-lightblue6 animate-fade text-nowrap"
           style={{ animation: 'fade-out 1s forwards' }}
         >
-          {change.value >= 0 ? `+ $${change.value}` : `- $${Math.abs(change.value)}`}
+          {change.value > 0 ? `+ $${change.value}` : `- $${Math.abs(change.value)}`}
         </div>
+        ) : null
       ))}
       </div>
 

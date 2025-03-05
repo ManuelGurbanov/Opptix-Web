@@ -280,7 +280,7 @@ const SillonViewer = ({language}) => {
           </button>
 
 
-          <section className={"absolute left-0 right-0 flex flex-col items-center justify-center w-full gap-1 mt-4 " + (isFullscreen ? "bottom-12" : "-bottom-4")}>
+          <section className={"absolute left-0 right-0 flex flex-col items-center justify-center w-full gap-1 mt-4" + (isFullscreen ? "bottom-12" : "-bottom-4")}>
           <button
             onClick={toggleBed}
             className="px-4 py-3 text-black transition-all border-2 rounded-full bg-lightblue6 border-lightblue hover:bg-lightblue2 hover:text-white"

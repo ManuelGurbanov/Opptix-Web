@@ -153,6 +153,13 @@ const translations = {
     catalogDescription: "Fewer doubts, more sales: showcase your catalog in 3D and turn browsers into buyers.",
     contract: "Hire Service",
     animTittle: "3D Animations",
+    name: "Name",
+    correo: "Email",
+    empresa: "Company",
+    mensaje: "Message",
+    enviar: "Send",
+    contact: "Contact",
+    contact2: "Start enjoying the benefits of Opptix"
   },
   es: {
     hideBed: "Ocultar Cama",
@@ -306,7 +313,14 @@ const translations = {
     arDescription: "Reduce devoluciones en un 50%: deja que tus clientes prueben el producto antes de comprar.",
     catalogDescription: "Menos dudas, más ventas: muestra tu catálogo en 3D y convierte curiosos en compradores.",
     contract: "Contratar Servicio",
-    animTittle : "Animaciones 3D"
+    animTittle : "Animaciones 3D",
+    name: "Nombre",
+    correo: "Correo",
+    empresa: "Empresa",
+    mensaje: "Mensaje",
+    enviar: "Enviar",
+    contact: "Contacto",
+    contact2: "Empieza a disfrutar los beneficios de Opptix"
   }
   
 
