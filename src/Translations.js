@@ -159,7 +159,8 @@ const translations = {
     mensaje: "Message",
     enviar: "Send",
     contact: "Contact",
-    contact2: "Start enjoying the benefits of Opptix"
+    contact2: "Start enjoying the benefits of Opptix",
+    result: "Your message has been sent successfully. We will contact you shortly.",
   },
   es: {
     hideBed: "Ocultar Cama",
@@ -320,7 +321,8 @@ const translations = {
     mensaje: "Mensaje",
     enviar: "Enviar",
     contact: "Contacto",
-    contact2: "Empieza a disfrutar los beneficios de Opptix"
+    contact2: "Empieza a disfrutar los beneficios de Opptix",
+    result: "Tu mensaje ha sido enviado con éxito. Nos pondremos en contacto contigo en breve.",
   }
   
 

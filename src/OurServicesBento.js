@@ -19,12 +19,12 @@ export default function OurServicesBento({ language }) {
               </a>
             </header>
             <div className='container text-white'>
-                <a class="box box1 text-left rounded-3xl relative" href='/services/0'>
-                    <video autoPlay muted loop playsinline class="video-bg blur-sm">
+                <a class="box box1 text-left rounded-3xl relative bg-black" href='/services/0'>
+                    <video autoPlay muted loop playsinline class="video-bg h-12 rounded-3xl">
                         <source src="configVideo.mp4" type="video/mp4" />
                     </video>
-                    <h1 className='absolute text-2xl text-black bottom-8 left-4'>Configuradores 3D</h1>
-                    <p className='absolute text-xs font-light text-black bottom-4 left-4'>Phasellus faucibus scelerisque eleifend donec.</p>
+                    <h1 className='absolute text-2xl text-white bottom-8 left-4'>Configuradores 3D</h1>
+                    <p className='absolute text-xs font-light text-white bottom-4 left-4'>Phasellus faucibus scelerisque eleifend donec.</p>
 
                     <a className='absolute flex items-center justify-center h-6 transition duration-75 bg-black rounded-full w-7 top-4 right-4 hover:scale-105' >
                         <RightArrow color="#ffffff" />
