@@ -1,68 +1,98 @@
 import React from 'react';
-import './servicesBento.css'
+import './servicesBento.css';
 import RightArrow from './RightArrow';
 import { translate } from './Translations';
 
 export default function OurServicesBento({ language }) {
     return (
         <div>
-            <header className="flex items-center justify-between w-full px-24 py-6">
-              <div className="flex flex-col items-start">
-                <h1 className="text-3xl font-bold">{translate("services", language)}</h1>
-                <h2 className="text-xl font-light">{translate("servicesSub", language)}</h2>
-              </div>
-              <a href="/services/0" className="flex items-center justify-center w-56 px-4 py-2 text-white bg-black rounded-3xl hover:scale-105">
-                <p>Explorar más</p>
-                <div className="flex items-center justify-center h-4 -rotate-45 w-9">
-                  <RightArrow color="#ffffff" />
+            <header className="flex items-center justify-between w-full p-6">
+                <div className="flex flex-col items-start">
+                    <h1 className="text-3xl font-bold">{translate("services", language)}</h1>
+                    <h2 className="text-xl font-light">{translate("servicesSub", language)}</h2>
                 </div>
-              </a>
+                <a href="/services/0" className="flex items-center justify-center w-56 px-4 py-2 text-white bg-black rounded-3xl hover:scale-105 transition">
+                    <p>
+                        {translate("explore", language)}
+                    </p>
+                    <div className="flex items-center justify-center h-4 -rotate-45 w-9">
+                        <RightArrow color="#ffffff" />
+                    </div>
+                </a>
             </header>
+
             <div className='container text-white'>
-                <a class="box box1 text-left rounded-3xl relative bg-black" href='/services/0'>
-                    <video autoPlay muted loop playsinline class="video-bg h-12 rounded-3xl">
-                        <source src="configVideo.mp4" type="video/mp4" />
-                    </video>
-                    <h1 className='absolute text-2xl text-white bottom-8 left-4'>Configuradores 3D</h1>
-                    <p className='absolute text-xs font-light text-white bottom-4 left-4'>Phasellus faucibus scelerisque eleifend donec.</p>
-
-                    <a className='absolute flex items-center justify-center h-6 transition duration-75 bg-black rounded-full w-7 top-4 right-4 hover:scale-105' >
-                        <RightArrow color="#ffffff" />
-                    </a>
-                </a>
-
-                <a class="box box2 p-7 rounded-3xl text-white relative" href='/services/2'>
-                    <h1 className='absolute text-2xl bottom-8 left-4'>Render Estático</h1>
-                    <p className='absolute text-xs bottom-4 left-4'> Phasellus faucibus scelerisque eleifend donec.</p>
-                    <a className='absolute flex items-center justify-center h-6 transition duration-75 bg-black rounded-full w-7 top-4 right-4 hover:scale-105'>
-                        <RightArrow color="#ffffff" />
-                    </a>
-                </a>
-
-                <a class="box box3 flex flex-col items-start justify-start text-left bg-black p-7 rounded-3xl relative overflow-hidden" href='/services/1'>
-                    <video autoPlay muted loop playsinline class="video-bg">
-                        <source src="glasses.mp4" type="video/mp4" />
-                    </video>
-                    <h1 class="absolute top-4 left-4 text-2xl">Animaciones 3D</h1>
-                    <p class="absolute top-12 left-4">Phasellus faucibus scelerisque eleifend donec.</p>
-                    <a className='absolute flex items-center justify-center h-6 transition duration-75 bg-white rounded-full w-7 top-4 right-4 hover:scale-105'>
+                
+                {/* Configuradores 3D */}
+                <a className="box box1 rounded-[48px] relative flex flex-col justify-between h-full bg-black overflow-hidden" href='/services/0'>
+                    <a className="absolute flex items-center justify-center h-6 w-7 bg-white rounded-full top-4 right-4 hover:scale-105 z-10">
                         <RightArrow color="#000000" />
                     </a>
+                    <video autoPlay muted loop playsInline className="h-2/3 w-2/3 object-cover absolute top-2 right-2">
+                        <source src="configVideo.mp4" type="video/mp4" />
+                    </video>
+                    <div className="flex flex-col justify-end flex-grow p-4 gap-2 z-10 w-full">
+                        <h1 className="text-2xl">
+                            {translate("configTittle", language)}
+                        </h1>
+                        <p className="text-xs font-light">
+                            {translate("configuratorsDescription", language)}
+                        </p>
+                    </div>
                 </a>
 
+                {/* Render Estático */}
+                <a className="box box2 p-7 rounded-[48px] relative flex flex-col justify-between h-full bg-gray-800" href='/services/2'>
+                    <a className="absolute flex items-center justify-center h-6 w-7 bg-white rounded-full top-4 right-4 hover:scale-105 z-10">
+                        <RightArrow color="#000000" />
+                    </a>
+                    <div className="flex flex-col justify-end flex-grow gap-2 w-full">
+                        <h1 className="text-2xl">
+                            {translate("staticRenderTittle", language)}
+                        </h1>
+                        <p className="text-xs">
+                            {translate("rendersDescription", language)}
+                        </p>
+                    </div>
+                </a>
 
-                <a class="box box4 flex flex-col items-start justify-between text-left p-7 text-black relative" href='/services/3'>
-                    <h1 className='text-2xl text-black'>Realidad Virtual</h1>
-                    <p className='text-xs text-black'> Phasellus faucibus scelerisque eleifend donec.</p>
-                    <a className='absolute flex items-center justify-center h-6 transition duration-75 bg-black rounded-full w-7 top-4 right-4 hover:scale-105'>
+                {/* Animaciones 3D */}
+                <a className="box box3 rounded-[48px] relative flex flex-col justify-between h-full bg-black overflow-hidden p-7" href='/services/1'>
+                    <a className="absolute flex items-center justify-center h-6 w-7 bg-white rounded-full top-4 right-4 hover:scale-105 z-10">
+                        <RightArrow color="#000000" />
+                    </a>
+                    <video autoPlay muted loop playsInline className="h-full w-full object-cover 3xl absolute top-0 left-0">
+                        <source src="glasses.mp4" type="video/mp4" />
+                    </video>
+                    <div className="flex flex-col justify-end flex-grow gap-2 z-10 w-full">
+                        <h1 className="text-2xl">
+                            {translate("marketingTittle", language)}
+                        </h1>
+                        <p className="text-xs">
+                            {translate("marketingText", language)}
+                        </p>
+                    </div>
+                </a>
+
+                {/* Realidad Virtual */}
+                <a className="box box4 rounded-[48px] relative flex flex-col justify-between h-full p-7" href='/services/3'>
+                    <a className="absolute flex items-center justify-center h-6 w-7 bg-black rounded-full top-4 right-4 hover:scale-105">
                         <RightArrow color="#ffffff" />
                     </a>
-                    <div className='flex items-center justify-center gap-4 w-28'>
-                        <img src="phone.webp" alt="" className='h-full'/>
-                        <img src="/qrcodes/bike.png" alt="" className='h-full'/>
+                    <div className="flex flex-col justify-end flex-grow gap-2 w-full">
+                        <h1 className="text-2xl text-black">
+                            {translate("arTittle", language)}
+                        </h1>
+                        <p className="text-xs text-black">
+                            {translate("arDescription", language)}
+                        </p>
+                    </div>
+                    <div className="flex items-center justify-center gap-4 w-28">
+                        <img src="phone.webp" alt="Phone" className="h-full" />
+                        <img src="/qrcodes/bike.png" alt="QR Code" className="h-full" />
                     </div>
                 </a>
             </div>
         </div>
-    )
+    );
 }

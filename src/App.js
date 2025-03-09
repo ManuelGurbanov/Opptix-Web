@@ -25,6 +25,9 @@ import ArService from './ArService';
 import ContactForm from './ContactForm';
 
 import ECommerceViewer from './ECommerceViewer';
+
+import DataBlock from './DataBlock';
+
 function Layout({ children, language, setLanguage }) {
   const location = useLocation();
   const showNavbar = !location.pathname.startsWith("/services");
@@ -50,7 +53,6 @@ function App() {
     {
       id: 0,
       name: translate("configTittle", language),
-      description: translate("configText", language),
       component:
       <AllConfigurators language={language}/>
       ,
@@ -63,7 +65,6 @@ function App() {
     {
       id: 1,
       name: translate("marketingTittle", language),
-      description: translate("marketingText", language),
       component: 
       
       <div className='relative flex flex-col items-center justify-start w-full p-12 py-4'>
@@ -79,6 +80,11 @@ function App() {
           <ContractButton language={language}/>
           </div>
         </header>
+
+        <div className="justify-self-center w-screen flex flex-col items-center justify-center gap-4">
+        <DataBlock data1="data1Anim" data2="data2Anim" data3="data3Anim" language={language}/>
+        </div>
+
 
 
           <video className='w-full mt-4 rounded-3xl' autoPlay loop muted>
@@ -102,9 +108,8 @@ function App() {
     {
       id: 2,
       name: translate("arTittle", language),
-      description: translate("arText", language),
       component: 
-          <ArService/>,
+          <ArService language={language}/>,
       picture:
       <a className='w-full h-full bg-zinc-200 hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative' href='/services/2'>
         <img src='phone.webp' className='absolute bottom-0 h-full'></img>
@@ -113,7 +118,6 @@ function App() {
     {
       id: 3,
       name: translate("staticRenderTittle", language),
-      description: translate("staticRenderText", language),
       component: <></>,
       picture: 
         <a className='w-full h-full bg-zinc-200 hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative' href='/services/3'>
@@ -123,7 +127,6 @@ function App() {
     {
       id: 4,
       name: translate("viewerTittle", language),
-      description: translate("viewerText", language),
       component: 
         <ECommerceViewer />,
       picture: 

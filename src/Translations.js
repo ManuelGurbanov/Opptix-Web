@@ -147,7 +147,7 @@ const translations = {
     car : "Car",
     finalPrice : "Final Price:",
     configuratorsDescription: "Increase your average ticket by 25% and reduce operating costs by 70% with interactive 3D configurators that automate your sales.",
-    animacionesDescription: "Double engagement and bring your brand to life with high-impact 3D animations.",
+    animacionesDescription: "Highlight your product with 3D animations, showing its design and functions in a dynamic and attractive way.",
     rendersDescription: "Perfect photos without a photoshoot: 3D renders that showcase your product at its best.",
     arDescription: "Reduce returns by 50%: let your customers try the product before buying.",
     catalogDescription: "Fewer doubts, more sales: showcase your catalog in 3D and turn browsers into buyers.",
@@ -161,6 +161,17 @@ const translations = {
     contact: "Contact",
     contact2: "Start enjoying the benefits of Opptix",
     result: "Your message has been sent successfully. We will contact you shortly.",
+    
+    data1: "Increase in conversion rate",
+    data2: "Reduction in returns",
+    data3: "Increase in average ticket",
+    data1AR: "Less Returns",
+    data2AR: "Compatible with WebAr and mobile devices (without apps)",
+    data3AR: "Immersive Experience",
+    data1Anim: "+300% engagement on social media and ads",
+    data2Anim: "Better recording with impactful content",
+    data3Anim: "Differentiation with high quality materials",
+    explore: "Explore More"
   },
   es: {
     hideBed: "Ocultar Cama",
@@ -309,7 +320,7 @@ const translations = {
     car : "Auto",
     finalPrice: "Precio Final:",
     configuratorsDescription: "Aumenta tu ticket promedio un 25% y reduce costos operativos un 70% con configuradores 3D interactivos, que automatizan tus ventas.",
-    animacionesDescription: "Duplica el engagement y haz que tu marca cobre vida con animaciones 3D de alto impacto.",
+    animacionesDescription: "Destaca tu producto con animaciones 3D, mostrando su diseño y funciones de forma dinámica y atractiva.",
     rendersDescription: "Fotos perfectas sin sesión de fotos: renders 3D que muestran tu producto en su mejor versión.",
     arDescription: "Reduce devoluciones en un 50%: deja que tus clientes prueben el producto antes de comprar.",
     catalogDescription: "Menos dudas, más ventas: muestra tu catálogo en 3D y convierte curiosos en compradores.",
@@ -323,6 +334,17 @@ const translations = {
     contact: "Contacto",
     contact2: "Empieza a disfrutar los beneficios de Opptix",
     result: "Tu mensaje ha sido enviado con éxito. Nos pondremos en contacto contigo en breve.",
+
+    data1: "+40% ventas con personalización interactiva",
+    data2: "Boleto mayor con upsells y crossselling",
+    data3: "Menos costos al automatizar la configuración",
+    data1AR: "Menos Devoluciones",
+    data2AR: "Compatible con WebAr y móviles (sin apps)",
+    data3AR: "Experiencia Inmersiva",
+    data1Anim: "+300% engagement en redes sociales y anuncios",
+    data2Anim: "Mejor grabación con contenido impactante",
+    data3Anim: "Diferenciación con materiales de alta calidad",
+    explore: "Explorar Más"
   }
   
 

@@ -207,7 +207,7 @@ const CarModelViewer = ({ modelSrc , setTotalPriceCar, language }) => {
 
 
   return (
-    <div className="relative flex flex-col items-center justify-center w-full gap-2 mt-4 bg-white">
+    <div className="relative flex flex-col items-center justify-center w-full gap-2 bg-white">
 
       {priceChange !== null && (
         <div className="absolute top-0 bottom-0 z-50 flex items-center justify-center h-12 px-3 mt-2 text-lg border rounded-full right-32 font-base text-zinc-400 border-zinc-400 animate-up bg-zinc-200">
@@ -294,7 +294,7 @@ const CarModelViewer = ({ modelSrc , setTotalPriceCar, language }) => {
             )}
           </button>
 
-      <div className={"absolute flex flex-col items-center justify-start w-full p-2 " + (isFullscreen ? " bottom-2" : " -bottom-36")}>
+      <div className={"flex flex-col items-center justify-start w-full p-2 " + (isFullscreen ? "absolute bottom-2" : "")}>
       <section className="flex flex-row items-center justify-center w-full gap-2">
         {["EXT", "LINEAS", "CUERO"].map((group) => (
           <button

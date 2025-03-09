@@ -13,6 +13,7 @@
     "box3 box3 box4 box4";
   height: 80vh;
   width: 60vw;
+  min-width: 1000px;
 }
 
 .box {

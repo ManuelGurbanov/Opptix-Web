@@ -205,7 +205,7 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
 
 
   return (
-    <div className="relative flex flex-col items-center justify-center w-full gap-4 mt-4 bg-white">
+    <div className="relative flex flex-col items-center justify-center w-full gap-4 bg-white">
 
       <div className="absolute top-0 z-50 gap-2 left-32">
       {priceChanges.map((change) => (
@@ -308,7 +308,7 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
 
         </model-viewer>
 
-          <div className={"absolute flex flex-col items-center justify-start w-full p-2 " + (isFullscreen ? " bottom-2" : " -bottom-36")}>
+          <div className={"flex flex-col items-center justify-start w-full p-2 " + (isFullscreen ? " bottom-2 absolute " : " -bottom-36")}>
           {activeVariants.TAPA != "OFF-TAPA" && (
             <button
               onClick={handleAnimation}

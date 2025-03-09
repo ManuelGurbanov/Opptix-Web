@@ -16,22 +16,22 @@ function WhyWorkTogether({ language }) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        console.log("Intersection Ratio:", entry.intersectionRatio);
-        setIsVisible(entry.isIntersecting && entry.intersectionRatio >= 0.99);
+        setIsVisible(entry.isIntersecting && entry.intersectionRatio >= 0.4);
       },
-      { threshold: [0.99, 1.0] }
+      { threshold: [0.4] } // Cambiado a 40%
     );
-
+  
     if (componentRef.current) {
       observer.observe(componentRef.current);
     }
-
+  
     return () => {
       if (componentRef.current) {
         observer.unobserve(componentRef.current);
       }
     };
   }, []);
+  
 
   useEffect(() => {
     if (!isVisible) return;

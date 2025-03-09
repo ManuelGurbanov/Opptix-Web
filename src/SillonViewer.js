@@ -195,7 +195,7 @@ const SillonViewer = ({language}) => {
 
   return (
     <div className="relative flex flex-col items-center justify-center w-screen mt-2 ">
-      <div className="relative min-h-[60vh] bg-white" ref={containerRef}>
+      <div className="relative min-h-[60vh] bg-white flex items-center justify-center flex-col" ref={containerRef}>
           <Canvas
               className="bg-white cursor-grab"
               camera={{ position: [0, 3, 5], fov: 15 }}
@@ -280,74 +280,78 @@ const SillonViewer = ({language}) => {
           </button>
 
 
-          <section className={"absolute left-0 right-0 flex flex-col items-center justify-center w-full gap-1 mt-4" + (isFullscreen ? "bottom-12" : "-bottom-4")}>
-          <button
-            onClick={toggleBed}
-            className="px-4 py-3 text-black transition-all border-2 rounded-full bg-lightblue6 border-lightblue hover:bg-lightblue2 hover:text-white"
-          >
-            {showBed ? translate("hideBed", language) : translate("showBed", language)}
-          </button>
-          <div className="flex items-center justify-center gap-6 mt-4">
+          <section className={`flex flex-col items-center justify-center w-full gap-1 mt-4 ${
+            isFullscreen ? "absolute left-0 right-0 bottom-0" : "w-screen"
+          }`}>
+            
             <button
-              onClick={() => setSelectingGroup("group0")}
-              className={`px-4 py-2 ${
-                selectingGroup === "group0" ? "font-bold" : "font-normal"
-              } hover:scale-105 transition-all`}
+              onClick={toggleBed}
+              className="px-4 py-3 text-black transition-all border-2 rounded-full bg-lightblue6 border-lightblue hover:bg-lightblue2 hover:text-white self-center"
             >
-              Seats
+              {showBed ? translate("hideBed", language) : translate("showBed", language)}
             </button>
-            <button
-              onClick={() => setSelectingGroup("group1")}
-              className={`px-4 py-2 ${
-                selectingGroup === "group1" ? "font-bold" : "font-normal"
-              } hover:scale-105 transition-all`}
-            >
-              Sides
-            </button>
-            <button
-              onClick={() => setSelectingGroup("group2")}
-              className={`px-4 py-2 ${
-                selectingGroup === "group2" ? "font-bold" : "font-normal"
-              } hover:scale-105 transition-all`}
-            >
-              Back
-            </button>
-            <button
-              onClick={() => setSelectingGroup("group3")}
-              className={`px-4 py-2 ${
-                selectingGroup === "group3" ? "font-bold" : "font-normal"
-              } hover:scale-105 transition-all`}
-            >
-              Pillows
-            </button>
-          </div>
 
-          <hr className="h-[2px] w-64 bg-black" />
+              <div className="flex items-center justify-center gap-6 mt-4">
+                <button
+                  onClick={() => setSelectingGroup("group0")}
+                  className={`px-4 py-2 ${
+                    selectingGroup === "group0" ? "font-bold" : "font-normal"
+                  } hover:scale-105 transition-all`}
+                >
+                  Seats
+                </button>
+                <button
+                  onClick={() => setSelectingGroup("group1")}
+                  className={`px-4 py-2 ${
+                    selectingGroup === "group1" ? "font-bold" : "font-normal"
+                  } hover:scale-105 transition-all`}
+                >
+                  Sides
+                </button>
+                <button
+                  onClick={() => setSelectingGroup("group2")}
+                  className={`px-4 py-2 ${
+                    selectingGroup === "group2" ? "font-bold" : "font-normal"
+                  } hover:scale-105 transition-all`}
+                >
+                  Back
+                </button>
+                <button
+                  onClick={() => setSelectingGroup("group3")}
+                  className={`px-4 py-2 ${
+                    selectingGroup === "group3" ? "font-bold" : "font-normal"
+                  } hover:scale-105 transition-all`}
+                >
+                  Pillows
+                </button>
+              </div>
 
-          <div className="flex items-center justify-center gap-6 mt-4">
-            {textureNames.map((texture) => (
-              <button
-                key={texture}
-                onClick={() => handleTextureChange(selectingGroup, texture)}
-                className={`h-16 border rounded-full flex flex-row items-center justify-center gap-4 ${
-                  groupTextures[selectingGroup] === texture
-                    ? "border-gray-800 w-auto p-4"
-                    : "border-gray-300 w-16"
-                } hover:border-blue-400 transition-all`}
-              >
-                {groupTextures[selectingGroup] === texture && (
-                  <p className="flex items-center justify-center w-1/2 h-full text-nowrap">
-                    {textureColors[texture]}
-                  </p>
-                )}
-                <img
-                  src={`/textures/${texture}.jpg`}
-                  alt={texture}
-                  className="object-cover w-12 rounded-full"
-                />
-              </button>
-            ))}
-          </div>
+              <hr className="h-[2px] w-64 bg-black justify-self-center"/>
+
+              <div className="flex items-center justify-center gap-6 mt-4">
+                {textureNames.map((texture) => (
+                  <button
+                    key={texture}
+                    onClick={() => handleTextureChange(selectingGroup, texture)}
+                    className={`h-16 border rounded-full flex flex-row items-center justify-center gap-4 ${
+                      groupTextures[selectingGroup] === texture
+                        ? "border-gray-800 w-auto p-4"
+                        : "border-gray-300 w-16"
+                    } hover:border-blue-400 transition-all`}
+                  >
+                    {groupTextures[selectingGroup] === texture && (
+                      <p className="flex items-center justify-center w-1/2 h-full text-nowrap">
+                        {textureColors[texture]}
+                      </p>
+                    )}
+                    <img
+                      src={`/textures/${texture}.jpg`}
+                      alt={texture}
+                      className="object-cover w-12 rounded-full"
+                    />
+                  </button>
+                ))}
+              </div>
           </section>
 
             
