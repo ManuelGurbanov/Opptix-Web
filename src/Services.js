@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { translate } from "./Translations";
 
 import { Link , useParams } from "react-router-dom";
+import ContactForm from "./ContactForm";
 
 
-function Services({ language, services, setLanguage }) {
+function Services({ language, services, setLanguage, contact }) {
   const { serviceId } = useParams();  // Obtenemos el id del servicio de la URL
   const [actualService, setActualService] = useState(parseInt(serviceId));
 
@@ -42,6 +43,8 @@ function Services({ language, services, setLanguage }) {
 
   return (
     <div className="flex flex-col items-center justify-start w-screen h-screen">
+
+      {contact && <ContactForm language={language} />}
       {/* Menú para pantallas grandes */}
       <div className="hidden sm:flex justify-center items-center p-4 text-black gap-4 h-16 z-30 w-screen m-0 bg-zinc-300">
 

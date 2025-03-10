@@ -49,12 +49,13 @@ function App() {
     AOS.init();
   }, []);
 
+  const [contact, setContact] = useState(false);
   const services = [
     {
       id: 0,
       name: translate("configTittle", language),
       component:
-      <AllConfigurators language={language}/>
+      <AllConfigurators language={language} setContact={setContact}/>
       ,
       
       picture: 
@@ -227,6 +228,7 @@ function App() {
   const caseStudiesNames = cases.map(caseItem => caseItem.name);
   const packNames = packs.map(packsItem => packsItem.title);
 
+
   return (
     <Router>
       <Layout language={language} setLanguage={setLanguage}>
@@ -245,13 +247,11 @@ function App() {
               
               <Faq language={language} />
               
-              <ContactForm language={language}/>
-
               <Footer language={language} services={services} caseStudies={caseStudiesNames} packs={packNames} />
             </section>
           } />
           <Route path="/case-study" element={<CaseStudiePage caseStudies={cases} />} />
-          <Route path="/services/:serviceId" element={<Services services={services} language={language} setLanguage={setLanguage}/>} />
+          <Route path="/services/:serviceId" element={<Services services={services} language={language} setLanguage={setLanguage} contact={contact}/>} />
           <Route path="/model" element={<ModelLink />} />
           <Route path="/upload" element={<UploaderViewer />} />
           <Route path="/uploadthree" element={<UploaderThree />} />

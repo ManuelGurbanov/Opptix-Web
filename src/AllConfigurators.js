@@ -9,7 +9,7 @@ import { translate } from "./Translations";
 import ContractButton from "./ContractButton";
 
 import DataBlock from "./DataBlock";
-export default function AllConfigurators({language}) {
+export default function AllConfigurators({language, setContact}) {
 
     const [selectedConfigurator, setSelectedConfigurator] = useState("car");
 
@@ -81,7 +81,7 @@ export default function AllConfigurators({language}) {
                 </div>
 
                 <div className="flex flex-col items-end justify-end w-1/2 gap-3 p-4">
-                    <ContractButton language={language}/>
+                    <ContractButton language={language} setContact={setContact}/>
                     <div className="flex flex-col items-center justify-center w-64 text-right">
                         <h1 className="w-full text-base font-bold">{translate("finalPrice", language)}</h1>
                         <h2 className="w-full text-3xl">
