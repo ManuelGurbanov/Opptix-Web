@@ -171,9 +171,11 @@ const translations = {
     data1Anim: "+300% engagement on social media and ads",
     data2Anim: "Better recording with impactful content",
     data3Anim: "Differentiation with high quality materials",
-    explore: "Explore More"
+    explore: "Explore More",
+    agendar: "Schedule a Call"
   },
   es: {
+    agendar: "Agendar Llamada",
     hideBed: "Ocultar Cama",
     showBed: "Mostrar Cama",
     open: "Abrir",
@@ -185,8 +187,8 @@ const translations = {
     packsSub: "Descubre el que mejor se adapte a tu negocio.",
     ourServices: "Nuestros Servicios",
     getStarted: "Quiero Comenzar",
-    bannerMain: "Transforma productos\nen experiencias.",
-    bannerSecond: "Conecta visualmente, \n y vende estratégicamente.",
+    bannerMain: "Revolucionando la Venta Online",
+    bannerSecond: "Mejora la experiencia de compra con 3D y realidad aumentada.",
     popUpTittle: "TE REGALAMOS:",
     popUpText: "Nuestro configurador de producto, nuestra realidad aumentada y el modelo 3D de tu producto, GRATIS",
     secondaryBanner: "Estadísticas de Beneficios de trabajar con nosotros con números llamativos",

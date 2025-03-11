@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import "@google/model-viewer";
 
+import SeeButton from "./SeeInYourSpace";
+
 const VARIANT_COLORS = {
   "EXT-BLANCO": "Blanco",
   "EXT-AZUL": "Azul",
@@ -237,14 +239,18 @@ const CarModelViewer = ({ modelSrc , setTotalPriceCar, language }) => {
         }}
       />
 
+          <div className="absolute top-0 left-0 right-0">
+            <SeeButton language={language} qrCode="/qrcodes/bike.png" />
+          </div>
+
           <button
             onClick={handleFullscreen}
-            className="absolute flex items-center justify-center px-4 py-3 transition-all border-2 rounded-full top-7 right-7 bg-lightblue6 border-lightblue hover:bg-lightblue2 hover:scale-105"
+            className="absolute flex items-center justify-center px-2 py-1 transition-all border-2 rounded-full top-7 right-7 bg-lightblue6 border-lightblue hover:bg-lightblue2 hover:scale-105"
           >
             {!isFullscreen ? (
               <svg
-                width="32px"
-                height="32px"
+                width="24px"
+                height="24px"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="#000000"

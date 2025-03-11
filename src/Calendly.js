@@ -1,9 +1,10 @@
 import { PopupModal } from "react-calendly";
 import { useState } from "react";
+import {translate} from "./Translations";
 
-const CALENDLY_URL = "https://calendly.com/gasparvisualmkt/30min"; // Reemplaza con tu enlace de Calendly
+const CALENDLY_URL = "https://calendly.com/gasparvisualmkt/30min";
 
-export default function CalendlyScheduler() {
+export default function CalendlyScheduler({language}) {
   const [isOpen, setIsOpen] = useState(false);
 
   const openCalendly = () => setIsOpen(true);
@@ -11,7 +12,9 @@ export default function CalendlyScheduler() {
 
   return (
     <div>
-      <button onClick={openCalendly} className="w-full bg-black px-3 py-2 rounded-xl text-white hover:scale-105 hover:bg-zinc-800 transition-all duration-75">Agendar Llamada</button>
+      <button onClick={openCalendly} className="w-full bg-black px-3 py-2 rounded-xl text-white hover:scale-105 hover:bg-zinc-800 transition-all duration-75">
+        {translate("agendar", language)}
+      </button>
       {isOpen && (
         <PopupModal
           url={CALENDLY_URL}

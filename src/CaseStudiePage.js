@@ -10,6 +10,19 @@ function CaseStudiePage({ language }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const openModal = (imgSrc) => {
+    setSelectedImage(imgSrc);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setSelectedImage(null);
+  };
+
+  const [modalOpen, setModalOpen] = React.useState(false);
+  const [selectedImage, setSelectedImage] = React.useState(null);
   const cases = [
     {
       id: 0,
@@ -17,11 +30,11 @@ function CaseStudiePage({ language }) {
       tittle: "Headphones",
       description: (
         <>
-          <p>
+          <p className='text-xl'>
             Este proyecto tuvo como objetivo explorar y perfeccionar técnicas avanzadas de renderizado y animación en 3D, enfocándonos en lograr un nivel excepcional de calidad visual.
           </p>
-          <h2 className="font-semibold text-lg mt-4">Qué hicimos:</h2>
-          <ul className="list-disc pl-6 mt-2">
+          <h2 className="font-semibold text-xl mt-4">Qué hicimos:</h2>
+          <ul className="list-disc pl-6 mt-2 text-xl">
             <li><strong>Renders fotorrealistas:</strong> Desarrollamos imágenes de alta resolución que destacaron cada detalle de diseño, materiales y texturas de los headphones, buscando transmitir calidad y modernidad.</li>
             <li><strong>Animaciones de producto:</strong> Creamos secuencias dinámicas que mostraron el producto desde diferentes perspectivas, resaltando su diseño ergonómico y acabados premium.</li>
           </ul>
@@ -48,23 +61,14 @@ function CaseStudiePage({ language }) {
       tittle: "Blossom",
       description: (
         <>
-          <p>
+          <p className='text-xl'>
             En este proyecto trabajamos junto a Blossom, una marca emergente de fragancias premium, con el objetivo de crear un paquete de contenido integral que reflejara la esencia única de cada una de sus fragancias. Nuestro enfoque fue estratégico y personalizado, diseñando piezas visuales impactantes para posicionar la marca en el mercado y conectar emocionalmente con su público objetivo.
           </p>
         </>
       ),
-      //secondTittle: "Different colors and sizes.",
       secondDescription: 
       <>
-          <h2 className="font-semibold mt-4">Para este lanzamiento, desarrollamos:</h2>
-          <ul className="list-disc pl-6 mt-2">
-            <li><strong>Animaciones 3D:</strong> Videos teaser y presentaciones dinámicas que resaltaron las notas y características de cada fragancia.</li>
-            <li><strong>Renders fotorrealistas:</strong> Imágenes en alta resolución que destacaron el diseño de los frascos y el concepto detrás de la marca, ideales para redes sociales y catálogos.</li>
-            <li><strong>Contenido e-commerce:</strong> Banners, PNGs y elementos visuales optimizados para su integración en plataformas online, mejorando la experiencia de usuario y aumentando la conversión.</li>
-          </ul>
-          <p className="mt-4">
-            El proyecto estuvo guiado por la necesidad de transmitir los valores de Blossom: elegancia, frescura y autenticidad, asegurando un impacto visual consistente y memorable en todos los puntos de contacto. Este enfoque permitió a la marca no solo posicionarse estratégicamente, sino también establecer una conexión genuina con sus clientes.
-          </p>
+
       </>,
       firstImg: "blossom/blossomFirst.webp",
       mainImg: "blossom/blossomMain.webp",
@@ -135,18 +139,19 @@ function CaseStudiePage({ language }) {
       tittle: "Rack",
       description:
       <>
-        <p>En este proyecto, exploramos cómo transmitir la flexibilidad y funcionalidad de una estantería modular diseñada para adaptarse a diferentes necesidades y espacios.</p>
-        <p>La pieza clave del producto es su capacidad para expandirse agregando módulos, permitiendo personalizar su tamaño y diseño.</p>
+        <p className='text-xl'>En este proyecto, exploramos cómo transmitir la flexibilidad y funcionalidad de una estantería modular diseñada para adaptarse a diferentes necesidades y espacios.</p>
+        <p className='text-xl'>La pieza clave del producto es su capacidad para expandirse agregando módulos, permitiendo personalizar su tamaño y diseño.</p>
+        <p className='text-xl'>Nuestra propuesta visual incluyó:</p>
+        <ul className='mt-4'>
+          <li className='text-xl'><strong>Renders versátiles:</strong> Mostramos el producto en diversos ambientes, destacando su capacidad para integrarse en distintos estilos.</li>
+          <li className='text-xl'><strong>Video presentación:</strong> Diseñamos un video dinámico que narra el ciclo completo del producto.</li>
+        </ul>
+        <p className='text-xl'>Este proyecto demostró cómo el 3D puede ser una herramienta poderosa para comunicar la innovación detrás de un producto.</p>
       </>,
       secondTittle: "Propuesta visual y objetivos",
       secondDescription:
       <>
-        <p>Nuestra propuesta visual incluyó:</p>
-        <ul className='mt-4'>
-          <li><strong>Renders versátiles:</strong> Mostramos el producto en diversos ambientes, destacando su capacidad para integrarse en distintos estilos.</li>
-          <li><strong>Video presentación:</strong> Diseñamos un video dinámico que narra el ciclo completo del producto.</li>
-        </ul>
-        <p>Este proyecto demostró cómo el 3D puede ser una herramienta poderosa para comunicar la innovación detrás de un producto.</p>
+
       </>,
       firstImg: "rack/rackFirst.webp",
       mainImg: "rack/rackMain.webp",
@@ -157,55 +162,51 @@ function CaseStudiePage({ language }) {
   // Buscar el caso actual por nombre
   const actualCase = cases.find((c) => c.name === caseName) || cases[0];
 
+
   return (
-    <section className='w-screen h-full flex flex-col items-center justify-center'>
+    <section className='w-screen h-full flex flex-col items-center justify-center mb-32'>
       <header className='w-full min-h-screen bg-white flex flex-col justify-center items-center text-black p-6 mt-12'>
+        <Selector actualCase={actualCase.id} cases={cases} />
+        <div className='w-full h-full p-8 py-0 gap-4 flex items-start justify-center'>
+        <section className='w-[40%] h-full p-8 flex items-end justify-center flex-col'>
+            <p className='font-semibold text-xs w-full opacity-70'>
+              {actualCase.description}
+            </p>
 
-          <Selector actualCase={actualCase.id} cases={cases} />
-        
-          <img
-            src={actualCase.firstImg}
-            className='w-full max-h-[700px] object-cover rounded-3xl mt-4'
-          ></img>
-
-          <footer className='w-full h-full p-8 py-0 gap-4 flex items-start justify-center'>
-
-            <section className='w-[40%] h-full p-8 flex items-end justify-center flex-col'>
-              <p className='font-semibold text-xs w-full opacity-70'>
-                {actualCase.description}
-              </p>
-
-              <Link
-                to="/"
-                className='mt-4 bg-zinc-200 p-2 rounded-lg hover:bg-zinc-400 hover:scale-105 transition-all duration-75 flex items-center justify-center'
-              >
-                Volver
-              </Link>
-            </section>
-
+            <Link
+              to="/"
+              className='mt-4 bg-zinc-200 p-2 rounded-lg hover:bg-zinc-400 hover:scale-105 transition-all duration-75 flex items-center justify-center'
+            >
+              Volver
+            </Link>
+          </section>
+          <div className='w-[392px] h-[484px] flex items-center justify-center cursor-pointer'>
             <img
-            src={actualCase.firstImg}
-            className='w-[30%] object-cover rounded-3xl mt-4'
-          ></img>
-
-          <img
-            src={actualCase.firstImg}
-            className='w-[30%] object-cover rounded-3xl mt-4'
-          ></img>
-
-          </footer>
+              src={actualCase.mainImg}
+              className='w-full h-full object-cover rounded-3xl mt-4'
+              onClick={() => openModal(actualCase.mainImg)}
+            />
+          </div>
+          <div className='w-[392px] h-[484px] flex items-center justify-center cursor-pointer'>
+            <img
+              src={actualCase.endImg}
+              className='w-full h-full object-cover rounded-3xl mt-4'
+              onClick={() => openModal(actualCase.endImg)}
+            />
+          </div>
+        </div>
+        <img
+          src={actualCase.firstImg}
+          className='w-full h-full max-h-[700px] object-cover rounded-3xl mt-4 cursor-pointer'
+          onClick={() => openModal(actualCase.firstImg)}
+        />
       </header>
 
-      <footer className='flex items-center justify-center w-4/5 h-16 text-black gap-4 mb-7'>
-        <a className='px-4 py-2 bg-zinc-200 rounded-xl w-1/6 h-full text-center hover:underline hover:bg-zinc-400 transition-all duration-75 cursor-pointer flex items-center justify-center'>
-          Ver Paquetes
-        </a>
-        <a className='px-4 py-2 bg-zinc-200 rounded-xl w-5/6 h-full text-center flex items-center justify-center gap-5 '>
-          <p>¿Quéres contratar nuestros servicios? Estamos para asesorarte.</p>
-          <button className='px-4 py-2 bg-black rounded-3xl text-white text-sm hover:scale-105 transition-all duration-75'>Hablar con un Asesor</button>
-        </a>
-      </footer>
-
+      {modalOpen && (
+        <div className='fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-80 z-50' onClick={closeModal}>
+          <img src={selectedImage} className='max-w-full max-h-[90vh] rounded-lg' />
+        </div>
+      )}
     </section>
   );
 }

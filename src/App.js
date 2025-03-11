@@ -27,6 +27,8 @@ import ContactForm from './ContactForm';
 import ECommerceViewer from './ECommerceViewer';
 
 import DataBlock from './DataBlock';
+import Animations from './Animations';
+import StaticRenders from './StaticRenders';
 
 function Layout({ children, language, setLanguage }) {
   const location = useLocation();
@@ -68,30 +70,7 @@ function App() {
       name: translate("marketingTittle", language),
       component: 
       
-      <div className='relative flex flex-col items-center justify-start w-full p-12 py-4'>
-
-        <header className='w-full flex items-center justify-between gap-4 min-h-[30vh]'>
-          <div className='flex flex-col w-full'>
-            <h1 className='w-full text-left text-[60px]'>{translate("animTittle", language)}</h1>
-            <p className='w-full font-light text-left'>
-            {translate("animacionesDescription", language)}
-            </p>
-          </div>
-          <div className='flex items-start justify-end w-full h-14'>
-          <ContractButton language={language}/>
-          </div>
-        </header>
-
-        <div className="justify-self-center w-screen flex flex-col items-center justify-center gap-4">
-        <DataBlock data1="data1Anim" data2="data2Anim" data3="data3Anim" language={language}/>
-        </div>
-
-
-
-          <video className='w-full mt-4 rounded-3xl' autoPlay loop muted>
-            <source src="/carVideo.mp4" type="video/mp4"></source>
-          </video>
-      </div>  
+        <Animations language={language}/>
       ,
 
       picture:
@@ -119,7 +98,7 @@ function App() {
     {
       id: 3,
       name: translate("staticRenderTittle", language),
-      component: <></>,
+      component: <StaticRenders language={language}/>,
       picture: 
         <a className='w-full h-full bg-zinc-200 hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative' href='/services/3'>
           <img src='render.webp' className='absolute top-0 left-0 w-full h-full object-cover z-0 sm:rounded-[80px]'></img>

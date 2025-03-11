@@ -20,7 +20,7 @@ function CaseStudies({language}) {
                 <Link to={`/case-study?case=Headphones`} className='sm:w-[250px] w-44 hover:scale-105 transition-all ease-in-out aspect-square rounded-2xl'>
                     <img className='w-full h-full object-cover rounded-2xl aspect-square' src='img/headphones.webp' alt="Headphones" />
                 </Link>
-                <a className='text-black underline mt-2 hover:scale-105 transition duration-150' href="/studie-cases">
+                <a className='text-black underline mt-2 hover:scale-105 transition duration-150' href="/case-study?case=Headphones">
                     {translate('seeMore', language)}
                 </a>
             </div>
@@ -29,7 +29,7 @@ function CaseStudies({language}) {
                 <Link to={`/case-study?case=Blossom`} className='sm:w-[250px] w-44 hover:scale-105 transition-all ease-in-out aspect-square rounded-2xl'>
                     <img className='w-full h-full object-cover rounded-2xl aspect-square' src='img/perfum.webp' alt="Perfume" />
                 </Link>
-                <a className='text-black underline mt-2 hover:scale-105 transition duration-150' href="/studie-cases">
+                <a className='text-black underline mt-2 hover:scale-105 transition duration-150' href="/case-study?case=Blossom">
                     {translate('seeMore', language)}
                 </a>
             </div>
@@ -38,7 +38,7 @@ function CaseStudies({language}) {
                 <Link to={`/case-study?case=Endless`} className='sm:w-[250px] w-44 hover:scale-105 transition-all ease-in-out aspect-square rounded-2xl'>
                     <img className='w-full h-full object-cover rounded-2xl aspect-square' src='img/endless.webp' alt="Endless" />
                 </Link>
-                <a className='text-black underline mt-2 hover:scale-105 transition duration-150' href="/studie-cases">
+                <a className='text-black underline mt-2 hover:scale-105 transition duration-150' href="/case-study?case=Endless">
                     {translate('seeMore', language)}
                 </a>
             </div>
@@ -47,7 +47,7 @@ function CaseStudies({language}) {
                 <Link to={`/case-study?case=Strix`} className='sm:w-[250px] w-44 hover:scale-105 transition-all ease-in-out aspect-square rounded-2xl'>
                     <img className='w-full h-full object-cover rounded-2xl aspect-square' src='img/strix.webp' alt="Strix" />
                 </Link>
-                <a className='text-black underline mt-2 hover:scale-105 transition duration-150' href="/studie-cases">
+                <a className='text-black underline mt-2 hover:scale-105 transition duration-150' href="/case-study?case=Strix">
                     {translate('seeMore', language)}
                 </a>
             </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "@google/model-viewer";
 import { translate } from "./Translations";
-import Background from "three/src/renderers/common/Background.js";
+import SeeButton from "./SeeInYourSpace";
 
 const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
   const modelViewerRef = useRef(null);
@@ -49,7 +49,8 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
     "ON-ESTANTE-DER": "Oscuro",
     "OFF-ESTANTE-DER": "Desactivado",
     "ON-ESTANTE-DER-CLARO": "Claro",
-    "ON-PUERTAS": "Madera",
+    "ON-PUERTAS": "Oscuro",
+    "ON-PUERTAS-CLARA": "ClarO",
     "OFF-PUERTAS": "Desactivadas",
     "ON-TAPA-NEGRA": "Negra",
     "ON-TAPA-PLATEADA": "Plateada",
@@ -242,19 +243,21 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
           }}
           onLoad={() => {
             const modelViewer = document.querySelector("#model-viewer");
-            modelViewer.availableAnimations = modelViewer.availableAnimations || modelViewer.getAnimations();
           }}
         >
 
+          <div className="absolute top-0 left-0 right-0">
+            <SeeButton language={language} qrCode="/qrcodes/bike.png" />
+          </div>
 
           <button
             onClick={handleFullscreen}
-            className="absolute flex items-center justify-center px-4 py-3 transition-all border-2 rounded-full top-7 right-7 bg-lightblue6 border-lightblue hover:bg-lightblue2 hover:scale-105"
+            className="absolute flex items-center justify-center px-2 py-1 transition-all border-2 rounded-full top-7 right-7 bg-lightblue6 border-lightblue hover:bg-lightblue2 hover:scale-105"
           >
             {!isFullscreen ? (
               <svg
-                width="32px"
-                height="32px"
+                width="24px"
+                height="24px"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="#000000"

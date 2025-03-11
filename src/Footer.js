@@ -22,11 +22,11 @@ function Footer({
         <div className="w-full flex gap-1 mt-2">
           <input
             type="text"
-            placeholder="Tu correo"
+            placeholder={translate("correo", language)}
             className="w-full p-2 rounded-lg"
           />
           <button className="px-3 py-2 rounded-xl bg-zinc-800 text-white">
-            Enviar
+          {translate("enviar", language)}
           </button>
         </div>
 
@@ -42,7 +42,7 @@ function Footer({
 
       {/* Services Section */}
       <div className="flex-col gap-1 text-black sm:flex hidden">
-        <h1 className="font-bold">Servicios</h1>
+        <h1 className="font-bold">{translate("services", language)}</h1>
         {services.map((service) => (
           <div key={service.id} className="hover:underline cursor-pointer">
             <a className="text-xs hover:underline">{service.name}</a>
@@ -52,7 +52,7 @@ function Footer({
 
       {/* Case Studies Section */}
       <div className="flex-col gap-1 text-black sm:flex hidden">
-        <h1 className="font-bold">Casos de Estudio</h1>
+        <h1 className="font-bold">{translate("caseStudies", language)}</h1>
         {caseStudies.map((caseStudy, index) => (
           <a 
             key={index} 
@@ -70,12 +70,12 @@ function Footer({
 
       {/* Benefits Section */}
       <div className="flex-col gap-2 text-black sm:flex hidden">
-        <h1 className="font-bold">¿Por qué trabajar juntos?</h1>
+        <h1 className="font-bold">{translate("workTogether", language)}</h1>
         <p className="text-xs">{translate("reason1", language)}</p>
         <p className="text-xs">{translate("reason2", language)}</p>
         <p className="text-xs">{translate("reason3", language)}</p>
         <p className="text-xs">{translate("reason4", language)}</p>
-        <Calendly/>
+        <Calendly language={language}/>
       </div>
 
 

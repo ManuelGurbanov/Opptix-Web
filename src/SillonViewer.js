@@ -6,6 +6,9 @@ import { TextureLoader } from "three";
 import * as THREE from "three";
 import { translate } from "./Translations";
 import { useRef } from "react";
+
+import SeeButton from "./SeeInYourSpace";
+
 const textureLoader = new TextureLoader();
 const textureNames = ["sofa-00", "sofa-01", "sofa-02", "sofa-03", "sofa-04", "sofa-05", "sofa-06"];
 const textures = textureNames.reduce((acc, name) => {
@@ -183,7 +186,7 @@ const SillonViewer = ({language}) => {
 
 
   const textureColors = {
-    "sofa-00": "Dark Blue",
+    "sofa-00": "Blue",
     "sofa-01": "Black",
     "sofa-02": "Red",
     "sofa-03": "Teal",
@@ -191,11 +194,21 @@ const SillonViewer = ({language}) => {
     "sofa-05": "Light Gray",
     "sofa-06": "Green",
   };
+
+  const textureColorsEs = {
+    "sofa-00": "Azul",
+    "sofa-01": "Negro",
+    "sofa-02": "Rojo",
+    "sofa-03": "Verde Azulado",
+    "sofa-04": "Magenta",
+    "sofa-05": "Gris",
+    "sofa-06": "Verde",
+  };
   
 
   return (
     <div className="relative flex flex-col items-center justify-center w-screen mt-2 ">
-      <div className="relative min-h-[60vh] bg-white flex items-center justify-center flex-col" ref={containerRef}>
+      <div className="relative min-h-[60vh] bg-white flex items-center justify-center flex-col w-[80vw]" ref={containerRef}>
           <Canvas
               className="bg-white cursor-grab"
               camera={{ position: [0, 3, 5], fov: 15 }}
@@ -208,8 +221,9 @@ const SillonViewer = ({language}) => {
                 position: "relative",
               }}
             >
-            <directionalLight position={[-3, 5, -10]} intensity={3} />
-            <directionalLight position={[3, 5, 10]} intensity={3} />
+            <directionalLight position={[-3, 5, -4]} intensity={1.7} />
+            <directionalLight position={[3, 5, 10]} intensity={0.8} />
+            <directionalLight position={[0, -10, 0]} intensity={0.3} />
             <OrbitControls />
             <SillonModel
               toggleBedVisibility={showBed}
@@ -221,15 +235,17 @@ const SillonViewer = ({language}) => {
           </Canvas>
 
 
-
+          <div className="absolute top-0 left-0 right-0">
+            <SeeButton language={language} qrCode="/qrcodes/bike.png" />
+          </div>
           <button
             onClick={handleFullscreen}
-            className="absolute flex items-center justify-center px-4 py-3 transition-all border-2 rounded-full top-7 right-7 bg-lightblue6 border-lightblue hover:bg-lightblue2 hover:scale-105"
+            className="absolute flex items-center justify-center px-2 py-1 transition-all border-2 rounded-full top-7 right-7 bg-lightblue6 border-lightblue hover:bg-lightblue2 hover:scale-105"
           >
             {!isFullscreen ? (
               <svg
-                width="32px"
-                height="32px"
+                width="24px"
+                height="24px"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="#000000"
@@ -281,7 +297,7 @@ const SillonViewer = ({language}) => {
 
 
           <section className={`flex flex-col items-center justify-center w-full gap-1 mt-4 ${
-            isFullscreen ? "absolute left-0 right-0 bottom-0" : "w-screen"
+            isFullscreen ? "absolute left-0 right-0 bottom-6" : "w-screen"
           }`}>
             
             <button
@@ -298,7 +314,7 @@ const SillonViewer = ({language}) => {
                     selectingGroup === "group0" ? "font-bold" : "font-normal"
                   } hover:scale-105 transition-all`}
                 >
-                  Seats
+                 {language === "en" ? "Seats" : "Asientos"}
                 </button>
                 <button
                   onClick={() => setSelectingGroup("group1")}
@@ -306,7 +322,7 @@ const SillonViewer = ({language}) => {
                     selectingGroup === "group1" ? "font-bold" : "font-normal"
                   } hover:scale-105 transition-all`}
                 >
-                  Sides
+                  {language === "en" ? "Sides" : "Costados"}
                 </button>
                 <button
                   onClick={() => setSelectingGroup("group2")}
@@ -314,7 +330,7 @@ const SillonViewer = ({language}) => {
                     selectingGroup === "group2" ? "font-bold" : "font-normal"
                   } hover:scale-105 transition-all`}
                 >
-                  Back
+                  {language === "en" ? "Back" : "Respaldo"} 
                 </button>
                 <button
                   onClick={() => setSelectingGroup("group3")}
@@ -322,7 +338,7 @@ const SillonViewer = ({language}) => {
                     selectingGroup === "group3" ? "font-bold" : "font-normal"
                   } hover:scale-105 transition-all`}
                 >
-                  Pillows
+                  {language === "en" ? "Pillows" : "Almohadones"}  
                 </button>
               </div>
 
@@ -341,7 +357,7 @@ const SillonViewer = ({language}) => {
                   >
                     {groupTextures[selectingGroup] === texture && (
                       <p className="flex items-center justify-center w-1/2 h-full text-nowrap">
-                        {textureColors[texture]}
+                        {language === "en" ? textureColors[texture] : textureColorsEs[texture]}
                       </p>
                     )}
                     <img

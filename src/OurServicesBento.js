@@ -21,78 +21,65 @@ export default function OurServicesBento({ language }) {
                 </a>
             </header>
 
-            <div className='container text-white'>
-                
-                {/* Configuradores 3D */}
-                <a className="box box1 rounded-[48px] relative flex flex-col justify-between h-full bg-black overflow-hidden" href='/services/0'>
-                    <a className="absolute flex items-center justify-center h-6 w-7 bg-white rounded-full top-4 right-4 hover:scale-105 z-10">
-                        <RightArrow color="#000000" />
+            <div className="wrapper">
+            {[1,2,3,4].map((num) => (
+                <div key={num} className={`container item${num}`}>
+                    {/* Configuradores 3D */}
+                    <a className="box box1 rounded-[48px] relative flex flex-col justify-between h-full bg-black overflow-hidden p-7" href='/services/0'>
+                        <a className="absolute flex items-center justify-center h-6 w-7 bg-white rounded-full top-4 right-4 hover:scale-105 z-10">
+                            <RightArrow color="#000000" />
+                        </a>
+                        <video autoPlay muted loop playsInline className="h-2/3 w-2/3 object-cover absolute top-2 right-2">
+                            <source src="configVideo.mp4" type="video/mp4" />
+                        </video>
+                        <div className="flex flex-col justify-end flex-grow gap-2 z-10 w-full">
+                            <h1 className="text-2xl">{translate("configTittle", language)}</h1>
+                            <p className="text-xs font-light">{translate("configuratorsDescription", language)}</p>
+                        </div>
                     </a>
-                    <video autoPlay muted loop playsInline className="h-2/3 w-2/3 object-cover absolute top-2 right-2">
-                        <source src="configVideo.mp4" type="video/mp4" />
-                    </video>
-                    <div className="flex flex-col justify-end flex-grow p-4 gap-2 z-10 w-full">
-                        <h1 className="text-2xl">
-                            {translate("configTittle", language)}
-                        </h1>
-                        <p className="text-xs font-light">
-                            {translate("configuratorsDescription", language)}
-                        </p>
-                    </div>
-                </a>
 
-                {/* Render Estático */}
-                <a className="box box2 p-7 rounded-[48px] relative flex flex-col justify-between h-full bg-gray-800" href='/services/2'>
-                    <a className="absolute flex items-center justify-center h-6 w-7 bg-white rounded-full top-4 right-4 hover:scale-105 z-10">
-                        <RightArrow color="#000000" />
+                    {/* Render Estático */}
+                    <a className="box box2 p-7 rounded-[48px] relative flex flex-col justify-between h-full bg-gray-800" href='/services/2'>
+                        <a className="absolute flex items-center justify-center h-6 w-7 bg-white rounded-full top-4 right-4 hover:scale-105 z-10">
+                            <RightArrow color="#000000" />
+                        </a>
+                        <div className="flex flex-col justify-end flex-grow gap-2 w-full">
+                            <h1 className="text-2xl">{translate("staticRenderTittle", language)}</h1>
+                            <p className="text-xs">{translate("rendersDescription", language)}</p>
+                        </div>
                     </a>
-                    <div className="flex flex-col justify-end flex-grow gap-2 w-full">
-                        <h1 className="text-2xl">
-                            {translate("staticRenderTittle", language)}
-                        </h1>
-                        <p className="text-xs">
-                            {translate("rendersDescription", language)}
-                        </p>
-                    </div>
-                </a>
 
-                {/* Animaciones 3D */}
-                <a className="box box3 rounded-[48px] relative flex flex-col justify-between h-full bg-black overflow-hidden p-7" href='/services/1'>
-                    <a className="absolute flex items-center justify-center h-6 w-7 bg-white rounded-full top-4 right-4 hover:scale-105 z-10">
-                        <RightArrow color="#000000" />
+                    {/* Animaciones 3D */}
+                    <a className="box box3 rounded-[48px] relative flex flex-col justify-between h-full bg-black overflow-hidden p-7" href='/services/1'>
+                        <a className="absolute flex items-center justify-center h-6 w-7 bg-white rounded-full top-4 right-4 hover:scale-105 z-10">
+                            <RightArrow color="#000000" />
+                        </a>
+                        <video autoPlay muted loop playsInline className="h-full w-full object-cover absolute top-0 left-0">
+                            <source src="glasses.mp4" type="video/mp4" />
+                        </video>
+                        <div className="flex flex-col justify-end flex-grow gap-2 z-10 w-full">
+                            <h1 className="text-2xl">{translate("marketingTittle", language)}</h1>
+                            <p className="text-xs">{translate("marketingText", language)}</p>
+                        </div>
                     </a>
-                    <video autoPlay muted loop playsInline className="h-full w-full object-cover 3xl absolute top-0 left-0">
-                        <source src="glasses.mp4" type="video/mp4" />
-                    </video>
-                    <div className="flex flex-col justify-end flex-grow gap-2 z-10 w-full">
-                        <h1 className="text-2xl">
-                            {translate("marketingTittle", language)}
-                        </h1>
-                        <p className="text-xs">
-                            {translate("marketingText", language)}
-                        </p>
-                    </div>
-                </a>
 
-                {/* Realidad Virtual */}
-                <a className="box box4 rounded-[48px] relative flex flex-col justify-between h-full p-7" href='/services/3'>
-                    <a className="absolute flex items-center justify-center h-6 w-7 bg-black rounded-full top-4 right-4 hover:scale-105">
-                        <RightArrow color="#ffffff" />
+                    {/* Realidad Virtual */}
+                    <a className="box box4 rounded-[48px] relative flex flex-col justify-between h-full p-7" href='/services/3'>
+                        <a className="absolute flex items-center justify-center h-6 w-7 bg-black rounded-full top-2 right-2 hover:scale-105">
+                            <RightArrow color="#ffffff" />
+                        </a>
+                        <div className="flex flex-col justify-end flex-grow gap-2 w-full">
+                            <h1 className="text-xl text-black">{translate("arTittle", language)}</h1>
+                            <p className="text-[5px] text-black">{translate("arDescription", language)}</p>
+                        </div>
+                        <div className="flex items-center justify-center gap-4 w-28 h-14">
+                            <img src="phone.webp" alt="Phone" className="h-full" />
+                            <img src="/qrcodes/bike.png" alt="QR Code" className="h-full" />
+                        </div>
                     </a>
-                    <div className="flex flex-col justify-end flex-grow gap-2 w-full">
-                        <h1 className="text-2xl text-black">
-                            {translate("arTittle", language)}
-                        </h1>
-                        <p className="text-xs text-black">
-                            {translate("arDescription", language)}
-                        </p>
-                    </div>
-                    <div className="flex items-center justify-center gap-4 w-28">
-                        <img src="phone.webp" alt="Phone" className="h-full" />
-                        <img src="/qrcodes/bike.png" alt="QR Code" className="h-full" />
-                    </div>
-                </a>
-            </div>
+                </div>
+            ))}
+        </div>
         </div>
     );
 }

@@ -4,7 +4,7 @@ export default function ECommerceViewer() {
     const [selectedModel, setSelectedModel] = useState(1);
 
     const modelPath = (num) => `/models/ecommerce/silla-${num}.glb`;
-    const imagePath = (num) => `/models/ecommerce/${num}.png`;
+    const imagePath = (num) => `/models/ecommerce/${num}.png`; //cambiar a jpg
 
     return (
 <div className='flex items-center justify-center w-screen min-h-screen px-24 py-12'>

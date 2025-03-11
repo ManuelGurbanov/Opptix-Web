@@ -25,10 +25,10 @@ function MainBanner({ language }) {
 
       {/* Content */}
       <div className="relative z-10  sm:p-6 rounded-3xl">
-        <h1 className='font-extrabold text-4xl sm:text-6xl sm:p-3 p-0 w-full sm:w-[700px]'>
+        <h1 className={'font-extrabold sm:p-3 p-0 w-full sm:w-[700px] text-6xl'}>
           {translate("bannerMain", language)}
         </h1>
-        <h2 className='font-medium text-3xl sm:text-5xl sm:p-3 p-0 w-full sm:w-[700px] hidden sm:block'>
+        <h2 className={'font-medium sm:p-3 p-0 w-full sm:w-[700px] hidden sm:block' + (language === "es" ? ' text-3xl' : ' text-4xl')}>
           {translate("bannerSecond", language)}
         </h2>
         <div className='w-1/2 flex flex-row gap-2 sm:p-3 mt-4'>
