@@ -108,7 +108,7 @@ function App() {
       id: 4,
       name: translate("viewerTittle", language),
       component: 
-        <ECommerceViewer />,
+        <ECommerceViewer language={language}/>,
       picture: 
         <a className='w-full h-full bg-zinc-200 hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative' href='/services/4'>
           <img src='viewer.webp' className='absolute top-0 left-0 w-full h-full object-cover z-0 sm:rounded-[80px]'></img>

@@ -4,10 +4,13 @@ import {translate} from "./Translations";
 
 const CALENDLY_URL = "https://calendly.com/gasparvisualmkt/30min";
 
-export default function CalendlyScheduler({language}) {
+export default function CalendlyScheduler({language, setRender}) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const openCalendly = () => setIsOpen(true);
+  const openCalendly = () => {
+    setIsOpen(true)
+    setRender(false);
+  };
   const closeCalendly = () => setIsOpen(false);
 
   return (

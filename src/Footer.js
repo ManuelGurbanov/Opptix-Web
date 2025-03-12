@@ -3,6 +3,10 @@ import Calendly from "./Calendly";
 import { InstagramIcon } from "./InstagramIcon";
 import { LinkedinIcon } from "./LinkedinIcon";
 import { translate } from "./Translations";
+
+
+import { useState } from "react";
+
 function Footer({
   language,
   services = [],
@@ -10,6 +14,30 @@ function Footer({
   reasons = [],
   packs = [],
 }) {
+
+
+const [result, setResult] = React.useState(false);
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending....");
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "44747489-02c0-4f6e-a6bf-6c32b44839f1");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    body: formData
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+    setResult(true);
+    event.target.reset();
+    } else {
+    console.log("Error", data);
+    }
+};
   return (
     <div
       className="w-full h-auto bg-zinc-200 flex flex-col sm:flex-row justify-center items-start text-black sm:p-12 p-3 gap-9 text-sm"
@@ -19,16 +47,12 @@ function Footer({
       <div className="flex-2 sm:mt-0 mt-3">
         <h1 className="font-bold">Newsletter</h1>
         
-        <div className="w-full flex gap-1 mt-2">
-          <input
-            type="text"
-            placeholder={translate("correo", language)}
-            className="w-full p-2 rounded-lg"
-          />
-          <button className="px-3 py-2 rounded-xl bg-zinc-800 text-white">
+        <form className="w-full flex gap-1 mt-2" onSubmit={onSubmit}>
+          <input name="name" type="name" placeholder={translate("name", language)} className="w-full p-2 rounded-lg" />
+          <button className="px-3 py-2 rounded-xl bg-zinc-800 text-white" type="submit">
           {translate("enviar", language)}
           </button>
-        </div>
+        </form>
 
         <div className="w-full flex gap-1 mt-4">
           <button className="rounded-full bg-black text-white p-2 hover:bg-zinc-800 hover:scale-105 transition-all duration-75">

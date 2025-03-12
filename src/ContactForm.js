@@ -1,15 +1,18 @@
 import { translate } from "./Translations";
 import React from "react";
+import CalendlyScheduler from "./Calendly";
 export default function ContactForm ({language, setContact}) {
 
     const [result, setResult] = React.useState(false);
+
+    const [render, setRender] = React.useState(true);
 
     const onSubmit = async (event) => {
         event.preventDefault();
         setResult("Sending....");
         const formData = new FormData(event.target);
 
-        formData.append("access_key", "44747489-02c0-4f6e-a6bf-6c32b44839f1");
+        formData.append("access_key", "72dff9c7-0190-4056-8d96-d7b744cdbdfa");
 
         const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -25,6 +28,8 @@ export default function ContactForm ({language, setContact}) {
         console.log("Error", data);
         }
     };
+
+
 
     return (
         <div className="w-screen h-screen bg-black bg-opacity-40 fixed top-0 left-0 flex items-center justify-center z-50">
@@ -44,14 +49,22 @@ export default function ContactForm ({language, setContact}) {
             <form className="flex items-center justify-center gap-4 p-6 bg-black rounded-3xl" onSubmit={onSubmit}>
             <div
                 className="flex flex-col items-center justify-center gap-4 w-96">
-                <h1 className="text-3xl font-bold text-white w-full text-center">{translate("contact", language)}</h1>
-                <p className="text-xl font-light text-white w-full text-center">{translate("contact2", language)}</p>
 
-                {result && <span className="text-xl text-lightblue6 text-center">{translate("result", language)}</span>}
+                {(render &&
+                <>
+                    <h1 className="text-3xl font-bold text-white w-full text-center">{translate("contact", language)}</h1>
+                    <p className="text-xl font-light text-white w-full text-center">{translate("contact2", language)}</p>
+                </>
+                )}
+                
+
+                <CalendlyScheduler language={language} setRender={setRender}/>
+
+                { ( result && render ) && <span className="text-xl text-lightblue6 text-center">{translate("result", language)}</span>}
                 
             </div>
 
-                { !result && (
+                { ( !result && render ) && (
                         <div
                             className="flex flex-col items-center justify-center gap-4 w-96">
                             <input name="name" type="name" placeholder={translate("name", language)} className="p-3 text-black border border-black w-96 rounded-3xl" />

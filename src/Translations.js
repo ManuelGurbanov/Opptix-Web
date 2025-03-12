@@ -1,5 +1,8 @@
 const translations = {
   en: {
+    prefeerCall : "I prefer to schedule a call",
+    ecommerceTittle: "3D Product Viewer",
+    ecommerceText: "Fewer doubts, more sales: showcase your catalog in 3D and turn browsers into buyers.",
     hideBed: "Hide Bed",
     showBed: "Show Bed",
     open: "Open",
@@ -175,6 +178,9 @@ const translations = {
     agendar: "Schedule a Call"
   },
   es: {
+    prefeerCall : "Prefiero Agendar Llamada",
+    ecommerceTittle: "Visualizador de Productos en 3D",
+    ecommerceText: "Menos dudas, más ventas: muestra tu catálogo en 3D y convierte curiosos en compradores.",
     agendar: "Agendar Llamada",
     hideBed: "Ocultar Cama",
     showBed: "Mostrar Cama",

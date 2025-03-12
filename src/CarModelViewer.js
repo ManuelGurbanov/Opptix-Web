@@ -90,19 +90,60 @@ const CarModelViewer = ({ modelSrc , setTotalPriceCar, language }) => {
   const CAMERA_COORDINATES = {
     EXT: { orbit: "90deg 75deg 1500px" },
     LINEAS: { orbit: "20deg 10deg 1300px" },
-    CUERO: { orbit: "80deg 20deg 1000px" },
+    CUERO: { orbit: "80deg 50deg 1000px" },
+  };
+  
+  const interpolateOrbit = (start, end, progress) => {
+    const parseOrbit = (orbit) => {
+      const [theta, phi, radius] = orbit.split(" ");
+      return {
+        theta: parseFloat(theta),
+        phi: parseFloat(phi),
+        radius: parseFloat(radius.replace("px", "")),
+      };
+    };
+  
+    const formatOrbit = ({ theta, phi, radius }) =>
+      `${theta}deg ${phi}deg ${radius}px`;
+  
+    const startOrbit = parseOrbit(start);
+    const endOrbit = parseOrbit(end);
+  
+    return formatOrbit({
+      theta: startOrbit.theta + (endOrbit.theta - startOrbit.theta) * progress,
+      phi: startOrbit.phi + (endOrbit.phi - startOrbit.phi) * progress,
+      radius: startOrbit.radius + (endOrbit.radius - startOrbit.radius) * progress,
+    });
   };
   
   const changeSelectingGroup = (group) => {
     const modelViewer = modelViewerRef.current;
     setSelectingGroup(group);
+  
     if (CAMERA_COORDINATES[group]) {
-      modelViewer.cameraOrbit = CAMERA_COORDINATES[group].orbit;
-      modelViewer.lookAt = "auto";
-      modelViewer.jumpCameraToGoal();
+      const startOrbit = modelViewer.cameraOrbit;
+      const endOrbit = CAMERA_COORDINATES[group].orbit;
+  
+      let progress = 0;
+      const duration = 200;
+      const step = 10;
+      const totalSteps = duration / step;
+  
+      const animate = () => {
+        progress += 1 / totalSteps;
+        modelViewer.cameraOrbit = interpolateOrbit(startOrbit, endOrbit, progress);
+  
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          modelViewer.cameraOrbit = endOrbit;
+        }
+      };
+  
+      animate();
     }
   };
-
+  
   useEffect(() => {
     const modelViewer = modelViewerRef.current;
     if (!modelViewer) return;
