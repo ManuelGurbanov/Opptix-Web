@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { translate } from "./Translations";
 import { Link } from 'react-router-dom';
 
+import { useContact } from './ContactContext';
+
 function Navbar({ language, setLanguage }) {
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
   const [showMenuHamburguer, setShowMenuHamburguer] = useState(false);
@@ -9,6 +11,8 @@ function Navbar({ language, setLanguage }) {
   const scrollTop = () => {
     window.scrollTo(0, 0);
   }
+
+  const { showContactForm } = useContact();
   return (
     <>
       <div className='fixed top-0 z-40 flex items-center justify-center w-screen'>
@@ -63,9 +67,9 @@ function Navbar({ language, setLanguage }) {
             <a className="hidden transition duration-75 ease-in cursor-pointer hover:scale-105 md:block" href='#packs'>
               {translate("packs", language)}
             </a>
-            <a className="hidden transition duration-75 ease-in cursor-pointer hover:scale-105 md:block" href='#get-started'>
-              {translate("getStarted", language)}
-            </a>
+            <button className="hidden transition duration-75 ease-in cursor-pointer hover:scale-105 md:block" onClick={() => showContactForm()}>
+              {translate("talk", language)}
+            </button>
 
             <button
               className="hidden ml-4 mr-4 sm:block"

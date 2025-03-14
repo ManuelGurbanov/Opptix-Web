@@ -2,10 +2,13 @@ import React from 'react';
 import { translate } from "./Translations";
 
 import RightArrow from './RightArrow';
+
+import { useContact } from './ContactContext';
+
 function Packs({ packs, language }) {
     const [activePack, setActivePack] = React.useState(0);
     const [isFading, setIsFading] = React.useState(false);
-
+    const { showContactForm } = useContact();
     const handlePackChange = (newPack) => {
         setActivePack(newPack);
     };
@@ -72,9 +75,9 @@ function Packs({ packs, language }) {
                         </div>
 
                         <footer className='absolute flex flex-row items-center justify-center w-full gap-4 px-4 text-white bottom-6'>
-                        <a href="#contact" className={"w-full p-2 mb-2 text-sm transition-all duration-75 ease-in-out  rounded-full sm:p-3 hover:scale-105 " + (pack.id === 0 ? "bg-white hover:bg-zinc-400 text-black" : "bg-black hover:bg-zinc-700 text-white")} >
-                                {translate("bookDemo", language)}
-                            </a>
+                            <button onClick={() => showContactForm()} className={"w-full p-2 mb-2 text-sm transition-all duration-75 ease-in-out rounded-full sm:p-3 hover:scale-105 " + (pack.id === 0 ? "bg-white hover:bg-zinc-400 text-black" : "bg-black hover:bg-zinc-700 text-white")} >
+                                {translate("talk", language)}
+                            </button>
                             <button className='flex items-center justify-center h-10 transition duration-75 bg-white rounded-full aspect-square hover:scale-105' onClick={() => handlePackChange((pack.id + 1) % 3)}>
                                 <RightArrow color="#000000" />
                             </button>
@@ -88,11 +91,11 @@ function Packs({ packs, language }) {
                                 </button>
                                 <h1 className='w-full p-2 py-0 mb-2 text-3xl font-bold text-left'>{pack.title}</h1>
                                 <p className='w-full p-2 py-0 mb-2 text-xs text-left'>{pack.description}</p>
-                                <a className={"w-full p-2 mb-2 text-sm transition-all duration-75 ease-in-out  rounded-full sm:p-3 hover:scale-105 " + (pack.id === 0 ? "bg-white hover:bg-zinc-400 text-black" : "bg-black hover:bg-zinc-700 text-white")}
-                                href='#contact'
+                                <button className={"w-full p-2 mb-2 text-sm transition-all duration-75 ease-in-out  rounded-full sm:p-3 hover:scale-105 " + (pack.id === 0 ? "bg-white hover:bg-zinc-400 text-black" : "bg-black hover:bg-zinc-700 text-white")}
+                                onClick={() => showContactForm()}
                                 >
-                                    {translate("bookDemo", language)}
-                                </a>
+                                    {translate("talk", language)}
+                                </button>
                             </div>
                         )}
                     </div>
@@ -100,10 +103,11 @@ function Packs({ packs, language }) {
             </div>
 
             <div className='flex flex-col items-center justify-start w-1/2 gap-2 mb-16 sm:flex-row sm:gap-5' data-aos="fade-right">
-                <h1 className='text-xl font-extrabold text-black'>
+                <h1 className='text-xl font-medium text-black'>
                     {translate("ownPack", language)}
                 </h1>
-                <button className='p-3 text-sm font-bold transition-all duration-100 rounded-full bg-lightblue2 hover:bg-lightblue hover:scale-105'>
+                <button className='p-3 text-sm font-bold transition-all duration-100 rounded-full bg-black hover:bg-zinc-800 hover:scale-105 text-white'
+                onClick={() => showContactForm()}>
                     {translate("talk", language)}
                 </button>
             </div>

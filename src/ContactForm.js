@@ -58,7 +58,7 @@ export default function ContactForm ({language, setContact}) {
                 )}
                 
 
-                <CalendlyScheduler language={language} setRender={setRender}/>
+                <CalendlyScheduler language={language} setRender={setRender} lightblueBackground/>
 
                 { ( result && render ) && <span className="text-xl text-lightblue6 text-center">{translate("result", language)}</span>}
                 

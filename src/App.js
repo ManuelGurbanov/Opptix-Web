@@ -30,6 +30,8 @@ import DataBlock from './DataBlock';
 import Animations from './Animations';
 import StaticRenders from './StaticRenders';
 
+import { ContactProvider } from "./ContactContext";
+
 function Layout({ children, language, setLanguage }) {
   const location = useLocation();
   const showNavbar = !location.pathname.startsWith("/services");
@@ -209,36 +211,37 @@ function App() {
 
 
   return (
-    <Router>
-      <Layout language={language} setLanguage={setLanguage}>
-        <Routes>
-          <Route path="/" element={
-            <section className='flex flex-col items-center mt-20 overflow-hidden max-w-screen'>
-              <MainBanner language={language} />
+    <ContactProvider language={language}>
+      <Router>
+        <Layout language={language} setLanguage={setLanguage}>
+          <Routes>
+            <Route path="/" element={
+              <section className='flex flex-col items-center mt-20 overflow-hidden max-w-screen'>
+                <MainBanner language={language} />
 
-              <WhyWorkTogether language={language} />
+                <WhyWorkTogether language={language} />
 
-              <OurServicesBento language={language}/>
+                <OurServicesBento language={language}/>
 
-              <Packs packs={packs} language={language} />
+                <Packs packs={packs} language={language} />
 
-              <CaseStudies cases={cases} language={language} />
-              
-              <Faq language={language} />
-              
-              <Footer language={language} services={services} caseStudies={caseStudiesNames} packs={packNames} />
-            </section>
-          } />
-          <Route path="/case-study" element={<CaseStudiePage caseStudies={cases} />} />
-          <Route path="/services/:serviceId" element={<Services services={services} language={language} setLanguage={setLanguage} contact={contact}/>} />
-          <Route path="/model" element={<ModelLink />} />
-          <Route path="/upload" element={<UploaderViewer />} />
-          <Route path="/uploadthree" element={<UploaderThree />} />
-        </Routes>
-      </Layout>
-    </Router>
+                <CaseStudies cases={cases} language={language} />
+                
+                <Faq language={language} />
+                
+                <Footer language={language} services={services} caseStudies={caseStudiesNames} packs={packNames} />
+              </section>
+            } />
+            <Route path="/case-study" element={<CaseStudiePage caseStudies={cases} />} />
+            <Route path="/services/:serviceId" element={<Services services={services} language={language} setLanguage={setLanguage} contact={contact}/>} />
+            <Route path="/model" element={<ModelLink />} />
+            <Route path="/upload" element={<UploaderViewer />} />
+            <Route path="/uploadthree" element={<UploaderThree />} />
+          </Routes>
+        </Layout>
+      </Router>
+    </ContactProvider>
   );
 }
 
 export default App;
-
