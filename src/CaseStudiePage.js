@@ -30,11 +30,11 @@ function CaseStudiePage({ language }) {
       tittle: "Headphones",
       description: (
         <>
-          <p className='text-xl'>
+          <p className='text-lg'>
             Este proyecto tuvo como objetivo explorar y perfeccionar técnicas avanzadas de renderizado y animación en 3D, enfocándonos en lograr un nivel excepcional de calidad visual.
           </p>
-          <h2 className="font-semibold text-xl mt-4">Qué hicimos:</h2>
-          <ul className="list-disc pl-6 mt-2 text-xl">
+          <h2 className="font-semibold text-lg mt-4">Qué hicimos:</h2>
+          <ul className="list-disc pl-6 mt-2 text-lg">
             <li><strong>Renders fotorrealistas:</strong> Desarrollamos imágenes de alta resolución que destacaron cada detalle de diseño, materiales y texturas de los headphones, buscando transmitir calidad y modernidad.</li>
             <li><strong>Animaciones de producto:</strong> Creamos secuencias dinámicas que mostraron el producto desde diferentes perspectivas, resaltando su diseño ergonómico y acabados premium.</li>
           </ul>
@@ -61,7 +61,7 @@ function CaseStudiePage({ language }) {
       tittle: "Blossom",
       description: (
         <>
-          <p className='text-xl'>
+          <p className='text-lg'>
             En este proyecto trabajamos junto a Blossom, una marca emergente de fragancias premium, con el objetivo de crear un paquete de contenido integral que reflejara la esencia única de cada una de sus fragancias. Nuestro enfoque fue estratégico y personalizado, diseñando piezas visuales impactantes para posicionar la marca en el mercado y conectar emocionalmente con su público objetivo.
           </p>
         </>
@@ -139,14 +139,14 @@ function CaseStudiePage({ language }) {
       tittle: "Rack",
       description:
       <>
-        <p className='text-xl'>En este proyecto, exploramos cómo transmitir la flexibilidad y funcionalidad de una estantería modular diseñada para adaptarse a diferentes necesidades y espacios.</p>
-        <p className='text-xl'>La pieza clave del producto es su capacidad para expandirse agregando módulos, permitiendo personalizar su tamaño y diseño.</p>
-        <p className='text-xl'>Nuestra propuesta visual incluyó:</p>
+        <p className='text-lg'>En este proyecto, exploramos cómo transmitir la flexibilidad y funcionalidad de una estantería modular diseñada para adaptarse a diferentes necesidades y espacios.</p>
+        <p className='text-lg'>La pieza clave del producto es su capacidad para expandirse agregando módulos, permitiendo personalizar su tamaño y diseño.</p>
+        <p className='text-lg'>Nuestra propuesta visual incluyó:</p>
         <ul className='mt-4'>
-          <li className='text-xl'><strong>Renders versátiles:</strong> Mostramos el producto en diversos ambientes, destacando su capacidad para integrarse en distintos estilos.</li>
-          <li className='text-xl'><strong>Video presentación:</strong> Diseñamos un video dinámico que narra el ciclo completo del producto.</li>
+          <li className='text-lg'><strong>Renders versátiles:</strong> Mostramos el producto en diversos ambientes, destacando su capacidad para integrarse en distintos estilos.</li>
+          <li className='text-lg'><strong>Video presentación:</strong> Diseñamos un video dinámico que narra el ciclo completo del producto.</li>
         </ul>
-        <p className='text-xl'>Este proyecto demostró cómo el 3D puede ser una herramienta poderosa para comunicar la innovación detrás de un producto.</p>
+        <p className='text-lg'>Este proyecto demostró cómo el 3D puede ser una herramienta poderosa para comunicar la innovación detrás de un producto.</p>
       </>,
       secondTittle: "Propuesta visual y objetivos",
       secondDescription:

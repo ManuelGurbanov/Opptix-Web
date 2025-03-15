@@ -280,13 +280,13 @@ const CarModelViewer = ({ modelSrc , setTotalPriceCar, language }) => {
         }}
       />
 
-          <div className="absolute top-0 left-0 right-0">
+          <div className="absolute top-0 left-0 right-0 hidden sm:block">
             <SeeButton language={language} qrCode="/qrcodes/bike.png" />
           </div>
 
           <button
             onClick={handleFullscreen}
-            className="absolute flex items-center justify-center px-2 py-1 transition-all border-2 rounded-full top-7 right-7 bg-lightblue6 border-lightblue hover:bg-lightblue2 hover:scale-105"
+            className="absolute sm:flex hidden items-center justify-center px-2 py-1 transition-all border-2 rounded-full top-7 right-7 bg-lightblue6 border-lightblue hover:bg-lightblue2 hover:scale-105"
           >
             {!isFullscreen ? (
               <svg
@@ -358,15 +358,15 @@ const CarModelViewer = ({ modelSrc , setTotalPriceCar, language }) => {
       </section>
 
 
-        <div className="flex flex-row flex-wrap items-center justify-center w-full gap-2 p-2">
-          <button className="flex items-center justify-center px-2 py-1 text-black transition-all border-2 rounded-full bg-lightblue6 border-lightblue hover:bg-lightblue2 hover:text-white"
+        <div className="flex flex-row flex-wrap items-center justify-center w-full gap-2 sm:p-2">
+          <button className="flex items-center justify-center sm:px-2 px-1 py-1 aspect-square text-black transition-all border-2 rounded-full bg-lightblue6 border-lightblue hover:bg-lightblue2 hover:text-white"
                             onClick={() => reloadModel()}>
-              <img src="/reload.svg"></img>
+              <img src="/reload.svg" className="sm:w-full w-1/2"></img>
           </button>
           {variantOptions[selectingGroup]?.map((variant) => (
             <button
               key={variant}
-              className={`p-2 border-2 rounded-full  transition-all w-24 text-center border-lightblue ${
+              className={`sm:p-2 px-4 py-2 border-2 rounded-full  transition-all sm:w-24 w-12 sm:text-base text-[10px] text-center border-lightblue flex items-center justify-center ${
                 activeVariants[selectingGroup] === variant ? "text-white bg-lightblue2 font-bold" : " text-zinc-700 bg-lightblue6"
               }`}
               onClick={() => toggleVariant(selectingGroup, variant)}

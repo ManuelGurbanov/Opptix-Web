@@ -53,7 +53,7 @@ function WhyWorkTogether({ language }) {
 
   return (
     <div
-      className="relative flex flex-col items-center justify-center w-screen text-black"
+      className="relative flex flex-col items-center justify-center w-screen text-black bg-white"
     >
       <div className="flex items-center w-full px-6 mb-4 sm:flex-col sm:mb-6" data-aos="fade-up" ref={componentRef}>
         <img src="img/icon.webp" className="w-8 sm:w-12" alt="Icon" />
@@ -62,11 +62,10 @@ function WhyWorkTogether({ language }) {
         </h1>
       </div>
       <div 
-        className="flex flex-row items-center justify-center w-full h-auto gap-4 pl-4 pr-4 overflow-x-scroll sm:overflow-hidden min-w-max sm:justify-start"
+        className="flex flex-row items-center justify-center w-full h-auto gap-4 pl-4 pr-4 overflow-x-scroll overflow-y-hidden sm:overflow-hidden min-w-max sm:justify-start"
       >
         <div 
-          className="flex flex-row gap-2 mb-12 sm:overflow-auto sm:overflow-y-hidden overflow-x-scroll w-screen items-center justify-start text-white sm:justify-center h-[231px] px-4"
-          style={{ minWidth: '100vw', paddingLeft: '16px', paddingRight: '16px' }}
+          className="flex flex-row gap-2 mb-12 sm:overflow-auto min-w-[100vw] px-5 py-2 sm:overflow-y-hidden overflow-x-scroll overflow-y-hidden w-screen items-center justify-start text-white sm:justify-center h-[260px]"
         >
           {reasons.map((item, index) => (
             <div
@@ -84,7 +83,7 @@ function WhyWorkTogether({ language }) {
               </h1>
               <h2
                 className={`text-lg absolute top-[130px] w-full font-extrabold ${
-                  selectedBlock === index ? "opacity-100" : "opacity-0"
+                  selectedBlock === index ? "opacity-100" : "sm:opacity-0 opacity-100"
                 }`}
               >
                 {translate(item.reason, language)}

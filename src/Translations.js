@@ -1,5 +1,6 @@
 const translations = {
   en: {
+    whatIncludes : "What includes?",
     prefeerCall : "I prefer to schedule a call",
     ecommerceTittle: "3D Product Viewer",
     ecommerceText: "Fewer doubts, more sales: showcase your catalog in 3D and turn browsers into buyers.",
@@ -77,6 +78,7 @@ const translations = {
 
     pack1Title: "More confidence, more conversion",  
     pack1Description: "Your customers will be able to view your product from all angles and visualize it in their real space before purchasing. This builds more trust, reduces indecision, and increases the conversion rate in your e-commerce.",  
+    pack1MiniDescription: "Your customers will be able to view your product from all angles and visualize it in their real space before purchasing.",
     pack1Price: "From $XXX",  
     pack1SubPrice: "+ Low monthly fee",  
     pack1ResultsTittles: [  
@@ -97,6 +99,7 @@ const translations = {
     
     pack2Title: "More sales, lower costs"  ,
     pack2Description: "Turn your store into a digital showroom where customers can customize products in real time. This not only increases conversion but also boosts the average ticket thanks to customization options and cross-selling",  
+    pack2MiniDescription: "Turn your store into a digital showroom where customers can customize products in real time.",
     pack2Price: "From $XXX"  ,
     pack2SubPrice: "+ Intermediate monthly fee"  ,
     pack2ResultsTittles: [  
@@ -120,6 +123,7 @@ const translations = {
     
     pack3Title: "Premium Experience"  ,
     pack3Description: "Transform your website into an unforgettable brand experience with interactive animations and 3D models that customers can engage with. This not only enhances brand perception but also positions you as an innovative and trustworthy company.",  
+    pack3MiniDescription: "Transform your website into an unforgettable brand experience with interactive animations.",
     pack3Price: "From $XXX ",
     pack3SubPrice: "+ High monthly fee" ,
     pack3ResultsTittles: [  
@@ -178,6 +182,7 @@ const translations = {
     agendar: "Schedule a Call"
   },
   es: {
+    whatIncludes : "¿Qué incluye?",
     prefeerCall : "Prefiero Agendar Llamada",
     ecommerceTittle: "Visualizador de Productos en 3D",
     ecommerceText: "Menos dudas, más ventas: muestra tu catálogo en 3D y convierte curiosos en compradores.",
@@ -256,6 +261,7 @@ const translations = {
 
   pack1Title: "Más confianza, más conversión",
   pack1Description: "Tus clientes podrán ver tu producto desde todos los ángulos y visualizarlo en su espacio real antes de comprarlo. Esto genera más confianza, reduce la indecisión y aumenta la tasa de conversión en tu e-commerce.",
+  pack1MiniDescription: "Tus clientes podrán ver tu producto desde todos los ángulos y visualizarlo en su espacio real antes de comprarlo.",
   pack1Price: "Desde $XXX",
   pack1SubPrice: "+ Fee mensual bajo",
   pack1ResultsTittles: [
@@ -276,6 +282,7 @@ const translations = {
 
   pack2Title: "Más ventas, menos costos",
   pack2Description: "Convierte tu tienda en un showroom digital donde los clientes pueden personalizar productos en tiempo real. Esto no solo aumenta la conversión, sino que también incrementa el ticket promedio gracias a opciones de personalización y venta cruzada.",
+  pack2MiniDescription: "Convierte tu tienda en un showroom digital donde los clientes pueden personalizar productos en tiempo real.",
   pack2Price: "Desde $XXX",
   pack2SubPrice: "+ Fee mensual intermedio",
   pack2ResultsTittles: [
@@ -298,7 +305,8 @@ const translations = {
   ],
 
   pack3Title: "Experiencia Premium",
-  pack3Description: "Transforma tu web en una experiencia de marca inolvidable con animaciones interactivas y modelos 3D con los que el cliente puede interactuar. Esto no solo mejora la percepción de tu marca, sino que te posiciona como una empresa innovadora y confiable.",
+  pack3Description: "Transforma tu web en una experiencia de marca inolvidable con animaciones y modelos 3D con los que el cliente puede interactuar. Esto no solo mejora la percepción de tu marca, sino que te posiciona como una empresa innovadora y confiable.",
+  pack3MiniDescription: "Transforma tu web en una experiencia de marca inolvidable con animaciones interactivas.",
   pack3Price: "Desde $XXX",
   pack3SubPrice: "+ Fee mensual alto",
   pack3ResultsTittles: [

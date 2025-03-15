@@ -45,14 +45,27 @@ export default function AllConfigurators({language, setContact}) {
 
     return (
         <>
-        <section className='w-full min-h-[150vh] flex flex-col justify-start items-center rounded-lg gap-4 relative px-12 py-2 mt-2'>
-            <header className="flex items-center justify-between w-full gap-4">
-                <div className="flex flex-col items-center justify-start w-1/2 gap-1">
-                    <h1 className="text-[60px] text-left w-full">{translate("configTittle", language)}</h1>
+        <section className='w-full min-h-[150vh] flex flex-col justify-start items-center rounded-lg gap-4 relative sm:px-12 sm:py-2 p-2 mt-2'>
+            <header className="flex sm:flex-row flex-col items-center justify-between w-full gap-4">
+                <div className="flex flex-col items-center justify-start sm:w-1/2 w-full gap-1">
+                    <h1 className="sm:text-[60px] text-2xl text-left w-full sm:mb-3">{translate("configTittle", language)}</h1>
                     <p className='w-full font-light text-left'>
                         {translate("configuratorsDescription", language)}
                     </p>
-                    <nav className="hidden sm:flex justify-center items-center p-4 gap-7 text-black h-[30px] z-30 m-0 rounded-lg relative">
+                </div>
+
+                <div className="flex sm:flex-col flex-row-reverse items-end sm:justify-end justify-between sm:w-1/2 w-full gap-3 sm:p-4 px-2">
+                    <ContractButton language={language} setContact={setContact}/>
+                    <div className="flex flex-col items-center justify-center w-64 sm:text-right text-left">
+                        <h1 className="w-full text-base font-bold">{translate("finalPrice", language)}</h1>
+                        <h2 className="w-full sm:text-3xl text-sm">
+                         {displayedPrice.toLocaleString()} <span className="font-semibold">USD</span>
+                        </h2>
+                    </div>
+                </div>
+            </header>
+
+            <nav className="flex justify-center sm:self-start items-center p-4 gap-7 text-black h-[30px] z-30 m-0 rounded-lg relative">
                     <button
                         onClick={() => setSelectedConfigurator("car")}
                         className={`hover:scale-105 w-14 text-lg text-center transition ease-in cursor-pointer duration-75 ${
@@ -79,19 +92,7 @@ export default function AllConfigurators({language, setContact}) {
                     </button>
 
                     <hr className="w-full h-[2px] bg-black absolute bottom-0"></hr>
-                </nav>
-                </div>
-
-                <div className="flex flex-col items-end justify-end w-1/2 gap-3 p-4">
-                    <ContractButton language={language} setContact={setContact}/>
-                    <div className="flex flex-col items-center justify-center w-64 text-right">
-                        <h1 className="w-full text-base font-bold">{translate("finalPrice", language)}</h1>
-                        <h2 className="w-full text-3xl">
-                         {displayedPrice.toLocaleString()} <span className="font-semibold">USD</span>
-                        </h2>
-                    </div>
-                </div>
-            </header>
+            </nav>
 
 
             {selectedConfigurator == "parrilla" && <ParrillaModelViewer modelSrc="/models/parrilla.glb" controlsContainerId="material-controls" setTotalPriceParrilla={setTotalPriceParrilla} language={language}/>}

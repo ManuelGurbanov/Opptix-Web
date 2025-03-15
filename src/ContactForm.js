@@ -33,7 +33,7 @@ export default function ContactForm ({language, setContact}) {
 
     return (
         <div className="w-screen h-screen bg-black bg-opacity-40 fixed top-0 left-0 flex items-center justify-center z-50">
-        <section className="flex flex-col items-center justify-center w-full h-full gap-4 mb-12 relative" id="contact">
+        <section className="flex items-center justify-center w-full h-full gap-4 mb-12 relative" id="contact">
             
         <button className="w-5 h-5 rounded-full absolute top-12 right-12 flex items-center justify-center" onClick={() => setContact(false)}>
         <svg fill="#ffffff" height="64px" width="64px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 490" stroke="#ffffff">
@@ -46,9 +46,9 @@ export default function ContactForm ({language, setContact}) {
         </button>
 
 
-            <form className="flex items-center justify-center gap-4 p-6 bg-black rounded-3xl" onSubmit={onSubmit}>
+            <form className="flex sm:flex-row flex-col items-center justify-center gap-4 p-6 bg-black rounded-3xl" onSubmit={onSubmit}>
             <div
-                className="flex flex-col items-center justify-center gap-4 w-96">
+                className="flex flex-col items-center justify-center gap-4 sm:w-96 w-full">
 
                 {(render &&
                 <>
@@ -66,12 +66,12 @@ export default function ContactForm ({language, setContact}) {
 
                 { ( !result && render ) && (
                         <div
-                            className="flex flex-col items-center justify-center gap-4 w-96">
-                            <input name="name" type="name" placeholder={translate("name", language)} className="p-3 text-black border border-black w-96 rounded-3xl" />
-                            <input name="email" type="email" placeholder={translate("correo", language)} className="p-3 text-black border border-black w-96 rounded-3xl" />
-                            <input type="company" placeholder={translate("empresa", language)} className="p-3 text-black border border-black w-96 rounded-3xl" />
-                            <textarea name="message" placeholder={translate("mensaje", language)} maxLength={240} className="h-56 p-3 text-black border border-black resize-none w-96 rounded-3xl" />
-                            <button className="p-3 font-bold text-black transition bg-lightblue w-96 rounded-3xl hover:scale-105">{translate("enviar", language)}</button>
+                            className="flex flex-col items-center justify-center gap-4 sm:w-96 w-full">
+                            <input name="name" type="name" placeholder={translate("name", language)} className="p-3 text-black border border-black sm:w-96 rounded-3xl w-3/4" />
+                            <input name="email" type="email" placeholder={translate("correo", language)} className="p-3 text-black border border-black sm:w-96 rounded-3xl w-3/4" />
+                            <input type="company" placeholder={translate("empresa", language)} className="p-3 text-black border border-black sm:w-96 rounded-3xl w-3/4" />
+                            <textarea name="message" placeholder={translate("mensaje", language)} maxLength={240} className="sm:h-56 p-3 text-black border border-black resize-none sm:w-96 rounded-3xl w-3/4" />
+                            <button className="p-3 font-bold text-black transition bg-lightblue sm:w-96 rounded-3xl hover:scale-105 w-3/4">{translate("enviar", language)}</button>
                         </div>
                 )}
 

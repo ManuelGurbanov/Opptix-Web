@@ -179,6 +179,7 @@ function App() {
         id: 0,
         title: translate("pack1Title", language),
         description: translate("pack1Description", language),
+        miniDescription: translate("pack1MiniDescription", language),
         price: translate("pack1Price", language),
         subPrice: translate("pack1SubPrice", language),
         isMostPopular: false,
@@ -189,6 +190,7 @@ function App() {
         id: 1,
         title: translate("pack2Title", language),
         description: translate("pack2Description", language),
+        miniDescription: translate("pack2MiniDescription", language),
         price: translate("pack2Price", language),
         subPrice: translate("pack2SubPrice", language),
         isMostPopular: false,
@@ -198,6 +200,7 @@ function App() {
       id: 2,
       title: translate("pack3Title", language),
       description: translate("pack3Description", language),
+      miniDescription: translate("pack3MiniDescription", language),
       price: translate("pack3Price", language),
       subPrice: translate("pack3SubPrice", language),
       isMostPopular: false,
@@ -216,7 +219,7 @@ function App() {
         <Layout language={language} setLanguage={setLanguage}>
           <Routes>
             <Route path="/" element={
-              <section className='flex flex-col items-center mt-20 overflow-hidden max-w-screen'>
+              <section className='flex flex-col items-center mt-20 overflow-hidden max-w-screen bg-white'>
                 <MainBanner language={language} />
 
                 <WhyWorkTogether language={language} />

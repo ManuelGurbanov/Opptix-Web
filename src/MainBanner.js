@@ -25,7 +25,7 @@ function MainBanner({ language }) {
 
       {/* Content */}
       <div className="relative z-10  sm:p-6 rounded-3xl">
-        <h1 className={'font-extrabold sm:p-3 p-0 w-full sm:w-[700px] text-6xl'}>
+        <h1 className={'font-extrabold sm:p-3 p-0 w-full sm:w-[700px] sm:text-6xl text-4xl'}>
           {translate("bannerMain", language)}
         </h1>
         <h2 className={'font-medium sm:p-3 p-0 w-full sm:w-[700px] hidden sm:block' + (language === "es" ? ' text-3xl' : ' text-4xl')}>

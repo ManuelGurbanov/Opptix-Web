@@ -27,17 +27,17 @@ export default function OurServicesBento({ language }) {
     ];
 
     return (
-        <div className='w-full flex flex-col items-center justify-center' id='services'>
-            <header className="flex items-center justify-between w-3/4 p-6">
+        <div className='w-full flex flex-col items-center justify-center relative' id='services'>
+            <header className="flex items-center justify-between sm:w-3/4 w-full sm:p-6 px-2 mb-4 sm:mb-0">
                 <div className="flex flex-col items-start">
-                    <h1 className="text-3xl font-bold">{translate("services", language)}</h1>
-                    <h2 className="text-xl font-light">{translate("servicesSub", language)}</h2>
+                    <h1 className="sm:text-3xl text-2xl font-bold">{translate("services", language)}</h1>
+                    <h2 className="sm:text-xl text-lg font-light">{translate("servicesSub", language)}</h2>
                 </div>
-                <a href="/services/0" className="flex items-center justify-center w-56 px-4 py-2 text-white bg-black rounded-3xl hover:scale-105 transition">
-                    <p>
+                <a href="/services/0" className="sm:relative absolute right-2 top-0 flex items-center sm:justify-center justify-between sm:w-56 w-32 px-4 sm:text-lg text-[7px] py-2 text-white bg-black rounded-3xl hover:scale-105 transition">
+                    <p className='w-full'>
                         {translate("explore", language)}
                     </p>
-                    <div className="flex items-center justify-center h-4 -rotate-45 w-9">
+                    <div className="flex items-center justify-center h-4 -rotate-45 sm:w-9 w-4">
                         <RightArrow color="#ffffff" />
                     </div>
                 </a>

@@ -18,9 +18,9 @@ function Navbar({ language, setLanguage }) {
       <div className='fixed top-0 z-40 flex items-center justify-center w-screen'>
         <div className="z-40 flex items-center justify-between w-screen h-16 p-4 text-white bg-zinc-50">
 
-          <button to="/" className='hidden transition duration-75 ease-in cursor-pointer w-28 hover:scale-105 sm:block' onClick={scrollTop}>
+          <Link to="/" className='hidden transition duration-75 ease-in cursor-pointer w-28 hover:scale-105 sm:block' onClick={scrollTop}>
             <img src="darkOpptix.webp" alt="Logo" />
-          </button>
+          </Link>
 
 
         <div className='flex flex-row'>
@@ -58,12 +58,12 @@ function Navbar({ language, setLanguage }) {
 
           {/* Menú en pantallas más grandes */}
           <div className="absolute flex flex-col items-center justify-end w-full gap-4 text-black sm:flex-row sm:relative">
-            <a className="hidden transition duration-75 ease-in cursor-pointer hover:scale-105 md:block" href='#services'>
+            <Link className="hidden transition duration-75 ease-in cursor-pointer hover:scale-105 md:block" to="/services/0">
               {translate("services", language)}
-            </a>
-            <a className="hidden transition duration-75 ease-in cursor-pointer hover:scale-105 md:block" href='#case-studies'>
+            </Link>
+            <Link className="hidden transition duration-75 ease-in cursor-pointer hover:scale-105 md:block" to="/case-study?case=Headphones">
               {translate("caseStudies", language)}
-            </a>
+            </Link>
             <a className="hidden transition duration-75 ease-in cursor-pointer hover:scale-105 md:block" href='#packs'>
               {translate("packs", language)}
             </a>
@@ -93,7 +93,7 @@ function Navbar({ language, setLanguage }) {
 
       {/* Menú desplegable en celulares */}
       {showMenuHamburguer && (
-        <div className="fixed top-0 left-0 z-40 flex flex-col items-center w-full gap-4 p-8 text-white bg-black">
+        <div className="fixed top-0 left-0 z-40 flex flex-col items-center w-full gap-4 p-8 text-black bg-zinc-400 font-semibold">
           <button>
             <img
               src="exit.webp"
@@ -102,7 +102,6 @@ function Navbar({ language, setLanguage }) {
               onClick={() => setShowMenuHamburguer(false)}
             />
           </button>
-          <img src="img/icon.webp" alt="Logo" className='w-12'/>
           <a
             className="transition duration-75 ease-in cursor-pointer hover:scale-105"
             onClick={() => setShowMenuHamburguer(false)}

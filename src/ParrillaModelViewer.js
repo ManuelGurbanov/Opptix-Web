@@ -238,7 +238,7 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
             height: isFullscreen ? "100vh" : "50vh",
             minWidth: "450px",
             minHeight: "250px",
-            "@media (max-width: 700px)": { width: "100vw" },
+            "@media (max-width: 700px)": { width: "90vw" },
             position: "relative",
           }}
           onLoad={() => {
@@ -246,13 +246,13 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
           }}
         >
 
-          <div className="absolute top-0 left-0 right-0">
+          <div className="absolute top-0 left-0 right-0 hidden sm:block">
             <SeeButton language={language} qrCode="/qrcodes/bike.png" />
           </div>
 
           <button
             onClick={handleFullscreen}
-            className="absolute flex items-center justify-center px-2 py-1 transition-all border-2 rounded-full top-7 right-7 bg-lightblue6 border-lightblue hover:bg-lightblue2 hover:scale-105"
+            className="absolute sm:flex hidden items-center justify-center px-2 py-1 transition-all border-2 rounded-full top-7 right-7 bg-lightblue6 border-lightblue hover:bg-lightblue2 hover:scale-105"
           >
             {!isFullscreen ? (
               <svg
@@ -322,7 +322,7 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
             </button>
 
             )}
-          <section className="flex flex-row items-center justify-center w-full gap-0 overflow-x-auto whitespace-nowrap">
+          <section className="flex flex-row items-center justify-center w-full gap-0 overflow-x-auto whitespace-nowrap sm:text-base text-[10px]">
             {Object.keys(variantsByGroup).map((group) => (
               <button
                 key={group}
@@ -339,14 +339,14 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
 
 
             <div className="flex flex-row items-center justify-center w-full gap-2 p-2 overflow-x-auto whitespace-nowrap">
-            <button className="flex items-center justify-center px-2 py-1 text-black transition-all border-2 rounded-full bg-lightblue6 border-lightblue hover:bg-lightblue2 hover:text-white"
+            <button className="flex items-center justify-center sm:px-2 px-1 py-1 aspect-square text-black transition-all border-2 rounded-full bg-lightblue6 border-lightblue hover:bg-lightblue2 hover:text-white"
                                 onClick={() => reloadModel()}>
-                  <img src="/reload.svg"></img>
+                   <img src="/reload.svg" className="sm:w-full w-1/2"></img>
               </button>
               {variantsByGroup[selectingGroup].map((variant) => (
                 <button
                   key={variant}
-                  className={`p-2 border-2 rounded-full transition-all min-w-24 text-center border-lightblue ${
+                  className={`p-2 border-2 rounded-full transition-all sm:min-w-24 text-sm sm:text-base text-center border-lightblue ${
                     activeVariants[selectingGroup] === variant ? "text-white bg-lightblue2 font-bold" : "text-zinc-700 bg-lightblue6"
                   }`}
                   onClick={() => toggleVariant(selectingGroup, variant)}

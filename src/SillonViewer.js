@@ -235,12 +235,12 @@ const SillonViewer = ({language}) => {
           </Canvas>
 
 
-          <div className="absolute top-0 left-0 right-0">
+          <div className="absolute top-0 left-0 right-0 hidden sm:block">
             <SeeButton language={language} qrCode="/qrcodes/bike.png" />
           </div>
           <button
             onClick={handleFullscreen}
-            className="absolute flex items-center justify-center px-2 py-1 transition-all border-2 rounded-full top-7 right-7 bg-lightblue6 border-lightblue hover:bg-lightblue2 hover:scale-105"
+            className="absolute sm:flex hidden items-center justify-center px-2 py-1 transition-all border-2 rounded-full top-7 right-7 bg-lightblue6 border-lightblue hover:bg-lightblue2 hover:scale-105"
           >
             {!isFullscreen ? (
               <svg
