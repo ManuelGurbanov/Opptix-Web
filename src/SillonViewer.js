@@ -295,10 +295,16 @@ const SillonViewer = ({language}) => {
             )}
           </button>
 
-
-          <section className={`flex flex-col items-center justify-center w-full gap-1 mt-4 ${
+          {/* {loading && (
+              <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-center bg-white bg-opacity-70 w-screen h-full">
+                <img src="/loading.gif" alt="Loading..." className="w-1/4" />
+              </div>
+            )} */}
+          <section className={`flex flex-col items-center justify-center w-full gap-1 mt-4 relative ${
             isFullscreen ? "absolute left-0 right-0 bottom-6" : "w-screen"
           }`}>
+
+
             
             <button
               onClick={toggleBed}
@@ -307,7 +313,7 @@ const SillonViewer = ({language}) => {
               {showBed ? translate("hideBed", language) : translate("showBed", language)}
             </button>
 
-              <div className="flex items-center justify-center gap-6 mt-4">
+              <div className="flex items-center justify-center gap-6 mt-4 sm:text-base text-xs">
                 <button
                   onClick={() => setSelectingGroup("group0")}
                   className={`px-4 py-2 ${
@@ -344,40 +350,83 @@ const SillonViewer = ({language}) => {
 
               <hr className="h-[2px] w-64 bg-black justify-self-center"/>
 
-              <div className="flex items-center justify-center gap-6 mt-4">
-                {textureNames.map((texture) => (
-                  <button
+              <div className="flex flex-col sm:flex-row items-center gap-6 mt-4">
+                {/* Primera fila con 4 elementos */}
+                <div className="grid grid-cols-4 gap-6 justify-center sm:flex">
+                  {textureNames.slice(0,4).map((texture) => (
+                    <button
                     key={texture}
                     onClick={() => handleTextureChange(selectingGroup, texture)}
-                    className={`h-16 border rounded-full flex flex-row items-center justify-center gap-4 ${
+                    className={`ring-[2px] rounded-full flex items-center justify-center sm:h-16 sm:w-auto sm:min-w-16 w-4 h-4 ${
                       groupTextures[selectingGroup] === texture
-                        ? "border-gray-800 w-auto p-4"
-                        : "border-gray-300 w-16"
+                        ? "ring-gray-800 sm:min-w-32 justify-end"
+                        : "ring-gray-300"
                     } hover:border-blue-400 transition-all`}
                   >
                     {groupTextures[selectingGroup] === texture && (
-                      <p className="flex items-center justify-center w-1/2 h-full text-nowrap">
-                        {language === "en" ? textureColors[texture] : textureColorsEs[texture]}
-                      </p>
-                    )}
+                                            <p className={`hidden sm:flex items-center justify-center w-auto min-w-1/2 h-full text-nowrap 
+                                              ${
+                                                groupTextures[selectingGroup] === texture
+                                                  ? "ring-gray-800 mr-2 ml-2"
+                                                  : "ring-gray-300"
+                                              }
+                                              `}>
+                                              {language === "en" ? textureColors[texture] : textureColorsEs[texture]}
+                                            </p>
+                      )}
+
                     <img
                       src={`/textures/${texture}.jpg`}
                       alt={texture}
-                      className="object-cover w-12 rounded-full"
+                      className={`object-cover sm:w-12 sm:h-12 w-4 h-4 rounded-full ${
+                        groupTextures[selectingGroup] === texture ? "justify-end sm:mr-2" : ""
+                      }`}
                     />
                   </button>
-                ))}
-              </div>
-          </section>
+                  ))}
+                </div>
 
-            
+                {/* Segunda fila con 3 elementos, centrada */}
+                <div className="grid grid-cols-3 gap-6 justify-center sm:flex">
+                  {textureNames.slice(4).map((texture) => (
+                    <button
+                    key={texture}
+                    onClick={() => handleTextureChange(selectingGroup, texture)}
+                    className={`ring-[2px] rounded-full flex items-center justify-center sm:h-16 sm:w-auto sm:min-w-16 w-4 h-4 ${
+                      groupTextures[selectingGroup] === texture
+                        ? "ring-gray-800 sm:min-w-32 justify-end"
+                        : "ring-gray-300"
+                    } hover:border-blue-400 transition-all`}
+                  >
+                    {groupTextures[selectingGroup] === texture && (
+                                            <p className={`hidden sm:flex items-center justify-center w-auto min-w-1/2 h-full text-nowrap 
+                                              ${
+                                                groupTextures[selectingGroup] === texture
+                                                  ? "ring-gray-800 mr-2 ml-2"
+                                                  : "ring-gray-300"
+                                              }
+                                              `}>
+                                              {language === "en" ? textureColors[texture] : textureColorsEs[texture]}
+                                            </p>
+                      )}
+
+                    <img
+                      src={`/textures/${texture}.jpg`}
+                      alt={texture}
+                      className={`object-cover sm:w-12 sm:h-12 w-4 h-4 rounded-full ${
+                        groupTextures[selectingGroup] === texture ? "justify-end sm:mr-2" : ""
+                      }`}
+                    />
+                  </button>
+                  ))}
+                </div>
+              </div>
+
+
+          </section>
       </div>
 
-      {loading && (
-        <div className="absolute top-0 bottom-0 left-0 right-0 z-10 flex items-center justify-center bg-white bg-opacity-70">
-          <img src="/loading.gif" alt="Loading..." className="w-1/4" />
-        </div>
-      )}
+
 
 
     </div>

@@ -62,7 +62,7 @@ export default function OurServicesBento({ language }) {
                     </a>
 
                     {/* Render Estático */}
-                    <a className="box box2 p-7 rounded-[48px] relative flex flex-col justify-between h-full bg-gray-800" href='/services/2'>
+                    <a className="box box2 p-7 rounded-[48px] relative flex flex-col justify-between h-full bg-gray-800" href='/services/3'>
                         <div className='w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10 rounded-[48px]' alt="Configuradores">
                         </div>
                         <img className='w-full h-full object-cover absolute top-0 right-0 rounded-[48px]' src={rendersImages[num-1]} alt="Configuradores">
@@ -92,7 +92,7 @@ export default function OurServicesBento({ language }) {
                     </a>
 
                     {/* Realidad Virtual */}
-                    <a className="box box4 rounded-[48px] relative flex flex-col justify-between h-full p-7" href='/services/3'>
+                    <a className="box box4 rounded-[48px] relative flex flex-col justify-between h-full p-7" href='/services/2'>
                         <a className="absolute flex items-center justify-center h-6 w-7 bg-black rounded-full top-2 right-2 hover:scale-105">
                             <RightArrow color="#ffffff" />
                         </a>

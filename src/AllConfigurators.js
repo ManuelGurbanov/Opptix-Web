@@ -13,7 +13,7 @@ import DataBlock from "./DataBlock";
 import SeeButton from "./SeeInYourSpace";
 export default function AllConfigurators({language, setContact}) {
 
-    const [selectedConfigurator, setSelectedConfigurator] = useState("parrilla");
+    const [selectedConfigurator, setSelectedConfigurator] = useState("car");
 
     const [totalPriceCar, setTotalPriceCar] = useState(20000);
     const [totalPriceParrilla, setTotalPriceParrilla] = useState(1500);

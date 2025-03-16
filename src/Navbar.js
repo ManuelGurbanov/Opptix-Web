@@ -93,15 +93,16 @@ function Navbar({ language, setLanguage }) {
 
       {/* Menú desplegable en celulares */}
       {showMenuHamburguer && (
-        <div className="fixed top-0 left-0 z-40 flex flex-col items-center w-full gap-4 p-8 text-black bg-zinc-400 font-semibold">
+        <div className="fixed top-0 left-0 z-40 flex flex-col items-center w-full gap-4 p-8 text-black bg-white font-semibold">
           <button>
             <img
               src="exit.webp"
               alt="Cerrar"
-              className="absolute w-8 right-6 top-6" 
+              className="absolute w-8 right-6 top-4" 
               onClick={() => setShowMenuHamburguer(false)}
             />
           </button>
+          
           <a
             className="transition duration-75 ease-in cursor-pointer hover:scale-105"
             onClick={() => setShowMenuHamburguer(false)}
@@ -109,6 +110,7 @@ function Navbar({ language, setLanguage }) {
           >
             {translate("services", language)}
           </a>
+          <hr className='w-screen h-[2px] bg-black bg-opacity-25'></hr>
           <a
             className="transition duration-75 ease-in cursor-pointer hover:scale-105"
             onClick={() => setShowMenuHamburguer(false)}
@@ -116,6 +118,7 @@ function Navbar({ language, setLanguage }) {
           >
             {translate("caseStudies", language)}
           </a>
+          <hr className='w-screen h-[2px] bg-black bg-opacity-25'></hr>
           <a
             className="transition duration-75 ease-in cursor-pointer hover:scale-105"
             onClick={() => setShowMenuHamburguer(false)}
@@ -123,6 +126,7 @@ function Navbar({ language, setLanguage }) {
           >
             {translate("packs", language)}
           </a>
+          <hr className='w-screen h-[2px] bg-black bg-opacity-25'></hr>
           <a
             className="transition duration-75 ease-in cursor-pointer hover:scale-105"
             onClick={() => setShowMenuHamburguer(false)}
