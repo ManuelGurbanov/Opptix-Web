@@ -1,7 +1,7 @@
 
 import { useState } from "react"
 
-export default function SeeButton (language, qrCode = "/qrcodes/bike.png") {
+export default function SeeButton ({language, qrCode = "/qrcodes/bike.png"}) {
     const [showingQR, setShowingQR] = useState(false);
 
     return (
@@ -13,7 +13,7 @@ export default function SeeButton (language, qrCode = "/qrcodes/bike.png") {
         {showingQR &&
         <div className="flex flex-row items-center justify-center gap-4 bg-lightblue2 border-lightblue p-4 w-32">
 
-        <img className="w-full" src="/qrcodes/bike.png" alt="QR Code">
+        <img className="w-full" src={qrCode} alt="QR Code">
         </img>
 
         </div>

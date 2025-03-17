@@ -36,7 +36,7 @@ export default function AllConfigurators({language, setContact}) {
                     }
                     return prev + step;
                 });
-            }, 10); // Ajusta la velocidad aquí
+            }, 10);
 
             return () => clearInterval(interval);
         }

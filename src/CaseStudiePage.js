@@ -165,10 +165,14 @@ function CaseStudiePage({ language }) {
 
   return (
     <section className='w-screen h-full flex flex-col items-center justify-center mb-32'>
-      <header className='w-full min-h-screen bg-white flex flex-col justify-center items-center text-black p-6 mt-12'>
+      <header className='w-full min-h-screen bg-white flex flex-col justify-center items-center text-black sm:p-6 mt-12'>
         <Selector actualCase={actualCase.id} cases={cases} />
-        <div className='w-full h-full p-8 py-0 gap-4 flex items-start justify-center'>
-        <section className='w-[40%] h-full p-8 flex items-end justify-center flex-col'>
+        <div className='w-full h-full p-8 py-0 gap-4 flex sm:flex-row flex-col items-start justify-center'>
+
+        <section className='sm:w-[40%] w-full h-full sm:p-8 p-2 flex flex-col sm:items-end items-center justify-center'>
+            <h1 className='font-semibold text-4xl w-full text-left mb-2'>
+              {actualCase.name}
+            </h1>
             <p className='font-semibold text-xs w-full opacity-70'>
               {actualCase.description}
             </p>
@@ -180,26 +184,31 @@ function CaseStudiePage({ language }) {
               Volver
             </Link>
           </section>
-          <div className='w-[392px] h-[484px] flex items-center justify-center cursor-pointer'>
-            <img
-              src={actualCase.mainImg}
-              className='w-full h-full object-cover rounded-3xl mt-4'
-              onClick={() => openModal(actualCase.mainImg)}
-            />
-          </div>
-          <div className='w-[392px] h-[484px] flex items-center justify-center cursor-pointer'>
-            <img
-              src={actualCase.endImg}
-              className='w-full h-full object-cover rounded-3xl mt-4'
-              onClick={() => openModal(actualCase.endImg)}
-            />
-          </div>
+
+          <aside className='flex items-center justify-center w-full h-full gap-2'>
+            <div className='sm:w-[392px] sm:h-[484px] w-full h-full flex sm:flex-row flex-col items-center justify-center cursor-pointer'>
+              <img
+                src={actualCase.mainImg}
+                className='sm:w-[392px] sm:h-[484px] w-full h-full object-cover rounded-3xl mt-4'
+                onClick={() => openModal(actualCase.mainImg)}
+              />
+            </div>
+            <div className='sm:w-[392px] sm:h-[484px] w-full h-full flex items-center justify-center cursor-pointer'>
+              <img
+                src={actualCase.endImg}
+                className='sm:w-[392px] sm:h-[484px] w-full object-cover rounded-3xl mt-4'
+                onClick={() => openModal(actualCase.endImg)}
+              />
+            </div>
+          </aside>
+
+
         </div>
-        <img
-          src={actualCase.firstImg}
-          className='w-full h-full max-h-[700px] object-cover rounded-3xl mt-4 cursor-pointer'
-          onClick={() => openModal(actualCase.firstImg)}
-        />
+          <img
+            src={actualCase.firstImg}
+            className='w-full h-full max-h-[700px] object-cover rounded-3xl mt-4 cursor-pointer'
+            onClick={() => openModal(actualCase.firstImg)}
+          />
       </header>
 
       {modalOpen && (

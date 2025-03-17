@@ -2,31 +2,35 @@ import React, { useState } from 'react';
 import ContractButton from './ContractButton';
 import { translate } from './Translations';
 import DataBlock from './DataBlock';
+import SeeButton from './SeeInYourSpace';
+
 export default function ECommerceViewer({language}) {
     const [selectedModel, setSelectedModel] = useState(1);
 
     const modelPath = (num) => `/models/ecommerce/silla-${num}.glb`;
     const imagePath = (num) => `/models/ecommerce/${num}.png`;
+    const qrPath = (num) => `/qrcodes/ecommerce/silla-${num}.png`;
 
     return (
 
         
-<div className='flex flex-col items-center justify-center w-screen min-h-screen p-12 py-4'>
-        <header className='w-full flex items-center justify-between gap-4 min-h-[30vh]'>
+<div className='relative flex flex-col items-center justify-start w-full sm:p-12 p-2 py-4'>
+
+        <header className='w-full flex items-start justify-between gap-4 sm:min-h-[20vh] relative'>
           <div className='flex flex-col w-full'>
-            <h1 className='w-full text-left text-[60px]'>
+            <h1 className='sm:text-[60px] text-2xl mb-3 text-left w-full'>
                 {translate("ecommerceTittle", language)}
             </h1>
             <p className='w-full font-light text-left'>
             {translate("ecommerceText", language)}
             </p>
           </div>
-          <div className='flex items-start justify-end w-full h-14'>
+          <div className='flex items-start justify-end w-full h-14 sm:relative absolute top-1 right-3'>
           <ContractButton language={language}/>
           </div>
         </header>
 
-         <section className="flex flex-col items-center flex-1">
+         <section className="flex flex-col items-center flex-1 relative">
                 <model-viewer
                     src={modelPath(selectedModel)}
                     poster={imagePath(selectedModel)}
@@ -36,8 +40,8 @@ export default function ECommerceViewer({language}) {
                     touch-action="pan-y"
                     alt={`3D model of chair ${selectedModel}`}
                     style={{
-                        width: "50vw",
-                        height:  "70vh",
+                        width: "80vw",
+                        height:  "50vh",
                         minHeight: "250px",
                         "@media (max-width: 700px)": { width: "100vw" },
                         position: "relative",
@@ -45,7 +49,11 @@ export default function ECommerceViewer({language}) {
                 >
                 </model-viewer>
 
-                <div className="flex gap-2 mt-4">
+                <div className="absolute top-0 right-8 hidden sm:block">
+                    <SeeButton language={language} qrCode={qrPath(selectedModel)} />
+                </div>
+
+                <div className="sm:flex grid grid-cols-5 gap-2 mt-4">
                     {[...Array(10)].map((_, index) => {
                         const num = index + 1;
                         return (

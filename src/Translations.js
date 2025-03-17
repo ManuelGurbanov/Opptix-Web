@@ -2,7 +2,7 @@ const translations = {
   en: {
     whatIncludes : "What includes?",
     prefeerCall : "I prefer to schedule a call",
-    ecommerceTittle: "3D Product Viewer",
+    ecommerceTittle: "3D Catalog",
     ecommerceText: "Fewer doubts, more sales: showcase your catalog in 3D and turn browsers into buyers.",
     hideBed: "Hide Bed",
     showBed: "Show Bed",
@@ -179,12 +179,14 @@ const translations = {
     data2Anim: "Better recording with impactful content",
     data3Anim: "Differentiation with high quality materials",
     explore: "Explore More",
-    agendar: "Schedule a Call"
+    agendar: "Schedule a Call",
+    ARDescription: "With Augmented Reality (AR), users can see how products will look in their home, while with Virtual Reality (VR) they can immerse themselves in more immersive experiences.",
+    scan: "Scan to see the product in your space",
   },
   es: {
     whatIncludes : "¿Qué incluye?",
     prefeerCall : "Prefiero Agendar Llamada",
-    ecommerceTittle: "Visualizador de Productos en 3D",
+    ecommerceTittle: "Catálogo 3D",
     ecommerceText: "Menos dudas, más ventas: muestra tu catálogo en 3D y convierte curiosos en compradores.",
     agendar: "Agendar Llamada",
     hideBed: "Ocultar Cama",
@@ -360,7 +362,9 @@ const translations = {
     data1Anim: "+300% engagement en redes sociales y anuncios",
     data2Anim: "Mejor grabación con contenido impactante",
     data3Anim: "Diferenciación con materiales de alta calidad",
-    explore: "Explorar Más"
+    explore: "Explorar Más",
+    ARDescription: "Con Realidad Aumentada (AR), los usuarios pueden ver cómo se verán los productos en su hogar, mientras que con Realidad Virtual (VR) pueden sumergirse en experiencias más envolventes.",
+    scan: "Escaneá para verlo en la vida real."
   }
   
 
