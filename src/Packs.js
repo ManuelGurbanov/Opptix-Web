@@ -58,7 +58,7 @@ function Packs({ packs, language }) {
                             {translate(`pack${pack.id + 1}Includes`, language).map((include, index) => (
                                 <div
                                     key={index}
-                                    className={`sm:px-4 sm:py-2 p-2 rounded-2xl ring-white ring-1 sm:text-xs text-[10px] overflow-clip
+                                    className={`sm:px-4 sm:py-2 p-2 rounded-2xl text-[10px] overflow-hidden flex items-center justify-center
                                         ${pack.id === 0 ? "bg-zinc-500 text-white" : ""} 
                                         ${pack.id === 1 ? "bg-lightblue text-white" : ""} 
                                         ${pack.id === 2 ? "bg-lightblue text-white" : ""}`}

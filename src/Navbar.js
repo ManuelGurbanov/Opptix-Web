@@ -67,7 +67,7 @@ function Navbar({ language, setLanguage }) {
             <a className="hidden transition duration-75 ease-in cursor-pointer hover:scale-105 md:block" href='#packs'>
               {translate("packs", language)}
             </a>
-            <button className="hidden transition duration-75 ease-in cursor-pointer hover:scale-105 md:block" onClick={() => showContactForm()}>
+            <button className="hidden transition duration-75 ease-in cursor-pointer hover:scale-105 md:block bg-lightblue px-4 py-2 rounded-[48px]" onClick={() => showContactForm()}>
               {translate("talk", language)}
             </button>
 
@@ -128,7 +128,7 @@ function Navbar({ language, setLanguage }) {
           </a>
           <hr className='w-screen h-[2px] bg-black bg-opacity-25'></hr>
           <a
-            className="transition duration-75 ease-in cursor-pointer hover:scale-105"
+            className="transition duration-75 ease-in cursor-pointer hover:scale-105 bg-lightblue px-2 py-1 rounded-[48px]"
             onClick={() => setShowMenuHamburguer(false)}
             href='#get-started'
           >

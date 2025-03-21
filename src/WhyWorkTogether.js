@@ -16,9 +16,9 @@ function WhyWorkTogether({ language }) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting && entry.intersectionRatio >= 0.4);
+        setIsVisible(entry.isIntersecting && entry.intersectionRatio >= 0.3);
       },
-      { threshold: [0.4] } // Cambiado a 40%
+      { threshold: [0.3] }
     );
   
     if (componentRef.current) {
@@ -35,22 +35,28 @@ function WhyWorkTogether({ language }) {
 
   useEffect(() => {
     if (!isVisible) return;
-
+  
+    let wheelCounter = 0;
+  
     const handleWheel = (e) => {
-      if (e.deltaY > 0 && selectedBlock < reasons.length - 1) {
-        setSelectedBlock((prev) => prev + 1);
-      } else if (e.deltaY < 0 && selectedBlock > 0) {
-        setSelectedBlock((prev) => prev - 1);
+      wheelCounter += 1;
+  
+      if (wheelCounter % 2 === 0) {
+        if (e.deltaY > 0 && selectedBlock < reasons.length - 1) {
+          setSelectedBlock((prev) => prev + 1);
+        } else if (e.deltaY < 0 && selectedBlock > 0) {
+          setSelectedBlock((prev) => prev - 1);
+        }
       }
     };
-
+  
     window.addEventListener("wheel", handleWheel);
-
+  
     return () => {
       window.removeEventListener("wheel", handleWheel);
     };
   }, [selectedBlock, isVisible]);
-
+  
   return (
     <div
       className="relative flex flex-col items-center justify-center w-screen text-black bg-white"

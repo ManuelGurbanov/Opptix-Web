@@ -188,7 +188,7 @@ const SillonViewer = ({language}) => {
   const textureColors = {
     "sofa-00": "Blue",
     "sofa-01": "Black",
-    "sofa-02": "Red",
+    "sofa-02": "Orange",
     "sofa-03": "Teal",
     "sofa-04": "Magenta",
     "sofa-05": "Light Gray",
@@ -198,7 +198,7 @@ const SillonViewer = ({language}) => {
   const textureColorsEs = {
     "sofa-00": "Azul",
     "sofa-01": "Negro",
-    "sofa-02": "Rojo",
+    "sofa-02": "Naranja",
     "sofa-03": "Verde Azulado",
     "sofa-04": "Magenta",
     "sofa-05": "Gris",
@@ -211,7 +211,7 @@ const SillonViewer = ({language}) => {
       <div className="relative min-h-[60vh] bg-white flex items-center justify-center flex-col w-[80vw]" ref={containerRef}>
           <Canvas
               className="bg-white cursor-grab"
-              camera={{ position: [0, 3, 5], fov: 15 }}
+              camera={{ position: [0, 4, 5], fov: 15 }}
               style={{
                 width: isFullscreen ? "100vw" : "80vw",
                 height: isFullscreen ? "100vh" : "50vh",
@@ -219,6 +219,7 @@ const SillonViewer = ({language}) => {
                 minHeight: "250px",
                 "@media (max-width: 700px)": { width: "100vw" },
                 position: "relative",
+                marginTop: "40px"
               }}
             >
             <directionalLight position={[-3, 5, -4]} intensity={1.7} />
@@ -235,12 +236,13 @@ const SillonViewer = ({language}) => {
           </Canvas>
 
 
-          <div className="absolute top-0 left-0 right-0 hidden sm:block">
-            <SeeButton language={language} qrCode="/qrcodes/bike.png" />
+          <header className="absolute sm:flex hidden items-start justify-end top-2 right-7 w-full gap-2">
+          <div className="hidden sm:block">
+            <SeeButton language={language} qrCode="/qrcodes/sillon.png" />
           </div>
           <button
             onClick={handleFullscreen}
-            className="absolute sm:flex hidden items-center justify-center px-2 py-1 transition-all border-2 rounded-full top-7 right-7 bg-lightblue6 border-lightblue hover:bg-lightblue2 hover:scale-105"
+            className="sm:flex hidden items-center justify-center px-2 py-1 transition-all rounded-full bg-lightblue6 hover:bg-lightblue2 hover:scale-105 w-12 h-12"
           >
             {!isFullscreen ? (
               <svg
@@ -294,6 +296,7 @@ const SillonViewer = ({language}) => {
             </svg>
             )}
           </button>
+          </header>
 
           {/* {loading && (
               <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-center bg-white bg-opacity-70 w-screen h-full">
@@ -308,7 +311,7 @@ const SillonViewer = ({language}) => {
             
             <button
               onClick={toggleBed}
-              className="px-4 py-3 text-black transition-all border-2 rounded-full bg-lightblue6 border-lightblue hover:bg-lightblue2 hover:text-white self-center"
+              className="px-4 py-3 text-black transition-all rounded-full bg-lightblue6 hover:bg-lightblue2 hover:text-white self-center"
             >
               {showBed ? translate("hideBed", language) : translate("showBed", language)}
             </button>
@@ -357,9 +360,9 @@ const SillonViewer = ({language}) => {
                     <button
                     key={texture}
                     onClick={() => handleTextureChange(selectingGroup, texture)}
-                    className={`ring-[2px] rounded-full flex items-center justify-center sm:h-16 sm:w-auto sm:min-w-16 w-4 h-4 ${
+                    className={`ring-[2px] rounded-full flex items-center justify-center sm:h-12 sm:w-auto sm:min-w-12 w-4 h-4 ${
                       groupTextures[selectingGroup] === texture
-                        ? "ring-gray-800 sm:min-w-32 justify-end"
+                        ? "ring-gray-300 sm:min-w-32 justify-end"
                         : "ring-gray-300"
                     } hover:border-blue-400 transition-all`}
                   >
@@ -367,7 +370,7 @@ const SillonViewer = ({language}) => {
                                             <p className={`hidden sm:flex items-center justify-center w-auto min-w-1/2 h-full text-nowrap 
                                               ${
                                                 groupTextures[selectingGroup] === texture
-                                                  ? "ring-gray-800 mr-2 ml-2"
+                                                  ? "ring-gray-300 mr-2 ml-2"
                                                   : "ring-gray-300"
                                               }
                                               `}>
@@ -379,7 +382,7 @@ const SillonViewer = ({language}) => {
                       src={`/textures/${texture}.jpg`}
                       alt={texture}
                       className={`object-cover sm:w-12 sm:h-12 w-4 h-4 rounded-full ${
-                        groupTextures[selectingGroup] === texture ? "justify-end sm:mr-2" : ""
+                        groupTextures[selectingGroup] === texture ? "justify-end sm:p-1" : ""
                       }`}
                     />
                   </button>
@@ -392,9 +395,9 @@ const SillonViewer = ({language}) => {
                     <button
                     key={texture}
                     onClick={() => handleTextureChange(selectingGroup, texture)}
-                    className={`ring-[2px] rounded-full flex items-center justify-center sm:h-16 sm:w-auto sm:min-w-16 w-4 h-4 ${
+                    className={`ring-[2px] rounded-full flex items-center justify-center sm:h-12 sm:w-auto sm:min-w-12 w-4 h-4 ${
                       groupTextures[selectingGroup] === texture
-                        ? "ring-gray-800 sm:min-w-32 justify-end"
+                        ? "ring-gray-300 sm:min-w-32 justify-end"
                         : "ring-gray-300"
                     } hover:border-blue-400 transition-all`}
                   >
@@ -402,7 +405,7 @@ const SillonViewer = ({language}) => {
                                             <p className={`hidden sm:flex items-center justify-center w-auto min-w-1/2 h-full text-nowrap 
                                               ${
                                                 groupTextures[selectingGroup] === texture
-                                                  ? "ring-gray-800 mr-2 ml-2"
+                                                  ? "ring-gray-300 mr-2 ml-2"
                                                   : "ring-gray-300"
                                               }
                                               `}>
@@ -414,7 +417,7 @@ const SillonViewer = ({language}) => {
                       src={`/textures/${texture}.jpg`}
                       alt={texture}
                       className={`object-cover sm:w-12 sm:h-12 w-4 h-4 rounded-full ${
-                        groupTextures[selectingGroup] === texture ? "justify-end sm:mr-2" : ""
+                        groupTextures[selectingGroup] === texture ? "justify-end sm:p-1" : ""
                       }`}
                     />
                   </button>

@@ -12,7 +12,7 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
     ESTANTE: "ESTANTE-METAL",
     ESTANTE_IZQ: "OFF-ESTANTE-IZQ",
     ESTANTE_DER: "OFF-ESTANTE-DER",
-    PUERTAS: "OFF-PUERTAS",
+    PUERTAS: "ON-PUERTAS",
     TAPA: "OFF-TAPA",
     BASE: "BASE-NEGRA"
   });
@@ -148,7 +148,7 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
     await toggleVariant("ESTANTE", "ESTANTE-METAL");
     await toggleVariant("ESTANTE_IZQ", "OFF-ESTANTE-IZQ");
     await toggleVariant("ESTANTE_DER", "OFF-ESTANTE-DER");
-    await toggleVariant("PUERTAS", "OFF-PUERTAS");
+    await toggleVariant("PUERTAS", "ON-PUERTAS");
     await toggleVariant("TAPA", "OFF-TAPA");
     await toggleVariant("BASE", "BASE-NEGRA");
   }
@@ -213,7 +213,7 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
         change.value !== 0 ? (
         <div 
           key={change.id} 
-          className="absolute top-0 flex items-center justify-center w-24 h-8 px-3 text-lg font-bold text-black border rounded-full left-32 font-base border-lightblue bg-lightblue6 animate-fade text-nowrap"
+          className="absolute top-0 flex items-center justify-center w-24 h-8 px-3 text-lg font-bold text-black rounded-full left-32 font-base  bg-lightblue6 animate-fade text-nowrap"
           style={{ animation: 'fade-out 1s forwards' }}
         >
           {change.value > 0 ? `+ $${change.value}` : `- $${Math.abs(change.value)}`}
@@ -246,13 +246,13 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
           }}
         >
 
-          <div className="absolute top-0 left-0 right-0 hidden sm:block">
-            <SeeButton language={language} qrCode="/qrcodes/bike.png" />
+          <header className="absolute sm:flex hidden items-start justify-end top-2 right-7 w-full gap-2">
+          <div className="hidden sm:block">
+            <SeeButton language={language} qrCode="/qrcodes/parrilla.png" />
           </div>
-
           <button
             onClick={handleFullscreen}
-            className="absolute sm:flex hidden items-center justify-center px-2 py-1 transition-all border-2 rounded-full top-7 right-7 bg-lightblue6 border-lightblue hover:bg-lightblue2 hover:scale-105"
+            className="sm:flex hidden items-center justify-center px-2 py-1 transition-all rounded-full bg-lightblue6 hover:bg-lightblue2 hover:scale-105 w-12 h-12"
           >
             {!isFullscreen ? (
               <svg
@@ -306,6 +306,7 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
             </svg>
             )}
           </button>
+          </header>
 
           
 
@@ -315,7 +316,7 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
           {activeVariants.TAPA != "OFF-TAPA" && (
             <button
               onClick={handleAnimation}
-              className="z-10 w-24 p-2 font-bold text-center text-white transition-all border-2 rounded-full border-lightblue bg-lightblue2"
+              className="z-10 w-24 p-2 font-bold text-center text-white transition-all rounded-full bg-lightblue2"
               id="open-button"
             >
               {isOpen ? translate("close", language) : translate("open", language)}
@@ -339,14 +340,14 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
 
 
             <div className="flex flex-row items-center justify-center w-full gap-2 p-2 overflow-x-auto whitespace-nowrap">
-            <button className="flex items-center justify-center sm:px-2 px-1 py-1 aspect-square text-black transition-all border-2 rounded-full bg-lightblue6 border-lightblue hover:bg-lightblue2 hover:text-white"
+            <button className="flex items-center justify-center sm:px-2 px-1 py-1 aspect-square text-black transition-all  rounded-full bg-lightblue6  hover:bg-lightblue2 hover:text-white"
                                 onClick={() => reloadModel()}>
                    <img src="/reload.svg" className="sm:w-full w-1/2"></img>
               </button>
               {variantsByGroup[selectingGroup].map((variant) => (
                 <button
                   key={variant}
-                  className={`p-2 border-2 rounded-full transition-all sm:min-w-24 text-sm sm:text-base text-center border-lightblue ${
+                  className={`p-2 rounded-full transition-all sm:min-w-24 text-sm sm:text-base text-center  ${
                     activeVariants[selectingGroup] === variant ? "text-white bg-lightblue2 font-bold" : "text-zinc-700 bg-lightblue6"
                   }`}
                   onClick={() => toggleVariant(selectingGroup, variant)}

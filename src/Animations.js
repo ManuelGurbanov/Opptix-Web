@@ -8,7 +8,7 @@ export default function Animations({language}) {
               
               <section className='relative flex flex-col items-center justify-start w-full sm:p-12 p-2 py-4'>
         
-                <header className='w-full flex items-start justify-between gap-4 sm:min-h-[30vh]'>
+                <header className='w-full flex items-start justify-between gap-4 sm:min-h-[18vh]'>
                   <div className='flex flex-col w-full'>
                     <h1 className='sm:text-[60px] text-2xl text-left w-full mb-3'>{translate("animTittle", language)}</h1>
                     <p className='w-full font-light text-left'>

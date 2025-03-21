@@ -38,7 +38,7 @@ export default function ArService({ language }) {
 
             <div className="w-full flex flex-col sm:flex-row justify-between items-center bg-white sm:p-10 rounded-lg relative">
                 <div className="text-left w-full">
-                    <h1 className="text-3xl sm:text-6xl font-black">AR/VR</h1>
+                    <h1 className="text-3xl sm:text-6xl">AR/VR</h1>
                     <p className="text-lg sm:text-xl font-light mt-2">
                        {translate("ARDescription", language)}
                     </p>

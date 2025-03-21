@@ -5,11 +5,11 @@ import { translate } from './Translations';
 
 export default function OurServicesBento({ language }) {
 
-    const configuratosImages = [
-        "/renders/6.webp",
-        "/renders/5.webp",
-        "/endless/endlessFirst.webp",
-        "/blossom/blossomEnd.webp",
+    const configuratorsImages = [
+        "/portadas/config.gif",
+        "/portadas/config2.gif",
+        "/portadas/config.gif",
+        "/portadas/config2.gif",
     ];
 
     const rendersImages = [
@@ -19,11 +19,18 @@ export default function OurServicesBento({ language }) {
         "/renders/4.webp",
     ];
 
-    const animationsImages = [
-        "thumb.webp",
-        "arPhone.webp",
-        "/renders/5.webp",
-        "/renders/6.webp",
+    const animationsVideos = [
+        "/portadas/anim1.png",
+        "/portadas/anim2.png",
+        "/portadas/anim3.png",
+        "/portadas/anim4.png",
+    ];
+
+    const arImages = [
+        "/ar/PRUEBA.png",
+        "/ar/PRUEBA2.png",
+        "/ar/PRUEBA3.jpg",
+        "/portadas/ar4.jpg",
     ];
 
     return (
@@ -50,7 +57,7 @@ export default function OurServicesBento({ language }) {
                     <a className="box box1 rounded-[48px] relative flex flex-col justify-between h-full bg-black overflow-hidden p-7" href='/services/0'>
                         <div className='w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10' alt="Configuradores">
                         </div>
-                        <img className='w-full h-full object-cover absolute top-0 right-0' src={configuratosImages[num-1]} alt="Configuradores">
+                        <img className='w-full h-full object-cover absolute top-0 right-0' src={configuratorsImages[num-1]} alt="Configuradores">
                         </img>
                         <a className="absolute flex items-center justify-center h-6 w-7 bg-white rounded-full top-4 right-4 hover:scale-105 z-10">
                             <RightArrow color="#000000" />
@@ -62,10 +69,10 @@ export default function OurServicesBento({ language }) {
                     </a>
 
                     {/* Render Estático */}
-                    <a className="box box2 p-7 rounded-[48px] relative flex flex-col justify-between h-full bg-gray-800" href='/services/3'>
-                        <div className='w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10 rounded-[48px]' alt="Configuradores">
+                    <a className="box box4 p-7 rounded-[48px] relative flex flex-col justify-between h-full bg-gray-800" href='/services/3'>
+                        <div className='w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10 rounded-[48px]' alt="Renders">
                         </div>
-                        <img className='w-full h-full object-cover absolute top-0 right-0 rounded-[48px]' src={rendersImages[num-1]} alt="Configuradores">
+                        <img className='w-full h-full object-cover absolute top-0 right-0 rounded-[48px]' src={rendersImages[num-1]} alt="Render">
                         </img>
                         <a className="absolute flex items-center justify-center h-6 w-7 bg-white rounded-full top-4 right-4 hover:scale-105 z-10">
                             <RightArrow color="#000000" />
@@ -78,11 +85,11 @@ export default function OurServicesBento({ language }) {
 
                     {/* Animaciones 3D */}
                     <a className="box box3 rounded-[48px] relative flex flex-col justify-between h-full bg-black overflow-hidden p-7" href='/services/1'>
-                        <div className='w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10' alt="Configuradores">
+                        <div className='w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10' alt="Animación">
                         </div>
-                        <img className='w-full h-full object-cover absolute top-0 right-0' src={animationsImages[num-1]} alt="Configuradores">
+                        <img className='w-full h-full object-cover absolute top-0 right-0 rounded-[48px]' src={animationsVideos[num-1]} alt="Render">
                         </img>
-                        <a className="absolute flex items-center justify-center h-6 w-7 bg-white rounded-full top-4 right-4 hover:scale-105 z-10">
+                        <a className="absolute flex items-center justify-center h-6 w-7 bg-white rounded-full top-4 right-4 hover:scale-105 z-20">
                             <RightArrow color="#000000" />
                         </a>
                         <div className="flex flex-col justify-end flex-grow gap-2 z-10 w-full">
@@ -92,18 +99,22 @@ export default function OurServicesBento({ language }) {
                     </a>
 
                     {/* Realidad Virtual */}
-                    <a className="box box4 rounded-[48px] relative flex flex-col justify-between h-full p-7" href='/services/2'>
-                        <a className="absolute flex items-center justify-center h-6 w-7 bg-black rounded-full top-2 right-2 hover:scale-105">
-                            <RightArrow color="#ffffff" />
+                    <a className="box box2 rounded-[48px] relative flex flex-col justify-start h-full overflow-hidden p-7" href='/services/2'>
+                        <div className='w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10' alt="AR">
+                        </div>
+                        <a className="absolute flex items-center justify-center h-6 w-7 bg-white rounded-full top-5 right-5 hover:scale-105 z-40">
+                            <RightArrow color="#000000" />
                         </a>
-                        <div className="flex flex-col justify-end flex-grow gap-2 w-full">
-                            <h1 className="text-xl text-black">{translate("arTittle", language)}</h1>
-                            <p className="text-xs text-black">{translate("arDescription", language)}</p>
+                        <img className='w-full h-full object-cover absolute top-0 right-0 rounded-[48px]' src={arImages[num-1]} alt="AR">
+                        </img>
+                        <div className="flex flex-col justify-end flex-grow gap-1 w-full z-10">
+                            <h1 className="text-xl text-white">{translate("arTittle", language)}</h1>
+                            <p className="text-xs text-white">{translate("arDescription", language)}</p>
                         </div>
-                        <div className="flex items-center justify-center gap-4 w-28 h-14">
-                            <img src="phone.webp" alt="Phone" className="h-full" />
+                        {/* <div className="flex items-center justify-center gap-4 w-28 h-14">
+                            <img src="/ar/grill.webp" alt="Phone" className="h-full" />
                             <img src="/qrcodes/bike.png" alt="QR Code" className="h-full" />
-                        </div>
+                        </div> */}
                     </a>
                 </div>
             ))}

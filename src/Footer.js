@@ -6,6 +6,7 @@ import { translate } from "./Translations";
 
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Footer({
   language,
@@ -22,7 +23,7 @@ const [result, setResult] = React.useState(false);
     setResult("Sending....");
     const formData = new FormData(event.target);
 
-    formData.append("access_key", "44747489-02c0-4f6e-a6bf-6c32b44839f1");
+    formData.append("access_key", "72dff9c7-0190-4056-8d96-d7b744cdbdfa");
 
     const response = await fetch("https://api.web3forms.com/submit", {
     method: "POST",
@@ -55,12 +56,12 @@ const [result, setResult] = React.useState(false);
         </form>
 
         <div className="w-full flex gap-1 mt-4">
-          <button className="rounded-full bg-black text-white p-2 hover:bg-zinc-800 hover:scale-105 transition-all duration-75">
+          <Link target="_blank" rel="noopener noreferrer" className="rounded-full bg-black text-white p-2 hover:bg-zinc-800 hover:scale-105 transition-all duration-75" to="https://www.linkedin.com/company/opptix/posts/?feedView=all">
             <LinkedinIcon/>
-          </button>
-          <button className="rounded-full bg-black text-white p-2 hover:bg-zinc-800 hover:scale-105 transition-all duration-75">
+          </Link>
+          {/* <button className="rounded-full bg-black text-white p-2 hover:bg-zinc-800 hover:scale-105 transition-all duration-75">
             <InstagramIcon/>
-          </button>
+          </button> */}
         </div>
       </div>
 

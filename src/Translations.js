@@ -93,7 +93,7 @@ const translations = {
     ],  
     pack1Includes: [  
       "Interactive 3D catalog (iFrame)",  
-      "Augmented Reality (AR) visualization",  
+      "Augmented Reality (AR)",  
       "Web performance optimization"  
     ],  
     
@@ -278,7 +278,7 @@ const translations = {
   ],
   pack1Includes: [
     "Catálogo 3D interactivo (iFrame)",
-    "Visualización en Realidad Aumentada (AR)",
+    "Visualización en AR",
     "Optimización del rendimiento web"
   ],
 
