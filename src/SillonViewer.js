@@ -10,7 +10,7 @@ import { useRef } from "react";
 import SeeButton from "./SeeInYourSpace";
 
 const textureLoader = new TextureLoader();
-const textureNames = ["sofa-00", "sofa-01", "sofa-02", "sofa-03", "sofa-04", "sofa-05", "sofa-06"];
+const textureNames = ["sofa-00", "sofa-01", "sofa-02", "sofa-03", "sofa-04", "sofa-05"];
 const textures = textureNames.reduce((acc, name) => {
   acc[name] = textureLoader.load(`/textures/${name}.jpg`);
   return acc;
@@ -186,24 +186,23 @@ const SillonViewer = ({language}) => {
 
 
   const textureColors = {
-    "sofa-00": "Blue",
-    "sofa-01": "Black",
-    "sofa-02": "Orange",
-    "sofa-03": "Teal",
-    "sofa-04": "Magenta",
-    "sofa-05": "Light Gray",
-    "sofa-06": "Green",
+    "sofa-00": "White",
+    "sofa-01": "Light Gray",
+    "sofa-02": "Dark Brown",
+    "sofa-03": "Beige",
+    "sofa-04": "Brown",
+    "sofa-05": "Gray",
   };
-
+  
   const textureColorsEs = {
-    "sofa-00": "Azul",
-    "sofa-01": "Negro",
-    "sofa-02": "Naranja",
-    "sofa-03": "Verde Azulado",
-    "sofa-04": "Magenta",
+    "sofa-00": "Blanco",
+    "sofa-01": "Gris Claro",
+    "sofa-02": "Marrón Oscuro",
+    "sofa-03": "Beige",
+    "sofa-04": "Marrón",
     "sofa-05": "Gris",
-    "sofa-06": "Verde",
   };
+  
   
 
   return (

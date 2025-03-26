@@ -13,7 +13,7 @@ function CaseStudies({language}) {
             </h2>
         </div>
         <div 
-            className='flex flex-row gap-4 mb-12 sm:overflow-auto overflow-y-hidden overflow-x-scroll w-screen items-center justify-start sm:justify-center sm:h-80 h-60 px-4'
+            className='flex flex-row gap-4 mb-12 sm:overflow-hidden overflow-y-hidden overflow-x-scroll w-screen items-center justify-start sm:justify-center sm:h-80 h-60 px-4'
             style={{ minWidth: '100vw', paddingLeft: '16px', paddingRight: '16px' }}
         >
             <div className='flex flex-col items-center justify-center' data-aos="fade-up" data-aos-delay="100">

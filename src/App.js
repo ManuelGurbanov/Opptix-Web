@@ -32,6 +32,8 @@ import StaticRenders from './StaticRenders';
 
 import { ContactProvider } from "./ContactContext";
 
+import Demostration from './Demostration';
+
 function Layout({ children, language, setLanguage }) {
   const location = useLocation();
   const showNavbar = !location.pathname.startsWith("/services");
@@ -235,11 +237,12 @@ function App() {
                 <Footer language={language} services={services} caseStudies={caseStudiesNames} packs={packNames} />
               </section>
             } />
-            <Route path="/case-study" element={<CaseStudiePage caseStudies={cases} />} />
+            <Route path="/case-study" element={<CaseStudiePage caseStudies={cases} language={language}/>} />
             <Route path="/services/:serviceId" element={<Services services={services} language={language} setLanguage={setLanguage} contact={contact}/>} />
             <Route path="/model" element={<ModelLink />} />
             <Route path="/upload" element={<UploaderViewer />} />
             <Route path="/uploadthree" element={<UploaderThree />} />
+            <Route path="/demostration" element={<Demostration/>}/>
           </Routes>
         </Layout>
       </Router>
