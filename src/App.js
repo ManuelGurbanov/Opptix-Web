@@ -33,6 +33,7 @@ import StaticRenders from './StaticRenders';
 import { ContactProvider } from "./ContactContext";
 
 import Demostration from './Demostration';
+import DemostrationTest from './DemostrationTest'
 
 function Layout({ children, language, setLanguage }) {
   const location = useLocation();
@@ -242,7 +243,7 @@ function App() {
             <Route path="/model" element={<ModelLink />} />
             <Route path="/upload" element={<UploaderViewer />} />
             <Route path="/uploadthree" element={<UploaderThree />} />
-            <Route path="/demostration" element={<Demostration/>}/>
+            <Route path="/kesseboehmer" element={<DemostrationTest language={language}/>}/>
           </Routes>
         </Layout>
       </Router>
