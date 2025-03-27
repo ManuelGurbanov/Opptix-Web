@@ -93,7 +93,7 @@ const reloadModel = async () => {
 
     return (
       
-        <div className="flex flex-col items-center p-4 min-h-[150vh] w-screen mt-12">
+        <div className="flex flex-col items-center p-4 min-h-[150vh] w-screen">
 
                       <div className="w-full flex flex-col sm:flex-row justify-between items-center bg-white sm:p-10 rounded-lg relative">
                           <div className="text-left w-full">

@@ -37,7 +37,7 @@ import DemostrationTest from './DemostrationTest'
 
 function Layout({ children, language, setLanguage }) {
   const location = useLocation();
-  const showNavbar = !location.pathname.startsWith("/services");
+  const showNavbar = !location.pathname.startsWith("/services") && location.pathname !== "/kesseboehmer";
 
   return (
     <>
