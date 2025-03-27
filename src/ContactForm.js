@@ -28,18 +28,18 @@ export default function ContactForm({ language, setContact }) {
 
   return (
     <div className="w-screen h-screen bg-black bg-opacity-40 fixed top-0 left-0 flex items-center justify-center z-50">
-      <section className="flex flex-col items-center justify-center w-full h-full gap-4 mb-12 relative" id="contact">
+      <section className="flex flex-col items-center justify-start w-full h-full gap-4 mb-12 relative mt-20" id="contact">
         
-        <button className="absolute top-12 right-12 w-6 h-6 text-white" onClick={() => setContact(false)}>
+        <button className="absolute top-12 right-12 w-6 h-6 text-lg text-white" onClick={() => setContact(false)}>
           ✖
         </button>
         
-        <div className="flex gap-4 mb-4">
+        <div className="flex gap-4 mb-4 mt-4">
           <button className={`p-2 rounded-[48px] text-black ${view === "form" ? "bg-lightblue6" : "bg-gray-300"}`} onClick={() => setView("form")}>
-            {translate("contact", language)}
+            Email
           </button>
           <button className={`p-2 rounded-[48px] text-black ${view === "calendly" ? "bg-lightblue6" : "bg-gray-300"}`} onClick={() => setView("calendly")}>
-            {translate("schedule_call", language)}
+            Agendar Llamada
           </button>
         </div>
 

@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import "@google/model-viewer";
 import { translate } from "./Translations";
+import ContractButton from "./ContractButton";
 
 export default function Demonstration({ language }) {
     const modelRef = useRef(null);
@@ -13,6 +14,7 @@ export default function Demonstration({ language }) {
 
     useEffect(() => {
         modelRef.current = document.querySelector("#model-viewer");
+        reloadModel();
     }, []);
 
     const toggleVariant = async (category, variant) => {
@@ -23,14 +25,22 @@ export default function Demonstration({ language }) {
     };
 
     const handleAnimation = () => {
-        if (modelRef.current) {
-            modelRef.current.play();
-            setTimeout(() => {
-                modelRef.current.pause();
-                setIsOpen((prev) => !prev);
-            }, 2000);
-        }
-    };
+      if (modelRef.current) {
+          if (isOpen) {
+              modelRef.current.timeScale = -1;
+          } else {
+              modelRef.current.timeScale = 1;
+          }
+  
+          modelRef.current.play();
+  
+          setTimeout(() => {
+            setIsOpen((prev) => !prev);
+            modelRef.current.pause();
+          }, 1800);
+      }
+  };
+  
 
     const variantsByGroup = {
       ESTANTES: ["ESTANTES-PLATA", "ESTANTES-ANTARTICA"],
@@ -64,28 +74,55 @@ export default function Demonstration({ language }) {
       "BLANCO": "White",
       "GRIS": "Gray"
   };
+
+  const variantImages = {
+    "ESTANTES-PLATA": "silver.webp",
+    "ESTANTES-ANTARTICA": "antartica.webp",
+    "NEGRO": "black.webp",
+    "MADERA": "wood.webp",
+    "BLANCO": "white.webp",
+    "GRIS": "gray.webp",
+};
+
+
+const reloadModel = async () => {
+  await toggleVariant("ESTANTES", "ESTANTES-PLATA");
+  await toggleVariant("PUERTAS", "NEGRO");
+}
   
 
     return (
-        <div className="flex flex-col items-center p-4 min-h-screen w-screen mt-12">
+      
+        <div className="flex flex-col items-center p-4 min-h-[150vh] w-screen mt-12">
+
+                      <div className="w-full flex flex-col sm:flex-row justify-between items-center bg-white sm:p-10 rounded-lg relative">
+                          <div className="text-left w-full">
+                              <h1 className="text-3xl">Muestra kesseboehmer</h1>
+                          </div>
+                          <div className='flex items-start justify-end w-full h-14 sm:relative absolute top-0 right-2'>
+                              <ContractButton language={language}/>
+                          </div>
+                      </div>
+
             <model-viewer 
                 ref={modelRef}
                 tone-mapping="neutral" 
                 shadow-intensity="1" 
                 id="model-viewer" 
                 src="/models/visagra.glb" 
-                ar 
-                auto-rotate 
+                ar
                 camera-controls 
-                style={{ width: "80vw", height: "50vh", minWidth: "450px", minHeight: "250px", position: "relative" }}
+                style={{ width: "80vw", height: "60vh", minWidth: "450px", minHeight: "250px", position: "relative" }}
             ></model-viewer>
+
             <button
                 onClick={handleAnimation}
-                className="z-10 w-24 p-2 font-bold text-center text-white transition-all rounded-full bg-lightblue2"
+                className="z-10 w-24 p-2 font-bold text-center text-white transition-all rounded-full bg-lightblue2 "
                 id="open-button"
             >
                 {isOpen ? translate("close", language) : translate("open", language)}
             </button>
+
 
             <section className="flex flex-row items-center justify-center w-full gap-0 overflow-x-auto whitespace-nowrap sm:text-base text-[10px]">
             {Object.keys(variantsByGroup).map((group) => (
@@ -102,22 +139,27 @@ export default function Demonstration({ language }) {
             ))}
           </section>
 
-            <div className="flex flex-row flex-wrap items-center justify-center w-full gap-2 sm:p-2 mt-4">
+            <div className="flex flex-row flex-wrap items-center justify-center w-full gap-2 sm:p-2">
                 <button 
-                    className="flex items-center justify-center sm:px-2 px-1 py-1 aspect-square text-black transition-all rounded-full bg-lightblue6 hover:bg-lightblue2 hover:text-white"
-                    onClick={() => window.location.reload()}
+                    className="flex items-center justify-center sm:px-2 px-1 py-1 aspect-square ring-[2px] ring-zinc-500 text-black transition-all rounded-full hover:bg-gray-300 hover:white"
+                    onClick={() => reloadModel()}
                 >
                     <img src="/reload.svg" className="sm:w-full w-1/2" alt="Reload" />
                 </button>
                 {variantsByGroup[selectingGroup]?.map((variant) => (
                     <button
                         key={variant}
-                        className={`sm:p-2 px-4 py-2 rounded-full transition-all sm:w-24 w-12 sm:text-base text-[10px] text-center flex items-center justify-center ${
-                            activeVariants[selectingGroup] === variant ? "text-white bg-lightblue2 font-bold" : " text-zinc-700 bg-lightblue6"
+                        className={`flex items-center justify-center rounded-full ring-[2px] ring-zinc-500 transition-all ${
+                            activeVariants[selectingGroup] === variant
+                                ? "px-4 py-2 sm:w-auto sm:min-w-32 w-16 bg-white text-black font-bold"
+                                : "w-10 h-10"
                         }`}
                         onClick={() => toggleVariant(selectingGroup, variant)}
                     >
-                       {language === "en" ? variantNamesEn[variant] : variantNames[variant]}
+                        <img className="w-10 h-10 rounded-full ring-[1px] ring-black" src={variantImages[variant]} alt={variant} />
+                        {activeVariants[selectingGroup] === variant && (
+                            <span className="ml-2 text-base">{language === "en" ? variantNamesEn[variant] : variantNames[variant]}</span>
+                        )}
                     </button>
                 ))}
             </div>
