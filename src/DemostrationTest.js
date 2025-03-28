@@ -160,9 +160,9 @@ const handleFullscreen = () => {
                 }}
             >
           <header className="absolute sm:flex hidden items-start justify-end top-2 right-7 w-full gap-2">
-          <div className="hidden sm:block">
+          {/* <div className="hidden sm:block">
             <SeeButton language={language} qrCode="/qrcodes/visagra.png" />
-          </div>
+          </div> */}
           <button
             onClick={handleFullscreen}
             className="sm:flex hidden items-center justify-center px-2 py-1 transition-all rounded-full bg-lightblue6 hover:bg-lightblue2 hover:scale-105 w-12 h-12"
