@@ -17,7 +17,7 @@ function CaseStudies({language}) {
             style={{ minWidth: '100vw', paddingLeft: '16px', paddingRight: '16px' }}
         >
             <div className='flex flex-col items-center justify-center' data-aos="fade-up" data-aos-delay="100">
-                <Link to={`/case-study?case=Headphones`} className='sm:w-[250px] w-44 hover:scale-105 transition-all ease-in-out aspect-square rounded-2xl'>
+                <Link to={`/case-study?case=Headphones`} className='sm:w-[200px] w-44 hover:scale-105 transition-all ease-in-out aspect-square rounded-2xl'>
                     <img className='w-full h-full object-cover rounded-2xl aspect-square' src='img/headphones.webp' alt="Headphones" />
                 </Link>
                 <a className='text-black underline mt-2 hover:scale-105 transition duration-150' href="/case-study?case=Headphones">
@@ -26,7 +26,7 @@ function CaseStudies({language}) {
             </div>
 
             <div className='flex flex-col items-center justify-center' data-aos="fade-up" data-aos-delay="200">
-                <Link to={`/case-study?case=Blossom`} className='sm:w-[250px] w-44 hover:scale-105 transition-all ease-in-out aspect-square rounded-2xl'>
+                <Link to={`/case-study?case=Blossom`} className='sm:w-[200px] w-44 hover:scale-105 transition-all ease-in-out aspect-square rounded-2xl'>
                     <img className='w-full h-full object-cover rounded-2xl aspect-square' src='img/perfum.webp' alt="Perfume" />
                 </Link>
                 <a className='text-black underline mt-2 hover:scale-105 transition duration-150' href="/case-study?case=Blossom">
@@ -35,7 +35,7 @@ function CaseStudies({language}) {
             </div>
 
             <div className='flex flex-col items-center justify-center' data-aos="fade-up" data-aos-delay="300">
-                <Link to={`/case-study?case=Endless`} className='sm:w-[250px] w-44 hover:scale-105 transition-all ease-in-out aspect-square rounded-2xl'>
+                <Link to={`/case-study?case=Endless`} className='sm:w-[200px] w-44 hover:scale-105 transition-all ease-in-out aspect-square rounded-2xl'>
                     <img className='w-full h-full object-cover rounded-2xl aspect-square' src='img/endless.webp' alt="Endless" />
                 </Link>
                 <a className='text-black underline mt-2 hover:scale-105 transition duration-150' href="/case-study?case=Endless">
@@ -44,8 +44,17 @@ function CaseStudies({language}) {
             </div>
 
             <div className='flex flex-col items-center justify-center' data-aos="fade-up" data-aos-delay="400">
-                <Link to={`/case-study?case=Strix`} className='sm:w-[250px] w-44 hover:scale-105 transition-all ease-in-out aspect-square rounded-2xl'>
+                <Link to={`/case-study?case=Strix`} className='sm:w-[200px] w-44 hover:scale-105 transition-all ease-in-out aspect-square rounded-2xl'>
                     <img className='w-full h-full object-cover rounded-2xl aspect-square' src='img/strix.webp' alt="Strix" />
+                </Link>
+                <a className='text-black underline mt-2 hover:scale-105 transition duration-150' href="/case-study?case=Strix">
+                    {translate('seeMore', language)}
+                </a>
+            </div>
+
+            <div className='flex flex-col items-center justify-center' data-aos="fade-up" data-aos-delay="400">
+                <Link to={`/case-study?case=Rack`} className='sm:w-[200px] w-44 hover:scale-105 transition-all ease-in-out aspect-square rounded-2xl'>
+                    <img className='w-full h-full object-cover rounded-2xl aspect-square' src='rack/dos.jpg' alt="Strix" />
                 </Link>
                 <a className='text-black underline mt-2 hover:scale-105 transition duration-150' href="/case-study?case=Strix">
                     {translate('seeMore', language)}

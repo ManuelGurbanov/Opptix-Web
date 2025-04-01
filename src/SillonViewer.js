@@ -18,7 +18,8 @@ const textures = textureNames.reduce((acc, name) => {
 const testTexture = textureLoader.load("/textures/sofa-00.jpg");
 
 const SillonModel = ({ toggleBedVisibility, onLoadComplete, groupTextures, onSceneReady, selectingGroup }) => {
-  const { scene } = useGLTF("/models/sillon.glb", true);
+  const { scene, animations } = useGLTF("/models/sillon.glb", true);
+  const mixer = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [originalMaterials, setOriginalMaterials] = useState(new Map());
 
@@ -27,6 +28,7 @@ const SillonModel = ({ toggleBedVisibility, onLoadComplete, groupTextures, onSce
       onSceneReady(scene);
     }
   }, [scene, onSceneReady]);
+
 
   useEffect(() => {
     if (scene) {
@@ -295,6 +297,7 @@ const SillonViewer = ({language}) => {
             </svg>
             )}
           </button>
+
           </header>
 
           {/* {loading && (
@@ -307,13 +310,23 @@ const SillonViewer = ({language}) => {
           }`}>
 
 
-            
+            <div className="flex w-full items-center justify-center gap-3">
+
             <button
               onClick={toggleBed}
               className="px-4 py-3 text-black transition-all rounded-full bg-lightblue6 hover:bg-lightblue2 hover:text-white self-center"
             >
               {showBed ? translate("hideBed", language) : translate("showBed", language)}
             </button>
+
+
+            <button className="px-2 py-1 text-black transition-all rounded-full bg-lightblue6 hover:bg-lightblue2 hover:text-white flex items-center justify-center h-12" onClick={() => window.location.href = "https://opptix.com.ar/model?model=/models/sillon.glb"
+            }>
+              
+                <img className="w-8 mr-2 ml-2" src="/ARsvg.svg" alt="QR Code"></img>
+            </button>
+            
+            </div>
 
               <div className="flex items-center justify-center gap-6 mt-4 sm:text-base text-xs">
                 <button

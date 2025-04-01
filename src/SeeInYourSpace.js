@@ -19,7 +19,7 @@ export default function SeeButton ({language, qrCode = "/qrcodes/bike.png"}) {
         <img className="w-full" src={qrCode} alt="QR Code">
         </img>
         
-        <p className="text-xs text-white underline text-center w-full">
+        <p className="text-xs text-white underline text-center w-full hidden">
             {translate("scan", language)}
         </p>
 
