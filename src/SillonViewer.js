@@ -320,7 +320,7 @@ const SillonViewer = ({language}) => {
             </button>
 
 
-            <button className="px-2 py-1 text-black transition-all rounded-full bg-lightblue6 hover:bg-lightblue2 hover:text-white flex items-center justify-center h-12" onClick={() => window.location.href = "https://opptix.com.ar/model?model=/models/sillon.glb"
+            <button className="sm:hidden px-2 py-1 text-black transition-all rounded-full bg-lightblue6 hover:bg-lightblue2 hover:text-white flex items-center justify-center h-12" onClick={() => window.location.href = "https://opptix.com.ar/model?model=/models/sillon.glb"
             }>
               
                 <img className="w-8 mr-2 ml-2" src="/ARsvg.svg" alt="QR Code"></img>

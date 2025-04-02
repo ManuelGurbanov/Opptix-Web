@@ -11,9 +11,10 @@ import ContractButton from "./ContractButton";
 import DataBlock from "./DataBlock";
 
 import SeeButton from "./SeeInYourSpace";
+import RackViewer from "./RackViewer"
 export default function AllConfigurators({language, setContact}) {
 
-    const [selectedConfigurator, setSelectedConfigurator] = useState("car");
+    const [selectedConfigurator, setSelectedConfigurator] = useState("rack");
 
     const [totalPriceCar, setTotalPriceCar] = useState(20000);
     const [totalPriceParrilla, setTotalPriceParrilla] = useState(1500);
@@ -90,6 +91,14 @@ export default function AllConfigurators({language, setContact}) {
                     >
                         {translate("chair", language)}
                     </button>
+                    <button
+                        onClick={() => setSelectedConfigurator("rack")}
+                        className={`hover:scale-105 w-14 text-lg text-center transition ease-in cursor-pointer duration-75 ${
+                        selectedConfigurator === "rack" ? "font-bold" : ""
+                        }`}
+                    >
+                        Rack
+                    </button>
 
                     <hr className="w-full h-[2px] bg-black absolute bottom-0"></hr>
             </nav>
@@ -103,6 +112,12 @@ export default function AllConfigurators({language, setContact}) {
             
             <>
             <SillonViewer modelSrc="/models/sillon.glb" language={language} />
+            </>
+            }
+            {selectedConfigurator=="rack" && 
+            
+            <>
+            <RackViewer />
             </>
             }
             <footer className="justify-self-center w-screen flex flex-col items-center justify-center gap-4">
