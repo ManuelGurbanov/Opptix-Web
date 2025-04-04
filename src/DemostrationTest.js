@@ -133,7 +133,7 @@ const handleFullscreen = () => {
 
           <div className="w-full flex flex-col sm:flex-row justify-between items-center bg-white sm:p-10 rounded-lg relative">
               <div className="text-left w-full">
-                  <h1 className="text-3xl font-bold">Muestra kesseboehmer</h1>
+                  <h1 className="sm:block text-3xl hidden font-bold">Muestra kesseboehmer</h1>
               </div>
               <div className='flex items-start justify-end w-full h-14 sm:relative absolute top-0 right-2'>
                   <ContractButton language={language}/>
@@ -157,12 +157,14 @@ const handleFullscreen = () => {
                   minHeight: "250px",
                   "@media (max-width: 700px)": { width: "90vw" },
                   position: "relative",
+                  backgoundColor: "white",
                 }}
             >
           <header className="absolute sm:flex hidden items-start justify-end top-2 right-7 w-full gap-2">
           {/* <div className="hidden sm:block">
             <SeeButton language={language} qrCode="/qrcodes/visagra.png" />
           </div> */}
+          <SeeButton qrCode="/qrcodes/visagra.png"/>
           <button
             onClick={handleFullscreen}
             className="sm:flex hidden items-center justify-center px-2 py-1 transition-all rounded-full bg-lightblue6 hover:bg-lightblue2 hover:scale-105 w-12 h-12"
