@@ -4,12 +4,13 @@ import DataBlock from "./DataBlock";
 import { translate } from "./Translations";
 import { useEffect } from "react";
 
+import SeeButtonSimple from "./SeeButtonSimple";
 export default function ArService({ language }) {
     const allImageBlocks = [
         { srcImg: "/ar/silla.webp", srcQR: "/qrcodes/ecommerce/silla-1.png" },
         { srcImg: "/ar/grill.webp", srcQR: "/qrcodes/parrilla.png" },
-        { srcImg: "/ar/silla_2.webp", srcQR: "/qrcodes/ecommerce/silla-8.png" },
-        { srcImg: "/ar/silla_1.webp", srcQR: "/qrcodes/ecommerce/silla-7.png" }
+        { srcImg: "/ar/silla_2.webp", srcQR: "/qrcodes/ecommerce/silla-8.png", link: "/model?model=/models/ecommerce/silla-8.glb" },
+        { srcImg: "/ar/silla_1.webp", srcQR: "/qrcodes/ecommerce/silla-7.png", link: "/model?model=/models/ecommerce/silla-7.glb" },
     ];
 
     const [visibleBlocks, setVisibleBlocks] = useState(2);
@@ -51,14 +52,15 @@ export default function ArService({ language }) {
             <section className="w-full block">
 
             <div className="w-full flex sm:flex-row flex-col gap-6 justify-center items-center">
-                    <div className="flex flex-row items-center p-4 rounded-lg justify-center">
-                        <article className="flex flex-col items-center justify-center w-40 sm:w-56 p-3">
+                    <div className="flex sm:flex-row flex-col items-center p-4 rounded-lg justify-center">
+                        <article className="hidden sm:block flex flex-col items-center justify-center w-40 sm:w-56 p-3">
                             <img className="w-full" src={allImageBlocks[0].srcQR} alt="QR Code" />
                             <p className="underline text-center sm:text-sm text-[6px] w-2/3 sm:w-full">
                                 {translate("scan", language)}
                             </p>
                         </article>
                         <img className="mt-4 w-40 sm:w-56" src={allImageBlocks[0].srcImg} alt="AR Model" />
+                        <SeeButtonSimple link="/model?model=/models/ecommerce/silla-1.glb" language={language}/>
                     </div>
 
                     <div className="flex flex-col items-center justify-center w-screen gap-4 justify-self-center sm:mt-0 mt-2 sm:hidden">
@@ -67,14 +69,15 @@ export default function ArService({ language }) {
 
                     <hr className=" bg-black h-40 w-[2px] bg-opacity-30 hidden sm:block"></hr>
 
-                    <div className="flex flex-row items-center p-4 rounded-lg justify-center">
-                        <article className="flex flex-col items-center justify-center w-40 sm:w-56 p-3">
+                    <div className="flex sm:flex-row flex-col items-center p-4 rounded-lg justify-center">
+                        <article className="hidden sm:block flex flex-col items-center justify-center w-40 sm:w-56 p-3">
                             <img className="w-full" src={allImageBlocks[1].srcQR} alt="QR Code" />
                             <p className="underline text-center text-sm w-2/3 sm:w-full">
                                 {translate("scan", language)}
                             </p>
                         </article>
                         <img className="mt-4 w-40 sm:w-56" src={allImageBlocks[1].srcImg} alt="AR Model" />
+                        <SeeButtonSimple link="/model?model=/models/parrilla.glb" language={language}/>
                     </div>
             </div>
 
@@ -83,16 +86,17 @@ export default function ArService({ language }) {
             </div>
 
             <div className="w-full flex sm:flex-row flex-col gap-6 justify-center items-center">
-                {allImageBlocks.slice(2, visibleBlocks).map(({ srcImg, srcQR }, index) => (
+                {allImageBlocks.slice(2, visibleBlocks).map(({ srcImg, srcQR, link }, index) => (
                     <>
-                    <div key={index} className="flex flex-row items-center p-4 rounded-lg">
-                        <article className="flex flex-col items-center justify-center w-40 sm:w-56 p-3">
+                    <div key={index} className="flex flex-col sm:flex-row items-center p-4 rounded-lg">
+                        <article className="hidden sm:block flex flex-col items-center justify-center w-40 sm:w-56 p-3">
                             <img className="w-full" src={srcQR} alt="QR Code" />
                             <p className="underline text-center text-sm w-2/3 sm:w-full">
                                 {translate("scan", language)}
                             </p>
                         </article>
                         <img className="mt-4 w-40 sm:w-56" src={srcImg} alt="AR Model" />
+                        <SeeButtonSimple link={link} language={language}/>
                     </div>
                     {index % 2 === 0 && index + 1 < visibleBlocks && (
                         <hr className="bg-black h-40 w-[2px] bg-opacity-30 hidden sm:block" />

@@ -9,7 +9,6 @@ export default function CalendlyScheduler({language, setRender, lightblueBackgro
 
   const openCalendly = () => {
     setIsOpen(true)
-    setRender(false);
   };
   const closeCalendly = () => setIsOpen(false);
 

@@ -4,7 +4,7 @@ import CalendlyScheduler from "./Calendly";
 
 export default function ContactForm({ language, setContact }) {
   const [result, setResult] = useState(false);
-  const [view, setView] = useState("form"); // "form" o "calendly"
+  const [view, setView] = useState("form");
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -34,16 +34,7 @@ export default function ContactForm({ language, setContact }) {
           ✖
         </button>
         
-        <div className="flex gap-4 mb-4 mt-4">
-          <button className={`p-2 rounded-[48px] text-black ${view === "form" ? "bg-lightblue6" : "bg-gray-300"}`} onClick={() => setView("form")}>
-            Email
-          </button>
-          <button className={`p-2 rounded-[48px] text-black ${view === "calendly" ? "bg-lightblue6" : "bg-gray-300"}`} onClick={() => setView("calendly")}>
-            Agendar Llamada
-          </button>
-        </div>
 
-        {view === "form" && (
           <form className="flex flex-col items-center gap-4 p-6 bg-black rounded-3xl" onSubmit={onSubmit}>
             <h1 className="text-3xl font-bold text-white text-center">{translate("contact", language)}</h1>
             <input name="name" type="text" placeholder={translate("name", language)} className="p-3 text-black border border-black rounded-3xl w-80" />
@@ -53,9 +44,8 @@ export default function ContactForm({ language, setContact }) {
             <button className="p-3 font-bold text-black bg-lightblue rounded-3xl hover:scale-105 w-80">{translate("enviar", language)}</button>
             {result && <span className="text-xl text-lightblue6 text-center">{translate("result", language)}</span>}
           </form>
-        )}
 
-        {view === "calendly" && <CalendlyScheduler language={language} />}
+        <CalendlyScheduler lightblueBackground language={language} />
       </section>
     </div>
   );

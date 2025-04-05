@@ -1,5 +1,6 @@
 const translations = {
   en: {
+    SeeButtonSimple: "See in your space",
     whatIncludes : "What includes?",
     prefeerCall : "I prefer to schedule a call",
     ecommerceTittle: "3D Catalog",
@@ -184,6 +185,7 @@ const translations = {
     scan: "Scan to see the product in your space",
   },
   es: {
+    SeeButtonSimple: "Ver en tu espacio",
     whatIncludes : "¿Qué incluye?",
     prefeerCall : "Prefiero Agendar Llamada",
     ecommerceTittle: "Catálogo 3D",
