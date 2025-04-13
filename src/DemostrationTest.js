@@ -164,7 +164,7 @@ const handleFullscreen = () => {
           {/* <div className="hidden sm:block">
             <SeeButton language={language} qrCode="/qrcodes/visagra.png" />
           </div> */}
-          <SeeButton qrCode="/qrcodes/visagra.png"/>
+          <SeeButton qrCode="/qrcodes/example.png"/>
           <button
             onClick={handleFullscreen}
             className="sm:flex hidden items-center justify-center px-2 py-1 transition-all rounded-full bg-lightblue6 hover:bg-lightblue2 hover:scale-105 w-12 h-12"
