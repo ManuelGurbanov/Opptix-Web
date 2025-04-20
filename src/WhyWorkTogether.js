@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { translate } from "./Translations";
+import { useLanguage } from './LanguageContext';
 
-function WhyWorkTogether({ language }) {
+function WhyWorkTogether() {
+  const { language } = useLanguage();
   const reasons = [
     { id: 0, reason: "reason1", percentage: "+66%" },
     { id: 1, reason: "reason2", percentage: "+30%" },

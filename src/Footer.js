@@ -8,14 +8,17 @@ import { translate } from "./Translations";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { useLanguage } from "./LanguageContext";
+
+
+
 function Footer({
-  language,
-  services = [],
   caseStudies = [],
   reasons = [],
   packs = [],
 }) {
 
+const { language } = useLanguage();
 
 const [result, setResult] = React.useState(false);
   const onSubmit = async (event) => {
@@ -49,7 +52,7 @@ const [result, setResult] = React.useState(false);
         <h1 className="font-bold">Newsletter</h1>
         
         <form className="w-full flex gap-1 mt-2" onSubmit={onSubmit}>
-          <input name="name" type="name" placeholder={translate("name", language)} className="w-full p-2 rounded-lg" />
+          <input name="name" type="name" placeholder={translate("correo", language)} className="w-full p-2 rounded-lg" />
           <button className="px-3 py-2 rounded-xl bg-zinc-800 text-white" type="submit">
           {translate("enviar", language)}
           </button>
@@ -66,13 +69,23 @@ const [result, setResult] = React.useState(false);
       </div>
 
       {/* Services Section */}
-      <div className="flex-col gap-1 text-black">
-        <h1 className="font-bold">{translate("services", language)}</h1>
-        {services.map((service) => (
-          <div key={service.id} className="hover:underline cursor-pointer">
-            <a className="text-xs hover:underline">{service.name}</a>
-          </div>
-        ))}
+      <div className="flex flex-col gap-2 text-black">
+          < h1 className="font-bold">{translate("services", language)}</h1>
+            <Link className="text-xs hover:underline cursor-pointer" to="/services/0">
+              {translate("configTittle", language)}
+            </Link>
+            <Link className="text-xs hover:underline cursor-pointer" to="/services/1">
+              {translate("marketingTittle", language)}
+            </Link>
+            <Link className="text-xs hover:underline cursor-pointer" to="/services/2">
+              {translate("arTittle", language)}
+            </Link>
+            <Link className="text-xs hover:underline cursor-pointer" to="/services/3">
+              {translate("staticRenderTittle", language)}
+            </Link>
+            <Link className="text-xs hover:underline cursor-pointer" to="/services/4">
+              {translate("viewerTittle", language)}
+            </Link>
       </div>
 
       {/* Case Studies Section */}

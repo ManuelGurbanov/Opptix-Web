@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { translate } from './Translations'; // Asegúrate de importar la función de traducción
 
-const Faq = ({language}) => {
+import { useLanguage } from './LanguageContext';
+
+const Faq = () => {
+  const { language } = useLanguage();
   const [faqs, setFaqs] = useState([
     {
       key: '1', // Usamos una clave para poder traducir dinámicamente

@@ -368,11 +368,10 @@ const translations = {
     ARDescription: "Con Realidad Aumentada (AR), los usuarios pueden ver cómo se verán los productos en su hogar, mientras que con Realidad Virtual (VR) pueden sumergirse en experiencias más envolventes.",
     scan: "Escaneá para verlo en la vida real."
   }
-  
-
 };
   
-  export const translate = (key, language) => {
+
+export const translate = (key, language) => {
     if (translations[language] && translations[language][key]) {
       return translations[language][key];
     }

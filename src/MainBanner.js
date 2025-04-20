@@ -1,7 +1,9 @@
 import React from 'react';
 import { translate } from "./Translations"; 
+import { useLanguage } from './LanguageContext';
 
-function MainBanner({ language }) {
+function MainBanner() {
+  const { language } = useLanguage();
   return (
     <div data-aos="fade-up"
     className='relative md:w-[94%] sm:h-[75vh] w-[95vw] h-[50vh] flex flex-col justify-center items-start text-white p-3 px-12 rounded-3xl mb-12 overflow-hidden'>

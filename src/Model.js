@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSearchParams, useNavigate, useLocation, Navigate } from "react-router-dom";
+import { useLanguage } from './LanguageContext';
 
-const ModelLink = ({language}) => {
+const ModelLink = () => {
+  const { language } = useLanguage();
   const modelRef = useRef(null);
   const [isModelLoaded, setIsModelLoaded] = useState(false);
   const [searchParams] = useSearchParams();

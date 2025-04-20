@@ -3,8 +3,10 @@ import "@google/model-viewer";
 import { translate } from "./Translations";
 import ContractButton from "./ContractButton";
 import SeeButton from "./SeeInYourSpace";
+import { useLanguage } from './LanguageContext';
 
-export default function Demonstration({ language }) {
+export default function Demonstration() {
+    const { language } = useLanguage();
     const ref = useRef(null);
     const modelRef = useRef(null);
     const [activeVariants, setActiveVariants] = useState({});

@@ -7,7 +7,10 @@ import { useContact } from './ContactContext';
 
 import ContactForm from './ContactForm';
 
-function Packs({ packs, language }) {
+import { useLanguage } from './LanguageContext';
+
+function Packs({ packs }) {
+    const { language } = useLanguage();
     const [activePack, setActivePack] = React.useState(0);
     const [isFading, setIsFading] = React.useState(false);
     const { showContactForm } = useContact();

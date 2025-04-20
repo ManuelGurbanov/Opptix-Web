@@ -3,8 +3,10 @@ import { translate } from "./Translations";
 import { Link } from 'react-router-dom';
 
 import { useContact } from './ContactContext';
+import { useLanguage } from './LanguageContext';
 
-function Navbar({ language, setLanguage }) {
+function Navbar() {
+  const { language, setLanguage } = useLanguage();
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
   const [showMenuHamburguer, setShowMenuHamburguer] = useState(false);
 

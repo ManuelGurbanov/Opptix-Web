@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { translate } from './Translations';
-function CaseStudies({language}) {
+
+import { useLanguage } from './LanguageContext';
+
+function CaseStudies() {
+    const { language } = useLanguage();
     return (
         <>
         <div className='w-full flex flex-col justify-center items-start text-black sm:p-12 sm:px-24 p-7' id='case-studies'>

@@ -1,14 +1,84 @@
 import React, { useEffect, useState } from "react";
-import { translate } from "./Translations";
 
 import { Link , useParams, useNavigate } from "react-router-dom";
 import ContactForm from "./ContactForm";
 
+import { useLanguage } from './LanguageContext';
+import { translate } from "./Translations";
 
-function Services({ language, services, setLanguage, contact }) {
+import AllConfigurators from "./AllConfigurators";
+import Animations from "./Animations";
+import ArService from "./ArService";
+import StaticRenders from "./StaticRenders";  
+import ECommerceViewer from "./ECommerceViewer";
+
+
+function Services({ contact, setContact }) {
+
+
+  const { language, setLanguage } = useLanguage();
+  const services = [
+    {
+      id: 0,
+      name: translate("configTittle", language),
+      component:
+        <AllConfigurators language={language} setContact={setContact} />,
+      picture:
+        <a className='w-full h-full bg-zinc-200 hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative' href='/services/0'>
+          <img src='phone.webp' className='absolute bottom-0 h-full'></img>
+        </a>
+    },
+    {
+      id: 1,
+      name: translate("marketingTittle", language),
+      component:
+        <Animations language={language} />,
+      picture:
+        <a className='w-full h-full bg-black hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative' href='/services/1'>
+          <video
+            className="absolute top-0 left-0 w-full h-full object-cover z-0 sm:rounded-[80px]"
+            src="/img/3d.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+          ></video>
+        </a>
+    },
+    {
+      id: 2,
+      name: translate("arTittle", language),
+      component:
+        <ArService language={language} />,
+      picture:
+        <a className='w-full h-full bg-zinc-200 hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative' href='/services/2'>
+          <img src='phone.webp' className='absolute bottom-0 h-full'></img>
+        </a>
+    },
+    {
+      id: 3,
+      name: translate("staticRenderTittle", language),
+      component: <StaticRenders language={language} />,
+      picture:
+        <a className='w-full h-full bg-zinc-200 hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative' href='/services/3'>
+          <img src='render.webp' className='absolute top-0 left-0 w-full h-full object-cover z-0 sm:rounded-[80px]'></img>
+        </a>
+    },
+    {
+      id: 4,
+      name: translate("viewerTittle", language),
+      component:
+        <ECommerceViewer language={language} />,
+      picture:
+        <a className='w-full h-full bg-zinc-200 hover:bg-lightblue transition duration-75 flex justify-center items-center sm:rounded-[80px] rounded-lg relative' href='/services/4'>
+          <img src='viewer.webp' className='absolute top-0 left-0 w-full h-full object-cover z-0 sm:rounded-[80px]'></img>
+        </a>
+    }
+  ];
   const navigate = useNavigate();
   const { serviceId } = useParams();  
   const [actualService, setActualService] = useState(parseInt(serviceId));
+
 
   const [currentPage, setCurrentPage] = useState(0); 
 
@@ -17,6 +87,7 @@ function Services({ language, services, setLanguage, contact }) {
   const totalPages = Math.ceil(services.length / servicesPerPage);
 
   const [showMenuHamburguer, setShowMenuHamburguer] = useState(false);
+
 
   const goToNextPage = () => {
     if (currentPage < totalPages - 1) {
@@ -58,7 +129,7 @@ function Services({ language, services, setLanguage, contact }) {
           <button
             onClick={() => changeServiceAndCloseMenu(service.id)}
             key={index}
-            className={`hover:scale-105 text-xs text-center w-full transition ease-in cursor-pointer duration-75 text-nowrap ${
+            className={`hover:scale-105 text-base text-center w-full transition ease-in cursor-pointer duration-75 text-nowrap ${
               actualService === service.id ? "font-bold" : ""
             }`}
           >

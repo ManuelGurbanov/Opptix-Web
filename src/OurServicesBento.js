@@ -3,7 +3,11 @@ import './servicesBento.css';
 import RightArrow from './RightArrow';
 import { translate } from './Translations';
 
-export default function OurServicesBento({ language }) {
+import { useLanguage } from './LanguageContext';
+
+export default function OurServicesBento() {
+
+    const { language } = useLanguage();
 
     const configuratorsImages = [
         "/portadas/config.gif",

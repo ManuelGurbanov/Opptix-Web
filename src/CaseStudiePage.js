@@ -3,7 +3,11 @@ import { useSearchParams, Link } from 'react-router-dom';
 import Selector from './Selector';
 import { translate } from "./Translations";
 import { useState } from 'react';
-function CaseStudiePage({ language }) {
+
+import { useLanguage } from './LanguageContext';
+
+function CaseStudiePage() {
+  const { language } = useLanguage();
   const [searchParams] = useSearchParams();
   const caseName = searchParams.get("case") || "Briefcases";
 
