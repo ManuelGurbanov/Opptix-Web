@@ -41,7 +41,7 @@ const [result, setResult] = React.useState(false);
 };
   return (
     <div
-      className="w-full h-auto bg-zinc-200 flex flex-col sm:flex-row justify-center items-start text-black sm:p-12 p-3 gap-9 text-sm"
+      className="w-full h-auto bg-zinc-200 flex flex-row justify-center items-start text-black sm:p-12 p-6 gap-9 text-sm"
       id="get-started"
     >
       {/* Intro Section */}
@@ -66,7 +66,7 @@ const [result, setResult] = React.useState(false);
       </div>
 
       {/* Services Section */}
-      <div className="flex-col gap-1 text-black sm:flex hidden">
+      <div className="flex-col gap-1 text-black">
         <h1 className="font-bold">{translate("services", language)}</h1>
         {services.map((service) => (
           <div key={service.id} className="hover:underline cursor-pointer">

@@ -410,6 +410,7 @@ function CaseStudiePage({ language }) {
           muted
           loop
           autoPlay
+          playsInline
           onClick={() => onClick(src, index)}
         />
       </div>

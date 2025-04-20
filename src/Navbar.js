@@ -25,9 +25,9 @@ function Navbar({ language, setLanguage }) {
 
         <div className='flex flex-row'>
           {/* Logo en Celulares */}
-          <button to="/" className='block w-8 sm:hidden'>
+          <Link to="/" className='block w-8 sm:hidden'>
             <img src="img/icon.webp" alt="Logo" />
-          </button>
+          </Link>
 
           <button
             className="block ml-4 mr-4 sm:hidden justify-self-start"

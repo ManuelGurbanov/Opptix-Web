@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { translate } from "./Translations";
 
-import { Link , useParams } from "react-router-dom";
+import { Link , useParams, useNavigate } from "react-router-dom";
 import ContactForm from "./ContactForm";
 
 
 function Services({ language, services, setLanguage, contact }) {
-  const { serviceId } = useParams();  // Obtenemos el id del servicio de la URL
+  const navigate = useNavigate();
+  const { serviceId } = useParams();  
   const [actualService, setActualService] = useState(parseInt(serviceId));
 
-  const [currentPage, setCurrentPage] = useState(0); // Estado para controlar la página actual
+  const [currentPage, setCurrentPage] = useState(0); 
 
-  const servicesPerPage = 3; // Número de servicios por página en pantallas pequeñas
+  const servicesPerPage = 3;
 
   const totalPages = Math.ceil(services.length / servicesPerPage);
 
@@ -38,6 +39,7 @@ function Services({ language, services, setLanguage, contact }) {
 
   const changeServiceAndCloseMenu = (serviceId) => {
     setActualService(serviceId);
+    navigate(`/services/${serviceId}`);
     setShowMenuHamburguer(false);
   }
 
@@ -54,7 +56,7 @@ function Services({ language, services, setLanguage, contact }) {
 
         {services.map((service, index) => (
           <button
-            onClick={() => setActualService(service.id)}
+            onClick={() => changeServiceAndCloseMenu(service.id)}
             key={index}
             className={`hover:scale-105 text-xs text-center w-full transition ease-in cursor-pointer duration-75 text-nowrap ${
               actualService === service.id ? "font-bold" : ""
@@ -122,7 +124,7 @@ function Services({ language, services, setLanguage, contact }) {
       
       {/* Menú desplegable en celulares */}
       {showMenuHamburguer && (
-        <div className="fixed top-0 left-0 w-full bg-black z-40 flex flex-col items-center text-white gap-4 p-8">
+        <div className="fixed top-0 left-0 z-40 flex flex-col items-center w-full gap-4 p-8 text-black bg-white font-semibold">
           <button>
             <img
               src="/exit.webp"
@@ -131,9 +133,9 @@ function Services({ language, services, setLanguage, contact }) {
               onClick={() => setShowMenuHamburguer(false)}
             />
           </button>
-          <img src="/img/icon.webp" alt="Logo" className='w-12'/>
 
           {services.map((service, index) => (
+          <>
           <button
             onClick={() => changeServiceAndCloseMenu(service.id)}
             key={index}
@@ -143,6 +145,8 @@ function Services({ language, services, setLanguage, contact }) {
           >
             {service.name}
           </button>
+          <hr className='w-screen h-[2px] bg-black bg-opacity-25'></hr>
+          </>
           ))}
         </div>
       )}
@@ -153,7 +157,7 @@ function Services({ language, services, setLanguage, contact }) {
           <button
             onClick={() => setActualService(service.id)}
             key={index}
-            className={`hover:scale-105 text-[10px] text-center w-24 transition ease-in cursor-pointer duration-75 smallGradient h-12 p-2 rounded-2xl ${
+            className={`hover:scale-105 text-sm text-center w-24 transition ease-in cursor-pointer duration-75 text-black h-12 p-2 rounded-2xl ${
               actualService === service.id ? "opacity-100" : "opacity-60"
             }`}
           >
@@ -165,14 +169,14 @@ function Services({ language, services, setLanguage, contact }) {
           currentPage < totalPages - 1 ? (
             <button
               onClick={goToNextPage}
-              className="hover:scale-105 text-[10px] text-center w-8 transition ease-in cursor-pointer duration-75 smallGradient ring-[1px] ring-zinc-400 h-12 rounded-2xl"
+              className="hover:scale-105 text-sm text-center w-8 transition ease-in cursor-pointer duration-75 h-12 rounded-2xl"
             >
               &gt;
             </button>
           ) : (
             <button
               onClick={goToPreviousPage}
-              className="hover:scale-105 text-[10px] text-center w-8 transition ease-in cursor-pointer duration-75 smallGradient h-12 rounded-2xl"
+              className="hover:scale-105 text-sm text-center w-8 transition ease-in cursor-pointer duration-75 h-12 rounded-2xl"
             >
               &lt;
             </button>
