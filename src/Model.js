@@ -1,11 +1,22 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate, useLocation, Navigate } from "react-router-dom";
 
-const ModelLink = () => {
+const ModelLink = ({language}) => {
   const modelRef = useRef(null);
   const [isModelLoaded, setIsModelLoaded] = useState(false);
   const [searchParams] = useSearchParams();
   const modelUrl = searchParams.get("model");
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  const handleBack = () => {
+    if (location.state?.from) {
+      navigate(location.state.from);
+    } else {
+      navigate(-1); 
+    }
+  };
 
   useEffect(() => {
     const modelViewer = modelRef.current;
@@ -39,7 +50,10 @@ const ModelLink = () => {
   }
 
   return (
-    <div className="relative flex items-center justify-center w-full h-screen bg-gray-100">
+    <div className="relative flex flex-col items-center justify-center w-full h-screen bg-gray-100">
+      <button className="px-4 py-2 bg-lightblue hover:scale-105 hover:bg-lightblue6 text-xl rounded-[48px]" onClick={handleBack}>
+        {language === "es" ? "Volver" : "Back"}
+      </button>
       <model-viewer
         ref={modelRef}
         id="hotspot-camera-view-demo"

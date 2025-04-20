@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { translate } from "./Translations";
 
 import RightArrow from './RightArrow';
 
 import { useContact } from './ContactContext';
+
+import ContactForm from './ContactForm';
 
 function Packs({ packs, language }) {
     const [activePack, setActivePack] = React.useState(0);
@@ -13,10 +15,12 @@ function Packs({ packs, language }) {
         setActivePack(newPack);
     };
 
+    const [contact, setContact] = useState(false);
+
     return (
-        <div className='flex flex-col items-center w-screen min-h-screen p-7' id='packs'>
-            <h1 className='w-full sm:px-24 mt-12 text-4xl font-bold text-left'>Packs</h1>
-            <h2 className='w-full sm:px-24 mb-6 text-xl text-left opacity-70 sm:mb-0'>{translate("packsSub", language)}</h2>
+        <div className='flex flex-col items-center w-screen min-h-screen p-7 sm:px-24 mt-12' id='packs'>
+            <h1 className='w-full text-4xl font-bold text-left'>Packs</h1>
+            <h2 className='w-full mb-6 text-xl text-left opacity-70 sm:mb-0'>{translate("packsSub", language)}</h2>
 
             <div className={`flex flex-col items-start justify-center gap-12 m-0 mb-16 bg-white lg:flex-row sm:p-8 sm:mb-0 transition-opacity duration-0 ease-in-out ` } >
                 {packs.map((pack, index) => (
@@ -35,9 +39,10 @@ function Packs({ packs, language }) {
                     <>
                         <div className={`flex flex-row items-center justify-between w-full transition-opacity ease-in-out ${isFading ? "opacity-0" : "opacity-100"}`}>
                             <h1 className='text-[36px] font-bold w-full text-left' data-aos="fade-uo">{pack.title}</h1>
-                            <a className='flex items-center justify-center h-10 transition duration-75 bg-white rounded-full aspect-square hover:scale-105' href='/services/0'>
+                            <button onClick={() => setContact(true)} className='flex items-center justify-center h-10 transition duration-75 bg-white rounded-full aspect-square hover:scale-105' href='/services/0'>
                                 <RightArrow color="#000000" />
-                            </a>
+                            </button>
+                            {contact ? <ContactForm language={language} setContact={setContact}/> : null}
                         </div>
 
                         <p className='text-sm sm:text-[16px] my-2 w-full text-left italic font-light' data-aos="fade-up">{pack.description}</p>

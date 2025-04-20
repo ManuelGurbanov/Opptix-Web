@@ -14,7 +14,7 @@ import SeeButton from "./SeeInYourSpace";
 import RackViewer from "./RackViewer"
 export default function AllConfigurators({language, setContact}) {
 
-    const [selectedConfigurator, setSelectedConfigurator] = useState("rack");
+    const [selectedConfigurator, setSelectedConfigurator] = useState("chair");
 
     const [totalPriceCar, setTotalPriceCar] = useState(20000);
     const [totalPriceParrilla, setTotalPriceParrilla] = useState(1500);

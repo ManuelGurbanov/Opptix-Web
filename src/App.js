@@ -10,7 +10,7 @@ import Faq from './Faq';
 import CaseStudiePage from './CaseStudiePage';
 import Footer from './Footer';
 import Services from './Services';
-import ModelLink from './BikeLink';
+import ModelLink from './Model';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import AllConfigurators from './AllConfigurators';
@@ -240,7 +240,7 @@ function App() {
             } />
             <Route path="/case-study" element={<CaseStudiePage caseStudies={cases} language={language}/>} />
             <Route path="/services/:serviceId" element={<Services services={services} language={language} setLanguage={setLanguage} contact={contact}/>} />
-            <Route path="/model" element={<ModelLink />} />
+            <Route path="/model" element={<ModelLink language={language}/>} />
             <Route path="/upload" element={<UploaderViewer />} />
             <Route path="/uploadthree" element={<UploaderThree />} />
             <Route path="/kesseboehmer" element={<DemostrationTest language={language}/>}/>

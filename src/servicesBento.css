@@ -15,6 +15,22 @@
   width: 100vw;
 }
 
+.containerResponsive {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr 1fr;
+  grid-template-rows: repeat(5, 1fr);
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  grid-template-areas: 
+    "box1 box1 box2 box2"
+    "box1 box1 box2 box2"
+    "box3 box3 box2 box2"
+    "box3 box3 box4 box4"
+    "box3 box3 box4 box4";
+  height: 550px;
+}
+
 .box {
   margin-top: 20px;
   display: flex;
