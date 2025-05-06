@@ -24,17 +24,17 @@ export default function OurServicesBento() {
     ];
 
     const animationsVideos = [
-        "/portadas/anim1.png",
-        "/portadas/anim2.png",
-        "/portadas/anim3.png",
-        "/portadas/anim4.png",
+        "/portadas/anim1.webp",
+        "/portadas/anim2.webp",
+        "/portadas/anim3.webp",
+        "/portadas/anim4.webp",
     ];
 
     const arImages = [
-        "/ar/PRUEBA.png",
-        "/ar/PRUEBA2.png",
-        "/ar/PRUEBA3.jpg",
-        "/portadas/ar4.jpg",
+        "/ar/grill.webp",
+        "/ar/silla.webp",
+        "/ar/silla_1.webp",
+        "/portadas/silla_2.webp",
     ];
 
     return (

@@ -62,7 +62,7 @@ function RackModel({ showingMeshes, onMeshesLoaded, selectedTextures }) {
         if (object.isMesh) {
           const objectName = object.name.toLowerCase();
 
-          if (objectName.includes("caños") && selectedTextures.caño) {
+          if (objectName.includes("caño") && selectedTextures.caño) {
             object.material.map = selectedTextures.caño;
             object.material.needsUpdate = true; 
           } else if (objectName.includes("tabla") && selectedTextures.tabla) {
@@ -158,17 +158,9 @@ export default function App(language) {
 
   const [selectedMenu,setSelectedMenu] = useState("modules");
 
-  const handleTextureChangeForPipes = (texture) => {
-    setSelectedTextures((prev) => ({ ...prev, caño: texture }));
-  };
-
-  const handleTextureChangeForBoards = (texture) => {
-    setSelectedTextures((prev) => ({ ...prev, tabla: texture }));
-  };
-
 
   return (
-    <section className="w-full min-h-[150vh] flex flex-col justify-start items-center rounded-lg gap-4 relative sm:px-12 sm:py-2 p-2"
+    <section className="w-full sm:min-h-[150vh] flex flex-col justify-start items-center rounded-lg gap-4 relative sm:px-12 sm:py-2 p-2"
     ref={containerRef}>
       <Canvas
         camera={{ position: [1, 1, 1], zoom: 1 }}
@@ -181,7 +173,7 @@ export default function App(language) {
           backgroundColor: "white",
         }}
       >
-        <ambientLight intensity={0.5} />
+        <ambientLight intensity={1} />
         <RackModel 
           showingMeshes={showingMeshes} 
           selectedTextures={selectedTextures} 
@@ -189,11 +181,11 @@ export default function App(language) {
         />
         <OrbitControls enableZoom={true} enableRotate={true} />
         <directionalLight position={[-3, 5, -4]} intensity={1.7} />
-        <directionalLight position={[3, 5, 10]} intensity={0.8} />
-        <directionalLight position={[0, -10, 0]} intensity={0.3} />
+        <directionalLight position={[3, 5, 10]} intensity={1} />
+        <directionalLight position={[0, -10, 0]} intensity={1} />
       </Canvas>
 
-                <section className="absolute sm:flex flex-col hidden items-center justify-center top-4 right-7 gap-2">
+                <section className="absolute flex flex-col items-center justify-center sm:top-4 sm:bottom-auto bottom-4 sm:right-7 gap-2">
 
                   <header className="sm:flex hidden items-start justify-end w-full gap-2">
                     <ConfigHeader qrCode="/qrcodes/rack.png" handleFullscreen={handleFullscreen} isFullscreen={isFullscreen} language={language}/>
@@ -203,32 +195,32 @@ export default function App(language) {
                 <button className={"" + selectedMenu === "modules" ? "font-bold underline" : ""} onClick={() => setSelectedMenu("modules")}>
                   Módulos
                 </button>
-                <div className={`grid grid-cols-2 gap-3 px-4 ${selectedMenu === "modules" ? "block" : "hidden"}`}>
-                  <button className="w-16 h-16 hover:bg-lightblue transition-all duration-75 bg-lightblue6 rounded-full flex items-center justify-center" onClick={() => setVisibleMeshes(["01"]) }>
+                <div className={`grid sm:grid-cols-2 grid-cols-5 gap-3 px-4 ${selectedMenu === "modules" ? "block" : "hidden"}`}>
+                  <button className="sm:w-16 sm:h-16 w-10 h-10 hover:bg-lightblue transition-all duration-75 bg-lightblue6 rounded-full flex items-center justify-center" onClick={() => setVisibleMeshes(["01"]) }>
                     <img src="/buttons/01.png" className="w-16 h-16"></img>
                   </button>
-                  <button className="w-16 h-16 hover:bg-lightblue transition-all duration-75 bg-lightblue6 rounded-full flex items-center justify-center" onClick={() => setVisibleMeshes(["02", "01"]) }>
+                  <button className="sm:w-16 sm:h-16 w-10 h-10 hover:bg-lightblue transition-all duration-75 bg-lightblue6 rounded-full flex items-center justify-center" onClick={() => setVisibleMeshes(["02", "01"]) }>
                   <img src="/buttons/01-02.png" className="w-16 h-16"></img>
                   </button>
-                  <button className="w-16 h-16 hover:bg-lightblue transition-all duration-75 bg-lightblue6 rounded-full flex items-center justify-center" onClick={() => setVisibleMeshes(["03", "02", "01"]) }>
+                  <button className="sm:w-16 sm:h-16 w-10 h-10 hover:bg-lightblue transition-all duration-75 bg-lightblue6 rounded-full flex items-center justify-center" onClick={() => setVisibleMeshes(["03", "02", "01"]) }>
                   <img src="/buttons/01-02-03.png" className="w-16 h-16"></img>
                   </button>
-                  <button className="w-16 h-16 hover:bg-lightblue transition-all duration-75 bg-lightblue6 rounded-full flex items-center justify-center" onClick={() => setVisibleMeshes(["04"]) }>
+                  <button className="sm:w-16 sm:h-16 w-10 h-10 hover:bg-lightblue transition-all duration-75 bg-lightblue6 rounded-full flex items-center justify-center" onClick={() => setVisibleMeshes(["04"]) }>
                   <img src="/buttons/04.png" className="w-16 h-16"></img>
                   </button>
-                  <button className="w-16 h-16 hover:bg-lightblue transition-all duration-75 bg-lightblue6 rounded-full flex items-center justify-center" onClick={() => setVisibleMeshes(["04", "05"]) }>
+                  <button className="sm:w-16 sm:h-16 w-10 h-10 hover:bg-lightblue transition-all duration-75 bg-lightblue6 rounded-full flex items-center justify-center" onClick={() => setVisibleMeshes(["04", "05"]) }>
                   <img src="/buttons/04-05.png" className="w-16 h-16"></img>
                   </button>
-                  <button className="w-16 h-16 hover:bg-lightblue transition-all duration-75 bg-lightblue6 rounded-full flex items-center justify-center" onClick={() => setVisibleMeshes(["04", "05", "03"]) }>
+                  <button className="sm:w-16 sm:h-16 w-10 h-10 hover:bg-lightblue transition-all duration-75 bg-lightblue6 rounded-full flex items-center justify-center" onClick={() => setVisibleMeshes(["04", "05", "03"]) }>
                   <img src="/buttons/03-04-05.png" className="w-16 h-16"></img>
                   </button>
-                  <button className="w-16 h-16 hover:bg-lightblue transition-all duration-75 bg-lightblue6 rounded-full flex items-center justify-center" onClick={() => setVisibleMeshes(["04", "02", "03"]) }>
+                  <button className="sm:w-16 sm:h-16 w-10 h-10 hover:bg-lightblue transition-all duration-75 bg-lightblue6 rounded-full flex items-center justify-center" onClick={() => setVisibleMeshes(["04", "02", "03"]) }>
                   <img src="/buttons/02-03-04.png" className="w-16 h-16"></img>
                   </button>
-                  <button className="w-16 h-16 hover:bg-lightblue transition-all duration-75 bg-lightblue6 rounded-full flex items-center justify-center" onClick={() => setVisibleMeshes(["02", "04"]) }>
+                  <button className="sm:w-16 sm:h-16 w-10 h-10 hover:bg-lightblue transition-all duration-75 bg-lightblue6 rounded-full flex items-center justify-center" onClick={() => setVisibleMeshes(["02", "04"]) }>
                   <img src="/buttons/02-04.png" className="w-16 h-16"></img>
                   </button>
-                  <button className="w-16 h-16 hover:bg-lightblue transition-all duration-75 bg-lightblue6 rounded-full flex items-center justify-center" onClick={() => setVisibleMeshes(["06","05", "04"]) }>
+                  <button className="sm:w-16 sm:h-16 w-10 h-10 hover:bg-lightblue transition-all duration-75 bg-lightblue6 rounded-full flex items-center justify-center" onClick={() => setVisibleMeshes(["06","05", "04"]) }>
                   <img src="/buttons/04-05-06.png" className="w-16 h-16"></img>
                   </button>
                  </div>

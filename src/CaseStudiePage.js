@@ -165,11 +165,44 @@ function CaseStudiePage() {
 
       media: [
         "blossom/uno.mp4",
-        "blossom/dos.png",
-        "blossom/tres.png",
+        "blossom/dos.webp",
+        "blossom/blossomMain.webp",
         "blossom/cuatro.mp4",
-        "blossom/cinco.png",
+        "blossom/cinco.webp",
+        "blossom/1.webp",
+        "blossom/01.webp",
+        "blossom/01-FLYER.webp",
+        "blossom/02-01NOIR.webp",
+        "blossom/02-05NOIR.webp",
+        "blossom/03.webp",
+        "blossom/4.webp",
+        "blossom/04.webp",
+        "blossom/4(1).webp",
+        "blossom/5.webp",
+        "blossom/05.webp",
+        "blossom/5 (1).webp",
+        "blossom/5 (2).webp",
+        "blossom/5 (2)(1).webp",
+        "blossom/06 (1).webp",
+        "blossom/07.webp",
+        "blossom/08.webp",
+        "blossom/BLOOM1.webp",
+        "blossom/blossomEnd.webp",
+        "blossom/blossomFirst.webp",
+        "blossom/EXOTIC1.webp",
+        "blossom/FOREST.webp",
+        "blossom/loop-bloom-2 (2).mov",
+        "blossom/loop-exotic-2.mov",
+        "blossom/loop-forest-2.mp4",
+        "blossom/loop-noir-2.mp4",
+        "blossom/loop-oud-2.mp4",
+        "blossom/loop-tylor-2.mp4",
+        "blossom/loop-velvet-2.mp4",
+        "blossom/loop-vibrant-2.mp4",
+        "blossom/NOIR.webp",
+        "blossom/teaser final.mp4"
       ]
+      
     },
     {
       id: 2,
@@ -224,9 +257,9 @@ function CaseStudiePage() {
       
       media: [
         "endless/uno.mp4",
-        "endless/dos.jpg",
-        "endless/tres.jpg",
-        "endless/cuatro.mkv",
+        "endless/endlessFirst.webp",
+        "endless/tres.webp",
+        "endless/cuatro.mp4",
         "endless/cinco.mp4",
       ]
     },
@@ -285,29 +318,32 @@ function CaseStudiePage() {
       
       media: [
         "pc/uno.mp4",
-        "pc/dos.jpg",
+        "pc/dos.webp",
         "pc/tres.mp4",
-        "pc/cuatro.jpg",
-        "pc/cinco.jpg",
-        "pc/01.jpg",
-        "pc/02.jpg",
-        "pc/03.png",
-        "pc/04.png",
-        "pc/05.png",
-        "pc/06.jpg",
-        "pc/06.png",
-        "pc/07.jpg",
-        "pc/07.png",
-        "pc/08.png",
-        "pc/09.png",
-        "pc/10.png",
-        "pc/11.png",
-        "pc/12.png",
+        "pc/cuatro.webp",
+        "pc/cinco.webp",
+        "pc/01.webp",
         "pc/01-Y-02.mp4",
+        "pc/02.webp",
+        "pc/02 (1).webp",
+        "pc/03.webp",
+        "pc/04.webp",
+        "pc/05.webp",
+        "pc/06.webp",
+        "pc/06 (1).webp",
+        "pc/07.jpg",
+        "pc/07.webp",
+        "pc/08.webp",
+        "pc/08 (1).webp",
+        "pc/09.webp",
+        "pc/10.webp",
+        "pc/11.webp",
+        "pc/12.webp",
+        "pc/pcEnd.webp",
         "pc/pcFirst.webp",
-        "pc/pcMain.webp",
-        "pc/pcEnd.webp"
-    ]
+        "pc/pcMain.webp"
+      ]
+      
     
     },
     {
@@ -392,11 +428,18 @@ function CaseStudiePage() {
       secondTittle: "Propuesta visual y objetivos",
       media: [
         "rack/uno.mp4",
-        "rack/dos.jpg",
-        "rack/tres.jpg",
-        "rack/cuatro.png",
-        "rack/cinco.png",
+        "rack/dos.webp",
+        "rack/tres.webp",
+        "rack/cuatro.webp",
+        "rack/cinco.webp",
+        "rack/01.mp4",
+        "rack/01-ai.webp",
+        "rack/rackEnd.webp",
+        "rack/rackFirst.webp",
+        "rack/rackMain.webp",
+        "rack/tres-1.webp"
       ]
+      
     },
   ];
 

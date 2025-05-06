@@ -57,12 +57,6 @@ export default function AllConfigurators({language, setContact}) {
 
                 <div className="flex sm:flex-col flex-row-reverse items-end sm:justify-end justify-between sm:w-1/2 w-full gap-3 sm:p-4 px-2">
                     <ContractButton language={language} setContact={setContact}/>
-                    <div className="flex flex-col items-center justify-center w-64 sm:text-right text-left">
-                        <h1 className="w-full text-base font-bold">{translate("finalPrice", language)}</h1>
-                        <h2 className="w-full sm:text-3xl text-sm">
-                         {displayedPrice.toLocaleString()} <span className="font-semibold">USD</span>
-                        </h2>
-                    </div>
                 </div>
             </header>
 
@@ -103,7 +97,6 @@ export default function AllConfigurators({language, setContact}) {
                     <hr className="w-full h-[2px] bg-black absolute bottom-0"></hr>
             </nav>
 
-
             {selectedConfigurator == "parrilla" && <ParrillaModelViewer modelSrc="/models/parrilla.glb" controlsContainerId="material-controls" setTotalPriceParrilla={setTotalPriceParrilla} language={language}/>}
 
             {selectedConfigurator == "car" && <CarModelViewer modelSrc="/models/car.glb" setTotalPriceCar={setTotalPriceCar} language={language}/>}
@@ -117,7 +110,7 @@ export default function AllConfigurators({language, setContact}) {
             {selectedConfigurator=="rack" && 
             
             <>
-            <RackViewer />
+            <RackViewer price={displayedPrice} />
             </>
             }
             <footer className="justify-self-center w-screen flex flex-col items-center justify-center gap-4">
