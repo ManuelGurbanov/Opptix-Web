@@ -28,11 +28,12 @@ function RackModel({ showingMeshes, onMeshesLoaded, selectedTextures }) {
       }
     });
 
-    console.log("Available Meshes:", meshNames);
-    console.log("Available Materials:", [...materials]);
+    //console.log("Available Meshes:", meshNames);
+    //console.log("Available Materials:", [...materials]);
     if (onMeshesLoaded) onMeshesLoaded(meshNames);
   }, [scene, onMeshesLoaded]);
 
+  
   // Aplicar visibilidad a los meshes
   useEffect(() => {
     scene.traverse((child) => {
@@ -62,24 +63,43 @@ function RackModel({ showingMeshes, onMeshesLoaded, selectedTextures }) {
         if (object.isMesh) {
           const objectName = object.name.toLowerCase();
 
+          const original = originalMaterials.current.get(object);
+          if (original) object.material = original.clone();
+  
           if (objectName.includes("caño") && selectedTextures.caño) {
             object.material.map = selectedTextures.caño;
-            object.material.needsUpdate = true; 
-          } else if (objectName.includes("tabla") && selectedTextures.tabla) {
-            object.material.map = selectedTextures.tabla;
-          } else {
-            object.material = originalMaterials.current.get(object)?.clone();
+  
+            const src = selectedTextures.caño.image?.src || "";
+  
+            if (src.includes("madera-blanca.jpg")) {
+              object.material.emissive = new THREE.Color(0xffffff);
+              object.material.emissiveIntensity = 0.3;
+              object.material.metalness = 0.8;
+              object.material.roughness = 0.6;
+            } else if (src.includes("black.webp")) {
+              object.material.emissive = new THREE.Color(0x000000);
+              object.material.emissiveIntensity = 0;
+              object.material.metalness = 0;
+              object.material.roughness = 1;
+            }
           }
-
+  
+          else if (objectName.includes("tabla") && selectedTextures.tabla) {
+            object.material.map = selectedTextures.tabla;
+          }
+  
           if (object.material.map) {
             object.material.map.wrapS = object.material.map.wrapT = THREE.RepeatWrapping;
             object.material.map.repeat.set(4, 4);
-            object.material.needsUpdate = true;
           }
+  
+          object.material.needsUpdate = true;
         }
       });
     }
   }, [scene, selectedTextures]);
+  
+  
 
   return <primitive object={scene} />;
 }
@@ -89,9 +109,6 @@ export default function App(language) {
   const [showingMeshes, setShowingMeshes] = useState([]);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const containerRef = useRef(null);
-
-  const tablaTextures = ["/textures/madera.jpg", "/textures/madera-blanca.jpg"];
-  const cañoTextures = ["/textures/madera.jpg", "/textures/madera-blanca.jpg"];
 
   const [selectedTextures, setSelectedTextures] = useState({
     tabla: null,
@@ -158,6 +175,12 @@ export default function App(language) {
 
   const [selectedMenu,setSelectedMenu] = useState("modules");
 
+  useEffect(() => {
+    handleTextureChange("tabla", "/textures/madera.jpg");
+    handleTextureChange("caño", "/textures/madera-blanca.jpg");
+  }, []);
+  
+
 
   return (
     <section className="w-full sm:min-h-[150vh] flex flex-col justify-start items-center rounded-lg gap-4 relative sm:px-12 sm:py-2 p-2"
@@ -174,15 +197,15 @@ export default function App(language) {
         }}
       >
         <ambientLight intensity={1} />
+        <directionalLight position={[-3, 5, -4]} intensity={.7} />
+        <directionalLight position={[3, 5, 10]} intensity={.4} />
+        <directionalLight position={[0, -10, 0]} intensity={.5} />
         <RackModel 
           showingMeshes={showingMeshes} 
           selectedTextures={selectedTextures} 
           onMeshesLoaded={(meshes) => console.log("Loaded Meshes:", meshes)} 
         />
         <OrbitControls enableZoom={true} enableRotate={true} />
-        <directionalLight position={[-3, 5, -4]} intensity={1.7} />
-        <directionalLight position={[3, 5, 10]} intensity={1} />
-        <directionalLight position={[0, -10, 0]} intensity={1} />
       </Canvas>
 
                 <section className="absolute flex flex-col items-center justify-center sm:top-4 sm:bottom-auto bottom-4 sm:right-7 gap-2">
@@ -229,23 +252,85 @@ export default function App(language) {
                   Tablas
                 </button>
                 <div className={`flex gap-2 ${selectedMenu === "tables" ? "block" : "hidden"}`}>
-                {tablaTextures.map((texture, index) => (
-                  <button key={index} onClick={() => handleTextureChange("tabla", texture)} className="flex flex-col items-center justify-center">
-                  <h1 className={`${selectedTextures.tabla === texture ? "block" : "hidden"}`}>"Hola"</h1>
-                  <img src={texture} alt={`tabla-${index}`} className="w-12 h-12 rounded-full border-2" />
-                </button>
-                ))}
+                  <button
+                    onClick={() => handleTextureChange("tabla", "/textures/madera.jpg")}
+                    className="flex flex-col items-center justify-center"
+                  >
+                    <img
+                      src="/textures/madera.jpg"
+                      alt="tabla-madera"
+                      className={`w-12 h-12 rounded-full border-4 ${
+                        selectedTextures.tabla?.image?.src?.includes("madera.jpg")
+                          ? "border-lightblue"
+                          : "border-transparent"
+                      }`}
+                    />
+                  </button>
+
+                  <button
+                    onClick={() => handleTextureChange("tabla", "/textures/madera-blanca.jpg")}
+                    className="flex flex-col items-center justify-center"
+                  >
+                    <img
+                      src="/textures/madera-blanca.jpg"
+                      alt="tabla-madera-blanca"
+                      className={`w-12 h-12 rounded-full border-4 ${
+                        selectedTextures.tabla?.image?.src?.includes("madera-blanca.jpg")
+                          ? "border-lightblue"
+                          : "border-transparent"
+                      }`}
+                    />
+                  </button>
+                  <button
+                    onClick={() => handleTextureChange("tabla", "/textures/rock.webp")}
+                    className="flex flex-col items-center justify-center"
+                  >
+                    <img
+                      src="/textures/rock.webp"
+                      alt="tabla-piedra"
+                      className={`w-12 h-12 rounded-full border-4 ${
+                        selectedTextures.tabla?.image?.src?.includes("rock.webp")
+                          ? "border-lightblue"
+                          : "border-transparent"
+                      }`}
+                    />
+                  </button>
                 </div>
+
 
                 <button className={"" + selectedMenu === "caño" ? "font-bold underline" : ""} onClick={() => setSelectedMenu("caño")}>
                   Caños
                 </button>
                 <div className={`flex gap-2 ${selectedMenu === "caño" ? "block" : "hidden"}`}>
-                {cañoTextures.map((texture, index) => (
-                  <button key={index} onClick={() => handleTextureChange("caño", texture)}>
-                    <img src={texture} alt={`caño-${index}`} className="w-12 h-12 rounded-full border-2" />
+                  <button
+                    onClick={() => handleTextureChange("caño", "/black.webp")}
+                    className="flex flex-col items-center justify-center"
+                  >
+                    <img
+                      src="/black.webp"
+                      alt="tabla-madera"
+                      className={`w-12 h-12 rounded-full border-4 ${
+                        selectedTextures.caño?.image?.src?.includes("black.webp")
+                          ? "border-lightblue"
+                          : "border-transparent"
+                      }`}
+                    />
                   </button>
-                ))}
+
+                  <button
+                    onClick={() => handleTextureChange("caño", "/textures/madera-blanca.jpg")}
+                    className="flex flex-col items-center justify-center"
+                  >
+                    <img
+                      src="/textures/madera-blanca.jpg"
+                      alt="tabla-madera-blanca"
+                      className={`w-12 h-12 rounded-full border-4 ${
+                        selectedTextures.caño?.image?.src?.includes("madera-blanca.jpg")
+                          ? "border-lightblue"
+                          : "border-transparent"
+                      }`}
+                    />
+                  </button>
                 </div>
       
     </section>

@@ -112,10 +112,10 @@ function CaseStudiePage() {
       
       media: [
         "headphones/uno.mp4",
-        "headphones/dos.png",
-        "headphones/tres.jpg",
-        "headphones/cuatro.png",
-        "headphones/cinco.png",
+        "headphones/dos.webp",
+        "headphones/tres.webp",
+        "headphones/cuatro.webp",
+        "headphones/cinco.webp",
       ]
     },
     {

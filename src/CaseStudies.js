@@ -58,7 +58,7 @@ function CaseStudies() {
 
             <div className='flex flex-col items-center justify-center' data-aos="fade-up" data-aos-delay="400">
                 <Link to={`/case-study?case=Rack`} className='sm:w-[200px] w-44 hover:scale-105 transition-all ease-in-out aspect-square rounded-2xl'>
-                    <img className='w-full h-full object-cover rounded-2xl aspect-square' src='rack/dos.jpg' alt="Strix" />
+                    <img className='w-full h-full object-cover rounded-2xl aspect-square' src='rack/dos.webp' alt="Rack" />
                 </Link>
                 <a className='text-black underline mt-2 hover:scale-105 transition duration-150' href="/case-study?case=Strix">
                     {translate('seeMore', language)}
