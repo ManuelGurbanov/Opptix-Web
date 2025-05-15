@@ -45,7 +45,7 @@ export default function OurServicesBento() {
                     <h2 className="sm:text-xl text-lg font-light">{translate("servicesSub", language)}</h2>
                 </div>
                 <a href="/services/0" className="sm:relative absolute right-2 top-0 flex items-center sm:justify-center justify-between sm:w-56 w-32 px-4 sm:text-lg text-[7px] py-2 text-white bg-black rounded-3xl hover:scale-105 transition">
-                    <p className='w-full'>
+                    <p className='w-full text-xs sm:text-xl'>
                         {translate("explore", language)}
                     </p>
                     <div className="flex items-center justify-center h-4 -rotate-45 sm:w-9 w-4">
@@ -59,7 +59,7 @@ export default function OurServicesBento() {
                 <div key={num} className={`container item${num}`}>
                     {/* Configuradores 3D */}
                     <a className="box box1 rounded-[48px] relative flex flex-col justify-between h-full bg-black overflow-hidden p-7" href='/services/0'>
-                        <div className='w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10' alt="Configuradores">
+                        <div className='rounded-[48px] w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10' alt="Configuradores">
                         </div>
                         <img className='w-full h-full object-cover absolute top-0 right-0' src={configuratorsImages[num-1]} alt="Configuradores">
                         </img>
@@ -74,7 +74,7 @@ export default function OurServicesBento() {
 
                     {/* Render Estático */}
                     <a className="box box4 p-7 rounded-[48px] relative flex flex-col justify-between h-full bg-gray-800" href='/services/3'>
-                        <div className='w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10 rounded-[48px]' alt="Renders">
+                        <div className='rounded-[48px] w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10 rounded-[48px]' alt="Renders">
                         </div>
                         <img className='w-full h-full object-cover absolute top-0 right-0 rounded-[48px]' src={rendersImages[num-1]} alt="Render">
                         </img>
@@ -89,7 +89,7 @@ export default function OurServicesBento() {
 
                     {/* Animaciones 3D */}
                     <a className="box box3 rounded-[48px] relative flex flex-col justify-between h-full bg-black overflow-hidden p-7" href='/services/1'>
-                        <div className='w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10' alt="Animación">
+                        <div className='rounded-[48px] w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10' alt="Animación">
                         </div>
                         <img className='w-full h-full object-cover absolute top-0 right-0 rounded-[48px]' src={animationsVideos[num-1]} alt="Render">
                         </img>
@@ -104,7 +104,7 @@ export default function OurServicesBento() {
 
                     {/* Realidad Virtual */}
                     <a className="box box2 rounded-[48px] relative flex flex-col justify-start h-full overflow-hidden p-7" href='/services/2'>
-                        <div className='w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10' alt="AR">
+                        <div className='rounded-[48px] w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10' alt="AR">
                         </div>
                         <a className="absolute flex items-center justify-center h-6 w-7 bg-white rounded-full top-5 right-5 hover:scale-105 z-40">
                             <RightArrow color="#000000" />
@@ -128,7 +128,7 @@ export default function OurServicesBento() {
             <div className="containerResponsive ml-4 mb-3">
                     {/* Configuradores 3D */}
                     <a className="box box1 rounded-[48px] relative flex flex-col justify-between h-full bg-black overflow-hidden p-7" href='/services/0'>
-                        <div className='w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10' alt="Configuradores">
+                        <div className='rounded-[48px] w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10' alt="Configuradores">
                         </div>
                         <img className='w-full h-full object-cover absolute top-0 right-0' src={configuratorsImages[0]} alt="Configuradores">
                         </img>
@@ -143,7 +143,7 @@ export default function OurServicesBento() {
 
                     {/* Render Estático */}
                     <a className="box box4 p-7 rounded-[48px] relative flex flex-col justify-between h-full bg-gray-800" href='/services/3'>
-                        <div className='w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10 rounded-[48px]' alt="Renders">
+                        <div className='rounded-[48px] w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10 rounded-[48px]' alt="Renders">
                         </div>
                         <img className='w-full h-full object-cover absolute top-0 right-0 rounded-[48px]' src={rendersImages[0]} alt="Render">
                         </img>
@@ -158,7 +158,7 @@ export default function OurServicesBento() {
 
                     {/* Animaciones 3D */}
                     <a className="box box3 rounded-[48px] relative flex flex-col justify-between h-full bg-black overflow-hidden p-7" href='/services/1'>
-                        <div className='w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10' alt="Animación">
+                        <div className='rounded-[48px] w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10' alt="Animación">
                         </div>
                         <img className='w-full h-full object-cover absolute top-0 right-0 rounded-[48px]' src={animationsVideos[0]} alt="Render">
                         </img>
@@ -173,7 +173,7 @@ export default function OurServicesBento() {
 
                     {/* Realidad Virtual */}
                     <a className="box box2 rounded-[48px] relative flex flex-col justify-start h-full overflow-hidden p-7" href='/services/2'>
-                        <div className='w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10' alt="AR">
+                        <div className='rounded-[48px] w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10' alt="AR">
                         </div>
                         <a className="absolute flex items-center justify-center h-6 w-7 bg-white rounded-full top-5 right-5 hover:scale-105 z-40">
                             <RightArrow color="#000000" />
@@ -194,7 +194,7 @@ export default function OurServicesBento() {
             <div className="containerResponsive mr-4 mb-3">
                     {/* Configuradores 3D */}
                     <a className="box box1 rounded-[48px] relative flex flex-col justify-between h-full bg-black overflow-hidden p-7" href='/services/0'>
-                        <div className='w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10' alt="Configuradores">
+                        <div className='rounded-[48px] w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10' alt="Configuradores">
                         </div>
                         <img className='w-full h-full object-cover absolute top-0 right-0' src={configuratorsImages[1]} alt="Configuradores">
                         </img>
@@ -224,7 +224,7 @@ export default function OurServicesBento() {
 
                     {/* Animaciones 3D */}
                     <a className="box box3 rounded-[48px] relative flex flex-col justify-between h-full bg-black overflow-hidden p-7" href='/services/1'>
-                        <div className='w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10' alt="Animación">
+                        <div className='rounded-[48px] w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10' alt="Animación">
                         </div>
                         <img className='w-full h-full object-cover absolute top-0 right-0 rounded-[48px]' src={animationsVideos[1]} alt="Render">
                         </img>
@@ -239,7 +239,7 @@ export default function OurServicesBento() {
 
                     {/* Realidad Virtual */}
                     <a className="box box2 rounded-[48px] relative flex flex-col justify-start h-full overflow-hidden p-7" href='/services/2'>
-                        <div className='w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10' alt="AR">
+                        <div className='rounded-[48px] w-full h-full absolute top-0 right-0 bg-black bg-opacity-40 z-10' alt="AR">
                         </div>
                         <a className="absolute flex items-center justify-center h-6 w-7 bg-white rounded-full top-5 right-5 hover:scale-105 z-40">
                             <RightArrow color="#000000" />

@@ -74,7 +74,7 @@ function RackModel({ showingMeshes, onMeshesLoaded, selectedTextures }) {
             if (src.includes("madera-blanca.jpg")) {
               object.material.emissive = new THREE.Color(0xffffff);
               object.material.emissiveIntensity = 0.3;
-              object.material.metalness = 0.8;
+              object.material.metalness = 1;
               object.material.roughness = 0.6;
             } else if (src.includes("black.webp")) {
               object.material.emissive = new THREE.Color(0x000000);
@@ -196,7 +196,7 @@ export default function App(language) {
           backgroundColor: "white",
         }}
       >
-        <ambientLight intensity={1} />
+        <ambientLight intensity={.5} />
         <directionalLight position={[-3, 5, -4]} intensity={.7} />
         <directionalLight position={[3, 5, 10]} intensity={.4} />
         <directionalLight position={[0, -10, 0]} intensity={.5} />
