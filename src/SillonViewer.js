@@ -436,7 +436,7 @@ const SillonViewer = ({language}) => {
                     <button
                     key={texture}
                     onClick={() => handleTextureChange(selectingGroup, texture)}
-                    className={`ring-[2px] rounded-full flex items-center justify-center sm:h-12 sm:w-auto sm:min-w-12 w-4 h-4 ${
+                    className={`ring-[2px] rounded-full flex items-center justify-center sm:h-12 sm:w-auto sm:min-w-12 w-8 h-8 ${
                       groupTextures[selectingGroup] === texture
                         ? "ring-gray-300 sm:min-w-32 justify-end"
                         : "ring-gray-300"
@@ -457,7 +457,7 @@ const SillonViewer = ({language}) => {
                     <img
                       src={`/textures/${texture}.jpg`}
                       alt={texture}
-                      className={`object-cover sm:w-12 sm:h-12 w-4 h-4 rounded-full ${
+                      className={`object-cover sm:w-12 sm:h-12 w-8 h-8 rounded-full ${
                         groupTextures[selectingGroup] === texture ? "justify-end sm:p-1" : ""
                       }`}
                     />
@@ -471,7 +471,7 @@ const SillonViewer = ({language}) => {
                     <button
                     key={texture}
                     onClick={() => handleTextureChange(selectingGroup, texture)}
-                    className={`ring-[2px] rounded-full flex items-center justify-center sm:h-12 sm:w-auto sm:min-w-12 w-4 h-4 ${
+                    className={`ring-[2px] rounded-full flex items-center justify-center sm:h-12 sm:w-auto sm:min-w-12 w-8 h-8 ${
                       groupTextures[selectingGroup] === texture
                         ? "ring-gray-300 sm:min-w-32 justify-end"
                         : "ring-gray-300"
@@ -492,7 +492,7 @@ const SillonViewer = ({language}) => {
                     <img
                       src={`/textures/${texture}.jpg`}
                       alt={texture}
-                      className={`object-cover sm:w-12 sm:h-12 w-4 h-4 rounded-full ${
+                      className={`object-cover sm:w-12 sm:h-12 w-8 h-8 rounded-full ${
                         groupTextures[selectingGroup] === texture ? "justify-end sm:p-1" : ""
                       }`}
                     />

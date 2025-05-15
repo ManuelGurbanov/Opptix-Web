@@ -63,6 +63,7 @@
   grid-area: box1;
   background-size: cover;
   max-width: 293px + 10px;
+  min-width: 200px;
 }
 
 
@@ -72,11 +73,13 @@
   url('../public/endless/endlessFirst.webp') no-repeat center center;
   background-size: cover;
   max-width: 250px + 10px;
+  min-width: 200px;
 }
 
 .box3 {
   grid-area: box3;
   max-width: 293px + 10px;
+  min-width: 200px;
 }
 
 .video-bg {
@@ -92,6 +95,7 @@
 .box4 {
   grid-area: box4;
   max-width: 250px;
+  min-width: 200px;
 }
 
 .wrapper {
