@@ -73,13 +73,13 @@ function RackModel({ showingMeshes, onMeshesLoaded, selectedTextures }) {
   
             if (src.includes("madera-blanca.jpg")) {
               object.material.emissive = new THREE.Color(0xffffff);
-              object.material.emissiveIntensity = 0.3;
+              object.material.emissiveIntensity = 0.2;
               object.material.metalness = 1;
-              object.material.roughness = 0.6;
+              object.material.roughness = 0.2;
             } else if (src.includes("black.webp")) {
               object.material.emissive = new THREE.Color(0x000000);
               object.material.emissiveIntensity = 0;
-              object.material.metalness = 0;
+              object.material.metalness = 1;
               object.material.roughness = 1;
             }
           }
