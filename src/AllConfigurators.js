@@ -48,7 +48,7 @@ export default function AllConfigurators({language, setContact}) {
         <>
         <section className='w-full min-h-[150vh] flex flex-col justify-start items-center rounded-lg gap-4 relative sm:px-12 sm:py-2 p-2 mt-2'>
             <header className="flex sm:flex-row flex-col items-center justify-between w-full gap-4">
-                <div className="flex flex-col items-center justify-start sm:w-1/2 w-full gap-1">
+                <div className="flex flex-col items-center justify-start sm:w-1/2 w-full gap-1 mt-2">
                     <h1 className="sm:text-[60px] text-2xl text-left w-full sm:mb-3">{translate("configTittle", language)}</h1>
                     <p className='w-full font-light text-left'>
                         {translate("configuratorsDescription", language)}

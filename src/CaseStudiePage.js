@@ -523,44 +523,51 @@ function CaseStudiePage() {
 
       </div>
 
-      {modalOpen && (
-          <div
-            className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-80 z-50 p-8"
-            onClick={closeModal} // Solo cierra el modal si se hace click en el fondo
-          >
-            <div
-              className="max-w-[80vw] max-h-[80vh] flex flex-row items-center text-6xl font-semibold justify-center text-white"
-              onClick={(e) => e.stopPropagation()}
-            >
-                <button
-                  onClick={handlePrev}
-                  className="p-2 hover:scale-110 transition duration-75"
-                >
-                  &#60;
-                </button>
-              {isVideo ? (
-                <video
-                  src={selectedMedia}
-                  className="min-h-64 min-w-64 max-w-[75vw] max-h-[75vh] rounded-[48px]"
-                  autoPlay
-                  controls
-                />
-              ) : (
-                <img
-                  src={selectedMedia}
-                  className="min-h-64 min-w-64 max-w-[75vw] max-h-[75vh] rounded-[48px]"
-                />
-              )}
+{modalOpen && (
+  <div
+    className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-80 z-50 p-8"
+    onClick={closeModal} // Solo cierra el modal si se hace click en el fondo
+  >
+    <div
+      className="w-full h-full flex items-center justify-center relative"
+    >
+      {/* Botón izquierdo - posicionado absolutamente */}
+      <button
+        onClick={(e) => {e.stopPropagation();
+          handlePrev();
+        }}
+        className="absolute left-8 top-1/2 transform -translate-y-1/2 text-6xl font-semibold text-white p-4 hover:scale-110 transition duration-75"
+      >
+        &#60;
+      </button>
 
-                <button
-                  onClick={handleNext}
-                  className= "p-2 hover:scale-110 transition duration-75"
-                >
-                  &#62;
-                </button>
-            </div>
-          </div>
+      {/* Contenido central */}
+      {isVideo ? (
+        <video
+          src={selectedMedia}
+          className="min-h-64 min-w-64 max-w-[75vw] max-h-[75vh] rounded-[48px]"
+          autoPlay
+          controls
+        />
+      ) : (
+        <img
+          src={selectedMedia}
+          className="min-h-64 min-w-64 max-w-[75vw] max-h-[75vh] rounded-[48px]"
+        />
       )}
+
+      {/* Botón derecho - posicionado absolutamente */}
+      <button
+        onClick={(e) => {e.stopPropagation();
+          handleNext();
+        }}
+        className="absolute right-8 top-1/2 transform -translate-y-1/2 text-6xl font-semibold text-white p-4 hover:scale-110 transition duration-75"
+      >
+        &#62;
+      </button>
+    </div>
+  </div>
+)}
 
     </section>
   );
