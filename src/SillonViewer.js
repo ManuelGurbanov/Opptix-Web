@@ -149,12 +149,14 @@ const SillonModel = ({
   const group1 = ["sides-001", "cama-apoyabrazos"];
   const group2 = ["back-001", "cama-respaldo"];
   const group3 = ["pillow"];
+  const group4 = [...group0, ...group1, ...group2, ...group3];
   
   const groupMap = {
     group0: group0,
     group1: group1,
     group2: group2,
     group3: group3,
+    group4: group4,
   };
 
   
@@ -176,30 +178,32 @@ const SillonModel = ({
   }, [scene]);
 
 
-  useEffect(() => {
-    if (scene && originalMaterials.size > 0) {
-      scene.traverse((object) => {
-        if (
-          object.isMesh &&
-          groupMap[selectingGroup]?.some((name) => object.name.toLowerCase().includes(name.toLowerCase()))
-        ) {
-          const currentTexture = groupTextures[selectingGroup];
-          if (currentTexture) {
-            const material = object.material;
-            material.map = currentTexture === "test" ? testTexture : textures[currentTexture];
-            material.map.wrapS = material.map.wrapT = THREE.RepeatWrapping;
-            material.needsUpdate = true;
+useEffect(() => {
+  if (scene && originalMaterials.size > 0) {
+    scene.traverse((object) => {
+      if (object.isMesh) {
+        // Revisar todos los grupos para ver si este objeto pertenece a alguno
+        Object.keys(groupMap).forEach((group) => {
+          if (group !== "group4" && groupMap[group]?.some((name) => object.name.toLowerCase().includes(name.toLowerCase()))) {
+            const currentTexture = groupTextures[group];
+            if (currentTexture) {
+              const material = object.material;
+              material.map = currentTexture === "test" ? testTexture : textures[currentTexture];
+              material.map.wrapS = material.map.wrapT = THREE.RepeatWrapping;
+              material.needsUpdate = true;
 
-            const newTexture = currentTexture === "test" ? testTexture : textures[currentTexture];
-            newTexture.wrapS = newTexture.wrapT = THREE.RepeatWrapping;
-            newTexture.repeat.set(4, 4);
-          } else {
-            object.material = originalMaterials.get(object).clone();
+              const newTexture = currentTexture === "test" ? testTexture : textures[currentTexture];
+              newTexture.wrapS = newTexture.wrapT = THREE.RepeatWrapping;
+              newTexture.repeat.set(4, 4);
+            } else {
+              object.material = originalMaterials.get(object).clone();
+            }
           }
-        }
-      });
-    }
-  }, [groupTextures, scene, originalMaterials, selectingGroup]);
+        });
+      }
+    });
+  }
+}, [groupTextures, scene, originalMaterials]);
 
   useEffect(() => {
     if (scene) {
@@ -234,6 +238,7 @@ const SillonViewer = ({language}) => {
     group1: "sofa-00",
     group2: "sofa-00",
     group3: "sofa-00",
+    group4: "sofa-00",
   });
 
   const [selectingGroup, setSelectingGroup] = useState("group1");
@@ -246,10 +251,21 @@ const SillonViewer = ({language}) => {
   const handleModelLoad = () => setLoading(false);
 
   const handleTextureChange = (group, texture) => {
+      if (group === "group4") {
+      setGroupTextures((prevTextures) => ({
+        ...prevTextures,
+        group0: texture,
+        group1: texture,
+        group2: texture,
+        group3: texture,
+        group4: texture,
+      }));
+  } else {
     setGroupTextures((prevTextures) => ({
       ...prevTextures,
       [group]: texture,
     }));
+  }
   };
 
   const containerRef = useRef(null);
@@ -290,8 +306,8 @@ const SillonViewer = ({language}) => {
 
 
   const textureColors = {
-    "sofa-00": "White",
-    "sofa-01": "Light Gray",
+    "sofa-00": "Light Gray",
+    "sofa-01": "White",
     "sofa-02": "Dark Brown",
     "sofa-03": "Beige",
     "sofa-04": "Brown",
@@ -299,8 +315,8 @@ const SillonViewer = ({language}) => {
   };
   
   const textureColorsEs = {
-    "sofa-00": "Blanco",
-    "sofa-01": "Gris Claro",
+    "sofa-00": "Gris Claro",
+    "sofa-01": "Blanco",
     "sofa-02": "Marrón Oscuro",
     "sofa-03": "Beige",
     "sofa-04": "Marrón",
@@ -393,6 +409,14 @@ const SillonViewer = ({language}) => {
             </div>
 
               <div className="flex items-center justify-center gap-6 mt-4 sm:text-base text-xs">
+                <button
+                  onClick={() => setSelectingGroup("group4")}
+                  className={`px-4 py-2 ${
+                    selectingGroup === "group4" ? "font-bold" : "font-normal"
+                  } hover:scale-105 transition-all`}
+                >
+                  {language === "en" ? "Full Color" : "Full Color"}  
+                </button>
                 <button
                   onClick={() => setSelectingGroup("group0")}
                   className={`px-4 py-2 ${

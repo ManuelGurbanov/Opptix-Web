@@ -13,23 +13,11 @@ import Services from './Services';
 import ModelLink from './Model';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import AllConfigurators from './AllConfigurators';
 import UploaderViewer from './UploaderViewer';
 import { translate } from './Translations';
 
 import OurServicesBento from './OurServicesBento';
 import UploaderThree from './UploaderThree';
-import ContractButton from './ContractButton';
-
-import ArService from './ArService';
-import ContactForm from './ContactForm';
-
-import ECommerceViewer from './ECommerceViewer';
-
-import DataBlock from './DataBlock';
-import Animations from './Animations';
-import StaticRenders from './StaticRenders';
-
 import { ContactProvider } from "./ContactContext";
 
 import Demostration from './Demostration';
@@ -50,8 +38,7 @@ function Layout({ children }) {
 }
 
 function App() {
-  const [language, setLanguage] = useState('en');
-  const [showAccesory, setShowAccesory] = useState(false);
+  const [language, setLanguage] = useState('es');
 
   useEffect(() => {
     AOS.init();
