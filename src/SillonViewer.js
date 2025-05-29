@@ -70,7 +70,7 @@ const SillonModel = ({
         animationStepRef.current = 1;
         setAnimationStep(1);
         isPlaying = false;
-      }, 2000);
+      }, 2400);
   
     } else if (currentStep === 1) {
       console.log("Resuming animation from", pausedAtTime, "to end");
@@ -93,7 +93,7 @@ const SillonModel = ({
         isPlaying = false;
   
         console.log("Animation reset after second part.");
-      }, 2000);
+      }, 2400);
     }
   };
   
