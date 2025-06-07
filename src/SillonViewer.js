@@ -408,7 +408,7 @@ const SillonViewer = ({language}) => {
             
             </div>
 
-              <div className="flex items-center justify-center gap-6 mt-4 sm:text-base text-xs">
+              <div className="sm:flex grid grid-cols-3 items-center justify-center gap-6 mt-4 sm:text-base text-xs">
                 <button
                   onClick={() => setSelectingGroup("group4")}
                   className={`px-4 py-2 ${

@@ -323,7 +323,7 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
             </button>
 
             )}
-          <section className="flex flex-row items-center justify-center w-full gap-0 overflow-x-auto whitespace-nowrap sm:text-base text-[10px]">
+          <section className="sm:flex grid grid-cols-4 flex-row items-center justify-center w-full gap-0 overflow-x-auto whitespace-nowrap sm:text-base text-[10px]">
             {Object.keys(variantsByGroup).map((group) => (
               <button
                 key={group}
