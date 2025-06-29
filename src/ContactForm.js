@@ -1,10 +1,14 @@
 import { translate } from "./Translations";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import CalendlyScheduler from "./Calendly";
 
-export default function ContactForm({ language, setContact }) {
+import { useLanguage } from './LanguageContext';
+
+export default function ContactForm({ setContact }) {
   const [result, setResult] = useState(false);
   const [view, setView] = useState("form");
+
+  const { language } = useLanguage();
 
   const onSubmit = async (event) => {
     event.preventDefault();

@@ -138,8 +138,8 @@ function App() {
   const packNames = packs.map(packsItem => packsItem.title);
 
   return (
-    <ContactProvider>
       <LanguageProvider>
+    <ContactProvider>
         <Router>
           <Layout>
             <Routes>
@@ -169,8 +169,8 @@ function App() {
             </Routes>
           </Layout>
         </Router>
-      </LanguageProvider>
     </ContactProvider>
+      </LanguageProvider>
   );
 }
 

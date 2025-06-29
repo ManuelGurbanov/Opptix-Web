@@ -77,10 +77,10 @@ function Packs({ packs }) {
                             ))}
                         </div>
 
-                        <div className='flex flex-col items-center justify-center w-full mt-3 mb-6'>
+                        {/* <div className='flex flex-col items-center justify-center w-full mt-3 mb-6'>
                             <span className='w-full text-3xl font-bold text-left' data-aos="fade-up">{pack.price}</span>
                             <span className='w-full text-xs font-light text-left' data-aos="fade-up">{pack.subPrice}</span>
-                        </div>
+                        </div> */}
 
                         <footer className='sm:absolute flex flex-row items-center justify-center w-full gap-4 px-4 text-white bottom-6'>
                             <button onClick={() => showContactForm()} className={"w-full p-2 mb-2 text-sm transition-all duration-75 ease-in-out rounded-full sm:p-3 hover:scale-105 " + (pack.id === 0 ? "bg-white hover:bg-zinc-400 text-black" : "bg-black hover:bg-zinc-700 text-white")} >
