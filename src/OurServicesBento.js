@@ -67,7 +67,7 @@ export default function OurServicesBento() {
                             <RightArrow color="#000000" />
                         </a>
                         <div className="flex flex-col justify-end flex-grow gap-2 z-10 w-full">
-                            <h1 className="text-2xl">{translate("configTittle", language)}</h1>
+                            <h1 className="text-base sm:text-2xl">{translate("configTittle", language)}</h1>
                             <p className="text-xs font-light">{translate("configuratorsDescription", language)}</p>
                         </div>
                     </a>
@@ -82,7 +82,7 @@ export default function OurServicesBento() {
                             <RightArrow color="#000000" />
                         </a>
                         <div className="flex flex-col justify-end flex-grow gap-2 w-full z-10">
-                            <h1 className="text-2xl">{translate("staticRenderTittle", language)}</h1>
+                            <h1 className="text-base sm:text-2xl">{translate("staticRenderTittle", language)}</h1>
                             <p className="text-xs">{translate("rendersDescription", language)}</p>
                         </div>
                     </a>
@@ -97,7 +97,7 @@ export default function OurServicesBento() {
                             <RightArrow color="#000000" />
                         </a>
                         <div className="flex flex-col justify-end flex-grow gap-2 z-10 w-full">
-                            <h1 className="text-2xl">{translate("marketingTittle", language)}</h1>
+                            <h1 className="text-base sm:text-2xl">{translate("marketingTittle", language)}</h1>
                             <p className="text-xs">{translate("marketingText", language)}</p>
                         </div>
                     </a>
@@ -112,7 +112,7 @@ export default function OurServicesBento() {
                         <img className='w-full h-full object-cover absolute top-0 right-0 rounded-[48px]' src={arImages[num-1]} alt="AR">
                         </img>
                         <div className="flex flex-col justify-end flex-grow gap-1 w-full z-10">
-                            <h1 className="text-xl text-white">{translate("arTittle", language)}</h1>
+                            <h1 className="text-base sm:text-xl text-white">{translate("arTittle", language)}</h1>
                             <p className="text-xs text-white">{translate("arDescription", language)}</p>
                         </div>
                         {/* <div className="flex items-center justify-center gap-4 w-28 h-14">
@@ -136,7 +136,7 @@ export default function OurServicesBento() {
                             <RightArrow color="#000000" />
                         </a>
                         <div className="flex flex-col justify-end flex-grow gap-2 z-10 w-full">
-                            <h1 className="text-2xl">{translate("configTittle", language)}</h1>
+                            <h1 className="text-base sm:text-2xl">{translate("configTittle", language)}</h1>
                             <p className="text-xs font-light">{translate("configuratorsDescription", language)}</p>
                         </div>
                     </a>
@@ -151,7 +151,7 @@ export default function OurServicesBento() {
                             <RightArrow color="#000000" />
                         </a>
                         <div className="flex flex-col justify-end flex-grow gap-2 w-full z-10">
-                            <h1 className="text-2xl">{translate("staticRenderTittle", language)}</h1>
+                            <h1 className="text-base sm:text-2xl">{translate("staticRenderTittle", language)}</h1>
                             <p className="text-xs">{translate("rendersDescription", language)}</p>
                         </div>
                     </a>
@@ -166,7 +166,7 @@ export default function OurServicesBento() {
                             <RightArrow color="#000000" />
                         </a>
                         <div className="flex flex-col justify-end flex-grow gap-2 z-10 w-full">
-                            <h1 className="text-2xl">{translate("marketingTittle", language)}</h1>
+                            <h1 className="text-base sm:text-2xl">{translate("marketingTittle", language)}</h1>
                             <p className="text-xs">{translate("marketingText", language)}</p>
                         </div>
                     </a>
@@ -181,7 +181,7 @@ export default function OurServicesBento() {
                         <img className='w-full h-full object-cover absolute top-0 right-0 rounded-[48px]' src={arImages[0]} alt="AR">
                         </img>
                         <div className="flex flex-col justify-end flex-grow gap-1 w-full z-10">
-                            <h1 className="text-xl text-white">{translate("arTittle", language)}</h1>
+                            <h1 className="text-base sm:text-xl text-white">{translate("arTittle", language)}</h1>
                             <p className="text-xs text-white">{translate("arDescription", language)}</p>
                         </div>
                         {/* <div className="flex items-center justify-center gap-4 w-28 h-14">
@@ -202,7 +202,7 @@ export default function OurServicesBento() {
                             <RightArrow color="#000000" />
                         </a>
                         <div className="flex flex-col justify-end flex-grow gap-2 z-10 w-full">
-                            <h1 className="text-2xl">{translate("configTittle", language)}</h1>
+                            <h1 className="text-base sm:text-2xl">{translate("configTittle", language)}</h1>
                             <p className="text-xs font-light">{translate("configuratorsDescription", language)}</p>
                         </div>
                     </a>
@@ -217,7 +217,7 @@ export default function OurServicesBento() {
                             <RightArrow color="#000000" />
                         </a>
                         <div className="flex flex-col justify-end flex-grow gap-2 w-full z-10">
-                            <h1 className="text-2xl">{translate("staticRenderTittle", language)}</h1>
+                            <h1 className="text-base sm:text-2xl">{translate("staticRenderTittle", language)}</h1>
                             <p className="text-xs">{translate("rendersDescription", language)}</p>
                         </div>
                     </a>
@@ -232,7 +232,7 @@ export default function OurServicesBento() {
                             <RightArrow color="#000000" />
                         </a>
                         <div className="flex flex-col justify-end flex-grow gap-2 z-10 w-full">
-                            <h1 className="text-2xl">{translate("marketingTittle", language)}</h1>
+                            <h1 className="text-base sm:text-2xl">{translate("marketingTittle", language)}</h1>
                             <p className="text-xs">{translate("marketingText", language)}</p>
                         </div>
                     </a>
@@ -247,7 +247,7 @@ export default function OurServicesBento() {
                         <img className='w-full h-full object-cover absolute top-0 right-0 rounded-[48px]' src={arImages[1]} alt="AR">
                         </img>
                         <div className="flex flex-col justify-end flex-grow gap-1 w-full z-10">
-                            <h1 className="text-xl text-white">{translate("arTittle", language)}</h1>
+                            <h1 className="text-base sm:text-xl text-white">{translate("arTittle", language)}</h1>
                             <p className="text-xs text-white">{translate("arDescription", language)}</p>
                         </div>
                         {/* <div className="flex items-center justify-center gap-4 w-28 h-14">

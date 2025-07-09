@@ -482,7 +482,7 @@ const SillonViewer = ({language}) => {
                       src={`/textures/${texture}.jpg`}
                       alt={texture}
                       className={`object-cover sm:w-12 sm:h-12 w-8 h-8 rounded-full ${
-                        groupTextures[selectingGroup] === texture ? "justify-end sm:p-1" : ""
+                        groupTextures[selectingGroup] === texture ? "justify-end sm:p-1 ring-2" : ""
                       }`}
                     />
                   </button>
@@ -517,7 +517,7 @@ const SillonViewer = ({language}) => {
                       src={`/textures/${texture}.jpg`}
                       alt={texture}
                       className={`object-cover sm:w-12 sm:h-12 w-8 h-8 rounded-full ${
-                        groupTextures[selectingGroup] === texture ? "justify-end sm:p-1" : ""
+                        groupTextures[selectingGroup] === texture ? "justify-end sm:p-1 ring-2" : ""
                       }`}
                     />
                   </button>
