@@ -408,45 +408,50 @@ const SillonViewer = ({language}) => {
             
             </div>
 
-              <div className="sm:flex grid grid-cols-3 items-center justify-center gap-6 mt-4 sm:text-base text-xs">
+              <div className="sm:flex grid grid-cols-3 items-center justify-center gap-6 mt-4 sm:text-base text-xs text-nowrap">
                 <button
                   onClick={() => setSelectingGroup("group4")}
                   className={`px-4 py-2 ${
-                    selectingGroup === "group4" ? "font-bold" : "font-normal"
+                    selectingGroup === "group4" ? "font-black underline" : "font-normal"
                   } hover:scale-105 transition-all`}
                 >
+                  {selectingGroup === "group4" && <span className="font-normal">• </span>}
                   {language === "en" ? "Full Color" : "Full Color"}  
                 </button>
                 <button
                   onClick={() => setSelectingGroup("group0")}
                   className={`px-4 py-2 ${
-                    selectingGroup === "group0" ? "font-bold" : "font-normal"
+                    selectingGroup === "group0" ? "font-black underline" : "font-normal"
                   } hover:scale-105 transition-all`}
                 >
+                  {selectingGroup === "group0" && <span className="font-normal">• </span>}
                  {language === "en" ? "Seats" : "Asientos"}
                 </button>
                 <button
                   onClick={() => setSelectingGroup("group1")}
                   className={`px-4 py-2 ${
-                    selectingGroup === "group1" ? "font-bold" : "font-normal"
+                    selectingGroup === "group1" ? "font-black underline" : "font-normal"
                   } hover:scale-105 transition-all`}
                 >
+                  {selectingGroup === "group1" && <span className="font-normal">• </span>}
                   {language === "en" ? "Sides" : "Costados"}
                 </button>
                 <button
                   onClick={() => setSelectingGroup("group2")}
                   className={`px-4 py-2 ${
-                    selectingGroup === "group2" ? "font-bold" : "font-normal"
+                    selectingGroup === "group2" ? "font-black underline" : "font-normal"
                   } hover:scale-105 transition-all`}
                 >
+                  {selectingGroup === "group2" && <span className="font-normal">• </span>}
                   {language === "en" ? "Back" : "Respaldo"} 
                 </button>
                 <button
                   onClick={() => setSelectingGroup("group3")}
                   className={`px-4 py-2 ${
-                    selectingGroup === "group3" ? "font-bold" : "font-normal"
+                    selectingGroup === "group3" ? "font-black underline" : "font-normal"
                   } hover:scale-105 transition-all`}
                 >
+                  {selectingGroup === "group3" && <span className="font-normal">• </span>}
                   {language === "en" ? "Pillows" : "Almohadones"}  
                 </button>
               </div>
@@ -455,8 +460,8 @@ const SillonViewer = ({language}) => {
 
               <div className="flex flex-col sm:flex-row items-center gap-6 mt-4">
                 {/* Primera fila con 4 elementos */}
-                <div className="grid grid-cols-4 gap-6 justify-center sm:flex">
-                  {textureNames.slice(0,4).map((texture) => (
+                <div className="grid grid-cols-3 gap-6 justify-center sm:flex">
+                  {textureNames.slice(0,3).map((texture) => (
                     <button
                     key={texture}
                     onClick={() => handleTextureChange(selectingGroup, texture)}
@@ -482,7 +487,7 @@ const SillonViewer = ({language}) => {
                       src={`/textures/${texture}.jpg`}
                       alt={texture}
                       className={`object-cover sm:w-12 sm:h-12 w-8 h-8 rounded-full ${
-                        groupTextures[selectingGroup] === texture ? "justify-end sm:p-1 ring-2 sm:ring-0" : ""
+                        groupTextures[selectingGroup] === texture ? "justify-end sm:p-1 ring-4 sm:ring-0" : ""
                       }`}
                     />
                   </button>
@@ -491,7 +496,7 @@ const SillonViewer = ({language}) => {
 
                 {/* Segunda fila con 3 elementos, centrada */}
                 <div className="grid grid-cols-3 gap-6 justify-center sm:flex">
-                  {textureNames.slice(4).map((texture) => (
+                  {textureNames.slice(3,6).map((texture) => (
                     <button
                     key={texture}
                     onClick={() => handleTextureChange(selectingGroup, texture)}
@@ -517,7 +522,7 @@ const SillonViewer = ({language}) => {
                       src={`/textures/${texture}.jpg`}
                       alt={texture}
                       className={`object-cover sm:w-12 sm:h-12 w-8 h-8 rounded-full ${
-                        groupTextures[selectingGroup] === texture ? "justify-end sm:p-1 ring-2 sm:ring-0" : ""
+                        groupTextures[selectingGroup] === texture ? "justify-end sm:p-1 ring-4 sm:ring-0" : ""
                       }`}
                     />
                   </button>
