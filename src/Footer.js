@@ -62,9 +62,9 @@ const [result, setResult] = React.useState(false);
           <Link target="_blank" rel="noopener noreferrer" className="rounded-full bg-black text-white p-2 hover:bg-zinc-800 hover:scale-105 transition-all duration-75" to="https://www.linkedin.com/company/opptix/posts/?feedView=all">
             <LinkedinIcon/>
           </Link>
-          {/* <button className="rounded-full bg-black text-white p-2 hover:bg-zinc-800 hover:scale-105 transition-all duration-75">
+          <Link to="https://www.instagram.com/opptix.ar/" className="rounded-full bg-black text-white p-2 hover:bg-zinc-800 hover:scale-105 transition-all duration-75">
             <InstagramIcon/>
-          </button> */}
+          </Link>
         </div>
       </div>
 

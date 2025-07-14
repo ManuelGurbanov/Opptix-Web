@@ -48,9 +48,9 @@ function Packs({ packs }) {
                             {contact ? <ContactForm language={language} setContact={setContact}/> : null}
                         </div>
 
-                        <p className='text-sm sm:text-[16px] my-2 w-full text-left italic font-light' data-aos="fade-up">{pack.description}</p>
+                        <p className='text-sm sm:text-[16px] my-2 w-full text-left italic font-normal' data-aos="fade-up">{pack.description}</p>
 
-                        <ul className="list-disc pl-5 text-left font-extralight w-full mb-3 text-sm sm:text-[17.43px]" data-aos="fade-up">
+                        <ul className="list-disc pl-5 text-left font-light w-full mb-3 text-sm sm:text-[17.43px]" data-aos="fade-up">
                             {translate(`pack${pack.id + 1}ResultsTittles`, language).map((title, index) => (
                                 <li key={index} data-aos="fade-right">
                                     <span className="font-bold">{title}</span> {translate(`pack${pack.id + 1}Results`, language)[index]}
