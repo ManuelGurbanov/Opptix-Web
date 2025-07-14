@@ -322,6 +322,14 @@ const SillonViewer = ({language}) => {
     "sofa-04": "Marrón",
     "sofa-05": "Gris",
   };
+
+  const groupButtons = [
+    { id: "group4", labelEn: "Full Color", labelEs: "Full Color" },
+    { id: "group0", labelEn: "Seats", labelEs: "Asientos" },
+    { id: "group1", labelEn: "Sides", labelEs: "Costados" },
+    { id: "group2", labelEn: "Back", labelEs: "Respaldo" },
+    { id: "group3", labelEn: "Pillows", labelEs: "Almohadones" }
+  ];
   
   
 
@@ -408,53 +416,20 @@ const SillonViewer = ({language}) => {
             
             </div>
 
-              <div className="sm:flex grid grid-cols-3 items-center justify-center gap-6 mt-4 sm:text-base text-xs text-nowrap">
+            <div className="sm:flex grid grid-cols-3 items-center justify-center gap-6 mt-4 sm:text-base text-base text-nowrap">
+              {groupButtons.map((group) => (
                 <button
-                  onClick={() => setSelectingGroup("group4")}
-                  className={`px-4 py-2 ${
-                    selectingGroup === "group4" ? "font-black underline" : "font-normal"
-                  } hover:scale-105 transition-all`}
+                  key={group.id}
+                  onClick={() => setSelectingGroup(group.id)}
+                  className="p-2 font-normal text-black"
                 >
-                  {selectingGroup === "group4" && <span className="font-normal">• </span>}
-                  {language === "en" ? "Full Color" : "Full Color"}  
+                  {selectingGroup === group.id && <span className="font-normal">• </span>}
+                  <span className={selectingGroup === group.id ? "font-bold underline" : "font-normal"}>
+                    {language === "en" ? group.labelEn : group.labelEs}
+                  </span>
                 </button>
-                <button
-                  onClick={() => setSelectingGroup("group0")}
-                  className={`px-4 py-2 ${
-                    selectingGroup === "group0" ? "font-black underline" : "font-normal"
-                  } hover:scale-105 transition-all`}
-                >
-                  {selectingGroup === "group0" && <span className="font-normal">• </span>}
-                 {language === "en" ? "Seats" : "Asientos"}
-                </button>
-                <button
-                  onClick={() => setSelectingGroup("group1")}
-                  className={`px-4 py-2 ${
-                    selectingGroup === "group1" ? "font-black underline" : "font-normal"
-                  } hover:scale-105 transition-all`}
-                >
-                  {selectingGroup === "group1" && <span className="font-normal">• </span>}
-                  {language === "en" ? "Sides" : "Costados"}
-                </button>
-                <button
-                  onClick={() => setSelectingGroup("group2")}
-                  className={`px-4 py-2 ${
-                    selectingGroup === "group2" ? "font-black underline" : "font-normal"
-                  } hover:scale-105 transition-all`}
-                >
-                  {selectingGroup === "group2" && <span className="font-normal">• </span>}
-                  {language === "en" ? "Back" : "Respaldo"} 
-                </button>
-                <button
-                  onClick={() => setSelectingGroup("group3")}
-                  className={`px-4 py-2 ${
-                    selectingGroup === "group3" ? "font-black underline" : "font-normal"
-                  } hover:scale-105 transition-all`}
-                >
-                  {selectingGroup === "group3" && <span className="font-normal">• </span>}
-                  {language === "en" ? "Pillows" : "Almohadones"}  
-                </button>
-              </div>
+              ))}
+            </div>
 
               <hr className="h-[2px] w-64 bg-black justify-self-center"/>
 

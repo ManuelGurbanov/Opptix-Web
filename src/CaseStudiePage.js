@@ -206,7 +206,7 @@ function CaseStudiePage() {
     },
     {
       id: 2,
-      name: "Cinturon Endless",
+      name: "Endless",
       tittle: "Cinturon Endless",
       description: 
       <div className="text-lg">
@@ -265,7 +265,7 @@ function CaseStudiePage() {
     },
     {
       id: 3,
-      name: "PC",
+      name: "Strix",
       tittle: "PC",
       description: 
       <div className="text-lg">
@@ -529,14 +529,14 @@ function CaseStudiePage() {
     onClick={closeModal} // Solo cierra el modal si se hace click en el fondo
   >
     <div
-      className="w-full h-full flex items-center justify-center relative"
+      className="w-screen h-full flex items-center justify-center"
     >
       {/* Botón izquierdo - posicionado absolutamente */}
       <button
         onClick={(e) => {e.stopPropagation();
           handlePrev();
         }}
-        className="absolute left-8 top-1/2 transform -translate-y-1/2 text-6xl font-semibold text-white p-4 hover:scale-110 transition duration-75"
+        className="absolute sm:left-8 left-1 top-1/2 transform -translate-y-1/2 text-6xl font-semibold text-white p-4 hover:scale-110 transition duration-75"
       >
         &#60;
       </button>
@@ -561,7 +561,7 @@ function CaseStudiePage() {
         onClick={(e) => {e.stopPropagation();
           handleNext();
         }}
-        className="absolute right-8 top-1/2 transform -translate-y-1/2 text-6xl font-semibold text-white p-4 hover:scale-110 transition duration-75"
+        className="absolute sm:right-8 right-1 top-1/2 transform -translate-y-1/2 text-6xl font-semibold text-white p-4 hover:scale-110 transition duration-75"
       >
         &#62;
       </button>

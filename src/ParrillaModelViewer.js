@@ -330,31 +330,35 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
                 {Object.keys(variantsByGroup).slice(0, 3).map((group) => (
                   <button
                     key={group}
-                    className={`px-2 py-1 sm:px-4 sm:py-2 text-black text-[10px] sm:text-base whitespace-nowrap min-w-fit
-                      ${selectingGroup === group ? "font-black underline" : "font-semibold"}`}
+                    className={`px-2 py-1 sm:px-4 sm:py-2 text-black text-base whitespace-nowrap min-w-fit
+                      ${selectingGroup === group ? "font-black" : "font-semibold"}`}
                     onClick={() => setSelectingGroup(group)}
                   >
                     {selectingGroup === group && <span className="font-normal">• </span>}
-                    {language === "en" ? groupNamesEn[group] : groupNames[group]}
+                    <span className={selectingGroup === group ? "font-bold underline" : "font-normal"}>
+                      {language === "en" ? groupNamesEn[group] : groupNames[group]}
+                    </span>
                   </button>
                 ))}
               </div>
 
-              {/* Segunda fila: 3 botones */}
+                {/* Segunda fila: 3 botones */}
               <div className="flex justify-center gap-2 sm:gap-4">
-                {Object.keys(variantsByGroup).slice(3, 6).map((group) => (
-                  <button
-                    key={group}
-                    className={`px-2 py-1 sm:px-4 sm:py-2 text-black text-[10px] sm:text-base whitespace-nowrap min-w-fit
-                      ${selectingGroup === group ? "font-black underline" : "font-semibold"}`}
-                    onClick={() => setSelectingGroup(group)}
-                  >
+                  {Object.keys(variantsByGroup).slice(3, 6).map((group) => (
+                    <button
+                      key={group}
+                      className={`px-2 py-1 sm:px-4 sm:py-2 text-black sm:text-base whitespace-nowrap min-w-fit
+                        ${selectingGroup === group ? "font-black" : "font-semibold"}`}
+                      onClick={() => setSelectingGroup(group)}
+                    >
                     {selectingGroup === group && <span className="font-normal">• </span>}
-                    {language === "en" ? groupNamesEn[group] : groupNames[group]}
-                  </button>
-                ))}
-              </div>
-            </section>
+                    <span className={selectingGroup === group ? "font-bold underline" : "font-normal"}>
+                      {language === "en" ? groupNamesEn[group] : groupNames[group]}
+                    </span>
+                    </button>
+                  ))}
+                </div>
+              </section>
 
 
 
