@@ -53,9 +53,9 @@ const ModelLink = () => {
 
   return (
     <div className="relative flex flex-col items-center justify-center w-full h-screen bg-gray-100">
-      <button className="px-4 py-2 bg-lightblue hover:scale-105 hover:bg-lightblue6 text-xl rounded-[48px]" onClick={handleBack}>
+      {/* <button className="px-4 py-2 bg-lightblue hover:scale-105 hover:bg-lightblue6 text-xl rounded-[48px]" onClick={handleBack}>
         {language === "es" ? "Volver" : "Back"}
-      </button>
+      </button> */}
       <model-viewer
         ref={modelRef}
         id="hotspot-camera-view-demo"
