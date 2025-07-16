@@ -368,7 +368,7 @@ const ParrillaModelViewer = ({ modelSrc, setTotalPriceParrilla, language}) => {
             <button className="flex items-center justify-center sm:px-2 px-1 py-1 aspect-square text-black transition-all  rounded-full bg-lightblue6  hover:bg-lightblue2 hover:text-white"
                                 onClick={() => reloadModel()}>
                    <img src="/reload.svg" className="sm:w-full w-1/2"></img>
-              </button>
+            </button>
               {variantsByGroup[selectingGroup].map((variant) => (
                 <button
                   key={variant}
