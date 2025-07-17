@@ -14,8 +14,9 @@ export default function CalendlyScheduler({language, setRender, lightblueBackgro
 
   return (
     <div>
-     <button 
-      onClick={openCalendly} 
+     <a 
+      href="https://landing.opptix.com.ar/"
+     // onClick={openCalendly} 
       className={
         "w-full px-3 py-2 rounded-xl  hover:scale-105 transition-all font-semibold duration-75 " + 
         (lightblueBackground ? "bg-lightblue text-black" : "bg-black hover:bg-zinc-800 text-white")
@@ -23,7 +24,8 @@ export default function CalendlyScheduler({language, setRender, lightblueBackgro
     >
 
         {translate("agendar", language)}
-      </button>
+      </a>
+
       {isOpen && (
         <PopupModal
           url={CALENDLY_URL}
