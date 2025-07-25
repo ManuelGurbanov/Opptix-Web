@@ -1,0 +1,13 @@
+{
+  "headers": [
+    {
+      "source": "/solano",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "ALLOWALL"
+        }
+      ]
+    }
+  ]
+}
