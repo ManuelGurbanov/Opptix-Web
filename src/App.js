@@ -27,9 +27,14 @@ import { LanguageProvider } from "./LanguageContext";
 
 import Solano from './Solano';
 
+import Rumi from './Rumi';
+
 function Layout({ children }) {
   const location = useLocation();
-  const showNavbar = !location.pathname.startsWith("/services") && location.pathname !== "/kesseboehmer" && location.pathname !== "/solano";
+  const showNavbar = !location.pathname.startsWith("/services") 
+  && location.pathname !== "/kesseboehmer" 
+  && location.pathname !== "/solano"
+  && location.pathname !== "/rumi";
 
   return (
     <>
@@ -169,6 +174,7 @@ function App() {
               <Route path="/uploadthree" element={<UploaderThree />} />
               <Route path="/kesseboehmer" element={<DemostrationTest />} />
               <Route path="/solano" element={<Solano />} />
+              <Route path="/rumi" element={<Rumi />} />
             </Routes>
           </Layout>
         </Router>
