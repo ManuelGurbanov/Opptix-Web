@@ -173,11 +173,11 @@ const Generic3DConfigurator = ({
 
           <header className="absolute sm:flex hidden items-start justify-end top-2 right-7 w-full gap-2">
           <div className="hidden sm:block">
-            <SeeButton language={language} qrCode="/qrcodes/solano.png" />
+            <SeeButton language={language} qrCode="/qrcodes/solano.png" rumi />
           </div>
           <button
             onClick={handleFullscreen}
-            className="sm:flex hidden items-center justify-center px-2 py-1 transition-all rounded-full bg-lightblue6 hover:bg-lightblue2 hover:scale-105 w-12 h-12"
+            className="sm:flex hidden items-center justify-center px-2 py-1 transition-all rounded-full bg-rumi hover:bg-rumi/55 hover:scale-105 w-12 h-12"
           >
             {!isFullscreen ? (
               <svg
@@ -262,7 +262,7 @@ const Generic3DConfigurator = ({
           <div className="flex flex-row items-center justify-center w-full gap-2 p-2 overflow-x-auto whitespace-nowrap">
             {/* Botón de reload */}
             {uiConfig.showReload && (
-            <button className="flex items-center justify-center sm:px-2 px-1 py-1 aspect-square text-black transition-all  rounded-full bg-lightblue6  hover:bg-lightblue2 hover:text-white"
+            <button className="flex items-center justify-center sm:px-2 px-1 py-1 aspect-square text-black transition-all  rounded-full hover:bg-rumi/20  bg-white ring-2 ring-rumi hover:text-white"
                                 onClick={() => reloadModel()}>
                    <img src="/reload.svg" className="sm:w-full w-1/2"></img>
             </button>
@@ -272,10 +272,10 @@ const Generic3DConfigurator = ({
             {variantConfig.variantsByGroup[selectingGroup]?.map((variant) => (
               <button
                 key={variant}
-                className={`p-2 rounded-full transition-all sm:min-w-24 text-sm sm:text-base text-center ${
+                className={`p-2 rounded-full transition-all sm:min-w-24 text-sm sm:text-base text-center font-bold ${
                   activeVariants[selectingGroup] === variant 
-                    ? "text-white bg-lightblue2 font-bold" 
-                    : "text-zinc-700 bg-lightblue6"
+                    ? "text-white bg-rumi" 
+                    : "text-rumi bg-white ring-2 ring-rumi hover:bg-rumi/10"
                 }`}
                 onClick={() => toggleVariant(selectingGroup, variant)}
               >
