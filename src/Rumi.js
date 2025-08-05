@@ -3,45 +3,42 @@ import Generic3DConfigurator from './Generic3DConfigurator';
 
 const Rumi = () => {
   // Configuración de variantes
-  const variantConfig = {
-    // Variantes por defecto
-    defaultVariants: {
-      Tabla: "Oscura"
-    },
-    
-    // Agrupación de variantes
-    variantsByGroup: {
-      Tabla: ["Oscura", "clara", "negro", "blanco"]
-    },
-    
-    // Nombres de los grupos (multiidioma)
-    groupNames: {
-      Tabla: {
-        es: "Tabla",
-        en: "Board"
+const variantConfig = {
+  productId: "solano-table",
+  defaultVariants: {
+    Tabla: "Oscura"
+  },
+  variantsByGroup: {
+    Tabla: ["Oscura", "clara", "negro", "blanco"]
+  },
+  groupNames: {
+    Tabla: { es: "Tabla", en: "Board" }
+  },
+  variantNames: {
+    Oscura: { es: "Oscura", en: "Dark" },
+    clara: { es: "Clara", en: "Light" },
+    negro: { es: "Negro", en: "Black" },
+    blanco: { es: "Blanco", en: "White" }
+  },
+  variantCombinationIds: {
+    "Oscura": {
+      parentId: 456,
+      variationId: 789,
+      attributes: {
+        tabla: "oscura"
       }
     },
-    
-    // Nombres de las variantes (multiidioma)
-    variantNames: {
-      Oscura: {
-        es: "Oscura",
-        en: "Dark"
-      },
-      clara: {
-        es: "Clara",
-        en: "Light"
-      },
-      negro: {
-        es: "Negro",
-        en: "Black"
-      },
-      blanco: {
-        es: "Blanco",
-        en: "White"
+    "clara": {
+      parentId: 456,
+      variationId: 790,
+      attributes: {
+        tabla: "clara"
       }
     }
-  };
+    // Y así para las demás
+  }
+};
+
 
   // Configuración del producto
   const productConfig = {

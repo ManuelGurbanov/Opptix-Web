@@ -28,13 +28,19 @@ import { LanguageProvider } from "./LanguageContext";
 import Solano from './Solano';
 
 import Rumi from './Rumi';
+import MuestraRumi from './MuestraRumi';
+
+import M2Config from './rumi/M2';
 
 function Layout({ children }) {
   const location = useLocation();
   const showNavbar = !location.pathname.startsWith("/services") 
   && location.pathname !== "/kesseboehmer" 
   && location.pathname !== "/solano"
-  && location.pathname !== "/rumi";
+  && location.pathname !== "/rumi"
+  && location.pathname !== "/muestra-rumi"
+  && location.pathname !== "/RumiM2"
+  ;
 
   return (
     <>
@@ -175,6 +181,8 @@ function App() {
               <Route path="/kesseboehmer" element={<DemostrationTest />} />
               <Route path="/solano" element={<Solano />} />
               <Route path="/rumi" element={<Rumi />} />
+              <Route path="/muestra-rumi" element={<MuestraRumi />} />
+              <Route path="/RumiM2" element={<M2Config />} />
             </Routes>
           </Layout>
         </Router>
