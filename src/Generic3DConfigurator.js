@@ -184,7 +184,7 @@ const Generic3DConfigurator = ({
         </div>
 
         {/* Botones adicionales */}
-        <div className="flex items-center justify-center w-full gap-4 p-2">
+        {/* <div className="flex items-center justify-center w-full gap-4 p-2">
           {getAddToCartUrl() && (
             <a
               href={getAddToCartUrl()}
@@ -195,7 +195,7 @@ const Generic3DConfigurator = ({
               Agregar al carrito
             </a>
           )}
-        </div>
+        </div> */}
       </section>
     </div>
   );
