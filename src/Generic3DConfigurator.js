@@ -112,8 +112,8 @@ const Generic3DConfigurator = ({
   };
 
   return (
-    <div className={`relative flex flex-col items-center justify-center w-full gap-4 bg-white ${className}`} {...props}>
-      <section className="relative bg-white max-w-screen overflow-x-hidden overflow-y-visible mb-12" ref={ref}>
+    <div className={`relative flex flex-col items-center overflow-hidden justify-center w-full gap-4 bg-white ${className}`} {...props}>
+      <section className="relative bg-white max-w-screen overflow-x-hidden overflow-y-hidden mb-12" ref={ref}>
         <model-viewer
           id={`${modelId}-model-viewer`}
           loading={viewerConfig.loading || "eager"}
