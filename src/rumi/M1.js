@@ -1,36 +1,63 @@
 import React from 'react';
 import Generic3DConfigurator from '../Generic3DConfigurator';
 
-const M2Config = () => {
+const M1Config = () => {
   const variantConfig = {
     productId: "solano-table",
     defaultVariants: {
-      Madera: "camelia"
+      Melamina: "Tapir",
+      Tirador: "Negro"
     },
     variantsByGroup: {
-      Madera: ["scotch", "camelia"]
+      Melamina: ["Tapir", "Safari"],
+      Tirador: ["Negro", "Hueso"]
     },
     groupNames: {
-      Madera: "Madera"
+      Melamina: "Melamina",
+      Tirador: "Tirador"
     },
     variantNames: {
-      scotch: "Scotch",
-      camelia: "Camellia"
+      Safari: "Safari",
+      Tapir: "Tapir",
+      Hueso: "Hueso",
+      Negro: "Negro"
     },
     variantCombinationIds: {
-      camelia: {
-        parentId: 864,
-        variationId: 1095,
-        attributes: { Madera: "camelia" }
-      },
-      scotch: {
-        parentId: 864,
-        variationId: 1094,
-        attributes: { Madera: "scotch" }
-      },
+    "Tapir-Hueso": {
+        parentId: 725,
+        variationId: 1096,
+        attributes: {
+        Melamina: "Tapir",
+        Tirador: "Hueso"
+        }
+    },
+    "Safari-Hueso": {
+        parentId: 725,
+        variationId: 1097,
+        attributes: {
+        Melamina: "Safari",
+        Tirador: "Hueso"
+        }
+    },
+    "Tapir-Negro": {
+        parentId: 725,
+        variationId: 1098,
+        attributes: {
+        Melamina: "Tapir",
+        Tirador: "Negro"
+        }
+    },
+    "Safari-Negro": {
+        parentId: 725,
+        variationId: 1099,
+        attributes: {
+        Melamina: "Safari",
+        Tirador: "Negro"
+        }
     }
-  };
+    }
 
+    };
   const productConfig = {
     name: "Mesa Solano",
     image: "/solano-preview.jpg"
@@ -48,11 +75,11 @@ const M2Config = () => {
   return (
     <div className="w-full h-full overflow-hidden bg-white p-4">
       <Generic3DConfigurator
-        modelSrc="/models/rumi/M2.glb"
+        modelSrc="/models/rumi/M1.glb"
         modelId="solano-table"
         variantConfig={variantConfig}
         productConfig={productConfig}
-        language="es" // ya no se usa pero puedes dejarlo
+        language="es" // ya no se usa
         onVariantChange={handleVariantChange}
         onModelLoad={handleModelLoad}
         uiConfig={{
@@ -81,4 +108,4 @@ const M2Config = () => {
   );
 };
 
-export default M2Config;
+export default M1Config;

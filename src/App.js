@@ -31,6 +31,7 @@ import Rumi from './Rumi';
 import MuestraRumi from './MuestraRumi';
 
 import M2Config from './rumi/M2';
+import M1Config from './rumi/M1';
 
 function Layout({ children }) {
   const location = useLocation();
@@ -40,6 +41,7 @@ function Layout({ children }) {
   && location.pathname !== "/rumi"
   && location.pathname !== "/muestra-rumi"
   && location.pathname !== "/RumiM2"
+  && location.pathname !== "/RumiM1"
   ;
 
   return (
@@ -183,6 +185,7 @@ function App() {
               <Route path="/rumi" element={<Rumi />} />
               <Route path="/muestra-rumi" element={<MuestraRumi />} />
               <Route path="/RumiM2" element={<M2Config />} />
+              <Route path="/RumiM1" element={<M1Config />} />
             </Routes>
           </Layout>
         </Router>
