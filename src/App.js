@@ -30,8 +30,9 @@ import Solano from './Solano';
 import Rumi from './Rumi';
 import MuestraRumi from './MuestraRumi';
 
-import M2Config from './rumi/M2';
 import M1Config from './rumi/M1';
+import M2Config from './rumi/M2';
+import M3Config from './rumi/M3';
 
 function Layout({ children }) {
   const location = useLocation();
@@ -40,8 +41,9 @@ function Layout({ children }) {
   && location.pathname !== "/solano"
   && location.pathname !== "/rumi"
   && location.pathname !== "/muestra-rumi"
-  && location.pathname !== "/RumiM2"
   && location.pathname !== "/RumiM1"
+  && location.pathname !== "/RumiM2"
+  && location.pathname !== "/RumiM3"
   ;
 
   return (
@@ -184,8 +186,9 @@ function App() {
               <Route path="/solano" element={<Solano />} />
               <Route path="/rumi" element={<Rumi />} />
               <Route path="/muestra-rumi" element={<MuestraRumi />} />
-              <Route path="/RumiM2" element={<M2Config />} />
               <Route path="/RumiM1" element={<M1Config />} />
+              <Route path="/RumiM2" element={<M2Config />} />
+              <Route path="/RumiM3" element={<M3Config />} />
             </Routes>
           </Layout>
         </Router>
