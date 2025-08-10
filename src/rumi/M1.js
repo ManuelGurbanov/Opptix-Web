@@ -96,7 +96,7 @@ const M1Config = () => {
           loading: "eager",
           dimensions: {
             width: "80vw",
-            height: "60vh",
+            //height: "60vh",
             minWidth: "450px",
             minHeight: "300px",
             fullscreenWidth: "100vw",
