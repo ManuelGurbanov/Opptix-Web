@@ -95,10 +95,10 @@ const M1Config = () => {
           arModes: "webxr scene-viewer quick-look",
           loading: "eager",
           dimensions: {
-            width: "80vw",
-            //height: "60vh",
-            minWidth: "450px",
-            minHeight: "300px",
+            width: "100%",
+            height: "100%",
+            minWidth: "100%",
+            minHeight: "100%",
             fullscreenWidth: "100vw",
             fullscreenHeight: "100vh"
           }

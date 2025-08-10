@@ -113,7 +113,11 @@ const Generic3DConfigurator = ({
 
   return (
     <div className={`relative flex flex-col items-center justify-center w-full gap-4 bg-white ${className}`} {...props}>
-      <section className="relative bg-white max-w-screen overflow-x-hidden overflow-y-visible mb-12" ref={ref}>
+      <section
+        className="relative bg-white max-w-screen overflow-x-hidden overflow-y-visible mb-12"
+        ref={ref}
+        style={{ minHeight: "300px", height: "100%" }}
+      >
         <model-viewer
           id={`${modelId}-model-viewer`}
           loading={viewerConfig.loading || "eager"}
@@ -125,11 +129,11 @@ const Generic3DConfigurator = ({
           ar={viewerConfig.ar ?? true}
           ar-modes={viewerConfig.arModes ?? "webxr scene-viewer quick-look"}
           style={{
-            width: isFullscreen ? viewerConfig.dimensions?.fullscreenWidth : viewerConfig.dimensions?.width,
-            height: isFullscreen ? viewerConfig.dimensions?.fullscreenHeight : viewerConfig.dimensions?.height,
-            minHeight: viewerConfig.dimensions?.minHeight,
+            width: "100%",
+            height: "100%",
+            minHeight: "300px",
             position: "relative",
-            maxWidth: "100vw",
+            maxWidth: "100%",
             overflow: "hidden"
           }}
           onLoad={() => {
