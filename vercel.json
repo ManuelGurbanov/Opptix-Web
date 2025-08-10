@@ -1,7 +1,7 @@
 {
   "headers": [
     {
-      "source": "/solano",
+      "source": "/(.*)",
       "headers": [
         {
           "key": "X-Frame-Options",
