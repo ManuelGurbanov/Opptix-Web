@@ -106,7 +106,7 @@ const Generic3DConfigurator = ({
 
 
   return (
-    <div className={`relative overflow-hidden flex flex-col items-center justify-center w-full gap-3 bg-white ${className}`} {...props}>
+    <div className={`configurator relative overflow-hidden flex flex-col items-center justify-center w-full gap-3 bg-white ${className}`} {...props}>
       <section
         className="relative bg-white max-w-screen overflow-x-hidden overflow-y-hidden"
         ref={ref}
@@ -136,7 +136,7 @@ const Generic3DConfigurator = ({
         </model-viewer>
 
         {/* Controles de variantes */}
-        <div className={`flex flex-col items-center justify-start w-full p-2 `}>
+        <div className={`flex flex-col items-center justify-start w-full px-2 py-0 bg-white `}>
           {/* Selector de grupos */}
           <section className="flex flex-col items-center justify-center w-full gap-2 px-1">
             <div className="flex items-center justify-center gap-1 sm:gap-4">
