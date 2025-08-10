@@ -86,7 +86,7 @@ const M1Config = () => {
           showFullscreen: true,
           showReload: true,
           columns: 1,
-          loadingGif: "/loading.gif",
+          loadingGif: "/rumi_loading.gif",
           reloadIcon: "/reload.svg"
         }}
         viewerConfig={{
