@@ -112,9 +112,9 @@ const Generic3DConfigurator = ({
   };
 
   return (
-    <div className={`relative flex flex-col items-center justify-center w-full gap-4 bg-white ${className}`} {...props}>
+    <div className={`relative overflow-hidden flex flex-col items-center justify-center w-full gap-4 bg-white ${className}`} {...props}>
       <section
-        className="relative bg-white max-w-screen overflow-x-hidden overflow-y-visible mb-12"
+        className="relative bg-white max-w-screen overflow-x-hidden overflow-y-hidden mb-12"
         ref={ref}
         style={{ minHeight: "300px", height: "100%" }}
       >
