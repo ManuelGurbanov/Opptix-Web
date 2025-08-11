@@ -34,16 +34,32 @@ import M1Config from './rumi/M1';
 import M2Config from './rumi/M2';
 import M3Config from './rumi/M3';
 
+import InfiniteScrollSponsors from "./InfiniteScrollSponsors";
+import WordPress from './WordPress';
+
+const sponsorsList = [
+  "rumi_logo.webp",
+  "zorba_logo.webp",
+    "rumi_logo.webp",
+  "zorba_logo.webp",
+    "rumi_logo.webp",
+  "zorba_logo.webp",
+    "rumi_logo.webp",
+  "zorba_logo.webp",
+    "rumi_logo.webp",
+  "zorba_logo.webp",
+    "rumi_logo.webp",
+  "zorba_logo.webp",
+];
+
+
 function Layout({ children }) {
   const location = useLocation();
   const showNavbar = !location.pathname.startsWith("/services") 
   && location.pathname !== "/kesseboehmer" 
   && location.pathname !== "/solano"
-  && location.pathname !== "/rumi"
-  && location.pathname !== "/muestra-rumi"
-  && location.pathname !== "/RumiM1"
-  && location.pathname !== "/RumiM2"
-  && location.pathname !== "/RumiM3"
+  && location.pathname.startsWith("/Rumi") === false
+  && location.pathname !== "/wordpress"
   ;
 
   return (
@@ -163,6 +179,7 @@ function App() {
               <Route path="/" element={
                 <section className='flex flex-col items-center mt-20 overflow-hidden max-w-screen bg-white'>
                   <MainBanner />
+                  {/* <InfiniteScrollSponsors sponsors={sponsorsList} speed={40} /> */}
 
                   <WhyWorkTogether />
 
@@ -189,6 +206,7 @@ function App() {
               <Route path="/RumiM1" element={<M1Config />} />
               <Route path="/RumiM2" element={<M2Config />} />
               <Route path="/RumiM3" element={<M3Config />} />
+              <Route path="/wordpress" element={<WordPress />} />
             </Routes>
           </Layout>
         </Router>

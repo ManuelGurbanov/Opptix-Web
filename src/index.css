@@ -108,6 +108,11 @@ canvas {
   100% { opacity: 0; visibility: hidden; }
 }
 
+.bg-fade{
+  background: #41C1EF;
+  background: linear-gradient(168deg,rgba(65, 193, 239, 1) 0%, rgba(0, 107, 145, 1) 50%, rgba(65, 193, 239, 1) 100%);
+}
+
 
 
 
