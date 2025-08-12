@@ -5,29 +5,56 @@ const M2Config = () => {
   const variantConfig = {
     productId: "solano-table",
     defaultVariants: {
-      Madera: "camelia"
+      Madera: "camelia",
+      Tirador: "hueso"
     },
     variantsByGroup: {
-      Madera: ["scotch", "camelia"]
+      Madera: ["scotch", "camelia"],
+      Tirador: ["Negro", "hueso"]
     },
     groupNames: {
-      Madera: "Madera"
+      Madera: "Madera",
+      Tirador: "Tirador"
     },
     variantNames: {
       scotch: "Scotch",
-      camelia: "Camellia"
+      camelia: "Camellia",
+      Negro: "Negro",
+      hueso: "Hueso"
     },
     variantCombinationIds: {
-      camelia: {
-        parentId: 864,
-        variationId: 1095,
-        attributes: { Madera: "camelia" }
+      "scotch-Negro": {
+        "parentId": 864,
+        "variationId": 1131,
+        "attributes": {
+          "Madera": "scotch",
+          "Tirador": "Negro"
+        }
       },
-      scotch: {
-        parentId: 864,
-        variationId: 1094,
-        attributes: { Madera: "scotch" }
+      "scotch-hueso": {
+        "parentId": 864,
+        "variationId": 1132,
+        "attributes": {
+          "Madera": "scotch",
+          "Tirador": "hueso"
+        }
       },
+      "camelia-Negro": {
+        "parentId": 864,
+        "variationId": 1133,
+        "attributes": {
+          "Madera": "camelia",
+          "Tirador": "Negro"
+        }
+      },
+      "camelia-hueso": {
+        "parentId": 864,
+        "variationId": 1134,
+        "attributes": {
+          "Madera": "camelia",
+          "Tirador": "hueso"
+        }
+      }
     }
   };
 
@@ -52,7 +79,7 @@ const M2Config = () => {
         modelId="solano-table"
         variantConfig={variantConfig}
         productConfig={productConfig}
-        language="es" // ya no se usa pero puedes dejarlo
+        language="es"
         onVariantChange={handleVariantChange}
         onModelLoad={handleModelLoad}
         uiConfig={{
