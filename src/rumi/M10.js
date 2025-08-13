@@ -1,63 +1,71 @@
 import React from 'react';
 import Generic3DConfigurator from '../Generic3DConfigurator';
 
-const M1Config = () => {
-  const variantConfig = {
-    productId: "solano-table",
-    defaultVariants: {
-      Melamina: "Tapir",
-      Tirador: "Negro"
-    },
-    variantsByGroup: {
-      Melamina: ["Tapir", "Safari"],
-      Tirador: ["Negro", "Hueso"]
-    },
-    groupNames: {
-      Melamina: "Melamina",
-      Tirador: "Tirador/Patas"
-    },
-    variantNames: {
-      Safari: "Safari",
-      Tapir: "Tapir",
-      Hueso: "Hueso",
-      Negro: "Negro"
-    },
-    variantCombinationIds: {
-    "Tapir-Hueso": {
-        parentId: 725,
-        variationId: 1096,
-        attributes: {
-        Melamina: "Tapir",
-        Tirador: "Hueso"
-        }
-    },
-    "Safari-Hueso": {
-        parentId: 725,
-        variationId: 1097,
-        attributes: {
-        Melamina: "Safari",
-        Tirador: "Hueso"
-        }
-    },
-    "Tapir-Negro": {
-        parentId: 725,
-        variationId: 1098,
-        attributes: {
-        Melamina: "Tapir",
-        Tirador: "Negro"
-        }
-    },
-    "Safari-Negro": {
-        parentId: 725,
-        variationId: 1099,
-        attributes: {
-        Melamina: "Safari",
-        Tirador: "Negro"
-        }
-    }
-    }
+const M10Config = () => {
 
-    };
+const groups = {
+  Madera: ["camellia", "scotch"],
+  Melamina: ["safari", "tapir"],
+  Tirador: ["hueso", "negro"]
+};
+
+const variantNames = {
+  camellia: "Camellia",
+  scotch: "Scotch",
+  tapir: "Tapir",
+  safari: "Safari",
+  negro: "Negro",
+  hueso: "Hueso"
+};
+
+const groupNames = {
+  Madera: "Madera",
+  Melamina: "Melamina",
+  Tirador: "Tirador/Patas"
+};
+
+const productId = "M9";
+
+const defaultVariants = {
+  Madera: "camellia",
+  Melamina: "safari",
+  Tirador: "hueso"
+};
+
+
+const parentId = 1157;
+const startVariationId = 1158;
+
+const variantCombinationIds = {};
+let variationCounter = 0;
+
+for (const madera of groups.Madera) {
+  for (const melamina of groups.Melamina) {
+      for (const tirador of groups.Tirador) {
+        const key = `${madera}-${melamina}-${tirador}`;
+        variantCombinationIds[key] = {
+          parentId,
+          variationId: startVariationId + variationCounter,
+          attributes: {
+            Madera: madera,
+            Melamina: melamina,
+            Tirador: tirador
+        }
+      };
+      variationCounter++;
+    }
+  }
+}
+
+const variantConfig = {
+  productId,
+  defaultVariants,
+  variantsByGroup: groups,
+  groupNames,
+  variantNames,
+  variantCombinationIds
+};
+
   const productConfig = {
     name: "Mesa Solano",
     image: "/solano-preview.jpg"
@@ -75,7 +83,7 @@ const M1Config = () => {
   return (
     <div className="w-full h-full overflow-hidden bg-white p-4 configurator">
       <Generic3DConfigurator
-        modelSrc="/models/rumi/M1.glb"
+        modelSrc="/models/rumi/M10.glb"
         variantConfig={variantConfig}
         productConfig={productConfig}
         onVariantChange={handleVariantChange}
@@ -106,4 +114,4 @@ const M1Config = () => {
   );
 };
 
-export default M1Config;
+export default M10Config;

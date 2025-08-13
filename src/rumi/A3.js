@@ -75,7 +75,7 @@ const M1Config = () => {
   return (
     <div className="w-full h-full overflow-hidden bg-white p-4 configurator">
       <Generic3DConfigurator
-        modelSrc="/models/rumi/M1.glb"
+        modelSrc="/models/A3.glb"
         variantConfig={variantConfig}
         productConfig={productConfig}
         onVariantChange={handleVariantChange}

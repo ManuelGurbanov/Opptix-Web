@@ -27,15 +27,14 @@ import { LanguageProvider } from "./LanguageContext";
 
 import Solano from './Solano';
 
-import Rumi from './Rumi';
+import Rumi from './rumi/Rumi';
 import MuestraRumi from './MuestraRumi';
 
-import M1Config from './rumi/M1';
-import M2Config from './rumi/M2';
-import M3Config from './rumi/M3';
 
 import InfiniteScrollSponsors from "./InfiniteScrollSponsors";
 import WordPress from './WordPress';
+
+import A3 from './rumi/A3';
 
 const sponsorsList = [
   "rumi_logo.webp",
@@ -58,7 +57,7 @@ function Layout({ children }) {
   const showNavbar = !location.pathname.startsWith("/services") 
   && location.pathname !== "/kesseboehmer" 
   && location.pathname !== "/solano"
-  && location.pathname.startsWith("/Rumi") === false
+  && location.pathname.startsWith("/rumi") === false
   && location.pathname !== "/wordpress"
   ;
 
@@ -201,12 +200,14 @@ function App() {
               <Route path="/uploadthree" element={<UploaderThree />} />
               <Route path="/kesseboehmer" element={<DemostrationTest />} />
               <Route path="/solano" element={<Solano />} />
-              <Route path="/rumi" element={<Rumi />} />
+
               <Route path="/muestra-rumi" element={<MuestraRumi />} />
-              <Route path="/RumiM1" element={<M1Config />} />
-              <Route path="/RumiM2" element={<M2Config />} />
-              <Route path="/RumiM3" element={<M3Config />} />
+
+              <Route path="/rumi/:id" element={<Rumi />} />
+
               <Route path="/wordpress" element={<WordPress />} />
+              
+              <Route path="/RumiA3" element={<A3 />} />
             </Routes>
           </Layout>
         </Router>

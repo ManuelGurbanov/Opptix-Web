@@ -5,7 +5,7 @@ const M2Config = () => {
   const variantConfig = {
     productId: "solano-table",
     defaultVariants: {
-      Madera: "camelia",
+      Madera: "scotch",
       Tirador: "hueso"
     },
     variantsByGroup: {

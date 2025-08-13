@@ -105,6 +105,28 @@ const Generic3DConfigurator = ({
   }, []);
 
 
+  useEffect(() => {
+    const modelViewer = document.querySelector("model-viewer");
+
+    if (!modelViewer) {
+      console.warn("No se encontró ningún <model-viewer> en la página.");
+      return;
+    }
+
+    const onLoad = () => {
+      const variants = modelViewer.availableVariants || [];
+      console.log("Variantes disponibles:", variants);
+    };
+
+    modelViewer.addEventListener("load", onLoad);
+
+    return () => {
+      modelViewer.removeEventListener("load", onLoad);
+    };
+  }, []);
+
+
+
   return (
     <div className={`configurator relative overflow-hidden flex flex-col items-center justify-center w-full gap-3 bg-white ${className}`} {...props}>
       <section
