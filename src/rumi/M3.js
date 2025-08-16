@@ -1,11 +1,11 @@
 import React from 'react';
 import Generic3DConfigurator from '../Generic3DConfigurator';
 
-const M1Config = () => {
+const M3Config = () => {
   const variantConfig = {
     productId: "solano-table",
     defaultVariants: {
-      Melamina: "Tapir",
+      Melamina: "Safari",
       Tirador: "Negro"
     },
     variantsByGroup: {
@@ -108,4 +108,4 @@ const M1Config = () => {
   );
 };
 
-export default M1Config;
+export default M3Config;

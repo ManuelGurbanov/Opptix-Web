@@ -5,54 +5,54 @@ const M1Config = () => {
   const variantConfig = {
     productId: "solano-table",
     defaultVariants: {
-      Melamina: "Tapir",
-      Tirador: "Negro"
+      Melamina: "SAFARI",
+      Tirador: "TIRADOR-HUESO"
     },
     variantsByGroup: {
-      Melamina: ["Tapir", "Safari"],
-      Tirador: ["Negro", "Hueso"]
+      Melamina: ["TAPIR", "SAFARI"],
+      Tirador: ["TIRADOR-NEGRO", "TIRADOR-HUESO"]
     },
     groupNames: {
       Melamina: "Melamina",
       Tirador: "Tirador/Patas"
     },
     variantNames: {
-      Safari: "Safari",
-      Tapir: "Tapir",
-      Hueso: "Hueso",
-      Negro: "Negro"
+      SAFARI: "Safari",
+      TAPIR: "Tapir",
+      "TIRADOR-HUESO": "Hueso",
+      "TIRADOR-NEGRO": "Negro"
     },
     variantCombinationIds: {
-    "Tapir-Hueso": {
+    "TAPIR-TIRADOR-HUESO": {
         parentId: 725,
         variationId: 1096,
         attributes: {
-        Melamina: "Tapir",
-        Tirador: "Hueso"
+        Melamina: "TAPIR",
+        Tirador: "TIRADOR-HUESO"
         }
     },
-    "Safari-Hueso": {
+    "SAFARI-TIRADOR-HUESO": {
         parentId: 725,
         variationId: 1097,
         attributes: {
-        Melamina: "Safari",
-        Tirador: "Hueso"
+        Melamina: "SAFARI",
+        Tirador: "TIRADOR-HUESO"
         }
     },
-    "Tapir-Negro": {
+    "TAPIR-TIRADOR-NEGRO": {
         parentId: 725,
         variationId: 1098,
         attributes: {
-        Melamina: "Tapir",
-        Tirador: "Negro"
+        Melamina: "TAPIR",
+        Tirador: "TIRADOR-NEGRO"
         }
     },
-    "Safari-Negro": {
+    "SAFARI-TIRADOR-NEGRO": {
         parentId: 725,
         variationId: 1099,
         attributes: {
-        Melamina: "Safari",
-        Tirador: "Negro"
+        Melamina: "SAFARI",
+        Tirador: "TIRADOR-NEGRO"
         }
     }
     }
@@ -64,7 +64,6 @@ const M1Config = () => {
   };
 
   const handleVariantChange = (category, variant, allVariants) => {
-    console.log(`Cambió ${category} a ${variant}`);
     console.log("Todas las variantes:", allVariants);
   };
 
