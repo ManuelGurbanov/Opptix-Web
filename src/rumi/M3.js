@@ -24,32 +24,32 @@ const M3Config = () => {
     },
     variantCombinationIds: {
     "Tapir-Hueso": {
-        parentId: 725,
-        variationId: 1096,
+        parentId: 869,
+        variationId: 1199,
         attributes: {
         Melamina: "Tapir",
         Tirador: "Hueso"
         }
     },
     "Safari-Hueso": {
-        parentId: 725,
-        variationId: 1097,
+        parentId: 869,
+        variationId: 1197,
         attributes: {
         Melamina: "Safari",
         Tirador: "Hueso"
         }
     },
     "Tapir-Negro": {
-        parentId: 725,
-        variationId: 1098,
+        parentId: 869,
+        variationId: 1200,
         attributes: {
         Melamina: "Tapir",
         Tirador: "Negro"
         }
     },
     "Safari-Negro": {
-        parentId: 725,
-        variationId: 1099,
+        parentId: 869,
+        variationId: 1198,
         attributes: {
         Melamina: "Safari",
         Tirador: "Negro"
@@ -79,7 +79,6 @@ const M3Config = () => {
         modelId="solano-table"
         variantConfig={variantConfig}
         productConfig={productConfig}
-        language="es" // ya no se usa
         onVariantChange={handleVariantChange}
         onModelLoad={handleModelLoad}
         uiConfig={{

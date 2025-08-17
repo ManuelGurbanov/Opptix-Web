@@ -4,15 +4,15 @@ import Generic3DConfigurator from '../Generic3DConfigurator';
 const M6Config = () => {
 
 const groups = {
-  Melamina: ["safari", "tapir"],
-  Tirador: ["hueso", "negro"]
+  Melamina: ["Safari", "Tapir"],
+  Tirador: ["Hueso", "Negro"]
 };
 
 const variantNames = {
-  tapir: "Tapir",
-  safari: "Safari",
-  negro: "Negro",
-  hueso: "Hueso"
+  Tapir: "Tapir",
+  Safari: "Safari",
+  Negro: "Negro",
+  Hueso: "Hueso"
 };
 
 const groupNames = {
@@ -23,8 +23,8 @@ const groupNames = {
 const productId = "M6";
 
 const defaultVariants = {
-  Melamina: "safari",
-  Tirador: "negro"
+  Melamina: "Safari",
+  Tirador: "Negro"
 };
 
 const parentId = 867;

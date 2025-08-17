@@ -4,44 +4,44 @@ import Generic3DConfigurator from '../Generic3DConfigurator';
 const M7Config = () => {
 
 const groups = {
-  Melamina: ["safari", "tapir"],
-  Tirador: ["hueso", "negro"]
+  Madera: ["Camellia", "Scotch"],
+  Tirador: ["Hueso", "Negro"]
 };
 
 const variantNames = {
-  tapir: "Tapir",
-  safari: "Safari",
-  negro: "Negro",
-  hueso: "Hueso"
+  Camellia: "Camellia",
+  Scotch: "Scotch",
+  Negro: "Negro",
+  Hueso: "Hueso"
 };
 
 const groupNames = {
-  Melamina: "Melamina",
+  Madera: "Madera",
   Tirador: "Tirador/Patas"
 };
 
 const productId = "M7";
 
 const defaultVariants = {
-  Melamina: "safari",
-  Tirador: "negro"
+  Madera: "Scotch",
+  Tirador: "Negro"
 };
 
 
 const parentId = 868;
-const startVariationId = 1148;
+const startVariationId = 1201;
 
 const variantCombinationIds = {};
 let variationCounter = 0;
 
-for (const melamina of groups.Melamina) {
+for (const madera of groups.Madera) {
   for (const tirador of groups.Tirador) {
-    const key = `${melamina}-${tirador}`;
+    const key = `${madera}-${tirador}`;
     variantCombinationIds[key] = {
       parentId,
       variationId: startVariationId + variationCounter,
       attributes: {
-        Melamina: melamina,
+        Madera: madera,
         Tirador: tirador
       }
     };

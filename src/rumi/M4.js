@@ -24,7 +24,7 @@ const productId = "M4";
 
 const defaultVariants = {
   Melamina: "safari",
-  Tirador: "negro"
+  Tirador: "hueso"
 };
 
 

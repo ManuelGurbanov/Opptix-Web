@@ -49,8 +49,23 @@ const Generic3DConfigurator = ({
   // Recargar variantes por defecto
   const reloadModel = async () => {
     const defaultVariants = variantConfig.defaultVariants || {};
+
+    // Resetear todo de una
+    setActiveVariants(defaultVariants);
+
+    // Fix al bug de estado, hay que aplicar las variantes literalmente
+    // Aplicar cada variante al <model-viewer>
     for (const [category, variant] of Object.entries(defaultVariants)) {
-      await toggleVariant(category, variant);
+      try {
+        const modelViewer = modelViewerRef.current;
+        if (modelViewer) {
+          modelViewer.variantName = variant;
+          await modelViewer.model.updateComplete;
+        }
+        console.log(`Recargada variante por defecto: ${category} -> ${variant}`);
+      } catch (error) {
+        console.error(`Error al recargar variante ${category}:`, error);
+      }
     }
   };
 
@@ -180,11 +195,14 @@ const Generic3DConfigurator = ({
           {/* Selector de variantes */}
         <div className="flex flex-row items-center justify-center w-full gap-2 p-2 overflow-x-auto">
             {uiConfig.showReload && (
-            <button className="flex items-center justify-center sm:px-3 sm:py-2 px-1 py-1 aspect-square text-black transition-all  rounded-full hover:bg-rumi/20  bg-white ring-2 ring-rumi hover:text-white"
-                                onClick={() => reloadModel()}>
-                   <img src="/reload.svg" className="sm:w-full w-1/2"></img>
-            </button>
+              <button
+                className="flex items-center justify-center p-2 rounded-3xl ring-rumi ring-2 bg-white hover:bg-rumi/20 hover:text-white transition-all"
+                onClick={() => reloadModel()}
+              >
+                <img src="/reload.svg" className="w-6 h-6" />
+              </button>
             )}
+
 
             {variantConfig.variantsByGroup[selectingGroup].map((variant) => (
               <button
