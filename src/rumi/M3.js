@@ -5,54 +5,54 @@ const M3Config = () => {
   const variantConfig = {
     productId: "solano-table",
     defaultVariants: {
-      Melamina: "Safari",
-      Tirador: "Negro"
+      Melamina: "safari",
+      Tirador: "negro"
     },
     variantsByGroup: {
-      Melamina: ["Tapir", "Safari"],
-      Tirador: ["Negro", "Hueso"]
+      Melamina: ["tapir", "safari"],
+      Tirador: ["negro", "hueso"]
     },
     groupNames: {
       Melamina: "Melamina",
       Tirador: "Tirador"
     },
     variantNames: {
-      Safari: "Safari",
-      Tapir: "Tapir",
-      Hueso: "Hueso",
-      Negro: "Negro"
+      safari: "Safari",
+      tapir: "Tapir",
+      hueso: "Hueso",
+      negro: "Negro"
     },
     variantCombinationIds: {
-    "Tapir-Hueso": {
+    "tapir-hueso": {
         parentId: 869,
         variationId: 1199,
         attributes: {
-        Melamina: "Tapir",
-        Tirador: "Hueso"
+        Melamina: "tapir",
+        Tirador: "hueso"
         }
     },
-    "Safari-Hueso": {
+    "safari-hueso": {
         parentId: 869,
         variationId: 1197,
         attributes: {
-        Melamina: "Safari",
-        Tirador: "Hueso"
+        Melamina: "safari",
+        Tirador: "hueso"
         }
     },
-    "Tapir-Negro": {
+    "tapir-negro": {
         parentId: 869,
         variationId: 1200,
         attributes: {
-        Melamina: "Tapir",
-        Tirador: "Negro"
+        Melamina: "tapir",
+        Tirador: "negro"
         }
     },
-    "Safari-Negro": {
+    "safari-negro": {
         parentId: 869,
         variationId: 1198,
         attributes: {
-        Melamina: "Safari",
-        Tirador: "Negro"
+        Melamina: "safari",
+        Tirador: "negro"
         }
     }
     }

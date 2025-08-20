@@ -10,7 +10,7 @@ import M9Config from "./M9";
 import M10Config from "./M10";
 
 import { useParams } from "react-router-dom";
-
+import A3Config from "./A3";
 import ViewerInicio from "./ViewerInicio";
 
 const modules = {
@@ -24,7 +24,8 @@ const modules = {
   M8: M8Config,
   M9: M9Config,
   M10: M10Config,
-  VIEWERINICIO: ViewerInicio
+  VIEWERINICIO: ViewerInicio,
+  A3: A3Config
 };
 
 function Rumi() {

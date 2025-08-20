@@ -4,7 +4,7 @@ const ViewerInicio = () => {
   return (
     <ModelViewer 
         modelSrc="/models/rumi/A3.glb" 
-        posterSrc="./rumi_loading.gif" 
+        posterSrc="/rumi_loading.gif" 
     />
   )
 }
