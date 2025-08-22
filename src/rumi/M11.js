@@ -1,11 +1,12 @@
 import React from 'react';
 import Generic3DConfigurator from '../Generic3DConfigurator';
 
-const M10Config = () => {
+const M11Config = () => {
 
 const groups = {
   Madera: ["Camellia", "Scotch"],
   Melamina: ["Safari", "Tapir"],
+  Tirador: ["Hueso", "Negro"]
 };
 
 const variantNames = {
@@ -13,40 +14,47 @@ const variantNames = {
   Scotch: "Scotch",
   Tapir: "Tapir",
   Safari: "Safari",
+  Negro: "Negro",
+  Hueso: "Hueso"
 };
 
 const groupNames = {
   Madera: "Madera",
   Melamina: "Melamina",
+  Tirador: "Tirador/Patas"
 };
 
-const productId = "M10";
+const productId = "M11";
 
 const defaultVariants = {
   Madera: "Camellia",
   Melamina: "Safari",
+  Tirador: "Negro"
 };
 
 
-const parentId = 1157;
-const startVariationId = 1474;
+const parentId = 1209;
+const startVariationId = 1210;
 
 const variantCombinationIds = {};
 let variationCounter = 0;
 
 for (const madera of groups.Madera) {
   for (const melamina of groups.Melamina) {
-      const key = `${madera}-${melamina}`;
-      variantCombinationIds[key] = {
-        parentId,
-        variationId: startVariationId + variationCounter,
-        attributes: {
-          Madera: madera,
-          Melamina: melamina,
+      for (const tirador of groups.Tirador) {
+        const key = `${madera}-${melamina}-${tirador}`;
+        variantCombinationIds[key] = {
+          parentId,
+          variationId: startVariationId + variationCounter,
+          attributes: {
+            Madera: madera,
+            Melamina: melamina,
+            Tirador: tirador
         }
       };
       variationCounter++;
     }
+  }
 }
 
 const variantConfig = {
@@ -75,7 +83,7 @@ const variantConfig = {
   return (
     <div className="w-full h-full overflow-hidden bg-white p-4 configurator">
       <Generic3DConfigurator
-        modelSrc="/models/rumi/M10.glb"
+        modelSrc="/models/rumi/M11.glb"
         variantConfig={variantConfig}
         productConfig={productConfig}
         onVariantChange={handleVariantChange}
@@ -106,4 +114,4 @@ const variantConfig = {
   );
 };
 
-export default M10Config;
+export default M11Config;

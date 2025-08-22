@@ -4,57 +4,49 @@ import Generic3DConfigurator from '../Generic3DConfigurator';
 const M9Config = () => {
 
 const groups = {
-  Madera: ["camellia", "scotch"],
-  Melamina: ["safari", "tapir"],
-  Tirador: ["hueso", "negro"]
+  Madera: ["Camellia", "Scotch"],
+  Melamina: ["Safari", "Tapir"],
 };
 
 const variantNames = {
-  camellia: "Camellia",
-  scotch: "Scotch",
-  tapir: "Tapir",
-  safari: "Safari",
-  negro: "Negro",
-  hueso: "Hueso"
+  Camellia: "Camellia",
+  Scotch: "Scotch",
+  Tapir: "Tapir",
+  Safari: "Safari",
 };
 
 const groupNames = {
   Madera: "Madera",
   Melamina: "Melamina",
-  Tirador: "Tirador/Patas"
 };
 
 const productId = "M9";
 
 const defaultVariants = {
-  Madera: "camellia",
-  Melamina: "safari",
-  Tirador: "hueso"
+  Madera: "Scotch",
+  Melamina: "Safari",
 };
 
 
 const parentId = 1157;
-const startVariationId = 1158;
+const startVariationId = 1461;
 
 const variantCombinationIds = {};
 let variationCounter = 0;
 
 for (const madera of groups.Madera) {
   for (const melamina of groups.Melamina) {
-      for (const tirador of groups.Tirador) {
-        const key = `${madera}-${melamina}-${tirador}`;
-        variantCombinationIds[key] = {
-          parentId,
-          variationId: startVariationId + variationCounter,
-          attributes: {
-            Madera: madera,
-            Melamina: melamina,
-            Tirador: tirador
+      const key = `${madera}-${melamina}`;
+      variantCombinationIds[key] = {
+        parentId,
+        variationId: startVariationId + variationCounter,
+        attributes: {
+          Madera: madera,
+          Melamina: melamina,
         }
       };
       variationCounter++;
     }
-  }
 }
 
 const variantConfig = {

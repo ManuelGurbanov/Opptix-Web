@@ -1,52 +1,51 @@
 import React from 'react';
 import Generic3DConfigurator from '../Generic3DConfigurator';
 
-const M10Config = () => {
+const M14IConfig = () => {
 
 const groups = {
   Madera: ["Camellia", "Scotch"],
-  Melamina: ["Safari", "Tapir"],
+  Patas: ["Negro", "Hueso"]
 };
 
 const variantNames = {
   Camellia: "Camellia",
   Scotch: "Scotch",
-  Tapir: "Tapir",
-  Safari: "Safari",
+  Negro: "Negro",
+  Hueso: "Hueso"
 };
 
 const groupNames = {
   Madera: "Madera",
-  Melamina: "Melamina",
+  Patas: "Patas"
 };
 
-const productId = "M10";
+const productId = "M15I";
 
 const defaultVariants = {
   Madera: "Camellia",
-  Melamina: "Safari",
+  Patas: "Hueso"
 };
 
-
-const parentId = 1157;
-const startVariationId = 1474;
+const parentId = 1242;
+const startVariationId = 1478;
 
 const variantCombinationIds = {};
 let variationCounter = 0;
 
 for (const madera of groups.Madera) {
-  for (const melamina of groups.Melamina) {
-      const key = `${madera}-${melamina}`;
-      variantCombinationIds[key] = {
-        parentId,
-        variationId: startVariationId + variationCounter,
-        attributes: {
-          Madera: madera,
-          Melamina: melamina,
-        }
-      };
-      variationCounter++;
-    }
+  for (const patas of groups.Patas) {
+    const key = `${madera}-${patas}`;
+    variantCombinationIds[key] = {
+      parentId,
+      variationId: startVariationId + variationCounter,
+      attributes: {
+        Madera: madera,
+        Patas: patas
+      }
+    };
+    variationCounter++;
+  }
 }
 
 const variantConfig = {
@@ -75,7 +74,7 @@ const variantConfig = {
   return (
     <div className="w-full h-full overflow-hidden bg-white p-4 configurator">
       <Generic3DConfigurator
-        modelSrc="/models/rumi/M10.glb"
+        modelSrc="/models/rumi/M14I.glb"
         variantConfig={variantConfig}
         productConfig={productConfig}
         onVariantChange={handleVariantChange}
@@ -106,4 +105,4 @@ const variantConfig = {
   );
 };
 
-export default M10Config;
+export default M14IConfig;

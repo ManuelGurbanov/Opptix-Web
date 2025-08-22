@@ -36,6 +36,8 @@ import WordPress from './WordPress';
 
 import A3 from './rumi/A3';
 
+import CasaZorba from './casazorba/CasaZorba';
+
 const sponsorsList = [
   "rumi_logo.webp",
   "zorba_logo.webp",
@@ -59,6 +61,7 @@ function Layout({ children }) {
   && location.pathname !== "/solano"
   && location.pathname.startsWith("/rumi") === false
   && location.pathname !== "/wordpress"
+  && location.pathname.startsWith("/casazorba") === false
   ;
 
   return (
@@ -208,6 +211,8 @@ function App() {
               <Route path="/wordpress" element={<WordPress />} />
               
               <Route path="/RumiA3" element={<A3 />} />
+
+              <Route path="/casazorba/:id" element={<CasaZorba />} />
             </Routes>
           </Layout>
         </Router>

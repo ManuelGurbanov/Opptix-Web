@@ -8,6 +8,10 @@ import M7Config from "./M7";
 import M8Config from "./M8";
 import M9Config from "./M9";
 import M10Config from "./M10";
+import M11Config from "./M11";
+import M12Config from "./M12";
+import M13Config from "./M13";
+import M14IConfig from "./M14I";
 
 import { useParams } from "react-router-dom";
 import A3Config from "./A3";
@@ -25,7 +29,11 @@ const modules = {
   M9: M9Config,
   M10: M10Config,
   VIEWERINICIO: ViewerInicio,
-  A3: A3Config
+  A3: A3Config,
+  M11: M11Config,
+  M12: M12Config,
+  M13: M13Config,
+  M14I: M14IConfig
 };
 
 function Rumi() {
