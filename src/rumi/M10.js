@@ -23,7 +23,7 @@ const groupNames = {
 const productId = "M10";
 
 const defaultVariants = {
-  Madera: "Camellia",
+  Madera: "Scotch",
   Melamina: "Safari",
 };
 
