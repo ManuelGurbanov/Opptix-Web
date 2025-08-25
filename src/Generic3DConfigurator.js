@@ -129,6 +129,7 @@ const Generic3DConfigurator = ({
     }
 
     const onLoad = () => {
+      reloadModel();
       const variants = modelViewer.availableVariants || [];
       console.log("Variantes disponibles:", variants);
     };

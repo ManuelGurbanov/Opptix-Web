@@ -1,11 +1,11 @@
 import React from 'react';
 import Generic3DConfigurator from '../Generic3DConfigurator';
 
-const M14IConfig = () => {
+const M19Config = () => {
 
 const groups = {
   Madera: ["Camellia", "Scotch"],
-  Patas: ["Negro", "Hueso"]
+  Tirador: ["Hueso", "Negro"]
 };
 
 const variantNames = {
@@ -17,31 +17,30 @@ const variantNames = {
 
 const groupNames = {
   Madera: "Madera",
-  Patas: "Patas"
+  Tirador: "Tirador/Patas"
 };
-
-const productId = "M15I";
 
 const defaultVariants = {
-  Madera: "Camellia",
-  Patas: "Hueso"
+  Madera: "Scotch",
+  Tirador: "Negro"
 };
 
-const parentId = 1242;
-const startVariationId = 1478;
+
+const parentId = 1292;
+const startVariationId = 1515;
 
 const variantCombinationIds = {};
 let variationCounter = 0;
 
 for (const madera of groups.Madera) {
-  for (const patas of groups.Patas) {
-    const key = `${madera}-${patas}`;
+  for (const tirador of groups.Tirador) {
+    const key = `${madera}-${tirador}`;
     variantCombinationIds[key] = {
       parentId,
       variationId: startVariationId + variationCounter,
       attributes: {
         Madera: madera,
-        Patas: patas
+        Tirador: tirador
       }
     };
     variationCounter++;
@@ -49,7 +48,6 @@ for (const madera of groups.Madera) {
 }
 
 const variantConfig = {
-  productId,
   defaultVariants,
   variantsByGroup: groups,
   groupNames,
@@ -74,7 +72,7 @@ const variantConfig = {
   return (
     <div className="w-full h-full overflow-hidden bg-white p-4 configurator">
       <Generic3DConfigurator
-        modelSrc="/models/rumi/M14I.glb"
+        modelSrc="/models/rumi/M19.glb"
         variantConfig={variantConfig}
         productConfig={productConfig}
         onVariantChange={handleVariantChange}
@@ -105,4 +103,4 @@ const variantConfig = {
   );
 };
 
-export default M14IConfig;
+export default M19Config;
