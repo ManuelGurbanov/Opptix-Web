@@ -27,8 +27,8 @@ const defaultVariants = {
 };
 
 
-const parentId = side === "DER" ? 1330 : 1252;
-const startVariationId = side === "DER" ? 1486 : 1490;
+const parentId = side === "D" ? 1330 : 1252;
+const startVariationId = side === "D" ? 1486 : 1490;
 
 const variantCombinationIds = {};
 let variationCounter = 0;
@@ -74,7 +74,7 @@ const variantConfig = {
   return (
     <div className="w-full h-full overflow-hidden bg-white p-4 configurator">
       <Generic3DConfigurator
-        modelSrc={side === "DER" ? "/models/rumi/M15D.glb" : "/models/rumi/M15I.glb"}
+        modelSrc={side === "D" ? "/models/rumi/M15D.glb" : "/models/rumi/M15I.glb"}
         variantConfig={variantConfig}
         productConfig={productConfig}
         onVariantChange={handleVariantChange}

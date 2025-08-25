@@ -27,8 +27,8 @@ const defaultVariants = {
   Patas: "Hueso"
 };
 
-const parentId = side == "DER" ? 1316 : 1242;
-const startVariationId = side == "DER" ? 1482 : 1478;
+const parentId = side == "D" ? 1316 : 1242;
+const startVariationId = side == "D" ? 1482 : 1478;
 
 const variantCombinationIds = {};
 let variationCounter = 0;
@@ -74,7 +74,7 @@ const variantConfig = {
   return (
     <div className="w-full h-full overflow-hidden bg-white p-4 configurator">
       <Generic3DConfigurator
-        modelSrc={side === "DER" ? "/models/rumi/M14D.glb" : "/models/rumi/M14I.glb"}
+        modelSrc={side === "D" ? "/models/rumi/M14D.glb" : "/models/rumi/M14I.glb"}
         variantConfig={variantConfig}
         productConfig={productConfig}
         onVariantChange={handleVariantChange}
