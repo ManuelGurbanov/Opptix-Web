@@ -187,7 +187,7 @@ function App() {
 
                   <OurServicesBento />
 
-                  <Packs packs={packs} />
+                  {/* <Packs packs={packs} /> */}
 
                   <CaseStudies cases={cases} />
 

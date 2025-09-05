@@ -145,96 +145,96 @@ const Generic3DConfigurator = ({
 
   return (
     <div className={`configurator relative overflow-hidden flex flex-col items-center justify-center w-full gap-3 bg-white ${className}`} {...props}>
-      <section
-        className="relative bg-white max-w-screen overflow-x-hidden overflow-y-hidden"
-        ref={ref}
-        style={{ minHeight: "300px"}}
-      >
-        <model-viewer
-          id={`${modelId}-model-viewer`}
-          loading={viewerConfig.loading || "eager"}
-          poster={finalUiConfig.loadingGif}
-          ref={modelViewerRef}
-          src={modelSrc}
-          alt={productConfig.name}
-          camera-controls={viewerConfig.cameraControls ?? true}
-          ar={viewerConfig.ar ?? true}
-          ar-modes={viewerConfig.arModes ?? "webxr scene-viewer quick-look"}
-          style={{
-            width: "100%",
-            aspectRatio: "4/3",
-            minHeight: "300px",
-            maxWidth: "100%",
-            overflow: "hidden"
-          }}
-          onLoad={() => {
-            if (onModelLoad) onModelLoad();
-          }}
+<section
+  className="relative bg-white max-w-screen overflow-x-hidden overflow-y-hidden"
+  ref={ref}
+  style={{ minHeight: "1600px" }}
+>
+  <model-viewer
+    id={`${modelId}-model-viewer`}
+    loading={viewerConfig.loading || "eager"}
+    poster={finalUiConfig.loadingGif}
+    ref={modelViewerRef}
+    src={modelSrc}
+    alt={productConfig.name}
+    camera-controls={viewerConfig.cameraControls ?? true}
+    ar={viewerConfig.ar ?? true}
+    ar-modes={viewerConfig.arModes ?? "webxr scene-viewer quick-look"}
+    style={{
+      width: "100%",
+      height: "100%",
+      //minHeight: "calc(100vh - 100px)", // más grande
+      maxWidth: "100%",
+      overflow: "hidden"
+    }}
+    onLoad={() => {
+      if (onModelLoad) onModelLoad();
+    }}
+  >
+  </model-viewer>
+
+  {/* Controles de variantes superpuestos */}
+  <div className="absolute bottom-0 left-0 right-0 flex flex-col items-center justify-start w-full px-2 py-4 bg-gradient-to-t from-white/80 via-white/40 to-transparent">
+    {/* Selector de grupos */}
+    <section className="flex flex-col items-center justify-center w-full gap-2 px-1">
+      <div className="flex items-center justify-center gap-1 sm:gap-4">
+        {Object.keys(variantConfig.variantsByGroup).map((group) => (
+          <button
+            key={group}
+            className={`px-2 py-1 sm:px-4 sm:py-2 text-black text-base whitespace-nowrap min-w-fit ${
+              selectingGroup === group ? "font-black underline" : "font-semibold"
+            }`}
+            onClick={() => setSelectingGroup(group)}
+          >
+            {selectingGroup === group && <span className="font-normal">• </span>}
+            {variantConfig.groupNames[group]}
+          </button>
+        ))}
+      </div>
+    </section>
+
+    {/* Selector de variantes */}
+    <div className="flex flex-row items-center justify-center w-full gap-2 p-2 overflow-x-auto">
+      {uiConfig.showReload && (
+        <button
+          className="flex items-center justify-center p-2 rounded-3xl ring-rumi ring-2 bg-white hover:bg-rumi/20 hover:text-white transition-all"
+          onClick={() => reloadModel()}
         >
-        </model-viewer>
+          <img src="/reload.svg" className="w-6 h-6" />
+        </button>
+      )}
 
-        {/* Controles de variantes */}
-        <div className={`flex flex-col items-center justify-start w-full px-2 py-0 bg-white `}>
-          {/* Selector de grupos */}
-          <section className="flex flex-col items-center justify-center w-full gap-2 px-1">
-            <div className="flex items-center justify-center gap-1 sm:gap-4">
-              {Object.keys(variantConfig.variantsByGroup).map((group) => (
-                <button
-                  key={group}
-                  className={`px-2 py-1 sm:px-4 sm:py-2 text-black text-base whitespace-nowrap min-w-fit ${
-                    selectingGroup === group ? "font-black underline" : "font-semibold"
-                  }`}
-                  onClick={() => setSelectingGroup(group)}
-                >
-                  {selectingGroup === group && <span className="font-normal">• </span>}
-                  {variantConfig.groupNames[group]}
-                </button>
-              ))}
-            </div>
-          </section>
+      {variantConfig.variantsByGroup[selectingGroup].map((variant) => (
+        <button
+          key={variant}
+          className={`px-3 py-2 whitespace-nowrap rounded-3xl ring-rumi ring-2 ${
+            activeVariants[selectingGroup] === variant
+              ? "bg-rumi text-white font-bold"
+              : "hover:bg-rumi/20  bg-white  hover:text-white text-black font-semibold"
+          }`}
+          onClick={() => toggleVariant(selectingGroup, variant)}
+        >
+          {variantConfig.variantNames[variant]}
+        </button>
+      ))}
+    </div>
+  </div>
 
-          {/* Selector de variantes */}
-        <div className="flex flex-row items-center justify-center w-full gap-2 p-2 overflow-x-auto">
-            {uiConfig.showReload && (
-              <button
-                className="flex items-center justify-center p-2 rounded-3xl ring-rumi ring-2 bg-white hover:bg-rumi/20 hover:text-white transition-all"
-                onClick={() => reloadModel()}
-              >
-                <img src="/reload.svg" className="w-6 h-6" />
-              </button>
-            )}
+  {/* Botón Agregar al carrito */}
+  <div className="flex items-center justify-center w-full p-4">
+    {getAddToCartUrl() && (
+      <a
+        href={getAddToCartUrl()}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="px-6 py-4 bg-rumi text-white rounded-3xl hover:bg-white hover:text-rumi border-2 border-rumi font-semibold transition-all"
+      >
+        Agregar al carrito
+      </a>
+    )}
+  </div>
+</section>
 
-
-            {variantConfig.variantsByGroup[selectingGroup].map((variant) => (
-              <button
-                key={variant}
-                className={`px-3 py-2 whitespace-nowrap rounded-3xl ring-rumi ring-2 ${
-                  activeVariants[selectingGroup] === variant
-                    ? "bg-rumi text-white font-bold"
-                    : "hover:bg-rumi/20  bg-white  hover:text-white text-black font-semibold"
-                }`}
-                onClick={() => toggleVariant(selectingGroup, variant)}
-              >
-                {variantConfig.variantNames[variant]}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Botones adicionales */}
-        <div className="flex items-center justify-center w-full p-2">
-          {getAddToCartUrl() && (
-            <a
-              href={getAddToCartUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-4 bg-rumi text-white rounded-3xl hover:bg-white hover:text-rumi border-2 border-rumi font-semibold transition-all"
-            >
-              Agregar al carrito
-            </a>
-          )}
-        </div>
-      </section>
     </div>
   );
 };
