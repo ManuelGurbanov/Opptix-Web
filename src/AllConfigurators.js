@@ -14,7 +14,7 @@ import SeeButton from "./SeeInYourSpace";
 import RackViewer from "./RackViewer"
 export default function AllConfigurators({language, setContact}) {
 
-    const [selectedConfigurator, setSelectedConfigurator] = useState("chair");
+    const [selectedConfigurator, setSelectedConfigurator] = useState("parrilla");
 
     const [totalPriceCar, setTotalPriceCar] = useState(20000);
     const [totalPriceParrilla, setTotalPriceParrilla] = useState(1500);
@@ -61,14 +61,14 @@ export default function AllConfigurators({language, setContact}) {
             </header>
 
             <nav className="flex justify-center sm:self-start items-center p-4 gap-7 text-black h-[30px] z-30 m-0 rounded-lg relative">
-                    <button
+                    {/* <button
                         onClick={() => setSelectedConfigurator("car")}
                         className={`hover:scale-105 w-14 text-lg text-center transition ease-in cursor-pointer duration-75 ${
                         selectedConfigurator === "car" ? "font-black" : ""
                         }`}
                     >
                         {translate("car", language)}
-                    </button>
+                    </button> */}
                     <button
                         onClick={() => setSelectedConfigurator("parrilla")}
                         className={`hover:scale-105 w-14 text-lg text-center transition ease-in cursor-pointer duration-75 ${

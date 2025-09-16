@@ -20,23 +20,16 @@ import OurServicesBento from './OurServicesBento';
 import UploaderThree from './UploaderThree';
 import { ContactProvider } from "./ContactContext";
 
-import Demostration from './Demostration';
 import DemostrationTest from './DemostrationTest'
 
 import { LanguageProvider } from "./LanguageContext";
 
 import Solano from './Solano';
 
-import Rumi from './rumi/Rumi';
-import MuestraRumi from './MuestraRumi';
 
-
-import InfiniteScrollSponsors from "./InfiniteScrollSponsors";
 import WordPress from './WordPress';
 
-import A3 from './rumi/A3';
-
-import CasaZorba from './casazorba/CasaZorba';
+import BrandsTrustUs from './Brands';
 
 const sponsorsList = [
   "rumi_logo.webp",
@@ -58,10 +51,7 @@ function Layout({ children }) {
   const location = useLocation();
   const showNavbar = !location.pathname.startsWith("/services") 
   && location.pathname !== "/kesseboehmer" 
-  && location.pathname !== "/solano"
-  && location.pathname.startsWith("/rumi") === false
   && location.pathname !== "/wordpress"
-  && location.pathname.startsWith("/casazorba") === false
   ;
 
   return (
@@ -185,6 +175,7 @@ function App() {
 
                   <WhyWorkTogether />
 
+                  {/* <BrandsTrustUs/> */}
                   <OurServicesBento />
 
                   {/* <Packs packs={packs} /> */}
@@ -204,15 +195,8 @@ function App() {
               <Route path="/kesseboehmer" element={<DemostrationTest />} />
               <Route path="/solano" element={<Solano />} />
 
-              <Route path="/muestra-rumi" element={<MuestraRumi />} />
-
-              <Route path="/rumi/:id" element={<Rumi />} />
-
               <Route path="/wordpress" element={<WordPress />} />
               
-              <Route path="/RumiA3" element={<A3 />} />
-
-              <Route path="/casazorba/:id" element={<CasaZorba />} />
             </Routes>
           </Layout>
         </Router>
