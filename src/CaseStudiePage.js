@@ -9,7 +9,7 @@ import { useLanguage } from './LanguageContext';
 function CaseStudiePage() {
   const { language } = useLanguage();
   const [searchParams] = useSearchParams();
-  const caseName = searchParams.get("case") || "Briefcases";
+  const caseName = searchParams.get("case") || "Rumi";
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -440,7 +440,73 @@ function CaseStudiePage() {
         "rack/tres-1.webp"
       ]
       
-    },
+    }
+//     {
+//   id: 5,
+//   name: "Rumi",
+//   tittle: "Rumi",
+//   description: (
+//     <div className="text-lg">
+//       <p>
+//         Este proyecto implicó el desarrollo completo de una experiencia interactiva en 3D con realidad aumentada para Rumi, desde el modelado hasta la integración web.
+//       </p>
+//       <h2 className="font-semibold text-lg mt-4">Qué hicimos:</h2>
+//       <ul className="list-disc pl-6 mt-2">
+//         <li><strong>Modelado 3D detallado:</strong> Creamos modelos tridimensionales precisos de los productos Rumi, capturando cada detalle de forma, proporción y características distintivas.</li>
+//         <li><strong>Optimización para web:</strong> Redujimos el peso de los modelos sin comprometer la calidad visual, asegurando tiempos de carga rápidos y una experiencia fluida en diferentes dispositivos.</li>
+//         <li><strong>Integración de realidad aumentada:</strong> Implementamos tecnología AR directamente en el sitio web de Rumi, permitiendo a los usuarios visualizar los productos en su propio espacio antes de comprar.</li>
+//       </ul>
+//     </div>
+//   ),
+  
+//   secondTittle: "Resultados:",
+  
+//   secondDescription: (
+//     <div className="text-lg">
+//       <p>
+//         La integración de AR transformó la experiencia de compra online, aumentando la confianza del usuario y reduciendo la incertidumbre sobre cómo lucirían los productos en su hogar.
+//       </p>
+//       <p>
+//         Este proyecto demuestra cómo la tecnología 3D y AR pueden revolucionar el e-commerce, ofreciendo una experiencia inmersiva que cierra la brecha entre lo digital y lo físico. 🎯
+//       </p>
+//     </div>
+//   ),
+  
+//   enDescription: (
+//     <div className="text-lg">
+//       <p>
+//         This project involved the complete development of an interactive 3D experience with augmented reality for Rumi, from modeling to web integration.
+//       </p>
+//       <h2 className="font-semibold text-lg mt-4">What we did:</h2>
+//       <ul className="list-disc pl-6 mt-2">
+//         <li><strong>Detailed 3D modeling:</strong> We created precise three-dimensional models of Rumi products, capturing every detail of shape, proportion, and distinctive features.</li>
+//         <li><strong>Web optimization:</strong> We reduced model file sizes without compromising visual quality, ensuring fast loading times and smooth experience across different devices.</li>
+//         <li><strong>Augmented reality integration:</strong> We implemented AR technology directly on Rumi's website, allowing users to visualize products in their own space before purchasing.</li>
+//       </ul>
+//     </div>
+//   ),
+  
+//   enSecondTittle: "Results:",
+  
+//   enSecondDescription: (
+//     <div className="text-lg">
+//       <p>
+//         The AR integration transformed the online shopping experience, increasing user confidence and reducing uncertainty about how products would look in their home.
+//       </p>
+//       <p>
+//         This project demonstrates how 3D and AR technology can revolutionize e-commerce, offering an immersive experience that bridges the gap between digital and physical. 🎯
+//       </p>
+//     </div>
+//   ),
+  
+//   media: [
+//     "rumi/uno.mp4",
+//     "rumi/dos.webp",
+//     "rumi/tres.webp",
+//     "rumi/cuatro.webp",
+//     "rumi/cinco.webp",
+//   ]
+// }
   ];
 
   // Buscar el caso actual por nombre

@@ -20,6 +20,15 @@ function CaseStudies() {
             className='flex flex-row gap-4 mb-12 sm:overflow-hidden overflow-y-hidden overflow-x-scroll w-screen items-center justify-start sm:justify-center sm:h-80 h-60 px-4'
             style={{ minWidth: '100vw', paddingLeft: '16px', paddingRight: '16px' }}
         >
+            {/* <div className='flex flex-col items-center justify-center' data-aos="fade-up" data-aos-delay="400">
+                <Link to={`/case-study?case=Rumi`} className='sm:w-[200px] w-44 hover:scale-105 transition-all ease-in-out aspect-square rounded-2xl relative flex items-center justify-center'>
+                    <img className='z-20' src='rumi_logo.webp' alt="Headphones" />
+                    <img className='absolute inset-0 w-full h-full object-cover rounded-2xl aspect-square' src='rumi_bg.webp' alt="Rumi" />
+                </Link>
+                <a className='text-black underline mt-2 hover:scale-105 transition duration-150' href="/case-study?case=Rack">
+                    {translate('seeMore', language)}
+                </a>
+            </div> */}
             <div className='flex flex-col items-center justify-center' data-aos="fade-up" data-aos-delay="400">
                 <Link to={`/case-study?case=Rack`} className='sm:w-[200px] w-44 hover:scale-105 transition-all ease-in-out aspect-square rounded-2xl'>
                     <img className='w-full h-full object-cover rounded-2xl aspect-square' src='rack/dos.webp' alt="Rack" />

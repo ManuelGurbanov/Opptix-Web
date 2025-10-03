@@ -69,9 +69,9 @@ function Navbar() {
             <a className="hidden transition duration-75 ease-in cursor-pointer hover:scale-105 md:block" href='#packs'>
               {translate("packs", language)}
             </a>
-            <button className="hidden transition duration-75 ease-in cursor-pointer hover:scale-105 md:block bg-lightblue px-4 py-2 rounded-[48px]" onClick={() => showContactForm()}>
+            <a href='https://landing.opptix.com.ar/home' className="hidden transition duration-75 ease-in cursor-pointer hover:scale-105 md:block bg-lightblue px-4 py-2 rounded-[48px]">
               {translate("talk", language)}
-            </button>
+            </a>
 
             <button
               className="hidden ml-4 mr-4 sm:block"

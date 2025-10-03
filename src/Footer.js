@@ -113,7 +113,11 @@ const [result, setResult] = React.useState(false);
         <p className="text-xs">{translate("reason2", language)}</p>
         <p className="text-xs">{translate("reason3", language)}</p>
         <p className="text-xs">{translate("reason4", language)}</p>
-        <Calendly language={language}/>
+        
+        <a className="text-base px-4 py-2 bg-black text-white rounded-lg text-center hover:scale-110 transition-all ease-in-out duration-100"
+           href="https://landing.opptix.com.ar/home">
+            {translate("agendar", language)}
+        </a>
       </div>
 
 
