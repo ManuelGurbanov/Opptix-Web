@@ -54,155 +54,102 @@ function CaseStudiePage() {
   };
 
   const cases = [
-    {
-      id: 0,
-      name: "Headphones",
-      tittle: "Headphones",
-      description: (
-        <div className="text-lg">
-          <p>
-            Este proyecto tuvo como objetivo explorar y perfeccionar técnicas avanzadas de renderizado y animación en 3D, enfocándonos en lograr un nivel excepcional de calidad visual.
-          </p>
-          <h2 className="font-semibold text-lg mt-4">Qué hicimos:</h2>
-          <ul className="list-disc pl-6 mt-2">
-            <li><strong>Renders fotorrealistas:</strong> Desarrollamos imágenes de alta resolución que destacaron cada detalle de diseño, materiales y texturas de los headphones, buscando transmitir calidad y modernidad.</li>
-            <li><strong>Animaciones de producto:</strong> Creamos secuencias dinámicas que mostraron el producto desde diferentes perspectivas, resaltando su diseño ergonómico y acabados premium.</li>
-          </ul>
-        </div>
-      ),
-      
-      secondTittle: "Resultados:",
-      
-      secondDescription: (
-        <div className="text-lg">
-          <p>
-            El proyecto fue una oportunidad para llevar nuestras habilidades técnicas al límite, demostrando cómo el 3D puede elevar la percepción de un producto y capturar su esencia con un alto nivel de detalle.
-          </p>
-          <p>
-            Si buscas contenido 3D de alta calidad para destacar tus productos, estamos aquí para ayudarte. 🚀
-          </p>
-        </div>
-      ),
-      
-      enDescription: (
-        <div className="text-lg">
-          <p>
-            This project aimed to explore and perfect advanced rendering and animation techniques in 3D, focusing on achieving an exceptional level of visual quality.
-          </p>
-          <h2 className="font-semibold text-lg mt-4">What we did:</h2>
-          <ul className="list-disc pl-6 mt-2">
-            <li><strong>Photorealistic renders:</strong> We developed high-resolution images that highlighted every design detail, material, and texture of the headphones, aiming to convey quality and modernity.</li>
-            <li><strong>Product animations:</strong> We created dynamic sequences showcasing the product from different perspectives, emphasizing its ergonomic design and premium finishes.</li>
-          </ul>
-        </div>
-      ),
-      
-      enSecondTittle: "Results:",
-      
-      enSecondDescription: (
-        <div className="text-lg">
-          <p>
-            The project was an opportunity to push our technical skills to the limit, demonstrating how 3D can elevate the perception of a product and capture its essence with a high level of detail.
-          </p>
-          <p>
-            If you're looking for high-quality 3D content to showcase your products, we're here to help. 🚀
-          </p>
-        </div>
-      ),
-      
-      media: [
-        "headphones/uno.mp4",
-        "headphones/dos.webp",
-        "headphones/tres.webp",
-        "headphones/cuatro.webp",
-        "headphones/cinco.webp",
-      ]
-    },
-    {
-      id: 1,
-      name: "Blossom",
-      tittle: "Blossom",
-      description: (
-        <>
-          <p className="text-base">
-            En este proyecto trabajamos junto a <strong>Blossom</strong>, una marca emergente de fragancias premium, con el objetivo de crear un paquete de contenido integral que reflejara la esencia única de cada una de sus fragancias.  
-            Nuestro enfoque fue estratégico y personalizado, diseñando piezas visuales impactantes para posicionar la marca en el mercado y conectar emocionalmente con su público objetivo.  
-          </p>
-          <p className="text-base font-semibold">Para este lanzamiento, desarrollamos:</p>
-          <ul className="text-base list-disc pl-4">
-            <li><strong>Animaciones 3D:</strong> Videos teaser y presentaciones dinámicas que resaltaron las notas y características de cada fragancia.</li>
-            <li><strong>Renders fotorrealistas:</strong> Imágenes en alta resolución que destacaron el diseño de los frascos y el concepto detrás de la marca, ideales para redes sociales y catálogos.</li>
-            <li><strong>Contenido e-commerce:</strong> Banners, PNGs y elementos visuales optimizados para su integración en plataformas online, mejorando la experiencia de usuario y aumentando la conversión.</li>
-          </ul>
-        </>
-      ),
-      enDescription: (
-        <>
-          <p className="text-base">
-            In this project, we collaborated with <strong>Blossom</strong>, an emerging premium fragrance brand, to create a comprehensive content package that reflects the unique essence of each of its fragrances.  
-            Our approach was strategic and tailored, designing impactful visual assets to position the brand in the market and establish an emotional connection with its target audience.  
-          </p>
-          <p className="text-base font-semibold">For this launch, we developed:</p>
-          <ul className="text-base list-disc pl-4">
-            <li><strong>3D Animations:</strong> Teaser videos and dynamic presentations that highlighted the notes and characteristics of each fragrance.</li>
-            <li><strong>Photorealistic Renders:</strong> High-resolution images showcasing the bottle designs and the brand concept, perfect for social media and catalogs.</li>
-            <li><strong>E-commerce Content:</strong> Banners, PNGs, and optimized visual elements for seamless integration into online platforms, enhancing the user experience and boosting conversions.</li>
-          </ul>
-        </>
-      ),
-      secondDescription: (
-        <p className='text-base'>
-          El proyecto estuvo guiado por la necesidad de transmitir los valores de Blossom: elegancia, frescura y autenticidad, asegurando un impacto visual consistente y memorable en todos los puntos de contacto. Este enfoque permitió a la marca no solo posicionarse estratégicamente, sino también establecer una conexión genuina con sus clientes.
+        {
+  id: 5,
+  name: "Rumi",
+  tittle: "Rumi",
+  description: (
+    <div className="text-lg">
+      <p>
+        Este proyecto implicó el desarrollo completo de una experiencia interactiva en 3D con realidad aumentada para Rumi, desde el modelado hasta la integración web.
+      </p>
+      <h2 className="font-semibold text-lg mt-4">Qué hicimos:</h2>
+      <ul className="list-disc pl-6 mt-2">
+        <li><strong>Modelado 3D detallado:</strong> Creamos modelos tridimensionales precisos de los productos Rumi, capturando cada detalle de forma, proporción y características distintivas.</li>
+        <li><strong>Optimización para web:</strong> Redujimos el peso de los modelos sin comprometer la calidad visual, asegurando tiempos de carga rápidos y una experiencia fluida en diferentes dispositivos.</li>
+        <li><strong>Integración de realidad aumentada:</strong> Implementamos tecnología AR directamente en el sitio web de Rumi, permitiendo a los usuarios visualizar los productos en su propio espacio antes de comprar.</li>
+      </ul>
+    </div>
+  ),
+  
+  secondTittle: "Resultados:",
+  
+  secondDescription: (
+    <div className="text-lg">
+      <p>
+        La integración de AR transformó la experiencia de compra online, aumentando la confianza del usuario y reduciendo la incertidumbre sobre cómo lucirían los productos en su hogar.
+      </p>
+      <p>
+        Este proyecto demuestra cómo la tecnología 3D y AR pueden revolucionar el e-commerce, ofreciendo una experiencia inmersiva que cierra la brecha entre lo digital y lo físico. 🎯
+      </p>
+    </div>
+  ),
+  
+  enDescription: (
+    <div className="text-lg">
+      <p>
+        This project involved the complete development of an interactive 3D experience with augmented reality for Rumi, from modeling to web integration.
+      </p>
+      <h2 className="font-semibold text-lg mt-4">What we did:</h2>
+      <ul className="list-disc pl-6 mt-2">
+        <li><strong>Detailed 3D modeling:</strong> We created precise three-dimensional models of Rumi products, capturing every detail of shape, proportion, and distinctive features.</li>
+        <li><strong>Web optimization:</strong> We reduced model file sizes without compromising visual quality, ensuring fast loading times and smooth experience across different devices.</li>
+        <li><strong>Augmented reality integration:</strong> We implemented AR technology directly on Rumi's website, allowing users to visualize products in their own space before purchasing.</li>
+      </ul>
+    </div>
+  ),
+  
+  enSecondTittle: "Results:",
+  
+  enSecondDescription: (
+    <div className="text-lg">
+      <p>
+        The AR integration transformed the online shopping experience, increasing user confidence and reducing uncertainty about how products would look in their home.
+      </p>
+      <p>
+        This project demonstrates how 3D and AR technology can revolutionize e-commerce, offering an immersive experience that bridges the gap between digital and physical. 🎯
+      </p>
+    </div>
+  ),
+  
+  media: [
+    "rumi/uno.webp",
+    "rumi/dos.webp",
+    "rumi/rumi_bg.webp",
+    "rumi/cuatro.webp",
+    "rumi/cinco.webp",
+  ]
+},{
+    id: 6,
+    name: "Casa Zorba",
+    tittle: "Casa Zorba",
+    description: (
+      <div className="text-lg">
+        <p>
+          En este proyecto trabajamos en la creación de <strong>10 modelos 3D completamente desarrollados desde cero</strong>, con el objetivo de representar de manera precisa y atractiva la identidad visual de la marca. Cada modelo fue diseñado con un alto nivel de detalle, replicando fielmente las proporciones, materiales y terminaciones de los productos originales.
         </p>
-      ),
-      
-      
-      enSecondDescription: (
-        <p className='text-base'>
-          The project was guided by the need to convey Blossom's values: elegance, freshness, and authenticity, ensuring a consistent and memorable visual impact across all touchpoints. This approach allowed the brand not only to position itself strategically but also to establish a genuine connection with its customers.
+        <p className="mt-4">
+          Además, integramos una experiencia de <strong>realidad aumentada</strong> dentro de la plataforma de <strong>Tiendanube</strong>, permitiendo a los usuarios explorar los productos directamente desde sus dispositivos móviles y visualizar cómo lucen en su entorno real. Esto no solo mejoró la interacción del cliente con la marca, sino que también fortaleció la percepción de calidad e innovación de Casa Zorba.
         </p>
-      ),
-
+      </div>
+    ),
+    secondDescription: (
+      <div className="text-lg">
+        <h2 className="font-semibold text-lg mt-4">Qué hicimos:</h2>
+        <ul className="list-disc pl-6 mt-2">
+          <li><strong>Modelado 3D desde cero:</strong> Creamos diez modelos tridimensionales basados en referencias reales, garantizando una correspondencia exacta con los productos originales de la marca.</li>
+          <li><strong>Texturizado y materiales realistas:</strong> Aplicamos técnicas avanzadas de iluminación y materiales para lograr un acabado visual coherente con el estándar de calidad de Casa Zorba.</li>
+          <li><strong>Integración en realidad aumentada:</strong> Incorporamos los modelos optimizados en Tiendanube, generando una experiencia inmersiva e interactiva para los usuarios finales.</li>
+        </ul>
+      </div>
+    ),
       media: [
-        "blossom/uno.mp4",
-        "blossom/dos.webp",
-        "blossom/blossomMain.webp",
-        "blossom/cuatro.mp4",
-        "blossom/cinco.webp",
-        "blossom/1.webp",
-        "blossom/01.webp",
-        "blossom/01-FLYER.webp",
-        "blossom/02-01NOIR.webp",
-        "blossom/02-05NOIR.webp",
-        "blossom/03.webp",
-        "blossom/4.webp",
-        "blossom/04.webp",
-        "blossom/4(1).webp",
-        "blossom/5.webp",
-        "blossom/05.webp",
-        "blossom/5 (1).webp",
-        "blossom/5 (2).webp",
-        "blossom/5 (2)(1).webp",
-        "blossom/06 (1).webp",
-        "blossom/07.webp",
-        "blossom/08.webp",
-        "blossom/BLOOM1.webp",
-        "blossom/blossomEnd.webp",
-        "blossom/blossomFirst.webp",
-        "blossom/EXOTIC1.webp",
-        "blossom/FOREST.webp",
-        "blossom/loop-bloom-2 (2).mov",
-        "blossom/loop-exotic-2.mov",
-        "blossom/loop-forest-2.mp4",
-        "blossom/loop-noir-2.mp4",
-        "blossom/loop-oud-2.mp4",
-        "blossom/loop-tylor-2.mp4",
-        "blossom/loop-velvet-2.mp4",
-        "blossom/loop-vibrant-2.mp4",
-        "blossom/NOIR.webp",
-        "blossom/teaser final.mp4"
-      ]
-      
+    "cz/uno.webp",
+    "cz/dos.webp",
+    "cz/tres.webp",
+    "cz/cuatro.webp",
+    "cz/cinco.webp",
+  ]
     },
     {
       id: 2,
@@ -227,7 +174,7 @@ function CaseStudiePage() {
         </p>
         <p>
           Si estás buscando contenido visual que impulse tus lanzamientos y eleve tu marca, ¡contáctanos! 🚀
-        </p>,
+        </p>
       </div>,
       enDescription: (
         <div className="text-lg">
@@ -440,73 +387,7 @@ function CaseStudiePage() {
         "rack/tres-1.webp"
       ]
       
-    }
-//     {
-//   id: 5,
-//   name: "Rumi",
-//   tittle: "Rumi",
-//   description: (
-//     <div className="text-lg">
-//       <p>
-//         Este proyecto implicó el desarrollo completo de una experiencia interactiva en 3D con realidad aumentada para Rumi, desde el modelado hasta la integración web.
-//       </p>
-//       <h2 className="font-semibold text-lg mt-4">Qué hicimos:</h2>
-//       <ul className="list-disc pl-6 mt-2">
-//         <li><strong>Modelado 3D detallado:</strong> Creamos modelos tridimensionales precisos de los productos Rumi, capturando cada detalle de forma, proporción y características distintivas.</li>
-//         <li><strong>Optimización para web:</strong> Redujimos el peso de los modelos sin comprometer la calidad visual, asegurando tiempos de carga rápidos y una experiencia fluida en diferentes dispositivos.</li>
-//         <li><strong>Integración de realidad aumentada:</strong> Implementamos tecnología AR directamente en el sitio web de Rumi, permitiendo a los usuarios visualizar los productos en su propio espacio antes de comprar.</li>
-//       </ul>
-//     </div>
-//   ),
-  
-//   secondTittle: "Resultados:",
-  
-//   secondDescription: (
-//     <div className="text-lg">
-//       <p>
-//         La integración de AR transformó la experiencia de compra online, aumentando la confianza del usuario y reduciendo la incertidumbre sobre cómo lucirían los productos en su hogar.
-//       </p>
-//       <p>
-//         Este proyecto demuestra cómo la tecnología 3D y AR pueden revolucionar el e-commerce, ofreciendo una experiencia inmersiva que cierra la brecha entre lo digital y lo físico. 🎯
-//       </p>
-//     </div>
-//   ),
-  
-//   enDescription: (
-//     <div className="text-lg">
-//       <p>
-//         This project involved the complete development of an interactive 3D experience with augmented reality for Rumi, from modeling to web integration.
-//       </p>
-//       <h2 className="font-semibold text-lg mt-4">What we did:</h2>
-//       <ul className="list-disc pl-6 mt-2">
-//         <li><strong>Detailed 3D modeling:</strong> We created precise three-dimensional models of Rumi products, capturing every detail of shape, proportion, and distinctive features.</li>
-//         <li><strong>Web optimization:</strong> We reduced model file sizes without compromising visual quality, ensuring fast loading times and smooth experience across different devices.</li>
-//         <li><strong>Augmented reality integration:</strong> We implemented AR technology directly on Rumi's website, allowing users to visualize products in their own space before purchasing.</li>
-//       </ul>
-//     </div>
-//   ),
-  
-//   enSecondTittle: "Results:",
-  
-//   enSecondDescription: (
-//     <div className="text-lg">
-//       <p>
-//         The AR integration transformed the online shopping experience, increasing user confidence and reducing uncertainty about how products would look in their home.
-//       </p>
-//       <p>
-//         This project demonstrates how 3D and AR technology can revolutionize e-commerce, offering an immersive experience that bridges the gap between digital and physical. 🎯
-//       </p>
-//     </div>
-//   ),
-  
-//   media: [
-//     "rumi/uno.mp4",
-//     "rumi/dos.webp",
-//     "rumi/tres.webp",
-//     "rumi/cuatro.webp",
-//     "rumi/cinco.webp",
-//   ]
-// }
+    },
   ];
 
   // Buscar el caso actual por nombre
@@ -519,7 +400,7 @@ function CaseStudiePage() {
       <div className="w-full h-full flex items-center justify-center cursor-pointer">
         <video
           src={src}
-          className="w-full sm:h-[500px] object-cover rounded-3xl mt-4"
+          className="w-full sm:h-[1920] object-cover mt-4"
           muted
           loop
           autoPlay
@@ -531,7 +412,7 @@ function CaseStudiePage() {
       <div className="w-full h-full flex items-center justify-center cursor-pointer">
         <img
           src={src}
-          className="w-full sm:h-[500px] object-cover rounded-3xl mt-4"
+          className="w-full sm:h-[1920] object-cover mt-4"
           onClick={() => onClick(src, index)}
         />
       </div>
@@ -611,14 +492,14 @@ function CaseStudiePage() {
       {isVideo ? (
         <video
           src={selectedMedia}
-          className="min-h-64 min-w-64 max-w-[75vw] max-h-[75vh] rounded-[48px]"
+          className="min-h-64 min-w-64 max-w-[75vw] max-h-[75vh]"
           autoPlay
           controls
         />
       ) : (
         <img
           src={selectedMedia}
-          className="min-h-64 min-w-64 max-w-[75vw] max-h-[75vh] rounded-[48px]"
+          className="min-h-64 min-w-64 max-w-[75vw] max-h-[75vh]"
         />
       )}
 
